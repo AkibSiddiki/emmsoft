@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clients Carousel Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f8faf9;
+      --bg-surface: #ffffff;
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --border-light: #e3e8e5;
+      --brand-emerald: #049449;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.12);
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --radius-full: 9999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      padding: 60px 20px;
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       OUR CLIENTS BAR SECTION
+       ========================================================================== */
+    .clients-strip-section {
+      background: #ffffff;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 18px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .clients-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Left Heading & Divider */
+    .clients-lead-col {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-shrink: 0;
+      padding-right: 8px;
+    }
+
+    .clients-heading {
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
+      text-transform: capitalize;
+    }
+
+    .clients-separator {
+      display: inline-block;
+      width: 1px;
+      height: 38px;
+      background: var(--border-light);
+    }
+
+    /* Carousel Wrapper */
+    .clients-carousel-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-grow: 1;
+      min-width: 0;
+      position: relative;
+    }
+
+    /* Circular Nav Buttons */
+    .client-nav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+      color: var(--ink-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      outline: none;
+      z-index: 2;
+    }
+
+    .client-nav-btn:hover {
+      color: var(--ink-primary);
+      border-color: #cbd5e1;
+      background: #f8fafc;
+      transform: scale(1.06);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .client-nav-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Track Viewport */
+    .clients-track-viewport {
+      flex-grow: 1;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE */
+      mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+    }
+
+    .clients-track-viewport::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+
+    .clients-track {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      width: max-content;
+      padding: 6px 12px;
+      user-select: none;
+    }
+
+    /* Individual Logo Item */
+    .client-logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      min-width: 110px;
+      padding: 4px 10px;
+      opacity: 0.88;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .client-logo-item:hover {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .client-logo-item img,
+    .client-logo-item svg {
+      max-height: 38px;
+      max-width: 140px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: grayscale(15%);
+      transition: filter 0.25s ease;
+    }
+
+    .client-logo-item:hover img,
+    .client-logo-item:hover svg {
+      filter: grayscale(0%);
+    }
+
+    /* Specific logo optical sizing for balanced visual weight */
+    .client-logo-item.item-bdnews24 img {
+      max-height: 28px;
+    }
+    .client-logo-item.item-channel24 img {
+      max-height: 40px;
+    }
+    .client-logo-item.item-janakantha img {
+      max-height: 32px;
+    }
+    .client-logo-item.item-step img {
+      max-height: 38px;
+    }
+    .client-logo-item.item-farming img {
+      max-height: 36px;
+    }
+    .client-logo-item.item-tribune img {
+      max-height: 28px;
+    }
+    .client-logo-item.item-walton img {
+      max-height: 34px;
+    }
+    .client-logo-item.item-pran img {
+      max-height: 34px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .clients-strip-section {
+        padding: 14px 0;
+      }
+      .clients-bar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .clients-lead-col {
+        padding-right: 0;
+        gap: 14px;
+      }
+      .clients-heading {
+        font-size: 0.96rem;
+      }
+      .clients-separator {
+        display: none;
+      }
+      .clients-carousel-wrapper {
+        width: 100%;
+      }
+      .clients-track {
+        gap: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" style="margin-bottom: 20px;">
+    <h1 style="font-size: 1.6rem; margin-bottom: 8px;">Hero Section Above</h1>
+    <p style="color: var(--ink-muted);">Following is the new Clients showcase strip exactly as requested:</p>
+  </div>
+
+  <section class="clients-strip-section" aria-label="Our Trusted Clients">
+    <div class="container">
+      <div class="clients-bar-inner">
+        <!-- Leading Label with Divider -->
+        <div class="clients-lead-col">
+          <span class="clients-heading">Our<br>Clients</span>
+          <span class="clients-separator" aria-hidden="true"></span>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="clients-carousel-wrapper">
+          <button class="client-nav-btn client-prev" id="clientPrevBtn" aria-label="Previous clients" title="Previous">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="clients-track-viewport" id="clientsTrackViewport">
+            <div class="clients-track" id="clientsTrack">
+              <!-- 1. bdnews24.com -->
+              <div class="client-logo-item item-bdnews24" title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
+                <img src="bdnews24.svg" alt="bdnews24.com" loading="lazy">
+              </div>
+
+              <!-- 2. Channel 24 -->
+              <div class="client-logo-item item-channel24" title="Channel 24 - Leading 24/7 News & Infotainment Network">
+                <img src="channel24_hd.png" alt="Channel 24" loading="lazy">
+              </div>
+
+              <!-- 3. Daily Janakantha -->
+              <div class="client-logo-item item-janakantha" title="Daily Janakantha - Leading National Bengali Daily">
+                <img src="janakantha_web.jpg" alt="Daily Janakantha" loading="lazy">
+              </div>
+
+              <!-- 4. Step Footwear -->
+              <div class="client-logo-item item-step" title="Step Footwear - Pioneer Footwear Brand">
+                <img src="step_steptm.jpg" alt="Step Footwear" loading="lazy">
+              </div>
+
+              <!-- 5. Farming Future Bangladesh -->
+              <div class="client-logo-item item-farming" title="Farming Future Bangladesh - Modern Agro Biotechnology">
+                <img src="farming_future_alt.png" alt="Farming Future Bangladesh" loading="lazy">
+              </div>
+
+              <!-- 6. Dhaka Tribune -->
+              <div class="client-logo-item item-tribune" title="Dhaka Tribune - Premier National English Daily">
+                <img src="dhaka_tribune.svg" alt="Dhaka Tribune" loading="lazy">
+              </div>
+
+              <!-- 7. Walton Group -->
+              <div class="client-logo-item item-walton" title="Walton Group - Electronics & Tech Giant">
+                <img src="walton.png" alt="Walton Group" loading="lazy">
+              </div>
+
+              <!-- 8. PRAN-RFL Group -->
+              <div class="client-logo-item item-pran" title="PRAN-RFL Group - Global Food & Consumer Brand">
+                <img src="pran.png" alt="PRAN-RFL Group" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <button class="client-nav-btn client-next" id="clientNextBtn" aria-label="Next clients" title="Next">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      const viewport = document.getElementById('clientsTrackViewport');
+      const prevBtn = document.getElementById('clientPrevBtn');
+      const nextBtn = document.getElementById('clientNextBtn');
+
+      if (!viewport || !prevBtn || !nextBtn) return;
+
+      const scrollStep = 220;
+
+      prevBtn.addEventListener('click', () => {
+        viewport.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        // If near the end, loop back
+        if (viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 10) {
+          viewport.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          viewport.scrollBy({ left: scrollStep, behavior: 'smooth' });
+        }
+      });
+
+      // Subtle auto-scroll that pauses on hover
+      let autoScrollTimer = null;
+      let isHovered = false;
+
+      function startAutoScroll() {
+        if (autoScrollTimer) clearInterval(autoScrollTimer);
+        autoScrollTimer = setInterval(() => {
+          if (isHovered) return;
+          if (viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 5) {
+            viewport.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            viewport.scrollBy({ left: 160, behavior: 'smooth' });
+          }
+        }, 3200);
+      }
+
+      const carouselWrapper = document.querySelector('.clients-carousel-wrapper');
+      carouselWrapper.addEventListener('mouseenter', () => { isHovered = true; });
+      carouselWrapper.addEventListener('mouseleave', () => { isHovered = false; });
+      carouselWrapper.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
+      carouselWrapper.addEventListener('touchend', () => { 
+        setTimeout(() => { isHovered = false; }, 2000); 
+      }, { passive: true });
+
+      startAutoScroll();
+    })();
+  </script>
+</body>
+</html>

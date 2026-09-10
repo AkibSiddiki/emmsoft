@@ -1,0 +1,3842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eMMSOFT — Software Engineering Studio | E-Commerce, Newsroom CMS, Cloud & Apps</title>
+  <meta name="description"
+    content="eMMSOFT is a high-performance software engineering studio specializing in E-Commerce platforms, Newsroom & Enterprise CMS, Cloud Infrastructure, Web Applications, and Mobile Apps.">
+
+  <!-- Favicon: Inline SVG matching eMMSOFT leaf logo -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+     DESIGN TOKENS & COLOR PALETTE (Anchored to eMMSOFT Logo)
+     ========================================================================== */
+    :root {
+      /* Brand Colors extracted from logo.png */
+      --brand-emerald: #049449;
+      --brand-emerald-dark: #037339;
+      --brand-emerald-light: #05a852;
+      --brand-emerald-accent: #10b981;
+      --brand-emerald-tint: #ecf8f1;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.08);
+      --brand-emerald-glow: rgba(4, 148, 73, 0.22);
+      --brand-emerald-border: rgba(4, 148, 73, 0.25);
+
+      /* Dark Charcoal & Slate extracted from logo.png (#374049) */
+      --brand-slate: #374049;
+      --dark-950: #0b0f15;
+      --dark-900: #101620;
+      --dark-850: #151d2a;
+      --dark-800: #1d2737;
+      --dark-700: #2d3b4f;
+      --dark-600: #425268;
+
+      /* Light UI Surfaces */
+      --bg-main: #fbfcfb;
+      --bg-surface: #ffffff;
+      --bg-alt: #f3f6f4;
+      --bg-subtle: #edf2ee;
+
+      /* Typography Grayscale */
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
+
+      /* Borders */
+      --border-light: #e3e8e5;
+      --border-focus: #049449;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+
+      /* Fonts */
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Spacing & Layout */
+      --container: 1220px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 12px 30px rgba(16, 24, 40, 0.1);
+      --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
+    }
+
+    /* Reset & Core */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section,
+    header,
+    [id] {
+      scroll-margin-top: 84px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: var(--font-heading);
+      color: var(--ink-primary);
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 40px);
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--brand-emerald);
+      outline-offset: 3px;
+    }
+
+    /* ==========================================================================
+     TYPOGRAPHY & SECTION HEADERS
+     ========================================================================== */
+    .section-pad {
+      padding: clamp(64px, 8vw, 112px) 0;
+    }
+
+    .section-pad-sm {
+      padding: clamp(40px, 5vw, 72px) 0;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .badge-tag .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--brand-emerald);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 60px);
+      align-items: flex-end;
+      margin-bottom: clamp(36px, 5vw, 64px);
+    }
+
+    .section-head.center {
+      grid-template-columns: 1fr;
+      text-align: center;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.1rem, 3.8vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .section-head h2 .highlight {
+      color: var(--brand-emerald);
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .section-head p {
+      color: var(--ink-secondary);
+      font-size: 1.1rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    @media (max-width: 860px) {
+      .section-head {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+      }
+    }
+
+    /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 26px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: var(--shadow-emerald);
+      border: 1px solid var(--brand-emerald-dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(4, 148, 73, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--brand-emerald);
+      color: var(--brand-emerald);
+      background: var(--brand-emerald-tint);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background: var(--dark-900);
+      color: #ffffff;
+      border: 1px solid var(--dark-700);
+    }
+
+    .btn-dark:hover {
+      background: var(--brand-emerald);
+      border-color: var(--brand-emerald);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--brand-emerald);
+      padding: 8px 12px;
+      font-weight: 600;
+    }
+
+    .btn-ghost:hover {
+      background: var(--brand-emerald-soft);
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-sm {
+      padding: 9px 18px;
+      font-size: 0.88rem;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+     NAVIGATION BAR
+     ========================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(251, 252, 251, 0.92);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.25s ease;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom-color: var(--border-light);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: clamp(20px, 3vw, 40px);
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      margin-right: clamp(16px, 2.5vw, 36px);
+    }
+
+    .nav-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-link:hover .nav-logo {
+      transform: scale(1.02);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.6vw, 22px);
+    }
+
+    .nav-link {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: color 0.18s ease;
+      padding: 8px 2px;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--brand-emerald);
+    }
+
+    .nav-link.has-pill::after {
+      content: "HOT";
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      background: #ef4444;
+      color: #fff;
+      padding: 2px 5px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: top;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-burger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .nav-burger span {
+      width: 20px;
+      height: 2px;
+      background: var(--ink-primary);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-burger.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-burger.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-burger.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      top: 76px;
+      inset-inline: 0;
+      bottom: 0;
+      background: var(--bg-surface);
+      z-index: 199;
+      padding: 28px clamp(20px, 5vw, 40px) 40px;
+      overflow-y: auto;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .mobile-panel.is-open {
+      display: block;
+    }
+
+    .mobile-panel a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--ink-primary);
+    }
+
+    .mobile-panel a:hover {
+      color: var(--brand-emerald);
+    }
+
+    @media (max-width: 960px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
+    }
+
+    /* ==========================================================================
+     HERO SECTION
+     ========================================================================== */
+    .hero {
+      position: relative;
+      padding: clamp(56px, 7vw, 100px) 0 clamp(64px, 8vw, 110px);
+      overflow: hidden;
+      background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+        var(--bg-main);
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(4, 148, 73, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(4, 148, 73, 0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      gap: clamp(36px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+
+    .hero-content h1 span.text-emerald {
+      color: var(--brand-emerald);
+      background: linear-gradient(135deg, #049449 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: clamp(1.08rem, 1.6vw, 1.22rem);
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 38px;
+    }
+
+    .hero-pillars-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .pillar-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-full);
+      color: var(--ink-secondary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pillar-pill svg {
+      width: 14px;
+      height: 14px;
+      color: var(--brand-emerald);
+    }
+
+    /* Hero Architecture Blueprint Canvas (Light Studio Aesthetic) */
+    .hero-architecture-canvas {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 48px -12px rgba(18, 25, 34, 0.08), 0 0 0 1px rgba(4, 148, 73, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .canvas-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: #f8faf9;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .canvas-window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .canvas-window-dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .canvas-title {
+      font-size: 0.78rem;
+      color: var(--ink-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .canvas-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .canvas-live-pill .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      animation: pulseGlow 2s infinite;
+    }
+
+    .canvas-diagram {
+      padding: 22px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: radial-gradient(circle at 50% 50%, rgba(4, 148, 73, 0.03) 0%, transparent 80%), #ffffff;
+    }
+
+    .diagram-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .diagram-tier {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .diagram-tier.tier-middle {
+      grid-template-columns: 1fr;
+    }
+
+    .arch-node {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .arch-node:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand-emerald-border);
+      box-shadow: 0 8px 18px rgba(4, 148, 73, 0.1);
+    }
+
+    .node-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald);
+      border: 1px solid var(--brand-emerald-border);
+    }
+
+    .node-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .node-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.2;
+    }
+
+    .node-sub {
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    /* Highlighted Core Node */
+    .arch-node.node-core {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      padding: 16px 18px;
+      background: linear-gradient(135deg, #ffffff 0%, #f2f9f5 100%);
+      border: 1.5px solid var(--brand-emerald);
+      box-shadow: 0 6px 20px -4px rgba(4, 148, 73, 0.15);
+    }
+
+    .core-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .core-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--brand-emerald-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .core-perf {
+      font-size: 0.72rem;
+      color: #ffffff;
+      background: var(--brand-emerald);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .core-desc {
+      font-size: 0.82rem;
+      color: var(--ink-secondary);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .core-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .core-pills span {
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    /* Canvas Footer Stats Ticker */
+    .canvas-footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: #f8faf9;
+      border-top: 1px solid var(--border-light);
+      padding: 12px 18px;
+      gap: 12px;
+    }
+
+    .footer-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-lbl {
+      font-size: 0.68rem;
+      color: var(--ink-muted);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .stat-val {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+      margin-top: 2px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .stat-val small {
+      font-size: 0.68rem;
+      color: var(--brand-emerald);
+      font-weight: 600;
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-architecture-canvas {
+        max-width: 540px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ==========================================================================
+     STATS METRICS STRIP
+     ========================================================================== */
+    .stats-strip {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .stat-card {
+      padding: 32px 24px;
+      border-right: 1px solid var(--border-light);
+      text-align: left;
+      transition: background 0.2s ease;
+    }
+
+    .stat-card:last-child {
+      border-right: none;
+    }
+
+    .stat-card:hover {
+      background: var(--brand-emerald-soft);
+    }
+
+    .stat-card .stat-num {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.2vw, 2.75rem);
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+    }
+
+    .stat-card .stat-num span.plus {
+      color: var(--brand-emerald);
+    }
+
+    .stat-card .stat-desc {
+      margin-top: 8px;
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+      font-weight: 500;
+    }
+
+    @media (max-width: 960px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-card:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat-card {
+        border-bottom: 1px solid var(--border-light);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card {
+        border-right: none;
+      }
+    }
+
+    /* ==========================================================================
+     INTERACTIVE SOLUTIONS SUITE (The 6 Pillars Tabbed Engine)
+     ========================================================================== */
+    .solutions-section {
+      background: var(--bg-alt);
+      position: relative;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      font-family: var(--font-heading);
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--ink-secondary);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .tab-btn svg {
+      width: 18px;
+      height: 18px;
+      color: var(--ink-muted);
+      transition: color 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--brand-emerald);
+      border-color: var(--brand-emerald-border);
+      background: #ffffff;
+    }
+
+    .tab-btn.is-active {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      border-color: var(--brand-emerald);
+      box-shadow: var(--shadow-emerald);
+    }
+
+    .tab-btn.is-active svg {
+      color: #ffffff;
+    }
+
+    /* Tab Panel Content */
+    .tab-pane {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .tab-pane.is-active {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .pane-details {
+      padding: clamp(32px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pane-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      margin-bottom: 18px;
+    }
+
+    .pane-details h3 {
+      font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .pane-details p.lead {
+      font-size: 1.05rem;
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .feature-checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      margin-bottom: 32px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+
+    .feature-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .stack-pills {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .stack-pills span.title {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      margin-right: 6px;
+    }
+
+    .stack-pill {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-secondary);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Pane Interactive Visual */
+    .pane-visual {
+      background: var(--dark-950);
+      padding: clamp(28px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pane-visual::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(4, 148, 73, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .interactive-ui-card {
+      background: var(--dark-900);
+      border: 1px solid var(--dark-700);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 2;
+    }
+
+    .ui-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--dark-800);
+    }
+
+    .ui-card-title {
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .ui-card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--brand-emerald-accent);
+      background: rgba(16, 185, 129, 0.15);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .ui-mock-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mock-metric {
+      background: var(--dark-950);
+      border: 1px solid var(--dark-800);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+    }
+
+    .mock-metric .lbl {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+    }
+
+    .mock-metric .val {
+      font-family: var(--font-heading);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 3px;
+    }
+
+    .ui-status-bar {
+      background: var(--dark-950);
+      border: 1px solid var(--dark-800);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .ui-status-bar span.success {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    @media (max-width: 960px) {
+      .tab-pane.is-active {
+        grid-template-columns: 1fr;
+      }
+
+      .pane-visual {
+        border-left: none;
+        border-top: 1px solid var(--border-light);
+      }
+
+      .feature-checklist {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     CORE SOLUTIONS GRID (ALL 6 PILLARS CARDS)
+     ========================================================================== */
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .solution-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: clamp(26px, 3vw, 36px);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+      transition: background 0.22s ease;
+    }
+
+    .solution-card:hover {
+      border-color: var(--brand-emerald-border);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .solution-card:hover::before {
+      background: linear-gradient(90deg, var(--brand-emerald), var(--brand-emerald-accent));
+    }
+
+    .solution-icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-emerald);
+      margin-bottom: 22px;
+      transition: var(--transition);
+    }
+
+    .solution-card:hover .solution-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(4, 148, 73, 0.3);
+    }
+
+    .solution-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .solution-card p {
+      color: var(--ink-secondary);
+      font-size: 0.96rem;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+
+    .solution-specs {
+      list-style: none;
+      margin: 0 0 24px 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 16px;
+    }
+
+    .solution-specs li {
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-specs li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--brand-emerald);
+      border-radius: 50%;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--brand-emerald);
+      transition: gap 0.2s ease;
+    }
+
+    .card-action:hover {
+      gap: 12px;
+      color: var(--brand-emerald-dark);
+    }
+
+    @media (max-width: 1040px) {
+      .grid-6 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .grid-6 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     NEWSROOM & E-COMMERCE DEEP DIVE SPOTLIGHT BANNER
+     ========================================================================== */
+    .spotlight-section {
+      background: var(--dark-950);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spotlight-section::after {
+      content: "";
+      position: absolute;
+      bottom: -100px;
+      left: 20%;
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(4, 148, 73, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(28px, 4vw, 48px);
+    }
+
+    .spotlight-card {
+      background: var(--dark-900);
+      border: 1px solid var(--dark-700);
+      border-radius: var(--radius-lg);
+      padding: clamp(32px, 4vw, 48px);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .spotlight-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--brand-emerald-accent);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .spotlight-card h3 {
+      color: #ffffff;
+      font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .spotlight-card p {
+      color: #94a3b8;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .spotlight-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .s-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.94rem;
+      color: #e2e8f0;
+    }
+
+    .s-feature svg {
+      width: 18px;
+      height: 18px;
+      color: var(--brand-emerald-accent);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .spotlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     TECH STACK & ARCHITECTURE ECOSYSTEM
+     ========================================================================== */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stack-col {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 26px;
+    }
+
+    .stack-col-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .stack-col-head h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .stack-col-head span {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--brand-emerald);
+      background: var(--brand-emerald-tint);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .tech-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .tech-item .desc {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      font-weight: normal;
+    }
+
+    @media (max-width: 1024px) {
+      .stack-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .stack-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     SELECTED CASE STUDIES & PRODUCTION PROJECTS
+     ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .case-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-card:hover {
+      border-color: var(--brand-emerald-border);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .case-visual {
+      height: 190px;
+      background: var(--dark-900);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .case-visual svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .case-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .case-cat-pill {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+
+    .case-body h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .case-body p {
+      color: var(--ink-secondary);
+      font-size: 0.94rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .case-stats-badge {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--brand-emerald-dark);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .case-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 1040px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     ENGINEERING PROCESS
+     ========================================================================== */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .process-step {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 22px 18px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .process-step:hover {
+      border-color: var(--brand-emerald);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--brand-emerald);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .process-step h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .process-step p {
+      color: var(--ink-secondary);
+      font-size: 0.86rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .process-timeline {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .process-timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     INTERACTIVE CONTACT & SCOPE CONFIGURATOR
+     ========================================================================== */
+    .contact-section {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+      gap: clamp(36px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .contact-form-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-group-title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 12px;
+    }
+
+    .interest-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .chip-btn {
+      padding: 8px 14px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .chip-btn:hover {
+      border-color: var(--brand-emerald);
+      color: var(--brand-emerald);
+    }
+
+    .chip-btn.is-selected {
+      background: var(--brand-emerald);
+      border-color: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(4, 148, 73, 0.25);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-bottom: 7px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      color: var(--ink-primary);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--brand-emerald);
+      box-shadow: 0 0 0 3px var(--brand-emerald-soft);
+      outline: none;
+    }
+
+    .form-success-banner {
+      display: none;
+      margin-top: 18px;
+      padding: 16px;
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      border-radius: var(--radius-sm);
+      color: var(--brand-emerald-dark);
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .form-success-banner.is-visible {
+      display: block;
+    }
+
+    .contact-meta-col {
+      padding-top: 10px;
+    }
+
+    .contact-info-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    .info-unit {
+      margin-bottom: 22px;
+    }
+
+    .info-unit:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-unit .label {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .info-unit .val {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .info-unit a.val:hover {
+      color: var(--brand-emerald);
+    }
+
+    .response-sla-badge {
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .response-sla-badge svg {
+      width: 28px;
+      height: 28px;
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    .response-sla-badge p {
+      font-size: 0.88rem;
+      color: var(--ink-primary);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .response-sla-badge p strong {
+      color: var(--brand-emerald-dark);
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+     FOOTER
+     ========================================================================== */
+    footer {
+      background: var(--dark-950);
+      color: #94a3b8;
+      padding-top: clamp(64px, 8vw, 96px);
+      border-top: 1px solid var(--dark-800);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: minmax(0, 360px) repeat(3, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 56px);
+      padding-bottom: 56px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+    }
+
+    .footer-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      transition: color 0.18s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--brand-emerald-accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--dark-800);
+      padding: 24px 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.86rem;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 1;
+      }
+    }
+
+    /* Reveal Utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+     NAVBAR (Sticky with blur & official logo.png)
+     ========================================================================== -->
+  <nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand-link" aria-label="eMMSOFT Home">
+        <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+      </a>
+
+      <div class="nav-menu">
+        <a href="#solutions" class="nav-link">Solutions</a>
+        <a href="#specializations" class="nav-link has-pill">Newsroom CMS</a>
+        <a href="#ecommerce" class="nav-link">E-Commerce</a>
+        <a href="#cloud-apps" class="nav-link">Cloud &amp; Apps</a>
+        <a href="#projects" class="nav-link">Work</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">Start a Project</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#home">Home <span>→</span></a>
+      <a href="#solutions">Solutions Suite <span>→</span></a>
+      <a href="#specializations">Newsroom CMS <span>→</span></a>
+      <a href="#ecommerce">E-Commerce Architecture <span>→</span></a>
+      <a href="#cloud-apps">Cloud, Web &amp; Mobile Apps <span>→</span></a>
+      <a href="#projects">Selected Projects <span>→</span></a>
+      <a href="#contact">Contact &amp; Estimate <span>→</span></a>
+      <div style="margin-top:24px;">
+        <a href="#contact" class="btn btn-primary btn-block">Get Free Consultation</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+     HERO SECTION
+     ========================================================================== -->
+  <header class="hero" id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="badge-tag">
+          <span class="pulse-dot"></span>
+          High-Impact Software Engineering
+        </div>
+        <h1>
+          We build robust <span class="text-emerald"><span style="white-space:nowrap;">E-Commerce</span>, CMS &amp;
+            Cloud</span> platforms.
+        </h1>
+        <p class="hero-lead">
+          eMMSOFT engineers high-concurrency <strong>Newsroom CMS</strong>, high-conversion <strong>E-Commerce
+            storefronts</strong>, resilient <strong>Cloud solutions</strong>, and native-feeling <strong>Web &amp;
+            Mobile applications</strong> for organizations that cannot afford system downtime.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Start Your Project</a>
+          <a href="#solutions" class="btn btn-secondary">Explore Solutions</a>
+        </div>
+
+        <div class="hero-pillars-strip">
+          <div class="pillar-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            E-Commerce
+          </div>
+          <div class="pillar-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+            </svg>
+            Newsroom CMS
+          </div>
+          <div class="pillar-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+            </svg>
+            Cloud Solutions
+          </div>
+          <div class="pillar-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="2" />
+              <path d="M12 18h.01" />
+            </svg>
+            Mobile Apps
+          </div>
+          <div class="pillar-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+            Web Platforms
+          </div>
+        </div>
+      </div>
+
+      <!-- Modern Architecture Blueprint & Platform Canvas (Light Studio Aesthetic) -->
+      <div class="hero-architecture-canvas" role="region" aria-label="eMMSOFT Production Architecture Blueprint">
+        <div class="canvas-header">
+          <div class="canvas-window-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="canvas-title mono">
+            <span>architecture-mesh.v2</span>
+            <span class="canvas-live-pill"><span class="live-dot"></span> LIVE BLUEPRINT</span>
+          </div>
+        </div>
+
+        <div class="canvas-diagram">
+          <!-- SVG Connector Lines in Background -->
+          <svg class="diagram-lines" viewBox="0 0 460 260" fill="none" preserveAspectRatio="none">
+            <path d="M 115 62 L 115 105 Q 115 125 180 125 L 230 125" stroke="#049449" stroke-width="1.5"
+              stroke-dasharray="4 3" opacity="0.6" />
+            <path d="M 345 62 L 345 105 Q 345 125 280 125 L 230 125" stroke="#049449" stroke-width="1.5"
+              stroke-dasharray="4 3" opacity="0.6" />
+            <path d="M 230 165 L 230 185 Q 230 200 160 200 L 115 200 L 115 210" stroke="#049449" stroke-width="1.5"
+              stroke-dasharray="4 3" opacity="0.6" />
+            <path d="M 230 165 L 230 185 Q 230 200 300 200 L 345 200 L 345 210" stroke="#049449" stroke-width="1.5"
+              stroke-dasharray="4 3" opacity="0.6" />
+            <circle cx="230" cy="125" r="3.5" fill="#049449" />
+          </svg>
+
+          <!-- Tier 1: Client Layer -->
+          <div class="diagram-tier">
+            <div class="arch-node">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
+                </svg>
+              </div>
+              <div class="node-info">
+                <span class="node-title">E-Commerce Store</span>
+                <span class="node-sub mono">Headless · Sub-second</span>
+              </div>
+            </div>
+
+            <div class="arch-node">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <path d="M12 18h.01" />
+                </svg>
+              </div>
+              <div class="node-info">
+                <span class="node-title">Mobile Apps</span>
+                <span class="node-sub mono">Flutter iOS &amp; Android</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tier 2: Newsroom CMS & Unified Core API (Highlighted) -->
+          <div class="diagram-tier tier-middle">
+            <div class="arch-node node-core">
+              <div class="core-head">
+                <div class="core-badge">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                  </svg>
+                  NEWSROOM CMS &amp; CORE API
+                </div>
+                <span class="core-perf mono">&lt; 50ms TTFB</span>
+              </div>
+              <p class="core-desc">Real-Time Editorial Desk · AP/Reuters Wire Feed · Dynamic Edge Purge · Metered
+                Paywalls</p>
+              <div class="core-pills mono">
+                <span>Next.js Edge</span>
+                <span>Redis Cluster</span>
+                <span>GraphQL &amp; REST</span>
+                <span>RBAC Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tier 3: Cloud Infrastructure & Database -->
+          <div class="diagram-tier">
+            <div class="arch-node">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              </div>
+              <div class="node-info">
+                <span class="node-title">Cloud Infrastructure</span>
+                <span class="node-sub mono">AWS K8s · Auto-scale</span>
+              </div>
+            </div>
+
+            <div class="arch-node">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M4 6c0 1.66 3.58 3 8 3s8-1.34 8-3-3.58-3-8-3-8 1.34-8 3zm0 6c0 1.66 3.58 3 8 3s8-1.34 8-3M4 18c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+                </svg>
+              </div>
+              <div class="node-info">
+                <span class="node-title">Database &amp; Redis</span>
+                <span class="node-sub mono">ACID Postgres · Cache</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canvas Footer Stats Ticker in Light Matching Aesthetic -->
+        <div class="canvas-footer">
+          <div class="footer-stat">
+            <span class="stat-lbl mono">NEWSROOM TTFB</span>
+            <span class="stat-val">48ms <small>↓ 82%</small></span>
+          </div>
+          <div class="footer-stat">
+            <span class="stat-lbl mono">COMMERCE PEAK</span>
+            <span class="stat-val">4,280 <small>orders/m</small></span>
+          </div>
+          <div class="footer-stat">
+            <span class="stat-lbl mono">CLOUD SLA</span>
+            <span class="stat-val">99.99% <small>active</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+     STATS METRICS STRIP
+     ========================================================================== -->
+  <section class="stats-strip" aria-label="Key Agency Metrics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num"><span class="counter" data-target="150">150</span><span class="plus">+</span></div>
+          <div class="stat-desc">Projects Taken to Production</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="counter" data-target="99.99">99.99</span><span class="plus">%</span></div>
+          <div class="stat-desc">Uptime on Managed Cloud Systems</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="counter" data-target="45">45</span><span class="plus">M+</span></div>
+          <div class="stat-desc">Monthly Newsroom Pageviews Handled</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="counter" data-target="280">280</span><span class="plus">M+</span></div>
+          <div class="stat-desc">$ GMV Processed in E-Commerce</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="counter" data-target="8">8</span><span class="plus">+</span></div>
+          <div class="stat-desc">Years of Senior Software Craftsmanship</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     INTERACTIVE SOLUTIONS SUITE (6 Tabs: E-Commerce, Newsroom CMS, Enterprise CMS, Cloud, Web App, Mobile App)
+     ========================================================================== -->
+  <section class="section-pad solutions-section" id="solutions">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">Core Engineering Pillars</div>
+          <h2>Engineered for scale. Built for <span class="highlight">business reality</span>.</h2>
+        </div>
+        <p>Whether you need a high-velocity newsroom publishing platform, a multi-warehouse e-commerce system, or
+          automated cloud infrastructure, we build software designed to excel under real-world load.</p>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="tabs-nav" role="tablist">
+        <button class="tab-btn is-active" data-tab="tab-newsroom" role="tab" aria-selected="true"
+          aria-controls="tab-newsroom">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+          </svg>
+          Newsroom CMS
+        </button>
+
+        <button class="tab-btn" data-tab="tab-ecommerce" role="tab" aria-selected="false" aria-controls="tab-ecommerce">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          E-Commerce Platforms
+        </button>
+
+        <button class="tab-btn" data-tab="tab-cloud" role="tab" aria-selected="false" aria-controls="tab-cloud">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+          </svg>
+          Cloud Solutions &amp; DevOps
+        </button>
+
+        <button class="tab-btn" data-tab="tab-cms" role="tab" aria-selected="false" aria-controls="tab-cms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M3 9h18M9 21V9" />
+          </svg>
+          Enterprise Headless CMS
+        </button>
+
+        <button class="tab-btn" data-tab="tab-webapp" role="tab" aria-selected="false" aria-controls="tab-webapp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+          Web Applications &amp; SaaS
+        </button>
+
+        <button class="tab-btn" data-tab="tab-mobile" role="tab" aria-selected="false" aria-controls="tab-mobile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="2" />
+            <path d="M12 18h.01" />
+          </svg>
+          Mobile Apps (iOS/Android)
+        </button>
+      </div>
+
+      <!-- TAB 1: NEWSROOM CMS -->
+      <div class="tab-pane is-active" id="tab-newsroom" role="tabpanel">
+        <div class="pane-details">
+          <div>
+            <span class="pane-badge">High-Velocity Digital Media</span>
+            <h3>Purpose-built Newsroom CMS for modern publishers</h3>
+            <p class="lead">
+              Traditional content managers collapse under breaking news spikes. Our Newsroom CMS is engineered
+              specifically for digital newspapers, investigative outlets, and broadcast networks with real-time
+              editorial desks, sub-50ms edge caching, and automated wire syndication.
+            </p>
+            <div class="feature-checklist">
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Live desk &amp; multi-editor collaborative workflows
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Automated AP/Reuters wire feed ingestion
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Metered paywalls, subscriptions &amp; ad optimization
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Edge purging in &lt;150ms during breaking news
+              </div>
+            </div>
+          </div>
+          <div class="stack-pills">
+            <span class="title">Tech Stack:</span>
+            <span class="stack-pill">Next.js / Node</span>
+            <span class="stack-pill">Laravel Core</span>
+            <span class="stack-pill">Redis Cache</span>
+            <span class="stack-pill">Cloudflare Enterprise</span>
+            <span class="stack-pill">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="pane-visual">
+          <div class="interactive-ui-card">
+            <div class="ui-card-header">
+              <span class="ui-card-title">Live Editorial Desk Status</span>
+              <span class="ui-card-badge">LIVE SYNC</span>
+            </div>
+            <div class="ui-mock-grid">
+              <div class="mock-metric">
+                <div class="lbl">Active Journalists</div>
+                <div class="val">42 Writing</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">CDN Cache Ratio</div>
+                <div class="val">99.2% Hit</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Articles Published Today</div>
+                <div class="val">318 Stories</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Real-time Readers</div>
+                <div class="val">84,520 Live</div>
+              </div>
+            </div>
+            <div class="ui-status-bar">
+              <span>Paywall Conversion Rate:</span>
+              <span class="success">↑ 4.8% (Target: 3.5%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: E-COMMERCE -->
+      <div class="tab-pane" id="tab-ecommerce" role="tabpanel">
+        <div class="pane-details">
+          <div>
+            <span class="pane-badge">High-Conversion Commerce</span>
+            <h3>Headless &amp; Custom E-Commerce Architectures</h3>
+            <p class="lead">
+              Storefronts that convert on mobile, load instantly, and never crash during flash sales or holidays. We
+              build multi-currency, multi-warehouse platforms with custom checkout flows, inventory synchronization, and
+              frictionless payment orchestration.
+            </p>
+            <div class="feature-checklist">
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Sub-second headless storefront checkout
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Payment gateways (Stripe, bKash, SSLCommerz, PayPal)
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Multi-warehouse inventory &amp; ERP integrations
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Flash-sale waiting room &amp; bot protection
+              </div>
+            </div>
+          </div>
+          <div class="stack-pills">
+            <span class="title">Tech Stack:</span>
+            <span class="stack-pill">Shopify Plus API</span>
+            <span class="stack-pill">MedusaJS</span>
+            <span class="stack-pill">Laravel / MySQL</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">Redis Queues</span>
+          </div>
+        </div>
+        <div class="pane-visual">
+          <div class="interactive-ui-card">
+            <div class="ui-card-header">
+              <span class="ui-card-title">Checkout Engine Telemetry</span>
+              <span class="ui-card-badge">FLASH SALE READY</span>
+            </div>
+            <div class="ui-mock-grid">
+              <div class="mock-metric">
+                <div class="lbl">Cart-to-Order Rate</div>
+                <div class="val">74.2%</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Avg Checkout Time</div>
+                <div class="val">18.4s</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Payment Gateway Latency</div>
+                <div class="val">210ms</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Concurrent Shoppers</div>
+                <div class="val">12,800</div>
+              </div>
+            </div>
+            <div class="ui-status-bar">
+              <span>Inventory Locks:</span>
+              <span class="success">0 Collisions / 100% Consistent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: CLOUD SOLUTIONS -->
+      <div class="tab-pane" id="tab-cloud" role="tabpanel">
+        <div class="pane-details">
+          <div>
+            <span class="pane-badge">Cloud Infrastructure &amp; DevOps</span>
+            <h3>Elastic Cloud Architectures with 99.99% Guaranteed SLA</h3>
+            <p class="lead">
+              We architect, deploy, and manage production cloud infrastructures across AWS, Google Cloud, and
+              Cloudflare. From Kubernetes container orchestration to automated zero-downtime CI/CD pipelines, we ensure
+              your software scales automatically when traffic spikes.
+            </p>
+            <div class="feature-checklist">
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Kubernetes (EKS/GKE) cluster automation
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Zero-downtime blue/green deployment pipelines
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Infrastructure as Code (Terraform &amp; Ansible)
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                24/7 telemetry, auto-healing &amp; Prometheus alerts
+              </div>
+            </div>
+          </div>
+          <div class="stack-pills">
+            <span class="title">Tech Stack:</span>
+            <span class="stack-pill">AWS (EKS, RDS, S3)</span>
+            <span class="stack-pill">Docker &amp; Kubernetes</span>
+            <span class="stack-pill">Terraform</span>
+            <span class="stack-pill">GitHub Actions CI/CD</span>
+            <span class="stack-pill">Prometheus &amp; Grafana</span>
+          </div>
+        </div>
+        <div class="pane-visual">
+          <div class="interactive-ui-card">
+            <div class="ui-card-header">
+              <span class="ui-card-title">Cluster Health &amp; Pod Topology</span>
+              <span class="ui-card-badge">AUTO-SCALING</span>
+            </div>
+            <div class="ui-mock-grid">
+              <div class="mock-metric">
+                <div class="lbl">Active Pods</div>
+                <div class="val">128 Nodes</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">CPU Utilization</div>
+                <div class="val">38% Balanced</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Deploy Frequency</div>
+                <div class="val">14 / day</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Recovery Time (MTTR)</div>
+                <div class="val">&lt; 3 mins</div>
+              </div>
+            </div>
+            <div class="ui-status-bar">
+              <span>Multi-region Failover:</span>
+              <span class="success">Ready (SG / US / EU)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: ENTERPRISE CMS -->
+      <div class="tab-pane" id="tab-cms" role="tabpanel">
+        <div class="pane-details">
+          <div>
+            <span class="pane-badge">Headless &amp; Enterprise CMS</span>
+            <h3>Decoupled Content Architecture for Omnichannel Publishing</h3>
+            <p class="lead">
+              Manage your structured content once and publish everywhere. Our custom and headless CMS implementations
+              power corporate portals, media conglomerates, and multi-brand organizations with role-based governance,
+              localization, and digital asset management.
+            </p>
+            <div class="feature-checklist">
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                GraphQL and REST API content endpoints
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Granular role-based permissions (RBAC)
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Multi-language &amp; multi-region content localization
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Automated image &amp; video transcode CDN pipeline
+              </div>
+            </div>
+          </div>
+          <div class="stack-pills">
+            <span class="title">Tech Stack:</span>
+            <span class="stack-pill">Strapi &amp; Payload</span>
+            <span class="stack-pill">Custom Laravel CMS</span>
+            <span class="stack-pill">Next.js Frontend</span>
+            <span class="stack-pill">AWS S3 / CloudFront</span>
+          </div>
+        </div>
+        <div class="pane-visual">
+          <div class="interactive-ui-card">
+            <div class="ui-card-header">
+              <span class="ui-card-title">Omnichannel API Distribution</span>
+              <span class="ui-card-badge">REST / GRAPHQL</span>
+            </div>
+            <div class="ui-mock-grid">
+              <div class="mock-metric">
+                <div class="lbl">Connected Channels</div>
+                <div class="val">8 Outlets</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Asset CDN Hit</div>
+                <div class="val">99.7%</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Publish Latency</div>
+                <div class="val">&lt; 120ms</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Active Languages</div>
+                <div class="val">6 Locales</div>
+              </div>
+            </div>
+            <div class="ui-status-bar">
+              <span>Content Schema Sync:</span>
+              <span class="success">Validated Across All Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: WEB APPS -->
+      <div class="tab-pane" id="tab-webapp" role="tabpanel">
+        <div class="pane-details">
+          <div>
+            <span class="pane-badge">Web Applications &amp; SaaS</span>
+            <h3>Mission-Critical Web Platforms &amp; Enterprise Portals</h3>
+            <p class="lead">
+              We design and build rich, responsive web applications with intricate business logic, role-based
+              dashboards, and real-time collaborative features. Engineered for speed, security, and long-term
+              maintainability.
+            </p>
+            <div class="feature-checklist">
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Real-time WebSockets &amp; event-driven state
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Multi-tenant architecture &amp; automated billing
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                High-throughput REST &amp; GraphQL API backends
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Strict SOC2 &amp; GDPR compliance standards
+              </div>
+            </div>
+          </div>
+          <div class="stack-pills">
+            <span class="title">Tech Stack:</span>
+            <span class="stack-pill">Laravel &amp; PHP 8.3</span>
+            <span class="stack-pill">Node.js &amp; Go</span>
+            <span class="stack-pill">Vue.js / React</span>
+            <span class="stack-pill">PostgreSQL &amp; Redis</span>
+          </div>
+        </div>
+        <div class="pane-visual">
+          <div class="interactive-ui-card">
+            <div class="ui-card-header">
+              <span class="ui-card-title">SaaS Multi-tenant Portal</span>
+              <span class="ui-card-badge">ENTERPRISE TIER</span>
+            </div>
+            <div class="ui-mock-grid">
+              <div class="mock-metric">
+                <div class="lbl">API P99 Latency</div>
+                <div class="val">42ms</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Active Tenants</div>
+                <div class="val">840 Orgs</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Daily API Calls</div>
+                <div class="val">14.2 Million</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Security Audit</div>
+                <div class="val">Zero CVEs</div>
+              </div>
+            </div>
+            <div class="ui-status-bar">
+              <span>Database Isolation:</span>
+              <span class="success">Row-Level Security Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 6: MOBILE APPS -->
+      <div class="tab-pane" id="tab-mobile" role="tabpanel">
+        <div class="pane-details">
+          <div>
+            <span class="pane-badge">Cross-Platform Mobile</span>
+            <h3>Native-Feeling Mobile Apps for iOS &amp; Android</h3>
+            <p class="lead">
+              High-performance mobile applications powered by Flutter and React Native. Built for real-world conditions
+              with offline-first synchronization, push notifications, secure biometric authentication, and smooth
+              hardware integrations.
+            </p>
+            <div class="feature-checklist">
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Single codebase for iOS &amp; Android
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Offline-first local database &amp; conflict-free sync
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Biometrics, GPS tracking &amp; camera scanning
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Firebase &amp; APNs real-time push engines
+              </div>
+            </div>
+          </div>
+          <div class="stack-pills">
+            <span class="title">Tech Stack:</span>
+            <span class="stack-pill">Flutter &amp; Dart</span>
+            <span class="stack-pill">React Native</span>
+            <span class="stack-pill">REST / GraphQL Sync</span>
+            <span class="stack-pill">SQLite / Hive DB</span>
+            <span class="stack-pill">Firebase Suite</span>
+          </div>
+        </div>
+        <div class="pane-visual">
+          <div class="interactive-ui-card">
+            <div class="ui-card-header">
+              <span class="ui-card-title">Device Telemetry &amp; Sync</span>
+              <span class="ui-card-badge">60 FPS NATIVE</span>
+            </div>
+            <div class="ui-mock-grid">
+              <div class="mock-metric">
+                <div class="lbl">App Crash Rate</div>
+                <div class="val">&lt; 0.01%</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Offline Sync Time</div>
+                <div class="val">140ms</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Cold App Launch</div>
+                <div class="val">0.72s</div>
+              </div>
+              <div class="mock-metric">
+                <div class="lbl">Store Rating Avg</div>
+                <div class="val">4.9 ★</div>
+              </div>
+            </div>
+            <div class="ui-status-bar">
+              <span>Battery Consumption:</span>
+              <span class="success">Optimized (&lt; 2% / hr)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CORE SOLUTIONS 6-CARD MATRIX
+     ========================================================================== -->
+  <section class="section-pad" id="specializations">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">Full-Spectrum Capabilities</div>
+          <h2>Engineered for every stage of growth.</h2>
+        </div>
+        <p>From single-purpose platforms to multi-service enterprise ecosystems, here is how our technical team executes
+          across each domain.</p>
+      </div>
+
+      <div class="grid-6">
+        <!-- 1. Newsroom CMS -->
+        <div class="solution-card">
+          <div class="solution-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+            </svg>
+          </div>
+          <h3>Newsroom CMS</h3>
+          <p>Ultra-fast publishing platform with live blogging, wire feed ingestion (Reuters/AP), and edge caching to
+            withstand 100M+ traffic surges.</p>
+          <ul class="solution-specs">
+            <li>Real-time collaborative editorial desk</li>
+            <li>Metered paywall &amp; subscription engine</li>
+            <li>Automated Google Discover &amp; SEO AMP pipelines</li>
+          </ul>
+          <a href="#contact" class="card-action" onclick="selectInterest('Newsroom CMS')">Configure Newsroom CMS →</a>
+        </div>
+
+        <!-- 2. E-Commerce -->
+        <div class="solution-card" id="ecommerce">
+          <div class="solution-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
+            </svg>
+          </div>
+          <h3>E-Commerce Solutions</h3>
+          <p>Headless and custom commerce architectures engineered for frictionless checkout, flash sales, and ERP
+            inventory synchronization.</p>
+          <ul class="solution-specs">
+            <li>Sub-second checkout flow optimization</li>
+            <li>Local &amp; global payment gateways (Stripe, bKash)</li>
+            <li>Multi-warehouse inventory routing</li>
+          </ul>
+          <a href="#contact" class="card-action" onclick="selectInterest('E-Commerce')">Build E-Commerce System →</a>
+        </div>
+
+        <!-- 3. Cloud Solutions & DevOps -->
+        <div class="solution-card" id="cloud-apps">
+          <div class="solution-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+            </svg>
+          </div>
+          <h3>Cloud Solutions &amp; DevOps</h3>
+          <p>Enterprise AWS &amp; GCP cloud architectures, automated Kubernetes containerization, and zero-downtime
+            deployment pipelines.</p>
+          <ul class="solution-specs">
+            <li>Multi-region auto-scaling clusters</li>
+            <li>Infrastructure as Code (Terraform)</li>
+            <li>24/7 observability, APM &amp; disaster recovery</li>
+          </ul>
+          <a href="#contact" class="card-action" onclick="selectInterest('Cloud Solutions')">Design Cloud Architecture
+            →</a>
+        </div>
+
+        <!-- 4. Enterprise Headless CMS -->
+        <div class="solution-card">
+          <div class="solution-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+          </div>
+          <h3>Enterprise Headless CMS</h3>
+          <p>Structured, API-first content repositories that feed websites, native mobile apps, and connected digital
+            touchpoints from one source.</p>
+          <ul class="solution-specs">
+            <li>Granular RBAC role governance</li>
+            <li>REST &amp; GraphQL decoupled endpoints</li>
+            <li>Digital asset optimization &amp; CDN transcode</li>
+          </ul>
+          <a href="#contact" class="card-action" onclick="selectInterest('Enterprise CMS')">Explore CMS Architecture
+            →</a>
+        </div>
+
+        <!-- 5. Custom Web Applications -->
+        <div class="solution-card">
+          <div class="solution-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </div>
+          <h3>Custom Web Applications</h3>
+          <p>High-performance web apps, SaaS dashboards, and complex enterprise management systems tailored to unique
+            business workflows.</p>
+          <ul class="solution-specs">
+            <li>Event-driven architecture &amp; WebSockets</li>
+            <li>Multi-tenant SaaS database isolation</li>
+            <li>SOC2 and enterprise security compliance</li>
+          </ul>
+          <a href="#contact" class="card-action" onclick="selectInterest('Web Application')">Build Web Application →</a>
+        </div>
+
+        <!-- 6. Mobile App Development -->
+        <div class="solution-card">
+          <div class="solution-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="2" />
+              <path d="M12 18h.01" />
+            </svg>
+          </div>
+          <h3>Mobile App Development</h3>
+          <p>Native-performance iOS and Android applications built on Flutter and React Native with offline-first
+            synchronization and biometric security.</p>
+          <ul class="solution-specs">
+            <li>Offline-first conflict resolution</li>
+            <li>Hardware sensors, GPS &amp; camera APIs</li>
+            <li>Low latency Firebase push notifications</li>
+          </ul>
+          <a href="#contact" class="card-action" onclick="selectInterest('Mobile App')">Launch Mobile App →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     SPECIAL SPOTLIGHT: NEWSROOM CMS & HIGH-CONCURRENCY COMMERCE
+     ========================================================================== -->
+  <section class="section-pad spotlight-section">
+    <div class="container">
+      <div class="spotlight-grid">
+        <!-- Spotlight 1: Newsroom CMS -->
+        <div class="spotlight-card">
+          <div>
+            <span class="spotlight-tag">NEWSROOM CMS ARCHITECTURE</span>
+            <h3>Built for the 100,000 Concurrent Readers Spike</h3>
+            <p>
+              When a major story breaks, server crashes kill revenue and journalistic trust. eMMSOFT’s Newsroom Engine
+              utilizes edge micro-caching, distributed Redis memory stores, and database read-replicas to serve breaking
+              articles with <strong>under 60ms latency</strong> at zero packet drop.
+            </p>
+            <div class="spotlight-features">
+              <div class="s-feature">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Instant push to Google News, Apple News &amp; RSS feeds</span>
+              </div>
+              <div class="s-feature">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Integrated live blogging suite with real-time commentator feeds</span>
+              </div>
+              <div class="s-feature">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Dynamic metered paywalls linked to Stripe and local wallets</span>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" onclick="selectInterest('Newsroom CMS')">Request Newsroom CMS
+            Demo</a>
+        </div>
+
+        <!-- Spotlight 2: Flash-Sale E-Commerce -->
+        <div class="spotlight-card">
+          <div>
+            <span class="spotlight-tag">ENTERPRISE E-COMMERCE ENGINE</span>
+            <h3>Zero-Friction Checkout &amp; Multi-Vendor Scale</h3>
+            <p>
+              Whether running a direct-to-consumer flagship or a multi-merchant marketplace, cart abandonment happens in
+              the milliseconds of delay. Our headless storefronts decouple frontend rendering from transaction backends,
+              allowing tens of thousands of shoppers to buy simultaneously.
+            </p>
+            <div class="spotlight-features">
+              <div class="s-feature">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Optimized 1-step checkout with biometric payment support</span>
+              </div>
+              <div class="s-feature">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Automated tax, multi-currency conversion &amp; localized shipping</span>
+              </div>
+              <div class="s-feature">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                <span>Automated inventory sync across ERP, Shopify &amp; physical POS</span>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" onclick="selectInterest('E-Commerce')">Audit Your E-Commerce
+            Stack</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     PRODUCTION CASE STUDIES (Selected Work)
+     ========================================================================== -->
+  <section class="section-pad" id="projects" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">Proven Results</div>
+          <h2>Products we have taken to production.</h2>
+        </div>
+        <p>A sample of platforms running on eMMSOFT architecture across digital media, high-volume retail, cloud
+          infrastructure, and mobile ecosystems.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- 1. Newsroom CMS Case Study -->
+        <div class="case-card">
+          <div class="case-visual">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="200" fill="#101620" />
+              <path d="M40 30 H260 V45 H40 Z" fill="#049449" opacity="0.9" />
+              <path d="M40 60 H360 V65 H40 Z" fill="#334155" />
+              <path d="M40 75 H320 V80 H40 Z" fill="#334155" />
+              <path d="M40 90 H280 V95 H40 Z" fill="#334155" />
+              <rect x="40" y="115" width="100" height="60" rx="4" fill="#1e293b" />
+              <rect x="155" y="115" width="100" height="60" rx="4" fill="#1e293b" />
+              <rect x="270" y="115" width="90" height="60" rx="4" fill="#1e293b" />
+              <text x="360" y="38" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#34d399">● LIVE
+                DESK</text>
+            </svg>
+          </div>
+          <div class="case-body">
+            <span class="case-cat-pill">Newsroom CMS</span>
+            <h3>The Daily WireDesk</h3>
+            <p>National digital news portal migrated to a custom headless newsroom CMS handling breaking news and
+              multi-tier wire feeds.</p>
+            <div class="case-stats-badge">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              28M Monthly Readers · 45ms TTFB
+            </div>
+            <div class="case-tags">
+              <span class="case-tag">Newsroom Engine</span>
+              <span class="case-tag">Next.js</span>
+              <span class="case-tag">Redis</span>
+              <span class="case-tag">Cloudflare</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. E-Commerce Case Study -->
+        <div class="case-card">
+          <div class="case-visual">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="200" fill="#101620" />
+              <circle cx="200" cy="100" r="60" fill="none" stroke="#049449" stroke-width="2" opacity="0.4" />
+              <circle cx="200" cy="100" r="40" fill="none" stroke="#10b981" stroke-width="3" />
+              <text x="200" y="105" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700"
+                font-size="14" fill="#ffffff">99.99% OK</text>
+              <text x="40" y="170" font-family="JetBrains Mono" font-size="11" fill="#94a3b8">Flash Sale: 34,200
+                orders/hr</text>
+            </svg>
+          </div>
+          <div class="case-body">
+            <span class="case-cat-pill">E-Commerce Platform</span>
+            <h3>OmniCart Global Retail</h3>
+            <p>Complete redesign of a multi-warehouse e-commerce system built to survive massive Black Friday sales
+              without checkout failures.</p>
+            <div class="case-stats-badge">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              $140M+ GMV · 0 Checkout Drops
+            </div>
+            <div class="case-tags">
+              <span class="case-tag">Laravel</span>
+              <span class="case-tag">Vue.js</span>
+              <span class="case-tag">Redis Cluster</span>
+              <span class="case-tag">Stripe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Cloud Solutions Case Study -->
+        <div class="case-card">
+          <div class="case-visual">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="200" fill="#101620" />
+              <rect x="50" y="40" width="80" height="50" rx="4" fill="#1e293b" stroke="#049449" stroke-width="1.5" />
+              <rect x="160" y="40" width="80" height="50" rx="4" fill="#1e293b" stroke="#049449" stroke-width="1.5" />
+              <rect x="270" y="40" width="80" height="50" rx="4" fill="#1e293b" stroke="#049449" stroke-width="1.5" />
+              <path d="M90 90 L200 130 L310 90" fill="none" stroke="#10b981" stroke-width="2" />
+              <rect x="150" y="130" width="100" height="40" rx="4" fill="#049449" />
+              <text x="200" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffffff">K8S
+                INGRESS</text>
+            </svg>
+          </div>
+          <div class="case-body">
+            <span class="case-cat-pill">Cloud Infrastructure</span>
+            <h3>ApexCloud DevOps Migration</h3>
+            <p>Complete AWS infrastructure overhaul, converting monolithic legacy servers into containerized Kubernetes
+              auto-scaling clusters.</p>
+            <div class="case-stats-badge">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              42% Cost Savings · 99.999% SLA
+            </div>
+            <div class="case-tags">
+              <span class="case-tag">AWS EKS</span>
+              <span class="case-tag">Terraform</span>
+              <span class="case-tag">Docker</span>
+              <span class="case-tag">CI/CD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Mobile App Case Study -->
+        <div class="case-card">
+          <div class="case-visual">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="200" fill="#101620" />
+              <rect x="160" y="20" width="80" height="160" rx="12" fill="#1e293b" stroke="#049449" stroke-width="2" />
+              <rect x="170" y="36" width="60" height="110" fill="#049449" opacity="0.3" />
+              <circle cx="200" cy="162" r="5" fill="#34d399" />
+              <text x="40" y="105" font-family="JetBrains Mono" font-size="11" fill="#34d399">OFFLINE-FIRST</text>
+              <text x="360" y="105" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#94a3b8">FLUTTER
+                APP</text>
+            </svg>
+          </div>
+          <div class="case-body">
+            <span class="case-cat-pill">Mobile Application</span>
+            <h3>FleetFlow Logistics App</h3>
+            <p>Cross-platform mobile application enabling 6,000+ logistics drivers to record deliveries offline,
+              auto-syncing when signal returns.</p>
+            <div class="case-stats-badge">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              6,000+ Drivers · 4.9 App Store
+            </div>
+            <div class="case-tags">
+              <span class="case-tag">Flutter</span>
+              <span class="case-tag">iOS / Android</span>
+              <span class="case-tag">SQLite</span>
+              <span class="case-tag">Laravel API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Headless CMS Case Study -->
+        <div class="case-card">
+          <div class="case-visual">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="200" fill="#101620" />
+              <rect x="40" y="40" width="130" height="50" rx="4" fill="#1e293b" />
+              <rect x="230" y="40" width="130" height="50" rx="4" fill="#1e293b" />
+              <rect x="135" y="120" width="130" height="50" rx="4" fill="#049449" />
+              <path d="M105 90 L200 120 M295 90 L200 120" stroke="#10b981" stroke-width="2" />
+              <text x="200" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="11"
+                fill="#ffffff">HEADLESS HUB</text>
+            </svg>
+          </div>
+          <div class="case-body">
+            <span class="case-cat-pill">Enterprise CMS</span>
+            <h3>OmniPublish Media Network</h3>
+            <p>Centralized headless CMS architecture feeding content syndication to 8 digital properties across 12
+              countries with localized editorial desks.</p>
+            <div class="case-stats-badge">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              8 Brands Unified · 1-Click Distro
+            </div>
+            <div class="case-tags">
+              <span class="case-tag">GraphQL</span>
+              <span class="case-tag">Strapi</span>
+              <span class="case-tag">Next.js</span>
+              <span class="case-tag">AWS CloudFront</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Web Application Case Study -->
+        <div class="case-card">
+          <div class="case-visual">
+            <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="200" fill="#101620" />
+              <polyline points="40,160 100,130 160,140 220,80 280,100 360,40" fill="none" stroke="#049449"
+                stroke-width="3" />
+              <circle cx="360" cy="40" r="5" fill="#34d399" />
+              <text x="40" y="40" font-family="JetBrains Mono" font-size="11" fill="#94a3b8">REAL-TIME DATA
+                STREAM</text>
+            </svg>
+          </div>
+          <div class="case-body">
+            <span class="case-cat-pill">Custom Web Application</span>
+            <h3>Quantix Supply Chain SaaS</h3>
+            <p>Real-time enterprise dashboard calculating predictive logistics analytics, inventory projections, and
+              automated vendor purchase orders.</p>
+            <div class="case-stats-badge">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+              </svg>
+              2.4M Daily Events · &lt; 30ms Query
+            </div>
+            <div class="case-tags">
+              <span class="case-tag">Vue 3</span>
+              <span class="case-tag">Go / Microservices</span>
+              <span class="case-tag">PostgreSQL</span>
+              <span class="case-tag">WebSockets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     TECH STACK & ARCHITECTURE ECOSYSTEM
+     ========================================================================== -->
+  <section class="section-pad" id="tech-stack">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">Production Technology</div>
+          <h2>Enterprise stack chosen for longevity.</h2>
+        </div>
+        <p>We avoid fragile hype-driven libraries. We choose battle-tested technologies with deep communities and proven
+          scalability in production.</p>
+      </div>
+
+      <div class="stack-grid">
+        <!-- Col 1: CMS & E-Commerce -->
+        <div class="stack-col">
+          <div class="stack-col-head">
+            <h3>E-Commerce &amp; CMS</h3>
+            <span>ENGINE</span>
+          </div>
+          <div class="tech-items">
+            <div class="tech-item"><span>Custom Newsroom Engine</span><span class="desc">High Concurrency</span></div>
+            <div class="tech-item"><span>Shopify Plus &amp; Storefront API</span><span class="desc">Headless</span>
+            </div>
+            <div class="tech-item"><span>MedusaJS</span><span class="desc">Open Commerce</span></div>
+            <div class="tech-item"><span>Strapi &amp; Payload CMS</span><span class="desc">Headless CMS</span></div>
+            <div class="tech-item"><span>Laravel Commerce</span><span class="desc">Custom ERP</span></div>
+          </div>
+        </div>
+
+        <!-- Col 2: Frontend & Mobile -->
+        <div class="stack-col">
+          <div class="stack-col-head">
+            <h3>Frontend &amp; Mobile</h3>
+            <span>CLIENT</span>
+          </div>
+          <div class="tech-items">
+            <div class="tech-item"><span>Flutter &amp; Dart</span><span class="desc">iOS &amp; Android</span></div>
+            <div class="tech-item"><span>Next.js &amp; React</span><span class="desc">SSR / Edge</span></div>
+            <div class="tech-item"><span>Vue.js 3</span><span class="desc">Reactive Web</span></div>
+            <div class="tech-item"><span>Tailwind CSS</span><span class="desc">Design Systems</span></div>
+            <div class="tech-item"><span>TypeScript</span><span class="desc">Type-Safe</span></div>
+          </div>
+        </div>
+
+        <!-- Col 3: Backend & Data -->
+        <div class="stack-col">
+          <div class="stack-col-head">
+            <h3>Backend &amp; APIs</h3>
+            <span>SERVER</span>
+          </div>
+          <div class="tech-items">
+            <div class="tech-item"><span>Laravel / PHP 8.3</span><span class="desc">Enterprise Core</span></div>
+            <div class="tech-item"><span>Node.js &amp; Express</span><span class="desc">Microservices</span></div>
+            <div class="tech-item"><span>Go (Golang)</span><span class="desc">High-Throughput</span></div>
+            <div class="tech-item"><span>PostgreSQL &amp; MySQL</span><span class="desc">ACID Data</span></div>
+            <div class="tech-item"><span>Redis &amp; KeyDB</span><span class="desc">In-Memory Cache</span></div>
+          </div>
+        </div>
+
+        <!-- Col 4: Cloud & DevOps -->
+        <div class="stack-col">
+          <div class="stack-col-head">
+            <h3>Cloud &amp; DevOps</h3>
+            <span>INFRA</span>
+          </div>
+          <div class="tech-items">
+            <div class="tech-item"><span>AWS (EKS, RDS, S3)</span><span class="desc">Global Cloud</span></div>
+            <div class="tech-item"><span>Docker &amp; Kubernetes</span><span class="desc">Containers</span></div>
+            <div class="tech-item"><span>Cloudflare Enterprise</span><span class="desc">Edge Caching</span></div>
+            <div class="tech-item"><span>Terraform</span><span class="desc">IaC Automation</span></div>
+            <div class="tech-item"><span>CI/CD Automation</span><span class="desc">Zero Downtime</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     OUR ENGINEERING PROCESS
+     ========================================================================== -->
+  <section class="section-pad" id="process" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">Methodology</div>
+          <h2>Six stages. Zero guesswork.</h2>
+        </div>
+        <p>From initial architecture blueprints to post-launch cloud monitoring, here is the disciplined roadmap behind
+          every build.</p>
+      </div>
+
+      <div class="process-timeline">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <h4>Architecture Discovery</h4>
+          <p>We analyze traffic constraints, APIs, edge cases, and business milestones before writing code.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <h4>Schema &amp; UX Design</h4>
+          <p>Design intuitive editorial desks, frictionless mobile flows, and structured database models.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <h4>Agile Engineering</h4>
+          <p>Bi-weekly sprints with working demo releases, clean documentation, and constant code reviews.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <h4>Load &amp; Chaos Testing</h4>
+          <p>Simulating 50k+ virtual concurrent users, testing payment failovers, and penetration auditing.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">05</span>
+          <h4>Zero-Downtime Launch</h4>
+          <p>Automated blue/green deployment with DNS traffic balancing and instant rollback capabilities.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">06</span>
+          <h4>Cloud SLA &amp; Support</h4>
+          <p>24/7 cloud telemetry, automated security patches, and performance optimizations post-launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CLIENT TESTIMONIALS
+     ========================================================================== -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="badge-tag">Client Feedback</div>
+        <h2>Trusted by leaders who value engineering integrity.</h2>
+        <p>Here is what CTOs, Publishers, and Founders say about partnering with eMMSOFT.</p>
+      </div>
+
+      <div class="grid-6" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="solution-card" style="background:var(--bg-main);">
+          <div
+            style="color:var(--brand-emerald); font-size: 2.2rem; line-height: 1; font-family:var(--font-heading); margin-bottom: 12px;">
+            “</div>
+          <p style="font-size: 1.05rem; color:var(--ink-primary); line-height: 1.65; flex-grow: 1;">
+            "eMMSOFT completely revolutionized our newsroom desk. When the national election results came in with
+            300,000 live concurrent visitors, our site loaded in under 50ms without a hiccup. Unbelievable engineering."
+          </p>
+          <div style="border-top:1px solid var(--border-light); padding-top:16px;">
+            <strong style="display:block; font-size:0.98rem;">Zubair Hossain</strong>
+            <span style="font-size:0.84rem; color:var(--ink-muted);">Editor-in-Chief, The WireDesk</span>
+          </div>
+        </div>
+
+        <div class="solution-card" style="background:var(--bg-main);">
+          <div
+            style="color:var(--brand-emerald); font-size: 2.2rem; line-height: 1; font-family:var(--font-heading); margin-bottom: 12px;">
+            “</div>
+          <p style="font-size: 1.05rem; color:var(--ink-primary); line-height: 1.65; flex-grow: 1;">
+            "Our previous store crashed every time we ran a promotion. eMMSOFT rebuilt our checkout engine on Laravel
+            and Redis, and our flash sale conversion jumped by 34%. They understand both business and code."
+          </p>
+          <div style="border-top:1px solid var(--border-light); padding-top:16px;">
+            <strong style="display:block; font-size:0.98rem;">Farhana Rahman</strong>
+            <span style="font-size:0.84rem; color:var(--ink-muted);">VP of E-Commerce, OmniCart Retail</span>
+          </div>
+        </div>
+
+        <div class="solution-card" style="background:var(--bg-main);">
+          <div
+            style="color:var(--brand-emerald); font-size: 2.2rem; line-height: 1; font-family:var(--font-heading); margin-bottom: 12px;">
+            “</div>
+          <p style="font-size: 1.05rem; color:var(--ink-primary); line-height: 1.65; flex-grow: 1;">
+            "Finding an agency that truly understands offline-first mobile apps and Kubernetes cloud ops is rare.
+            eMMSOFT feels like an elite in-house senior engineering squad."
+          </p>
+          <div style="border-top:1px solid var(--border-light); padding-top:16px;">
+            <strong style="display:block; font-size:0.98rem;">David Okonkwo</strong>
+            <span style="font-size:0.84rem; color:var(--ink-muted);">Co-Founder &amp; CTO, FleetFlow Global</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     INTERACTIVE CONTACT & PROJECT SCOPE CONFIGURATOR
+     ========================================================================== -->
+  <section class="section-pad contact-section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">Start a Project</div>
+          <h2>Let's engineer your <span class="highlight">next breakthrough</span>.</h2>
+        </div>
+        <p>Select your areas of focus below or describe your requirements. Our senior technical leads will review your
+          project and reply with an architectural breakdown within 4 business hours.</p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Interactive Form Card -->
+        <div class="contact-form-card">
+          <form id="projectInquiryForm" novalidate>
+            <div class="form-group-title">1. What solutions are you looking to build? (Click to select)</div>
+            <div class="interest-chips" id="interestChips">
+              <button type="button" class="chip-btn" data-interest="Newsroom CMS">Newsroom CMS</button>
+              <button type="button" class="chip-btn" data-interest="E-Commerce">E-Commerce Platform</button>
+              <button type="button" class="chip-btn" data-interest="Cloud Solutions">Cloud &amp; DevOps</button>
+              <button type="button" class="chip-btn" data-interest="Enterprise CMS">Enterprise CMS</button>
+              <button type="button" class="chip-btn" data-interest="Web Application">Web Application / SaaS</button>
+              <button type="button" class="chip-btn" data-interest="Mobile App">Mobile App (iOS/Android)</button>
+            </div>
+            <input type="hidden" name="selectedSolutions" id="selectedSolutions" value="">
+
+            <div class="form-group-title">2. Tell us about your project</div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="c-name">Your Full Name *</label>
+                <input type="text" id="c-name" name="name" required placeholder="e.g. Alex Morgan" autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="c-email">Work Email *</label>
+                <input type="email" id="c-email" name="email" required placeholder="alex@company.com"
+                  autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="c-phone">Phone / WhatsApp</label>
+                <input type="tel" id="c-phone" name="phone" placeholder="+880 1700 000000" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="c-company">Company / Organization</label>
+                <input type="text" id="c-company" name="company" placeholder="e.g. Media Corp / Retail Ltd">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="c-timeline">Target Timeline / Launch Goal</label>
+              <select id="c-timeline" name="timeline">
+                <option value="Immediate (< 1 month)">Immediate (Urgent build / rescue)</option>
+                <option value="1 to 3 months" selected>1 to 3 months (Standard launch)</option>
+                <option value="3 to 6 months">3 to 6 months (Enterprise platform)</option>
+                <option value="Exploratory Architecture">Exploratory Architecture / Feasibility Study</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="c-details">Project Overview &amp; Technical Scope *</label>
+              <textarea id="c-details" name="details" rows="4" required
+                placeholder="Tell us about your audience size, expected transaction volume, current pain points, or target features..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="padding:16px; font-size:1.05rem;">
+              Submit Project Inquiry &amp; Request Architecture Call
+            </button>
+
+            <div class="form-success-banner" id="formSuccessMessage">
+              ✓ Inquiry Received! Our engineering lead will review your specifications and contact you within 4 business
+              hours with an initial architectural roadmap.
+            </div>
+          </form>
+        </div>
+
+        <!-- Right Contact Info & SLA Card -->
+        <div class="contact-meta-col">
+          <div class="contact-info-card">
+            <div class="info-unit">
+              <span class="label">Engineering Studio HQ</span>
+              <div class="val">Level 4, Software Innovation Center<br>Gulshan Avenue, Dhaka, Bangladesh</div>
+            </div>
+
+            <div class="info-unit">
+              <span class="label">Direct Engineering Inquiries</span>
+              <a class="val" href="mailto:contact@emmsoft.com">contact@emmsoft.com</a>
+            </div>
+
+            <div class="info-unit">
+              <span class="label">Direct Hotline / WhatsApp</span>
+              <a class="val" href="tel:+8801700000000">+880 17 0000 0000</a>
+            </div>
+
+            <div class="info-unit">
+              <span class="label">Operating Hours</span>
+              <div class="val">Sunday – Thursday, 9:00 – 19:00 (GMT+6)<br><small
+                  style="color:var(--brand-emerald-dark); font-weight:600;">24/7 Monitoring for Managed Cloud
+                  Clients</small></div>
+            </div>
+          </div>
+
+          <div class="response-sla-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <p>
+              <strong>Guaranteed 4-Hour Response Time:</strong> All project inquiries receive a direct technical
+              assessment from a senior solutions architect, not a sales representative.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FOOTER (With logo.png and full categorical navigation)
+     ========================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo-wrap" aria-label="eMMSOFT Homepage">
+            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
+          </a>
+          <p>
+            eMMSOFT is a specialized software engineering studio building resilient E-Commerce platforms, high-velocity
+            Newsroom CMS, Cloud solutions, and native Web &amp; Mobile applications.
+          </p>
+          <div style="display:flex; gap:12px; margin-top:8px;">
+            <span
+              style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); background:rgba(16,185,129,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(16,185,129,0.2);">ISO
+              27001 ALIGNED</span>
+            <span
+              style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); background:rgba(16,185,129,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(16,185,129,0.2);">99.99%
+              CLOUD SLA</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="#solutions" onclick="activateTab('tab-newsroom')">Newsroom CMS</a></li>
+            <li><a href="#solutions" onclick="activateTab('tab-ecommerce')">E-Commerce Platforms</a></li>
+            <li><a href="#solutions" onclick="activateTab('tab-cloud')">Cloud Solutions &amp; DevOps</a></li>
+            <li><a href="#solutions" onclick="activateTab('tab-cms')">Enterprise Headless CMS</a></li>
+            <li><a href="#solutions" onclick="activateTab('tab-webapp')">Web Applications &amp; SaaS</a></li>
+            <li><a href="#solutions" onclick="activateTab('tab-mobile')">Cross-Platform Mobile Apps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Technology</h4>
+          <ul>
+            <li><a href="#tech-stack">Flutter &amp; Dart</a></li>
+            <li><a href="#tech-stack">Next.js &amp; React</a></li>
+            <li><a href="#tech-stack">Laravel Core &amp; PHP 8.3</a></li>
+            <li><a href="#tech-stack">AWS &amp; Kubernetes (K8s)</a></li>
+            <li><a href="#tech-stack">Redis In-Memory Caching</a></li>
+            <li><a href="#tech-stack">Cloudflare Edge Architecture</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company &amp; Contact</h4>
+          <ul>
+            <li><a href="#projects">Selected Production Work</a></li>
+            <li><a href="#process">Our 6-Stage Process</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="tel:+8801700000000">+880 17 0000 0000</a></li>
+            <li><a href="#contact">Start a Project →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> eMMSOFT. All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security &amp; SLA Commitment</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     INTERACTIVE JAVASCRIPT LOGIC
+     ========================================================================== -->
+  <script>
+    // 1. Sticky Navigation dynamic scroll
+    const siteNav = document.getElementById('siteNav');
+    const handleScroll = () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // 2. Mobile Menu Toggle
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      burgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    mobilePanel.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobilePanel.classList.remove('is-open');
+        burgerBtn.classList.remove('is-open');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // 3. Interactive Solutions Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    function activateTab(tabId) {
+      tabButtons.forEach(btn => {
+        const match = btn.getAttribute('data-tab') === tabId;
+        btn.classList.toggle('is-active', match);
+        btn.setAttribute('aria-selected', match ? 'true' : 'false');
+      });
+      tabPanes.forEach(pane => {
+        pane.classList.toggle('is-active', pane.id === tabId);
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+        activateTab(targetTab);
+      });
+    });
+
+    // 4. Contact Form Solution Chip Selector
+    const chipButtons = document.querySelectorAll('.chip-btn');
+    const hiddenSolutionsInput = document.getElementById('selectedSolutions');
+    const selectedInterests = new Set();
+
+    chipButtons.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const interest = chip.getAttribute('data-interest');
+        if (selectedInterests.has(interest)) {
+          selectedInterests.delete(interest);
+          chip.classList.remove('is-selected');
+        } else {
+          selectedInterests.add(interest);
+          chip.classList.add('is-selected');
+        }
+        hiddenSolutionsInput.value = Array.from(selectedInterests).join(', ');
+      });
+    });
+
+    // Helper to pre-select chip when clicked from cards
+    function selectInterest(name) {
+      chipButtons.forEach(chip => {
+        if (chip.getAttribute('data-interest') === name) {
+          if (!selectedInterests.has(name)) {
+            selectedInterests.add(name);
+            chip.classList.add('is-selected');
+          }
+        }
+      });
+      hiddenSolutionsInput.value = Array.from(selectedInterests).join(', ');
+    }
+
+    // 5. Contact Form Submission
+    const inquiryForm = document.getElementById('projectInquiryForm');
+    const formSuccess = document.getElementById('formSuccessMessage');
+
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!inquiryForm.checkValidity()) {
+        inquiryForm.reportValidity();
+        return;
+      }
+      formSuccess.classList.add('is-visible');
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      inquiryForm.reset();
+      chipButtons.forEach(c => c.classList.remove('is-selected'));
+      selectedInterests.clear();
+      hiddenSolutionsInput.value = '';
+    });
+
+    // 6. Smooth Animated Counter for Stats
+    const counters = document.querySelectorAll('.counter');
+    let animated = false;
+
+    const startCounters = () => {
+      const duration = 750;
+      const startTime = performance.now();
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const isDecimal = target % 1 !== 0;
+          const currentVal = target * ease;
+          counter.innerText = isDecimal ? currentVal.toFixed(2) : Math.round(currentVal);
+        });
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      requestAnimationFrame(animate);
+    };
+
+    // 7. Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            if (!animated && entry.target.closest('.stats-strip')) {
+              animated = true;
+              startCounters();
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      revealElements.forEach(el => observer.observe(el));
+
+      // Stats section observer
+      const statsSection = document.querySelector('.stats-strip');
+      if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !animated) {
+            animated = true;
+            startCounters();
+            statsObserver.unobserve(statsSection);
+          }
+        }, { threshold: 0.2 });
+        statsObserver.observe(statsSection);
+      }
+    } else {
+      revealElements.forEach(el => el.classList.add('is-visible'));
+      startCounters();
+    }
+
+    // 8. Dynamic Copyright Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+
+</html>
