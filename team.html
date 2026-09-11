@@ -125,7 +125,12 @@
       font-size: 1rem;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -213,12 +218,20 @@
     }
 
     @keyframes pulseAnim {
-      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
     }
 
-        /* ==========================================================================
+    /* ==========================================================================
      NAVBAR (Synchronized System)
      ========================================================================== */
     .nav {
@@ -350,8 +363,8 @@
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.25s;
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.25s;
       z-index: 300;
     }
 
@@ -717,10 +730,12 @@
     }
 
     @media (max-width: 960px) {
+
       .nav-links,
       .nav-actions .btn {
         display: none;
       }
+
       .nav-burger {
         display: flex;
       }
@@ -733,8 +748,8 @@
       position: relative;
       padding: clamp(56px, 7vw, 90px) 0 clamp(40px, 5vw, 64px);
       background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 45%),
-                  radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
-                  var(--bg-main);
+        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+        var(--bg-main);
       border-bottom: 1px solid var(--border-light);
       overflow: hidden;
     }
@@ -743,7 +758,7 @@
       position: absolute;
       inset: 0;
       background-image: linear-gradient(to right, rgba(4, 148, 73, 0.04) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(4, 148, 73, 0.04) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba(4, 148, 73, 0.04) 1px, transparent 1px);
       background-size: 36px 36px;
       pointer-events: none;
     }
@@ -841,6 +856,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
       }
+
       .team-stat-item:nth-child(2) {
         border-right: none;
       }
@@ -1542,6 +1558,7 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+
     /* ==========================================================================
        FOOTER (Synchronized with team.html)
        ========================================================================== */
@@ -1623,9 +1640,21 @@
       transition: color 0.2s ease;
     }
 
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
 
     .footer-bottom {
       display: flex;
@@ -1654,7 +1683,8 @@
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-/* Modal dialog */
+
+    /* Modal dialog */
     .member-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1684,8 +1714,15 @@
     }
 
     @keyframes modalPop {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .modal-header-banner {
@@ -1730,7 +1767,6 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       margin-bottom: 16px;
     }
-  
   </style>
 </head>
 
@@ -1750,7 +1786,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1760,13 +1797,18 @@
               <!-- Column 1: Services -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1779,7 +1821,11 @@
 
                   <a href="solution-web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1792,7 +1838,10 @@
 
                   <a href="solution-cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1805,7 +1854,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1818,7 +1872,10 @@
 
                   <a href="contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1834,17 +1891,26 @@
               <!-- Column 2: Flagship Solutions -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span
+                            class="pill-hot">HOT</span></span>
                         <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
@@ -1853,7 +1919,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1866,7 +1937,11 @@
 
                   <a href="solution-enterprise-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <path d="M3 9h18M9 21V9"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1879,7 +1954,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1892,7 +1972,11 @@
 
                   <a href="solution-mobile-apps.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1925,7 +2009,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1934,13 +2019,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1952,7 +2045,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -1963,7 +2057,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -1975,7 +2070,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1992,10 +2091,12 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
-                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    <div
+                      style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                       High-Throughput Engineering
                     </div>
                     <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -2024,21 +2125,28 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+          style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
       <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company</div>
       <a href="about.html">About Us <span>→</span></a>
       <a href="team.html" style="color:var(--brand-emerald-dark); font-weight:700;">Team <span>→</span></a>
       <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+        <span>→</span></a>
     </div>
   </nav>
 
@@ -2064,8 +2172,9 @@
       </h1>
 
       <p class="team-hero-lead">
-        We are a specialized collective of software architects, distributed systems engineers, and creative thinkers. 
-        Together, we build high-concurrency digital platforms that power major media publishers, national e-commerce stores, and enterprise cloud operations.
+        We are a specialized collective of software architects, distributed systems engineers, and creative thinkers.
+        Together, we build high-concurrency digital platforms that power major media publishers, national e-commerce
+        stores, and enterprise cloud operations.
       </p>
 
       <!-- Impact Stats Strip -->
@@ -2114,11 +2223,13 @@
       </div>
 
       <div class="team-search-box">
-        <svg class="team-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="team-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.5">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="teamSearchInput" class="team-search-input" placeholder="Search by name, role, or blood group...">
+        <input type="text" id="teamSearchInput" class="team-search-input"
+          placeholder="Search by name, role, or blood group...">
       </div>
     </div>
   </section>
@@ -2146,11 +2257,16 @@
               <span class="exec-designation">Chief Executive Officer (CEO)</span>
               <div class="exec-badges">
                 <span class="blood-badge">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                  </svg>
                   Blood: O+
                 </span>
                 <a href="mailto:pipasha@gmail.com" class="contact-link-pill" title="Send Email">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
                   pipasha@gmail.com
                 </a>
               </div>
@@ -2158,17 +2274,23 @@
           </div>
 
           <div class="exec-quote">
-            "Software architecture isn't just about lines of code; it is about guaranteeing certainty for enterprises whose operations depend on continuous availability."
+            "Software architecture isn't just about lines of code; it is about guaranteeing certainty for enterprises
+            whose operations depend on continuous availability."
           </div>
 
           <!-- Expandable / Unfold Bio (BRAC IT Style) -->
           <div class="unfold-card-wrap">
             <div class="unfold-content" id="bioCeo">
               <p>
-                As Chief Executive Officer of eMMSOFT, Md. Zikrul Ahsan (Shawon) guides the studio’s strategic growth, high-stakes client delivery, and long-term engineering vision. Under his leadership, the organization has evolved into a premier software engineering studio powering mission-critical newsrooms and high-transaction e-commerce architectures across Bangladesh.
+                As Chief Executive Officer of eMMSOFT, Md. Zikrul Ahsan (Shawon) guides the studio’s strategic growth,
+                high-stakes client delivery, and long-term engineering vision. Under his leadership, the organization
+                has evolved into a premier software engineering studio powering mission-critical newsrooms and
+                high-transaction e-commerce architectures across Bangladesh.
               </p>
               <p style="margin-top: 10px;">
-                With over a decade of deep industry expertise, he ensures that our engineering ethos focuses on measurable business impact, absolute delivery transparency, and unwavering reliability for enterprise clients.
+                With over a decade of deep industry expertise, he ensures that our engineering ethos focuses on
+                measurable business impact, absolute delivery transparency, and unwavering reliability for enterprise
+                clients.
               </p>
               <div class="unfold-overlay"></div>
             </div>
@@ -2177,20 +2299,34 @@
             </button>
           </div>
 
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light);">
-            <a href="ceo-message.html" class="btn btn-primary btn-sm" style="display:inline-flex; align-items:center; gap:8px;">
+          <div
+            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light);">
+            <a href="ceo-message.html" class="btn btn-primary btn-sm"
+              style="display:inline-flex; align-items:center; gap:8px;">
               <span>Read Full CEO Letter</span>
               <span style="font-weight:800;">→</span>
             </a>
             <div class="exec-socials" style="margin:0;">
-              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="social-btn"
+                aria-label="Facebook">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
               </a>
-              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter/X">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="social-btn"
+                aria-label="Twitter/X">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </a>
-              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener" class="social-btn"
+                aria-label="LinkedIn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
               </a>
             </div>
           </div>
@@ -2207,11 +2343,16 @@
               <span class="exec-designation">Chief Technology Officer (CTO)</span>
               <div class="exec-badges">
                 <span class="blood-badge">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                  </svg>
                   Blood: AB+
                 </span>
                 <a href="mailto:polash@emythmakers.com" class="contact-link-pill" title="Send Email">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
                   polash@emythmakers.com
                 </a>
               </div>
@@ -2219,17 +2360,23 @@
           </div>
 
           <div class="exec-quote">
-            "True engineering elegance lies in low latency, self-healing topologies, deterministic deployments, and systems that scale gracefully without human panic."
+            "True engineering elegance lies in low latency, self-healing topologies, deterministic deployments, and
+            systems that scale gracefully without human panic."
           </div>
 
           <!-- Expandable / Unfold Bio (BRAC IT Style) -->
           <div class="unfold-card-wrap">
             <div class="unfold-content" id="bioCto">
               <p>
-                As Chief Technology Officer and Lead Systems Architect, Nurul Afsar Polash orchestrates eMMSOFT’s architectural frameworks, technology stack selections, and mission-critical deployment pipelines. He specializes in high-throughput database tuning, distributed edge caching, and scalable microservice clusters.
+                As Chief Technology Officer and Lead Systems Architect, Nurul Afsar Polash orchestrates eMMSOFT’s
+                architectural frameworks, technology stack selections, and mission-critical deployment pipelines. He
+                specializes in high-throughput database tuning, distributed edge caching, and scalable microservice
+                clusters.
               </p>
               <p style="margin-top: 10px;">
-                He spearheaded the core headless newsroom architecture that achieves sustained sub-50ms TTFB under nationwide breaking news spikes, setting the benchmark for digital publishing infrastructure in the country.
+                He spearheaded the core headless newsroom architecture that achieves sustained sub-50ms TTFB under
+                nationwide breaking news spikes, setting the benchmark for digital publishing infrastructure in the
+                country.
               </p>
               <div class="unfold-overlay"></div>
             </div>
@@ -2238,20 +2385,34 @@
             </button>
           </div>
 
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light);">
-            <a href="cto-message.html" class="btn btn-primary btn-sm" style="display:inline-flex; align-items:center; gap:8px;">
+          <div
+            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light);">
+            <a href="cto-message.html" class="btn btn-primary btn-sm"
+              style="display:inline-flex; align-items:center; gap:8px;">
               <span>Read Full CTO Letter</span>
               <span style="font-weight:800;">→</span>
             </a>
             <div class="exec-socials" style="margin:0;">
-              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="social-btn"
+                aria-label="Facebook">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
               </a>
-              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter/X">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="social-btn"
+                aria-label="Twitter/X">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </a>
-              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener" class="social-btn"
+                aria-label="LinkedIn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
               </a>
             </div>
           </div>
@@ -2284,14 +2445,23 @@
           <div class="member-body">
             <h3 class="member-name">Ziaul Hasan</h3>
             <span class="member-role">Accounts Manager</span>
-            <p class="member-specialty">Financial governance, client billing frameworks, fiscal operations &amp; contract auditing.</p>
+            <p class="member-specialty">Financial governance, client billing frameworks, fiscal operations &amp;
+              contract auditing.</p>
             <div class="member-footer">
               <a href="mailto:hasan@emythmakers.com" class="member-email-btn" title="hasan@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 hasan@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
@@ -2309,14 +2479,23 @@
           <div class="member-body">
             <h3 class="member-name">Armin Islam Bipa</h3>
             <span class="member-role">HR &amp; Admin Manager</span>
-            <p class="member-specialty">Engineering talent acquisition, people operations, studio culture, and organizational administration.</p>
+            <p class="member-specialty">Engineering talent acquisition, people operations, studio culture, and
+              organizational administration.</p>
             <div class="member-footer">
               <a href="mailto:armin@emythmakers.com" class="member-email-btn" title="armin@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 armin@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
@@ -2334,21 +2513,31 @@
           <div class="member-body">
             <h3 class="member-name">Mohammad Saiful Islam</h3>
             <span class="member-role">Manager (Creative &amp; Media)</span>
-            <p class="member-specialty">Creative direction, brand identity, user experience design &amp; multimedia production systems.</p>
+            <p class="member-specialty">Creative direction, brand identity, user experience design &amp; multimedia
+              production systems.</p>
             <div class="member-footer">
               <a href="mailto:saiful@emythmakers.com" class="member-email-btn" title="saiful@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 saiful@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 6. Md. Al-Amin - Senior Software Engineer -->
-        <div class="member-card" data-category="engineering" data-name="Md. Al-Amin Senior Software Engineer A+ Backend">
+        <div class="member-card" data-category="engineering"
+          data-name="Md. Al-Amin Senior Software Engineer A+ Backend">
           <div class="member-photo-box">
             <img src="assets/team/al_amin.jpg?v=studio1" alt="Md. Al-Amin" class="member-photo" loading="lazy">
             <div class="member-badges-float">
@@ -2359,21 +2548,31 @@
           <div class="member-body">
             <h3 class="member-name">Md. Al-Amin</h3>
             <span class="member-role">Senior Software Engineer</span>
-            <p class="member-specialty">High-concurrency backend services, Redis caching layers, API gateways, and distributed architecture.</p>
+            <p class="member-specialty">High-concurrency backend services, Redis caching layers, API gateways, and
+              distributed architecture.</p>
             <div class="member-footer">
               <a href="mailto:alamin@emythmakers.com" class="member-email-btn" title="alamin@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 alamin@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 7. Mahedi Hasan - Senior Software Engineer -->
-        <div class="member-card" data-category="engineering" data-name="Mahedi Hasan Senior Software Engineer A+ Cloud Microservices">
+        <div class="member-card" data-category="engineering"
+          data-name="Mahedi Hasan Senior Software Engineer A+ Cloud Microservices">
           <div class="member-photo-box">
             <img src="assets/team/member_7.jpg" alt="Mahedi Hasan" class="member-photo" loading="lazy">
             <div class="member-badges-float">
@@ -2384,21 +2583,31 @@
           <div class="member-body">
             <h3 class="member-name">Mahedi Hasan</h3>
             <span class="member-role">Senior Software Engineer</span>
-            <p class="member-specialty">Cloud infrastructure automation, Docker/Kubernetes containerization &amp; resilient microservices.</p>
+            <p class="member-specialty">Cloud infrastructure automation, Docker/Kubernetes containerization &amp;
+              resilient microservices.</p>
             <div class="member-footer">
               <a href="mailto:mahedi@emythmakers.com" class="member-email-btn" title="mahedi@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 mahedi@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 8. Akib Siddiki Apu - Senior Software Engineer -->
-        <div class="member-card" data-category="engineering" data-name="Akib Siddiki Apu Senior Software Engineer A+ Full-Stack">
+        <div class="member-card" data-category="engineering"
+          data-name="Akib Siddiki Apu Senior Software Engineer A+ Full-Stack">
           <div class="member-photo-box">
             <img src="assets/team/member_8.jpg" alt="Akib Siddiki Apu" class="member-photo" loading="lazy">
             <div class="member-badges-float">
@@ -2409,21 +2618,31 @@
           <div class="member-body">
             <h3 class="member-name">Akib Siddiki Apu</h3>
             <span class="member-role">Senior Software Engineer</span>
-            <p class="member-specialty">Full-stack web architecture, React/Next.js platforms, database design &amp; performance tuning.</p>
+            <p class="member-specialty">Full-stack web architecture, React/Next.js platforms, database design &amp;
+              performance tuning.</p>
             <div class="member-footer">
               <a href="mailto:akib.siddiki@gmail.com" class="member-email-btn" title="akib.siddiki@gmail.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 akib.siddiki@gmail.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 9. Effat Ara Daijy - Senior Software Engineer -->
-        <div class="member-card" data-category="engineering" data-name="Effat Ara Daijy Senior Software Engineer AB+ Systems">
+        <div class="member-card" data-category="engineering"
+          data-name="Effat Ara Daijy Senior Software Engineer AB+ Systems">
           <div class="member-photo-box">
             <img src="assets/team/member_9.jpg" alt="Effat Ara Daijy" class="member-photo" loading="lazy">
             <div class="member-badges-float">
@@ -2434,14 +2653,23 @@
           <div class="member-body">
             <h3 class="member-name">Effat Ara Daijy</h3>
             <span class="member-role">Senior Software Engineer</span>
-            <p class="member-specialty">High-reliability core algorithms, data synchronization systems, unit testing &amp; software security.</p>
+            <p class="member-specialty">High-reliability core algorithms, data synchronization systems, unit testing
+              &amp; software security.</p>
             <div class="member-footer">
               <a href="mailto:daijy@emythmakers.com" class="member-email-btn" title="daijy@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 daijy@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
@@ -2459,21 +2687,31 @@
           <div class="member-body">
             <h3 class="member-name">Koushik Paul</h3>
             <span class="member-role">Software Engineer</span>
-            <p class="member-specialty">RESTful API integration, dynamic frontend application state, UI components &amp; interactive logic.</p>
+            <p class="member-specialty">RESTful API integration, dynamic frontend application state, UI components &amp;
+              interactive logic.</p>
             <div class="member-footer">
               <a href="mailto:koushik@emythmakers.com" class="member-email-btn" title="koushik@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 koushik@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 11. MD. Shamsur Rahman - Software Engineer -->
-        <div class="member-card" data-category="engineering" data-name="MD. Shamsur Rahman Software Engineer B+ CMS E-Commerce">
+        <div class="member-card" data-category="engineering"
+          data-name="MD. Shamsur Rahman Software Engineer B+ CMS E-Commerce">
           <div class="member-photo-box">
             <img src="assets/team/member_11.jpg" alt="MD. Shamsur Rahman" class="member-photo" loading="lazy">
             <div class="member-badges-float">
@@ -2484,23 +2722,34 @@
           <div class="member-body">
             <h3 class="member-name">MD. Shamsur Rahman</h3>
             <span class="member-role">Software Engineer</span>
-            <p class="member-specialty">Newsroom editorial tools, custom CMS modules, automated wire syndication &amp; payment gateway connectors.</p>
+            <p class="member-specialty">Newsroom editorial tools, custom CMS modules, automated wire syndication &amp;
+              payment gateway connectors.</p>
             <div class="member-footer">
               <a href="mailto:shamsur@emythmakers.com" class="member-email-btn" title="shamsur@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 shamsur@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 12. Sayed Ariful Hoque - Junior Software Engineer -->
-        <div class="member-card" data-category="engineering" data-name="Sayed Ariful Hoque Junior Software Engineer AB- Web Apps">
+        <div class="member-card" data-category="engineering"
+          data-name="Sayed Ariful Hoque Junior Software Engineer AB- Web Apps">
           <div class="member-photo-box">
-            <img src="assets/team/ariful_hoque.jpg?v=studio1" alt="Sayed Ariful Hoque" class="member-photo" loading="lazy">
+            <img src="assets/team/ariful_hoque.jpg?v=studio1" alt="Sayed Ariful Hoque" class="member-photo"
+              loading="lazy">
             <div class="member-badges-float">
               <span class="member-category-pill">Engineering</span>
               <span class="member-blood-float">Blood: AB-</span>
@@ -2509,14 +2758,23 @@
           <div class="member-body">
             <h3 class="member-name">Sayed Ariful Hoque</h3>
             <span class="member-role">Junior Software Engineer</span>
-            <p class="member-specialty">Responsive web application engineering, CSS architecture, frontend performance &amp; user interfaces.</p>
+            <p class="member-specialty">Responsive web application engineering, CSS architecture, frontend performance
+              &amp; user interfaces.</p>
             <div class="member-footer">
               <a href="mailto:ariful@emythmakers.com" class="member-email-btn" title="ariful@emythmakers.com">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 ariful@emythmakers.com
               </a>
               <div class="member-social-row">
-                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="icon-sub-btn" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg></a>
               </div>
             </div>
           </div>
@@ -2535,7 +2793,8 @@
         <div class="badge-tag">United Collective</div>
         <h2>One Squad Driving Engineering Rigor</h2>
         <p>
-          Behind every low-latency news portal, multi-vendor commerce hub, and distributed cloud cluster is our close-knit studio team collaborating in Dhaka, Bangladesh.
+          Behind every low-latency news portal, multi-vendor commerce hub, and distributed cloud cluster is our
+          close-knit studio team collaborating in Dhaka, Bangladesh.
         </p>
       </div>
 
@@ -2544,21 +2803,28 @@
         <div class="culture-overlay-chips">
           <div class="culture-chip">
             <h4>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
               High-Concurrency Focus
             </h4>
             <p>Architectures tailored specifically for massive real-world reader surges without failure.</p>
           </div>
           <div class="culture-chip">
             <h4>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
               Sub-50ms Latency Standards
             </h4>
             <p>Relentless edge caching, query optimization, and fast memory database structures.</p>
           </div>
           <div class="culture-chip">
             <h4>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
               Long-Term Partnership
             </h4>
             <p>Direct access to senior engineers and architects dedicated to your brand's growth.</p>
@@ -2577,7 +2843,8 @@
         <div class="badge-tag">Careers at eMMSOFT</div>
         <h2>Want to Build High-Scale Systems With Us?</h2>
         <p>
-          We are always on the lookout for talented systems architects, full-stack engineers, and product designers who treat software engineering as a serious craft.
+          We are always on the lookout for talented systems architects, full-stack engineers, and product designers who
+          treat software engineering as a serious craft.
         </p>
         <div class="join-cta-actions">
           <a href="mailto:info@emythmakers.com?subject=Job%20Application%20at%20eMMSOFT" class="btn btn-primary">
@@ -2594,7 +2861,7 @@
   <!-- ==========================================================================
      FOOTER
      ========================================================================== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -2602,11 +2869,13 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce
+            Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
-            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
@@ -2628,7 +2897,8 @@
             <li><a href="about.html">About eMMSOFT</a></li>
             <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
             <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
-            <li><a href="team.html" style="color:var(--brand-emerald-dark); font-weight:700;">Our Team &amp; Roster</a></li>
+            <li><a href="team.html" style="color:var(--brand-emerald-dark); font-weight:700;">Our Team &amp; Roster</a>
+            </li>
             <li><a href="work.html">Selected Projects</a></li>
             <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
           </ul>
@@ -2639,13 +2909,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
@@ -2739,7 +3011,7 @@
       memberCards.forEach(card => {
         const category = card.getAttribute('data-category');
         const searchData = (card.getAttribute('data-name') || '').toLowerCase();
-        
+
         const matchesCategory = (currentFilter === 'all' || currentFilter === category);
         const matchesSearch = !term || searchData.includes(term);
 

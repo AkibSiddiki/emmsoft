@@ -75,7 +75,9 @@
       --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -94,7 +96,8 @@
       overflow-x: hidden;
     }
 
-    img, svg {
+    img,
+    svg {
       display: block;
       max-width: 100%;
     }
@@ -117,7 +120,12 @@
       background: none;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -209,9 +217,17 @@
     }
 
     @keyframes pulseAnim {
-      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
     }
 
     .pill-hot {
@@ -586,7 +602,7 @@
        ========================================================================== */
     .solution-hero {
       background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 60%),
-                  linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
+        linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
       border-bottom: 1px solid var(--border-light);
       padding: clamp(48px, 6vw, 84px) 0 clamp(40px, 5vw, 68px);
       position: relative;
@@ -1234,6 +1250,7 @@
       background: radial-gradient(circle, rgba(4, 148, 73, 0.25) 0%, transparent 70%);
       pointer-events: none;
     }
+
     /* ==========================================================================
        FOOTER (Synchronized with team.html)
        ========================================================================== */
@@ -1315,9 +1332,21 @@
       transition: color 0.2s ease;
     }
 
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
 
     .footer-bottom {
       display: flex;
@@ -1346,7 +1375,8 @@
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-/* Responsive */
+
+    /* Responsive */
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -1365,7 +1395,9 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-actions .btn {
+
+      .nav-links,
+      .nav-actions .btn {
         display: none;
       }
 
@@ -1408,7 +1440,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1418,13 +1451,18 @@
               <!-- Column 1: Services -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1437,7 +1475,11 @@
 
                   <a href="solution-web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1450,7 +1492,10 @@
 
                   <a href="solution-cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1463,7 +1508,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1476,7 +1526,10 @@
 
                   <a href="contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1492,17 +1545,26 @@
               <!-- Column 2: Flagship Solutions -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span
+                            class="pill-hot">HOT</span></span>
                         <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
@@ -1511,7 +1573,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1522,9 +1589,14 @@
                     </div>
                   </a>
 
-                  <a href="solution-enterprise-cms.html" class="mega-link-card" style="background:var(--brand-emerald-tint);">
+                  <a href="solution-enterprise-cms.html" class="mega-link-card"
+                    style="background:var(--brand-emerald-tint);">
                     <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M9 21V9" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1537,7 +1609,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1550,7 +1627,11 @@
 
                   <a href="solution-mobile-apps.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1583,7 +1664,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1592,13 +1674,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1610,7 +1700,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -1621,7 +1712,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -1633,7 +1725,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1650,10 +1746,12 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
-                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    <div
+                      style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                       High-Throughput Engineering
                     </div>
                     <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -1682,21 +1780,30 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+          style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
-      <a href="solution-enterprise-cms.html" style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-enterprise-cms.html"
+        style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Enterprise
+        Headless CMS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company</div>
       <a href="about.html">About Us <span>→</span></a>
       <a href="team.html">Team <span>→</span></a>
       <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+        <span>→</span></a>
     </div>
   </nav>
 
@@ -1721,10 +1828,13 @@
           </div>
           <h1>Decoupled <span class="text-emerald">Headless Content Architecture</span> for Enterprises.</h1>
           <p class="hero-lead">
-            Manage your structured content once and publish everywhere. Our custom and headless CMS implementations power corporate portals, national non-profits, and multi-brand conglomerates with role-based governance, multilingual translation desks, and high-performance GraphQL APIs.
+            Manage your structured content once and publish everywhere. Our custom and headless CMS implementations
+            power corporate portals, national non-profits, and multi-brand conglomerates with role-based governance,
+            multilingual translation desks, and high-performance GraphQL APIs.
           </p>
           <div class="hero-actions">
-            <a href="contact.html?solution=Enterprise+CMS" class="btn btn-primary">Request Architecture Consultation →</a>
+            <a href="contact.html?solution=Enterprise+CMS" class="btn btn-primary">Request Architecture Consultation
+              →</a>
             <a href="#case-studies" class="btn btn-secondary">Explore Client Case Studies</a>
           </div>
 
@@ -1752,7 +1862,10 @@
         <div class="interactive-cms-card">
           <div class="cms-header">
             <div class="cms-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18M9 21V9" />
+              </svg>
               Headless Content Graph Telemetry
             </div>
             <span class="cms-badge">ACTIVE REPO</span>
@@ -1810,7 +1923,8 @@
         <div class="badge-tag">Decoupled Architecture</div>
         <h2>Structured content modeling meets modern API distribution.</h2>
         <p>
-          We liberate your enterprise content from monolithic databases. Content authors create structured entries in intuitive workflows, while frontends consume lightweight JSON payloads via GraphQL and RESTful APIs.
+          We liberate your enterprise content from monolithic databases. Content authors create structured entries in
+          intuitive workflows, while frontends consume lightweight JSON payloads via GraphQL and RESTful APIs.
         </p>
       </div>
 
@@ -1818,36 +1932,43 @@
         <div class="arch-step-card">
           <span class="arch-step-num">Step 01</span>
           <h3>Headless Studio</h3>
-          <p>Structured custom content models, localized multilingual inputs, and draft revision workflows for authors and editors.</p>
+          <p>Structured custom content models, localized multilingual inputs, and draft revision workflows for authors
+            and editors.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 02</span>
           <h3>RBAC Governance</h3>
-          <p>Granular access control policies, multi-tier approval hierarchies, and encrypted audit trails enforcing enterprise compliance.</p>
+          <p>Granular access control policies, multi-tier approval hierarchies, and encrypted audit trails enforcing
+            enterprise compliance.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 03</span>
           <h3>GraphQL &amp; REST APIs</h3>
-          <p>High-speed decoupled endpoints cached at the Anycast edge, returning only the exact fields requested by each consumer device.</p>
+          <p>High-speed decoupled endpoints cached at the Anycast edge, returning only the exact fields requested by
+            each consumer device.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 04</span>
           <h3>Omnichannel Clients</h3>
-          <p>Single source of truth feeding Next.js portals, native iOS/Android mobile apps, internal intranets, and partner syndication.</p>
+          <p>Single source of truth feeding Next.js portals, native iOS/Android mobile apps, internal intranets, and
+            partner syndication.</p>
         </div>
       </div>
 
       <div class="arch-callout-box">
         <div class="arch-callout-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
         </div>
         <div class="arch-callout-body">
           <h4>Enterprise Audit Trails &amp; Immutable Content History</h4>
           <p>
-            For compliance-heavy enterprises, every edit, approval, and publication event is permanently logged with user ID, timestamp, and field-level diffs, ensuring full traceability and rollback capability at any moment.
+            For compliance-heavy enterprises, every edit, approval, and publication event is permanently logged with
+            user ID, timestamp, and field-level diffs, ensuring full traceability and rollback capability at any moment.
           </p>
         </div>
       </div>
@@ -1869,78 +1990,153 @@
         <!-- 1 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
           </div>
           <h3>Omnichannel Content Distribution</h3>
-          <p>Model custom structured schemas once and stream clean JSON payloads across web portals, native mobile apps, and third-party partner APIs.</p>
+          <p>Model custom structured schemas once and stream clean JSON payloads across web portals, native mobile apps,
+            and third-party partner APIs.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Zero vendor lock-in on frontends</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Reusable modular content blocks</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Zero vendor lock-in on frontends</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Reusable modular content blocks</li>
           </ul>
         </div>
 
         <!-- 2 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
           </div>
           <h3>Granular RBAC &amp; Approval Workflows</h3>
-          <p>Enforce strict corporate editorial governance with customizable roles: Contributors, Section Editors, Legal Reviewers, and Admin Publishers.</p>
+          <p>Enforce strict corporate editorial governance with customizable roles: Contributors, Section Editors, Legal
+            Reviewers, and Admin Publishers.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Multi-stage signoff before publish</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Field-level editing restrictions</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Multi-stage signoff before publish</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Field-level editing restrictions</li>
           </ul>
         </div>
 
         <!-- 3 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
           </div>
           <h3>High-Throughput GraphQL &amp; REST APIs</h3>
-          <p>Query precisely the data fields needed with zero payload over-fetching. Cached globally at edge nodes for sub-20ms reader experiences.</p>
+          <p>Query precisely the data fields needed with zero payload over-fetching. Cached globally at edge nodes for
+            sub-20ms reader experiences.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Strongly typed TypeScript contracts</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automated schema introspection</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Strongly typed TypeScript contracts</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Automated schema introspection</li>
           </ul>
         </div>
 
         <!-- 4 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
           </div>
           <h3>Multilingual &amp; Regional Localization</h3>
-          <p>Publish in English, Bengali, and international languages simultaneously with side-by-side translation desks and locale-specific fallback rules.</p>
+          <p>Publish in English, Bengali, and international languages simultaneously with side-by-side translation desks
+            and locale-specific fallback rules.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Side-by-side split screen editing</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automatic RTL &amp; UTF-8 typography</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Side-by-side split screen editing</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Automatic RTL &amp; UTF-8 typography</li>
           </ul>
         </div>
 
         <!-- 5 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
           </div>
           <h3>Digital Asset Pipeline (DAM)</h3>
-          <p>Centralized media library with automated focal cropping, on-the-fly WebP/AVIF generation, PDF document indexing, and secure S3 asset hosting.</p>
+          <p>Centralized media library with automated focal cropping, on-the-fly WebP/AVIF generation, PDF document
+            indexing, and secure S3 asset hosting.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automatic image compression by 70%</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Secure signed URLs for private files</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Automatic image compression by 70%</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Secure signed URLs for private files</li>
           </ul>
         </div>
 
         <!-- 6 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
           </div>
           <h3>Enterprise Compliance &amp; Audit Logs</h3>
-          <p>Maintain complete historical audit trails, document version histories, and field-level encryption compliant with ISO 27001 and enterprise security standards.</p>
+          <p>Maintain complete historical audit trails, document version histories, and field-level encryption compliant
+            with ISO 27001 and enterprise security standards.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Immutable version change diffs</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automated daily database snapshots</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Immutable version change diffs</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Automated daily database snapshots</li>
           </ul>
         </div>
       </div>
@@ -1961,7 +2157,10 @@
       <div class="stack-matrix-grid">
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
             CMS Cores
           </div>
           <div class="stack-list">
@@ -1982,7 +2181,10 @@
 
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
             API &amp; Contracts
           </div>
           <div class="stack-list">
@@ -2003,7 +2205,11 @@
 
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
             Data &amp; Assets
           </div>
           <div class="stack-list">
@@ -2024,7 +2230,9 @@
 
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
             Security &amp; Edge
           </div>
           <div class="stack-list">
@@ -2067,7 +2275,9 @@
             </div>
             <h3>Farming Future Bangladesh: Multilingual Research &amp; Policy Repository</h3>
             <p>
-              Partnered with the Bill &amp; Melinda Gates Foundation affiliate to build a decoupled knowledge repository. Implemented bilingual content taxonomy (English &amp; Bengali), structured research papers indexing, and seamless digital whitepaper downloads.
+              Partnered with the Bill &amp; Melinda Gates Foundation affiliate to build a decoupled knowledge
+              repository. Implemented bilingual content taxonomy (English &amp; Bengali), structured research papers
+              indexing, and seamless digital whitepaper downloads.
             </p>
           </div>
           <div class="case-stats-row">
@@ -2095,7 +2305,9 @@
             </div>
             <h3>ITN-BUET: National Sanitation &amp; Water Engineering Research Portal</h3>
             <p>
-              Engineered a high-capacity structured content portal for BUET's leading sanitation engineering institute. Features granular role-based publishing for academic researchers, multi-volume document libraries, and automated event calendars.
+              Engineered a high-capacity structured content portal for BUET's leading sanitation engineering institute.
+              Features granular role-based publishing for academic researchers, multi-volume document libraries, and
+              automated event calendars.
             </p>
           </div>
           <div class="case-stats-row">
@@ -2136,25 +2348,29 @@
         <div class="process-node">
           <div class="node-num">1</div>
           <h4>Schema &amp; Taxonomy Audit</h4>
-          <p>We analyze your business entities, taxonomy hierarchies, and design structured GraphQL types tailored to your content model.</p>
+          <p>We analyze your business entities, taxonomy hierarchies, and design structured GraphQL types tailored to
+            your content model.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">2</div>
           <h4>Headless Core &amp; RBAC Build</h4>
-          <p>We configure the decoupled studio, implement granular role permissions, and connect asset optimization pipelines with S3.</p>
+          <p>We configure the decoupled studio, implement granular role permissions, and connect asset optimization
+            pipelines with S3.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">3</div>
           <h4>Data Migration &amp; Sanitization</h4>
-          <p>Automated ingestion scripts migrate legacy articles, whitepapers, and media files without losing URL structures or metadata.</p>
+          <p>Automated ingestion scripts migrate legacy articles, whitepapers, and media files without losing URL
+            structures or metadata.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">4</div>
           <h4>Staff Training &amp; Production SLA</h4>
-          <p>We conduct hands-on training sessions for editorial staff, provide comprehensive user documentation, and maintain 99.95% API SLA.</p>
+          <p>We conduct hands-on training sessions for editorial staff, provide comprehensive user documentation, and
+            maintain 99.95% API SLA.</p>
         </div>
       </div>
     </div>
@@ -2165,18 +2381,23 @@
        ========================================================================== -->
   <section class="section-pad cta-banner">
     <div class="container" style="max-width:760px; position:relative; z-index:1;">
-      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+      <div class="badge-tag"
+        style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
         Unified Content Governance
       </div>
       <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
         Ready to decouple your enterprise content?
       </h2>
       <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
-        Consult directly with our Headless Architecture Leads. Receive a customized schema roadmap, API design review, and migration feasibility assessment within 4 business hours.
+        Consult directly with our Headless Architecture Leads. Receive a customized schema roadmap, API design review,
+        and migration feasibility assessment within 4 business hours.
       </p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html?solution=Enterprise+CMS" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Request Enterprise CMS Proposal →</a>
-        <a href="work.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Live Case Studies</a>
+        <a href="contact.html?solution=Enterprise+CMS" class="btn btn-primary"
+          style="padding:15px 32px; font-size:1.05rem;">Request Enterprise CMS Proposal →</a>
+        <a href="work.html" class="btn btn-secondary"
+          style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Live Case
+          Studies</a>
       </div>
     </div>
   </section>
@@ -2184,7 +2405,7 @@
   <!-- ==========================================================================
        FOOTER
        ========================================================================== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -2192,11 +2413,13 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce
+            Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
-            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
@@ -2206,7 +2429,8 @@
             <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
             <li><a href="solution-ecommerce.html">E-Commerce Platforms</a></li>
             <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
-            <li><a href="solution-enterprise-cms.html" style="color:var(--brand-emerald-dark); font-weight:700;">Enterprise Headless CMS</a></li>
+            <li><a href="solution-enterprise-cms.html"
+                style="color:var(--brand-emerald-dark); font-weight:700;">Enterprise Headless CMS</a></li>
             <li><a href="solution-web-applications.html">Web Applications &amp; SaaS</a></li>
             <li><a href="solution-mobile-apps.html">Mobile Apps (iOS &amp; Android)</a></li>
           </ul>
@@ -2229,13 +2453,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
@@ -2266,4 +2492,5 @@
   </script>
 
 </body>
+
 </html>

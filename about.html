@@ -120,7 +120,12 @@
       background: none;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -212,12 +217,20 @@
     }
 
     @keyframes pulseAnim {
-      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
     }
 
-        /* ==========================================================================
+    /* ==========================================================================
      NAVBAR (Synchronized System)
      ========================================================================== */
     .nav {
@@ -349,8 +362,8 @@
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.25s;
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.25s;
       z-index: 300;
     }
 
@@ -716,10 +729,12 @@
     }
 
     @media (max-width: 960px) {
+
       .nav-links,
       .nav-actions .btn {
         display: none;
       }
+
       .nav-burger {
         display: flex;
       }
@@ -730,8 +745,8 @@
        ========================================================================== */
     .about-hero {
       background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.09) 0%, transparent 45%),
-                  radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
-                  var(--bg-main);
+        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+        var(--bg-main);
       padding: clamp(54px, 7vw, 92px) 0 clamp(44px, 5vw, 68px);
       border-bottom: 1px solid var(--border-light);
     }
@@ -821,7 +836,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(11,15,21,0.92) 0%, rgba(11,15,21,0.4) 70%, transparent 100%);
+      background: linear-gradient(to top, rgba(11, 15, 21, 0.92) 0%, rgba(11, 15, 21, 0.4) 70%, transparent 100%);
       padding: 24px;
       color: #ffffff;
     }
@@ -923,9 +938,11 @@
       .pillar-row {
         grid-template-columns: 1fr;
       }
+
       .pillar-row:nth-child(even) .pillar-content {
         order: 1;
       }
+
       .pillar-row:nth-child(even) .pillar-media {
         order: 2;
       }
@@ -1001,7 +1018,7 @@
       border-radius: 18px;
       object-fit: cover;
       border: 3px solid var(--brand-emerald);
-      box-shadow: 0 4px 14px rgba(4,148,73,0.18);
+      box-shadow: 0 4px 14px rgba(4, 148, 73, 0.18);
       flex-shrink: 0;
     }
 
@@ -1294,10 +1311,12 @@
     }
 
     @media (max-width: 840px) {
+
       .timeline-block,
       .timeline-block:nth-child(even) {
         justify-content: flex-start;
       }
+
       .timeline-card {
         width: calc(100% - 64px);
         margin-left: 64px;
@@ -1735,8 +1754,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Studio Specs / Infrastructure Styles */
@@ -1791,6 +1817,7 @@
       line-height: 1.45;
       margin: 0;
     }
+
     /* ==========================================================================
        FOOTER (Synchronized with team.html)
        ========================================================================== */
@@ -1872,9 +1899,21 @@
       transition: color 0.2s ease;
     }
 
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
 
     .footer-bottom {
       display: flex;
@@ -1903,7 +1942,7 @@
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-</style>
+  </style>
 </head>
 
 <body>
@@ -1922,7 +1961,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1932,13 +1972,18 @@
               <!-- Column 1: Services -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1951,7 +1996,11 @@
 
                   <a href="solution-web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1964,7 +2013,10 @@
 
                   <a href="solution-cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1977,7 +2029,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1990,7 +2047,10 @@
 
                   <a href="contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2006,17 +2066,26 @@
               <!-- Column 2: Flagship Solutions -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span
+                            class="pill-hot">HOT</span></span>
                         <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
@@ -2025,7 +2094,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2038,7 +2112,11 @@
 
                   <a href="solution-enterprise-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <path d="M3 9h18M9 21V9"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2051,7 +2129,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2064,7 +2147,11 @@
 
                   <a href="solution-mobile-apps.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2097,7 +2184,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -2106,13 +2194,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2124,7 +2220,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -2135,7 +2232,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -2147,7 +2245,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2164,10 +2266,12 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
-                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    <div
+                      style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                       High-Throughput Engineering
                     </div>
                     <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -2196,21 +2300,28 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+          style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
       <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company</div>
       <a href="about.html" style="color:var(--brand-emerald-dark); font-weight:700;">About Us <span>→</span></a>
       <a href="team.html">Team <span>→</span></a>
       <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+        <span>→</span></a>
     </div>
   </nav>
 
@@ -2227,7 +2338,11 @@
           </div>
           <h1>Architecting systems for <span class="text-emerald">maximum durability</span> &amp; speed.</h1>
           <p class="about-hero-lead">
-            eMMSOFT (eMythMakers Software Engineering Studio) is an elite, senior-led software studio founded in Dhaka, Bangladesh. Over the past 15+ years, we have built the mission-critical digital infrastructure powering South Asia's largest bilingual newsrooms, high-throughput retail e-commerce engines, and fault-tolerant enterprise cloud platforms. We don't build disposable prototypes—we engineer resilient digital assets built to endure millions of concurrent requests with deterministic zero-downtime reliability.
+            eMMSOFT (eMythMakers Software Engineering Studio) is an elite, senior-led software studio founded in Dhaka,
+            Bangladesh. Over the past 15+ years, we have built the mission-critical digital infrastructure powering
+            South Asia's largest bilingual newsrooms, high-throughput retail e-commerce engines, and fault-tolerant
+            enterprise cloud platforms. We don't build disposable prototypes—we engineer resilient digital assets built
+            to endure millions of concurrent requests with deterministic zero-downtime reliability.
           </p>
           <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 28px;">
             <a href="contact.html" class="btn btn-primary">Start a Technical Consultation →</a>
@@ -2254,11 +2369,13 @@
           <div class="hero-visual-card">
             <img src="assets/work_culture.jpg" alt="eMMSOFT Studio Collaboration & Architecture" loading="lazy">
             <div class="visual-card-caption">
-              <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(4,148,73,0.3); border:1px solid rgba(4,148,73,0.5); padding:3px 10px; border-radius:999px; font-size:0.75rem; font-family:var(--font-mono); color:#34d399; margin-bottom:8px;">
+              <div
+                style="display:inline-flex; align-items:center; gap:6px; background:rgba(4,148,73,0.3); border:1px solid rgba(4,148,73,0.5); padding:3px 10px; border-radius:999px; font-size:0.75rem; font-family:var(--font-mono); color:#34d399; margin-bottom:8px;">
                 <span class="pulse-dot"></span> Active Studio HQ · Dhaka, Bangladesh
               </div>
               <h3>Senior Squads · High-Throughput Flow State</h3>
-              <p>Eliminating meeting bureaucracy in favor of deep-work architecture, low-latency caching, and battle-tested distributed databases.</p>
+              <p>Eliminating meeting bureaucracy in favor of deep-work architecture, low-latency caching, and
+                battle-tested distributed databases.</p>
             </div>
           </div>
         </div>
@@ -2275,7 +2392,8 @@
         <div class="badge-tag">Strategic Direction</div>
         <h2>Our Mission, Vision &amp; Engineering Creed</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:12px;">
-          We believe high-concurrency systems should be engineered with mathematical predictability. Our foundational compass guides every line of code we commit and every cluster we deploy.
+          We believe high-concurrency systems should be engineered with mathematical predictability. Our foundational
+          compass guides every line of code we commit and every cluster we deploy.
         </p>
       </div>
 
@@ -2283,23 +2401,34 @@
         <!-- Mission Card -->
         <div class="mv-card">
           <div class="mv-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
           </div>
           <h3>Our Mission: Zero-Compromise Durability</h3>
           <p>
-            To engineer fault-tolerant, deterministic digital backbones that empower media powerhouses, high-volume commerce brands, and multinational enterprises to scale effortlessly without fear of server collapse, architectural rot, or technical debt.
+            To engineer fault-tolerant, deterministic digital backbones that empower media powerhouses, high-volume
+            commerce brands, and multinational enterprises to scale effortlessly without fear of server collapse,
+            architectural rot, or technical debt.
           </p>
           <div class="mv-list">
             <div class="mv-list-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Continuous concurrency-first system modeling and defensive queries</span>
             </div>
             <div class="mv-list-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Direct senior architect pairing with zero sales intermediary friction</span>
             </div>
             <div class="mv-list-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>100% full source code ownership, transparent documentation, and client IP sovereignty</span>
             </div>
           </div>
@@ -2308,23 +2437,33 @@
         <!-- Vision Card -->
         <div class="mv-card">
           <div class="mv-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
           </div>
           <h3>Our Vision: South Asia's Premier Systems Studio</h3>
           <p>
-            To remain the premier software engineering studio of choice for organizations whose digital platforms cannot afford a single second of downtime during breaking news, election coverage, or peak flash sales.
+            To remain the premier software engineering studio of choice for organizations whose digital platforms cannot
+            afford a single second of downtime during breaking news, election coverage, or peak flash sales.
           </p>
           <div class="mv-list">
             <div class="mv-list-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Setting global industry benchmarks for sub-50ms edge TTFB responses</span>
             </div>
             <div class="mv-list-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Pioneering real-time headless CMS and websocket-driven newsrooms</span>
             </div>
             <div class="mv-list-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Cultivating an elite in-house engineering team committed to software craftsmanship</span>
             </div>
           </div>
@@ -2334,7 +2473,9 @@
       <!-- The eMMSOFT Creed -->
       <div class="mv-creed-box">
         <div class="mv-creed-quote">
-          "Code that runs deterministically in production beats clever abstractions that crash on election night. We do not measure software by how quickly it was prototyped, but by how unshakeable it remains when 50,000 concurrent readers descend upon the cluster in a single minute."
+          "Code that runs deterministically in production beats clever abstractions that crash on election night. We do
+          not measure software by how quickly it was prototyped, but by how unshakeable it remains when 50,000
+          concurrent readers descend upon the cluster in a single minute."
         </div>
         <div class="mv-creed-author">
           — The eMMSOFT Engineering Creed · Dhaka Studio
@@ -2352,7 +2493,8 @@
         <div class="badge-tag">The Journey</div>
         <h2>15 Years of Engineering Evolution</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:10px;">
-          How eMythMakers (eMMSOFT) evolved from solving concurrency bottlenecks in Dhaka into the high-availability backbone of South Asia's leading media conglomerates and industrial giants.
+          How eMythMakers (eMMSOFT) evolved from solving concurrency bottlenecks in Dhaka into the high-availability
+          backbone of South Asia's leading media conglomerates and industrial giants.
         </p>
       </div>
 
@@ -2364,7 +2506,9 @@
             <span class="timeline-era-badge">2009 — 2012 · Inception &amp; Concurrency R&amp;D</span>
             <h3>Solving National Media Server Collapse</h3>
             <p>
-              Founded in Dhaka by systems architects who witnessed national news sites crash repeatedly during national elections and breaking news cycles. Designed proprietary reverse-proxy cache layers and database connection pooling that reduced server RAM footprints by over 70%.
+              Founded in Dhaka by systems architects who witnessed national news sites crash repeatedly during national
+              elections and breaking news cycles. Designed proprietary reverse-proxy cache layers and database
+              connection pooling that reduced server RAM footprints by over 70%.
             </p>
             <div class="timeline-tags">
               <span class="timeline-tag">Monolithic Optimization</span>
@@ -2382,7 +2526,9 @@
             <span class="timeline-era-badge">2013 — 2017 · Tier-1 Media Dominance</span>
             <h3>Architecting bdnews24, Channel 24 &amp; National Dailies</h3>
             <p>
-              Hand-selected to engineer custom newsroom platforms for Bangladesh's most influential bilingual digital portal (bdnews24.com), 24-hour broadcast television Channel 24, Daily Janakantha, and Dhaka Tribune. Pioneered multi-tier Varnish caching and automated editorial publishing workflows.
+              Hand-selected to engineer custom newsroom platforms for Bangladesh's most influential bilingual digital
+              portal (bdnews24.com), 24-hour broadcast television Channel 24, Daily Janakantha, and Dhaka Tribune.
+              Pioneered multi-tier Varnish caching and automated editorial publishing workflows.
             </p>
             <div class="timeline-tags">
               <span class="timeline-tag">bdnews24.com</span>
@@ -2401,7 +2547,9 @@
             <span class="timeline-era-badge">2018 — 2021 · Enterprise &amp; High-Volume Commerce</span>
             <h3>Scaling Industrial Conglomerates &amp; Flash Sales</h3>
             <p>
-              Expanded our engineering footprint into major industrial giants including Walton Hi-Tech Industries, PRAN-RFL Group, Ha-Meem Group, and Step Footwear. Engineered atomic inventory lock reservation engines, distributed SAP/ERP sync connectors, and resilient multi-gateway payment routing.
+              Expanded our engineering footprint into major industrial giants including Walton Hi-Tech Industries,
+              PRAN-RFL Group, Ha-Meem Group, and Step Footwear. Engineered atomic inventory lock reservation engines,
+              distributed SAP/ERP sync connectors, and resilient multi-gateway payment routing.
             </p>
             <div class="timeline-tags">
               <span class="timeline-tag">Walton Hi-Tech</span>
@@ -2420,7 +2568,9 @@
             <span class="timeline-era-badge">2022 — Present · Cloud-Native &amp; Next-Gen Systems</span>
             <h3>Headless CMS, Kubernetes &amp; 120M+ Readers</h3>
             <p>
-              Architected next-generation decoupled headless CMS platforms, sub-second API gateways, automated Kubernetes clusters, and real-time live-blogging websockets. Today, eMMSOFT infrastructure powers over 120 million monthly digital readers with 99.99% verified uptime.
+              Architected next-generation decoupled headless CMS platforms, sub-second API gateways, automated
+              Kubernetes clusters, and real-time live-blogging websockets. Today, eMMSOFT infrastructure powers over 120
+              million monthly digital readers with 99.99% verified uptime.
             </p>
             <div class="timeline-tags">
               <span class="timeline-tag">Headless CMS</span>
@@ -2444,7 +2594,8 @@
         <div class="badge-tag">The eMMSOFT Philosophy</div>
         <h2>Engineered for production, not just prototypes.</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:12px;">
-          We deliberately operate with a high ratio of senior engineers to juniors. We eschew bloated abstractions in favor of clean architecture, deterministic caching layers, and battle-tested distributed databases.
+          We deliberately operate with a high ratio of senior engineers to juniors. We eschew bloated abstractions in
+          favor of clean architecture, deterministic caching layers, and battle-tested distributed databases.
         </p>
       </div>
 
@@ -2452,55 +2603,78 @@
         <!-- Pillar 1 -->
         <div class="value-card">
           <div class="value-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
           </div>
           <h3>99.99% Operational Uptime</h3>
-          <p>Multi-region availability zones, automated node health checks, and active-passive database failovers guarantee continuous delivery under massive load.</p>
+          <p>Multi-region availability zones, automated node health checks, and active-passive database failovers
+            guarantee continuous delivery under massive load.</p>
         </div>
 
         <!-- Pillar 2 -->
         <div class="value-card">
           <div class="value-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
           </div>
           <h3>Sub-50ms Edge TTFB</h3>
-          <p>We fine-tune SQL execution plans, Redis cluster caching, and edge reverse-proxying with Varnish/Nginx to serve content in milliseconds worldwide.</p>
+          <p>We fine-tune SQL execution plans, Redis cluster caching, and edge reverse-proxying with Varnish/Nginx to
+            serve content in milliseconds worldwide.</p>
         </div>
 
         <!-- Pillar 3 -->
         <div class="value-card">
           <div class="value-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+            </svg>
           </div>
           <h3>Direct Senior Architects</h3>
-          <p>Clients interface directly with the senior engineers writing their code. No sales bureaucracy, non-technical account managers, or translation distortion.</p>
+          <p>Clients interface directly with the senior engineers writing their code. No sales bureaucracy,
+            non-technical account managers, or translation distortion.</p>
         </div>
 
         <!-- Pillar 4 -->
         <div class="value-card">
           <div class="value-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
           </div>
           <h3>Long-Term Stewardship</h3>
-          <p>We build durable software assets engineered to operate seamlessly for 5+ years without accumulating crippling technical debt or architectural decay.</p>
+          <p>We build durable software assets engineered to operate seamlessly for 5+ years without accumulating
+            crippling technical debt or architectural decay.</p>
         </div>
 
         <!-- Pillar 5 -->
         <div class="value-card">
           <div class="value-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+              <line x1="4" y1="22" x2="4" y2="15"></line>
+            </svg>
           </div>
           <h3>Concurrency by Design</h3>
-          <p>Every database schema and API endpoint is architected for simultaneous multi-tenant throughput, preventing row-level deadlocks during sudden surges.</p>
+          <p>Every database schema and API endpoint is architected for simultaneous multi-tenant throughput, preventing
+            row-level deadlocks during sudden surges.</p>
         </div>
 
         <!-- Pillar 6 -->
         <div class="value-card">
           <div class="value-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
           </div>
           <h3>Defense-in-Depth Security</h3>
-          <p>Zero-trust access policies, strict SQL parameterization, automated vulnerability audits, and edge Web Application Firewalls (WAF) protect critical assets.</p>
+          <p>Zero-trust access policies, strict SQL parameterization, automated vulnerability audits, and edge Web
+            Application Firewalls (WAF) protect critical assets.</p>
         </div>
       </div>
     </div>
@@ -2509,13 +2683,15 @@
   <!-- ==========================================================================
      SECTION: 5-STAGE ENGINEERING LIFECYCLE
      ========================================================================== -->
-  <section class="section-pad" style="background:var(--bg-alt); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
+  <section class="section-pad"
+    style="background:var(--bg-alt); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
     <div class="container">
       <div style="max-width:740px;">
         <div class="badge-tag">Methodology &amp; Process</div>
         <h2>The 5-Stage Engineering Lifecycle</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:12px;">
-          How we systematically eliminate risk, avoid costly rework, and deliver enterprise platforms that perform deterministically under peak national demand.
+          How we systematically eliminate risk, avoid costly rework, and deliver enterprise platforms that perform
+          deterministically under peak national demand.
         </p>
       </div>
 
@@ -2527,7 +2703,8 @@
             <span class="step-indicator">Analysis</span>
           </div>
           <h3>Capacity &amp; Threat Modeling</h3>
-          <p>We analyze historical traffic spikes, calculate peak concurrent reader thresholds, map data schemas, and design failover boundary topologies.</p>
+          <p>We analyze historical traffic spikes, calculate peak concurrent reader thresholds, map data schemas, and
+            design failover boundary topologies.</p>
         </div>
 
         <!-- Step 2 -->
@@ -2537,7 +2714,8 @@
             <span class="step-indicator">Benchmark</span>
           </div>
           <h3>Core Engine &amp; Load Proof</h3>
-          <p>Before writing UI code, we simulate 100,000 requests/second against our normalized database schemas and caching micro-clusters to prove scalability.</p>
+          <p>Before writing UI code, we simulate 100,000 requests/second against our normalized database schemas and
+            caching micro-clusters to prove scalability.</p>
         </div>
 
         <!-- Step 3 -->
@@ -2547,7 +2725,8 @@
             <span class="step-indicator">Build</span>
           </div>
           <h3>Senior Pair Implementation</h3>
-          <p>Senior engineers write clean, typed, modular code with peer reviews on every PR, automated CI linting, unit test coverage, and zero technical shortcuts.</p>
+          <p>Senior engineers write clean, typed, modular code with peer reviews on every PR, automated CI linting, unit
+            test coverage, and zero technical shortcuts.</p>
         </div>
 
         <!-- Step 4 -->
@@ -2557,7 +2736,8 @@
             <span class="step-indicator">Hardening</span>
           </div>
           <h3>Chaos &amp; Security Testing</h3>
-          <p>We simulate sudden node crashes, database replication lags, penetration attacks, and traffic spikes to verify automated self-healing capabilities.</p>
+          <p>We simulate sudden node crashes, database replication lags, penetration attacks, and traffic spikes to
+            verify automated self-healing capabilities.</p>
         </div>
 
         <!-- Step 5 -->
@@ -2567,7 +2747,8 @@
             <span class="step-indicator">Production</span>
           </div>
           <h3>Zero-Downtime Cutover &amp; SRE</h3>
-          <p>Blue/green canary rollouts migrate live users seamlessly. 24/7 APM telemetry monitors microsecond response times with a strict 15-minute SLA.</p>
+          <p>Blue/green canary rollouts migrate live users seamlessly. 24/7 APM telemetry monitors microsecond response
+            times with a strict 15-minute SLA.</p>
         </div>
       </div>
     </div>
@@ -2582,7 +2763,8 @@
         <div class="badge-tag">Core Competencies</div>
         <h2>Where eMMSOFT is the Undisputed Authority</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:12px;">
-          We focus on high-stakes systems where downtime or latency carries severe reputational and commercial damage. Our engineering expertise spans four flagship domains.
+          We focus on high-stakes systems where downtime or latency carries severe reputational and commercial damage.
+          Our engineering expertise spans four flagship domains.
         </p>
       </div>
 
@@ -2591,27 +2773,43 @@
         <div class="domain-box">
           <div class="domain-header">
             <div class="domain-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2">
+                </path>
+                <path d="M18 14h-8"></path>
+                <path d="M15 18h-5"></path>
+                <path d="M10 6h8v4h-8V6Z"></path>
+              </svg>
             </div>
             <div>
               <h3>Newsroom CMS &amp; Media Engines</h3>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">120M+ Readers · Sub-50ms TTFB</span>
+              <span
+                style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">120M+
+                Readers · Sub-50ms TTFB</span>
             </div>
           </div>
           <p>
-            Ultra-fast editorial publishing suites built for national broadcasters and digital publishers. Handles breaking news bursts without degradation.
+            Ultra-fast editorial publishing suites built for national broadcasters and digital publishers. Handles
+            breaking news bursts without degradation.
           </p>
           <div class="domain-specs-list">
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Bilingual (Bengali &amp; English) high-speed editorial desks with live collaboration</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>WebSocket live-blogging &amp; real-time election result updates with zero database strain</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Automated AMP, Google News RSS, PWA caching, and multi-tier Varnish edge caching</span>
             </div>
           </div>
@@ -2622,27 +2820,40 @@
         <div class="domain-box">
           <div class="domain-header">
             <div class="domain-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
             </div>
             <div>
               <h3>High-Throughput E-Commerce</h3>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">Atomic Queues · 10k Orders/Min</span>
+              <span
+                style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">Atomic
+                Queues · 10k Orders/Min</span>
             </div>
           </div>
           <p>
-            Resilient transactional commerce architectures engineered to prevent overselling, race conditions, and payment drops during intense flash sales.
+            Resilient transactional commerce architectures engineered to prevent overselling, race conditions, and
+            payment drops during intense flash sales.
           </p>
           <div class="domain-specs-list">
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Atomic inventory reservation queues in Redis preventing duplicate checkouts</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Multi-gateway fallback routing (bKash, Nagad, SSLCommerz, Visa/Mastercard)</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Multi-warehouse inventory synchronization with real-time courier tracking APIs</span>
             </div>
           </div>
@@ -2653,27 +2864,40 @@
         <div class="domain-box">
           <div class="domain-header">
             <div class="domain-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
             </div>
             <div>
               <h3>Enterprise Headless CMS &amp; Portals</h3>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">Omnichannel · GraphQL &amp; REST</span>
+              <span
+                style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">Omnichannel
+                · GraphQL &amp; REST</span>
             </div>
           </div>
           <p>
-            Decoupled content hubs delivering structured data to native iOS/Android apps, micro-frontends, digital billboards, and global portals.
+            Decoupled content hubs delivering structured data to native iOS/Android apps, micro-frontends, digital
+            billboards, and global portals.
           </p>
           <div class="domain-specs-list">
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Decoupled API endpoints delivering JSON payloads under 20ms across edge nodes</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Granular Role-Based Access Control (RBAC) with complete immutable audit trails</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Multi-tenant site scaffolding with shared asset storage and isolated databases</span>
             </div>
           </div>
@@ -2684,27 +2908,38 @@
         <div class="domain-box">
           <div class="domain-header">
             <div class="domain-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
             </div>
             <div>
               <h3>Cloud Solutions, DevOps &amp; SRE</h3>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">Zero-Downtime · Kubernetes</span>
+              <span
+                style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-dark); font-weight:700;">Zero-Downtime
+                · Kubernetes</span>
             </div>
           </div>
           <p>
-            Automated cloud migrations, container orchestration, and 24/7 site reliability engineering for platforms where downtime is catastrophic.
+            Automated cloud migrations, container orchestration, and 24/7 site reliability engineering for platforms
+            where downtime is catastrophic.
           </p>
           <div class="domain-specs-list">
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Infrastructure-as-Code (IaC) via Terraform, Docker containerization &amp; Kubernetes</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>Automated CI/CD deployment pipelines with zero-downtime blue/green traffic shifts</span>
             </div>
             <div class="domain-spec-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>24/7 APM monitoring (Prometheus/Grafana) with automated 15-minute emergency SLA</span>
             </div>
           </div>
@@ -2720,12 +2955,14 @@
   <section class="section-pad metrics-section">
     <div class="container">
       <div style="text-align:center; max-width:700px; margin:0 auto;">
-        <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:#34d399;">
+        <div class="badge-tag"
+          style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:#34d399;">
           Empirical Proof
         </div>
         <h2 style="color:#ffffff;">eMMSOFT Production Proof by the Numbers</h2>
         <p style="color:#94a3b8; font-size:1.05rem; margin-top:10px;">
-          Over 15 years of uninterrupted engineering rigor, measured in hundreds of millions of readers and sub-second execution speeds.
+          Over 15 years of uninterrupted engineering rigor, measured in hundreds of millions of readers and sub-second
+          execution speeds.
         </p>
       </div>
 
@@ -2741,28 +2978,32 @@
         <div class="metric-card-box">
           <div class="metric-card-val">120M+</div>
           <div class="metric-card-title">Monthly Digital Readers</div>
-          <p class="metric-card-desc">Combined traffic served across our client media network with zero crash events.</p>
+          <p class="metric-card-desc">Combined traffic served across our client media network with zero crash events.
+          </p>
         </div>
 
         <!-- Metric 3 -->
         <div class="metric-card-box">
           <div class="metric-card-val">350+</div>
           <div class="metric-card-title">Enterprise Deployments</div>
-          <p class="metric-card-desc">Custom newsrooms, e-commerce stores, and enterprise portals successfully shipped.</p>
+          <p class="metric-card-desc">Custom newsrooms, e-commerce stores, and enterprise portals successfully shipped.
+          </p>
         </div>
 
         <!-- Metric 4 -->
         <div class="metric-card-box">
           <div class="metric-card-val">&lt;50ms</div>
           <div class="metric-card-title">Edge Cache TTFB</div>
-          <p class="metric-card-desc">Average global page delivery response time via optimized reverse proxy caching.</p>
+          <p class="metric-card-desc">Average global page delivery response time via optimized reverse proxy caching.
+          </p>
         </div>
 
         <!-- Metric 5 -->
         <div class="metric-card-box">
           <div class="metric-card-val">99.99%</div>
           <div class="metric-card-title">Verified High-Load Uptime</div>
-          <p class="metric-card-desc">Documented operational availability during major national elections and crises.</p>
+          <p class="metric-card-desc">Documented operational availability during major national elections and crises.
+          </p>
         </div>
 
         <!-- Metric 6 -->
@@ -2776,7 +3017,8 @@
         <div class="metric-card-box">
           <div class="metric-card-val">0</div>
           <div class="metric-card-title">Critical Downtime Events</div>
-          <p class="metric-card-desc">Zero catastrophic outages across all managed production newsrooms in 2024–2025.</p>
+          <p class="metric-card-desc">Zero catastrophic outages across all managed production newsrooms in 2024–2025.
+          </p>
         </div>
 
         <!-- Metric 8 -->
@@ -2797,7 +3039,8 @@
       <div style="text-align:center; max-width:680px; margin:0 auto 36px auto;">
         <div class="badge-tag">Executive Leadership</div>
         <h2>Guided by Hands-On <span style="color:var(--brand-emerald);">Systems Architects</span></h2>
-        <p style="color:var(--ink-secondary);">Our leadership remains intimately involved in daily system architecture, peer code reviews, and high-stakes production deployments.</p>
+        <p style="color:var(--ink-secondary);">Our leadership remains intimately involved in daily system architecture,
+          peer code reviews, and high-stakes production deployments.</p>
       </div>
 
       <div class="exec-overview-grid">
@@ -2811,13 +3054,18 @@
             </div>
           </div>
           <p style="font-size:0.92rem; color:var(--ink-secondary); line-height:1.6; margin:0;">
-            With over two decades of leadership in software engineering and media technology, Shawon founded eMythMakers to establish a standard of engineering durability in South Asia. He actively directs studio vision, enterprise client strategy, and long-term architectural partnerships.
+            With over two decades of leadership in software engineering and media technology, Shawon founded eMythMakers
+            to establish a standard of engineering durability in South Asia. He actively directs studio vision,
+            enterprise client strategy, and long-term architectural partnerships.
           </p>
           <p class="exec-quote">
-            "We built eMMSOFT on the principle that digital platforms should be durable, fault-tolerant, and extraordinarily fast. In the high-stakes world of breaking news and enterprise commerce, seconds are eternity."
+            "We built eMMSOFT on the principle that digital platforms should be durable, fault-tolerant, and
+            extraordinarily fast. In the high-stakes world of breaking news and enterprise commerce, seconds are
+            eternity."
           </p>
           <div>
-            <a href="ceo-message.html" class="btn btn-secondary btn-sm" style="display:inline-flex; align-items:center; gap:6px;">Read Full CEO Message &amp; Vision →</a>
+            <a href="ceo-message.html" class="btn btn-secondary btn-sm"
+              style="display:inline-flex; align-items:center; gap:6px;">Read Full CEO Message &amp; Vision →</a>
           </div>
         </div>
 
@@ -2831,13 +3079,17 @@
             </div>
           </div>
           <p style="font-size:0.92rem; color:var(--ink-secondary); line-height:1.6; margin:0;">
-            A low-latency systems architect specializing in high-concurrency database modeling, Varnish caching topology, and resilient cloud backends. Polash oversees technical blueprints, code review standards, and 24/7 site reliability engineering across the studio.
+            A low-latency systems architect specializing in high-concurrency database modeling, Varnish caching
+            topology, and resilient cloud backends. Polash oversees technical blueprints, code review standards, and
+            24/7 site reliability engineering across the studio.
           </p>
           <p class="exec-quote">
-            "Our architecture prioritizes sub-50ms TTFB, zero-downtime blue/green rollouts, and defensive database design. When the biggest stories break or flash sales peak, our infrastructure never flinches."
+            "Our architecture prioritizes sub-50ms TTFB, zero-downtime blue/green rollouts, and defensive database
+            design. When the biggest stories break or flash sales peak, our infrastructure never flinches."
           </p>
           <div>
-            <a href="cto-message.html" class="btn btn-secondary btn-sm" style="display:inline-flex; align-items:center; gap:6px;">Read Full CTO Message &amp; Blueprint →</a>
+            <a href="cto-message.html" class="btn btn-secondary btn-sm"
+              style="display:inline-flex; align-items:center; gap:6px;">Read Full CTO Message &amp; Blueprint →</a>
           </div>
         </div>
       </div>
@@ -2860,13 +3112,18 @@
           <div class="badge-tag">Studio Culture &amp; Operations</div>
           <h3>A Deep-Work Sanctuary for Software Craftsmanship</h3>
           <p>
-            At eMMSOFT, we deliberately eliminate needless meetings, micromanagement, and arbitrary deadlines. We cultivate a studio environment centered on high-throughput flow state, pair-architecting, and continuous peer code review. We believe the highest caliber software can only be produced when engineers have the focus, tooling, and autonomy to solve hard problems without friction.
+            At eMMSOFT, we deliberately eliminate needless meetings, micromanagement, and arbitrary deadlines. We
+            cultivate a studio environment centered on high-throughput flow state, pair-architecting, and continuous
+            peer code review. We believe the highest caliber software can only be produced when engineers have the
+            focus, tooling, and autonomy to solve hard problems without friction.
           </p>
           <p>
-            Our workstations feature ergonomic multi-monitor setups, direct fiber connectivity, and dedicated staging testbeds where we simulate 100,000+ simultaneous requests before touching live production.
+            Our workstations feature ergonomic multi-monitor setups, direct fiber connectivity, and dedicated staging
+            testbeds where we simulate 100,000+ simultaneous requests before touching live production.
           </p>
           <div style="margin-top:20px;">
-            <a href="team.html#studio-culture" class="btn btn-secondary btn-sm">Explore Squad Gallery &amp; Culture →</a>
+            <a href="team.html#studio-culture" class="btn btn-secondary btn-sm">Explore Squad Gallery &amp; Culture
+              →</a>
           </div>
         </div>
         <div class="pillar-media">
@@ -2878,34 +3135,51 @@
       <div class="studio-specs-grid">
         <div class="spec-card">
           <div class="spec-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
           </div>
           <h4>Redundant Gigabit Fiber</h4>
-          <p>Active-active ISP fiber uplinks with automated BGP failover ensuring zero dropped packets during production deployments.</p>
+          <p>Active-active ISP fiber uplinks with automated BGP failover ensuring zero dropped packets during production
+            deployments.</p>
         </div>
 
         <div class="spec-card">
           <div class="spec-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
           </div>
           <h4>Zero-Interruption Power</h4>
-          <p>Dual online enterprise UPS systems backed by automated industrial diesel generators guarantee 100% facility uptime.</p>
+          <p>Dual online enterprise UPS systems backed by automated industrial diesel generators guarantee 100% facility
+            uptime.</p>
         </div>
 
         <div class="spec-card">
           <div class="spec-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
           </div>
           <h4>100k Req/Sec Staging Bed</h4>
-          <p>Dedicated private sandbox clusters simulating massive traffic spikes, network lag, and chaos conditions before code release.</p>
+          <p>Dedicated private sandbox clusters simulating massive traffic spikes, network lag, and chaos conditions
+            before code release.</p>
         </div>
 
         <div class="spec-card">
           <div class="spec-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+            </svg>
           </div>
           <h4>Flow-State Engineering HQ</h4>
-          <p>Ergonomic multi-monitor setups, sound-dampened focus pods, and deep work blocks with zero sales interruptions.</p>
+          <p>Ergonomic multi-monitor setups, sound-dampened focus pods, and deep work blocks with zero sales
+            interruptions.</p>
         </div>
       </div>
     </div>
@@ -2914,13 +3188,15 @@
   <!-- ==========================================================================
      SECTION: CLIENT TRUST ECOSYSTEM
      ========================================================================== -->
-  <section class="section-pad" style="background:var(--bg-main); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
+  <section class="section-pad"
+    style="background:var(--bg-main); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
     <div class="container">
       <div style="text-align:center; max-width:720px; margin:0 auto;">
         <div class="badge-tag">Client Portfolio</div>
         <h2>Trusted by South Asia's Media &amp; Enterprise Leaders</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:10px;">
-          From Bangladesh's most influential bilingual newsrooms to multinational manufacturing conglomerates, organizations rely on eMMSOFT when downtime is not an option.
+          From Bangladesh's most influential bilingual newsrooms to multinational manufacturing conglomerates,
+          organizations rely on eMMSOFT when downtime is not an option.
         </p>
       </div>
 
@@ -2928,61 +3204,71 @@
         <!-- Client 1 -->
         <div class="client-trust-cell">
           <img src="assets/clients/bdnews24.svg" alt="bdnews24.com" class="client-trust-logo">
-          <p class="client-trust-label">bdnews24.com<br><span style="color:var(--ink-faint); font-weight:400;">Pioneering Bilingual Media</span></p>
+          <p class="client-trust-label">bdnews24.com<br><span
+              style="color:var(--ink-faint); font-weight:400;">Pioneering Bilingual Media</span></p>
         </div>
 
         <!-- Client 2 -->
         <div class="client-trust-cell">
           <img src="assets/clients/channel24_hd.png" alt="Channel 24" class="client-trust-logo">
-          <p class="client-trust-label">Channel 24<br><span style="color:var(--ink-faint); font-weight:400;">24/7 Broadcast News &amp; TV</span></p>
+          <p class="client-trust-label">Channel 24<br><span style="color:var(--ink-faint); font-weight:400;">24/7
+              Broadcast News &amp; TV</span></p>
         </div>
 
         <!-- Client 3 -->
         <div class="client-trust-cell">
           <img src="assets/clients/dhaka_tribune.svg" alt="Dhaka Tribune" class="client-trust-logo">
-          <p class="client-trust-label">Dhaka Tribune<br><span style="color:var(--ink-faint); font-weight:400;">Premier National Daily</span></p>
+          <p class="client-trust-label">Dhaka Tribune<br><span style="color:var(--ink-faint); font-weight:400;">Premier
+              National Daily</span></p>
         </div>
 
         <!-- Client 4 -->
         <div class="client-trust-cell">
           <img src="assets/clients/janakantha_web.jpg" alt="Daily Janakantha" class="client-trust-logo">
-          <p class="client-trust-label">Daily Janakantha<br><span style="color:var(--ink-faint); font-weight:400;">Leading Bengali Daily</span></p>
+          <p class="client-trust-label">Daily Janakantha<br><span
+              style="color:var(--ink-faint); font-weight:400;">Leading Bengali Daily</span></p>
         </div>
 
         <!-- Client 5 -->
         <div class="client-trust-cell">
           <img src="assets/clients/walton.png" alt="Walton Hi-Tech Industries" class="client-trust-logo">
-          <p class="client-trust-label">Walton Hi-Tech<br><span style="color:var(--ink-faint); font-weight:400;">Industrial Electronics Giant</span></p>
+          <p class="client-trust-label">Walton Hi-Tech<br><span
+              style="color:var(--ink-faint); font-weight:400;">Industrial Electronics Giant</span></p>
         </div>
 
         <!-- Client 6 -->
         <div class="client-trust-cell">
           <img src="assets/clients/pran.png" alt="PRAN-RFL Group" class="client-trust-logo">
-          <p class="client-trust-label">PRAN-RFL Group<br><span style="color:var(--ink-faint); font-weight:400;">Multinational Conglomerate</span></p>
+          <p class="client-trust-label">PRAN-RFL Group<br><span
+              style="color:var(--ink-faint); font-weight:400;">Multinational Conglomerate</span></p>
         </div>
 
         <!-- Client 7 -->
         <div class="client-trust-cell">
           <img src="assets/clients/step_footwear.png" alt="Step Footwear" class="client-trust-logo">
-          <p class="client-trust-label">Step Footwear<br><span style="color:var(--ink-faint); font-weight:400;">Omnichannel Retail &amp; E-Com</span></p>
+          <p class="client-trust-label">Step Footwear<br><span
+              style="color:var(--ink-faint); font-weight:400;">Omnichannel Retail &amp; E-Com</span></p>
         </div>
 
         <!-- Client 8 -->
         <div class="client-trust-cell">
           <img src="assets/clients/dhaka_university.svg" alt="University of Dhaka" class="client-trust-logo">
-          <p class="client-trust-label">University of Dhaka<br><span style="color:var(--ink-faint); font-weight:400;">Premier Academic Portal</span></p>
+          <p class="client-trust-label">University of Dhaka<br><span
+              style="color:var(--ink-faint); font-weight:400;">Premier Academic Portal</span></p>
         </div>
 
         <!-- Client 9 -->
         <div class="client-trust-cell">
           <img src="assets/clients/buet.svg" alt="ITN-BUET" class="client-trust-logo">
-          <p class="client-trust-label">ITN-BUET<br><span style="color:var(--ink-faint); font-weight:400;">National Research Center</span></p>
+          <p class="client-trust-label">ITN-BUET<br><span style="color:var(--ink-faint); font-weight:400;">National
+              Research Center</span></p>
         </div>
 
         <!-- Client 10 -->
         <div class="client-trust-cell">
           <img src="assets/clients/ha_meem.jpg" alt="Ha-Meem Group" class="client-trust-logo">
-          <p class="client-trust-label">Ha-Meem Group<br><span style="color:var(--ink-faint); font-weight:400;">Global Industrial Group</span></p>
+          <p class="client-trust-label">Ha-Meem Group<br><span style="color:var(--ink-faint); font-weight:400;">Global
+              Industrial Group</span></p>
         </div>
       </div>
 
@@ -3003,7 +3289,8 @@
         <div class="badge-tag">Frequently Asked Questions</div>
         <h2>Everything You Need to Know About Partnering with eMMSOFT</h2>
         <p style="color:var(--ink-secondary); font-size:1.05rem; margin-top:10px;">
-          Clear, transparent answers to common architectural, operational, and contractual questions from prospective enterprise clients.
+          Clear, transparent answers to common architectural, operational, and contractual questions from prospective
+          enterprise clients.
         </p>
       </div>
 
@@ -3013,11 +3300,17 @@
           <button class="faq-question" type="button" aria-expanded="false">
             <span>What fundamentally differentiates eMMSOFT from general software or web agencies?</span>
             <span class="faq-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            Most generic agencies build with one-size-fits-all CMS templates or off-the-shelf themes that crumble under modest concurrency. eMMSOFT operates as a dedicated systems engineering studio with over 15 years of specialized experience handling high-traffic newsrooms and high-volume commerce. We don't employ junior outsourced devs; our clients collaborate directly with senior architects who write clean, battle-tested code built to withstand 100,000+ concurrent requests.
+            Most generic agencies build with one-size-fits-all CMS templates or off-the-shelf themes that crumble under
+            modest concurrency. eMMSOFT operates as a dedicated systems engineering studio with over 15 years of
+            specialized experience handling high-traffic newsrooms and high-volume commerce. We don't employ junior
+            outsourced devs; our clients collaborate directly with senior architects who write clean, battle-tested code
+            built to withstand 100,000+ concurrent requests.
           </div>
         </div>
 
@@ -3026,11 +3319,17 @@
           <button class="faq-question" type="button" aria-expanded="false">
             <span>How does eMMSOFT prevent server collapse during sudden 10x or 50x traffic surges?</span>
             <span class="faq-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We implement multi-layered defensive engineering: (1) Reverse proxy caching with custom Varnish rules that serve 98%+ of read requests directly from edge memory in under 5ms, (2) Redis cluster layers for session and transient state, (3) Strictly indexed, normalized SQL queries with connection pooling that prevent database deadlocks, and (4) Auto-scaling micro-clusters that dynamically scale instances before CPU thresholds are crossed.
+            We implement multi-layered defensive engineering: (1) Reverse proxy caching with custom Varnish rules that
+            serve 98%+ of read requests directly from edge memory in under 5ms, (2) Redis cluster layers for session and
+            transient state, (3) Strictly indexed, normalized SQL queries with connection pooling that prevent database
+            deadlocks, and (4) Auto-scaling micro-clusters that dynamically scale instances before CPU thresholds are
+            crossed.
           </div>
         </div>
 
@@ -3039,11 +3338,17 @@
           <button class="faq-question" type="button" aria-expanded="false">
             <span>What technology stack does eMMSOFT primarily build with?</span>
             <span class="faq-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We select technologies based on production durability rather than transient industry hype. Our core backends utilize performant PHP 8+, Go, Node.js, and Python, paired with PostgreSQL, MySQL/MariaDB, and Redis. For frontends, we architect ultra-fast, lightweight JavaScript, React, Vue, or headless micro-frontends with sub-50ms TTFB. Our infrastructure is orchestrated via Docker, Kubernetes, Terraform, Nginx, and cloud providers (AWS, GCP, DigitalOcean, and on-premise private clouds).
+            We select technologies based on production durability rather than transient industry hype. Our core backends
+            utilize performant PHP 8+, Go, Node.js, and Python, paired with PostgreSQL, MySQL/MariaDB, and Redis. For
+            frontends, we architect ultra-fast, lightweight JavaScript, React, Vue, or headless micro-frontends with
+            sub-50ms TTFB. Our infrastructure is orchestrated via Docker, Kubernetes, Terraform, Nginx, and cloud
+            providers (AWS, GCP, DigitalOcean, and on-premise private clouds).
           </div>
         </div>
 
@@ -3052,11 +3357,16 @@
           <button class="faq-question" type="button" aria-expanded="false">
             <span>Does our company receive full ownership of the source code and intellectual property?</span>
             <span class="faq-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            Yes, 100%. Upon final delivery and project completion, all proprietary source code, repository commits, architectural blueprints, database schemas, and documentation are transferred entirely to your organization with zero licensing locks or vendor dependencies. We provide comprehensive onboarding and technical handoffs to your internal teams.
+            Yes, 100%. Upon final delivery and project completion, all proprietary source code, repository commits,
+            architectural blueprints, database schemas, and documentation are transferred entirely to your organization
+            with zero licensing locks or vendor dependencies. We provide comprehensive onboarding and technical handoffs
+            to your internal teams.
           </div>
         </div>
 
@@ -3065,11 +3375,16 @@
           <button class="faq-question" type="button" aria-expanded="false">
             <span>What does your post-launch 24/7 maintenance and SLA support look like?</span>
             <span class="faq-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We offer enterprise-grade Service Level Agreements (SLAs) with 24/7 continuous APM telemetry, automated health probes, and on-call Senior Reliability Engineers (SRE). Critical production incidents receive an immediate 15-minute response SLA. We also conduct ongoing monthly performance profiling, security patching, and cold-cache tuning.
+            We offer enterprise-grade Service Level Agreements (SLAs) with 24/7 continuous APM telemetry, automated
+            health probes, and on-call Senior Reliability Engineers (SRE). Critical production incidents receive an
+            immediate 15-minute response SLA. We also conduct ongoing monthly performance profiling, security patching,
+            and cold-cache tuning.
           </div>
         </div>
 
@@ -3078,11 +3393,16 @@
           <button class="faq-question" type="button" aria-expanded="false">
             <span>Where is eMMSOFT located and how do you collaborate with international or remote teams?</span>
             <span class="faq-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            Our primary studio headquarters is located at Level 4, Software Innovation Center, Gulshan Avenue, Dhaka, Bangladesh. We collaborate seamlessly with clients across North America, Europe, the Middle East, and Asia using asynchronous engineering workflows, daily standup summaries, private Slack/Discord channels, GitHub enterprise repos, and scheduled sprint demo calls.
+            Our primary studio headquarters is located at Level 4, Software Innovation Center, Gulshan Avenue, Dhaka,
+            Bangladesh. We collaborate seamlessly with clients across North America, Europe, the Middle East, and Asia
+            using asynchronous engineering workflows, daily standup summaries, private Slack/Discord channels, GitHub
+            enterprise repos, and scheduled sprint demo calls.
           </div>
         </div>
       </div>
@@ -3092,26 +3412,38 @@
   <!-- ==========================================================================
      SECTION: STUDIO HEADQUARTERS & CONTACT DOSSIER
      ========================================================================== -->
-  <section class="section-pad" style="background:var(--bg-alt); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
+  <section class="section-pad"
+    style="background:var(--bg-alt); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
     <div class="container">
-      <div style="background:var(--bg-surface); border:1px solid var(--border-light); border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-sm);">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:32px; align-items:center;">
+      <div
+        style="background:var(--bg-surface); border:1px solid var(--border-light); border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-sm);">
+        <div
+          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:32px; align-items:center;">
           <div>
             <div class="badge-tag">Dhaka Studio HQ</div>
-            <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:12px;">Visit or Connect with Our Engineering Hub</h3>
+            <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:12px;">Visit or Connect with Our Engineering Hub
+            </h3>
             <p style="color:var(--ink-secondary); font-size:0.96rem; line-height:1.6; margin:0 0 16px 0;">
-              Our state-of-the-art engineering studio in Gulshan Avenue is equipped with dual redundant fiber uplinks, uninterrupted generator power, and isolated testing sandboxes.
+              Our state-of-the-art engineering studio in Gulshan Avenue is equipped with dual redundant fiber uplinks,
+              uninterrupted generator power, and isolated testing sandboxes.
             </p>
             <div style="display:flex; flex-direction:column; gap:8px; font-size:0.92rem; color:var(--ink-primary);">
-              <div><strong>Address:</strong> Level 4, Software Innovation Center, Gulshan Avenue, Dhaka, Bangladesh</div>
-              <div><strong>Core Hours:</strong> Sunday – Thursday, 09:00 AM – 06:00 PM BST (24/7 on-call for SRE contracts)</div>
-              <div><strong>Email:</strong> <a href="mailto:info@emythmakers.com" style="color:var(--brand-emerald-dark); font-weight:600;">info@emythmakers.com</a> / <a href="mailto:contact@emmsoft.com" style="color:var(--brand-emerald-dark); font-weight:600;">contact@emmsoft.com</a></div>
+              <div><strong>Address:</strong> Level 4, Software Innovation Center, Gulshan Avenue, Dhaka, Bangladesh
+              </div>
+              <div><strong>Core Hours:</strong> Sunday – Thursday, 09:00 AM – 06:00 PM BST (24/7 on-call for SRE
+                contracts)</div>
+              <div><strong>Email:</strong> <a href="mailto:info@emythmakers.com"
+                  style="color:var(--brand-emerald-dark); font-weight:600;">info@emythmakers.com</a> / <a
+                  href="mailto:contact@emmsoft.com"
+                  style="color:var(--brand-emerald-dark); font-weight:600;">contact@emmsoft.com</a></div>
             </div>
           </div>
-          <div style="display:flex; flex-direction:column; gap:14px; justify-content:center; background:var(--bg-alt); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:28px;">
+          <div
+            style="display:flex; flex-direction:column; gap:14px; justify-content:center; background:var(--bg-alt); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:28px;">
             <h4 style="font-size:1.15rem; font-weight:700; margin-bottom:4px;">Have an Upcoming System Initiative?</h4>
             <p style="font-size:0.88rem; color:var(--ink-muted); margin:0; line-height:1.5;">
-              Schedule a 30-minute architectural discovery call directly with our CTO and senior solutions architects to assess technical feasibility and load requirements.
+              Schedule a 30-minute architectural discovery call directly with our CTO and senior solutions architects to
+              assess technical feasibility and load requirements.
             </p>
             <a href="contact.html" class="btn btn-primary" style="margin-top:8px;">Schedule Discovery Consultation →</a>
           </div>
@@ -3123,20 +3455,26 @@
   <!-- ==========================================================================
      CALL TO ACTION
      ========================================================================== -->
-  <section class="section-pad" style="background:linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%); color:#ffffff; text-align:center;">
+  <section class="section-pad"
+    style="background:linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%); color:#ffffff; text-align:center;">
     <div class="container" style="max-width:760px;">
-      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+      <div class="badge-tag"
+        style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
         Start Your Transformation
       </div>
       <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
         Ready to engineer your next mission-critical platform?
       </h2>
       <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
-        Contact our senior engineering leads today for a thorough technical consultation, architectural roadmap, and concurrency feasibility analysis within 4 business hours.
+        Contact our senior engineering leads today for a thorough technical consultation, architectural roadmap, and
+        concurrency feasibility analysis within 4 business hours.
       </p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Start a Project Proposal →</a>
-        <a href="team.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">Explore Our Engineers</a>
+        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Start a Project
+          Proposal →</a>
+        <a href="team.html" class="btn btn-secondary"
+          style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">Explore Our
+          Engineers</a>
       </div>
     </div>
   </section>
@@ -3144,7 +3482,7 @@
   <!-- ==========================================================================
      FOOTER (Synchronized System)
      ========================================================================== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -3152,11 +3490,13 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce
+            Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
-            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
@@ -3189,13 +3529,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>

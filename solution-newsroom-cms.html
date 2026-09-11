@@ -75,7 +75,9 @@
       --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -94,7 +96,8 @@
       overflow-x: hidden;
     }
 
-    img, svg {
+    img,
+    svg {
       display: block;
       max-width: 100%;
     }
@@ -117,7 +120,12 @@
       background: none;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -209,9 +217,17 @@
     }
 
     @keyframes pulseAnim {
-      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
     }
 
     .pill-hot {
@@ -588,7 +604,7 @@
        ========================================================================== */
     .solution-hero {
       background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 60%),
-                  linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
+        linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
       border-bottom: 1px solid var(--border-light);
       padding: clamp(48px, 6vw, 84px) 0 clamp(40px, 5vw, 68px);
       position: relative;
@@ -1238,6 +1254,7 @@
       background: radial-gradient(circle, rgba(4, 148, 73, 0.25) 0%, transparent 70%);
       pointer-events: none;
     }
+
     /* ==========================================================================
        FOOTER (Synchronized with team.html)
        ========================================================================== */
@@ -1319,9 +1336,21 @@
       transition: color 0.2s ease;
     }
 
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
 
     .footer-bottom {
       display: flex;
@@ -1350,7 +1379,8 @@
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-/* Responsive */
+
+    /* Responsive */
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -1369,7 +1399,9 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-actions .btn {
+
+      .nav-links,
+      .nav-actions .btn {
         display: none;
       }
 
@@ -1412,7 +1444,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1422,13 +1455,18 @@
               <!-- Column 1: Services -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1441,7 +1479,11 @@
 
                   <a href="solution-web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1454,7 +1496,10 @@
 
                   <a href="solution-cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1467,7 +1512,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1480,7 +1530,10 @@
 
                   <a href="contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1496,17 +1549,28 @@
               <!-- Column 2: Flagship Solutions -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
-                  <a href="solution-newsroom-cms.html" class="mega-link-card" style="background:var(--brand-emerald-tint);">
+                  <a href="solution-newsroom-cms.html" class="mega-link-card"
+                    style="background:var(--brand-emerald-tint);">
                     <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px; color:var(--brand-emerald-dark);">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span
+                          style="display:inline-flex; align-items:center; gap:6px; color:var(--brand-emerald-dark);">Newsroom
+                          CMS <span class="pill-hot">HOT</span></span>
                         <span class="mega-arrow" style="opacity:1; transform:translateX(0);">→</span>
                       </div>
                       <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
@@ -1515,7 +1579,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1528,7 +1597,11 @@
 
                   <a href="solution-enterprise-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M9 21V9" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1541,7 +1614,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1554,7 +1632,11 @@
 
                   <a href="solution-mobile-apps.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1587,7 +1669,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1596,13 +1679,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1614,7 +1705,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -1625,7 +1717,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -1637,7 +1730,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1654,10 +1751,12 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
-                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    <div
+                      style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                       High-Throughput Engineering
                     </div>
                     <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -1686,21 +1785,29 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html"
+        style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Newsroom CMS
+        <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
       <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company</div>
       <a href="about.html">About Us <span>→</span></a>
       <a href="team.html">Team <span>→</span></a>
       <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+        <span>→</span></a>
     </div>
   </nav>
 
@@ -1725,7 +1832,9 @@
           </div>
           <h1>Purpose-Built <span class="text-emerald">Newsroom CMS</span> for Modern Publishers.</h1>
           <p class="hero-lead">
-            Traditional CMS platforms crumble when 500,000 readers hit breaking news concurrently. eMMSOFT engineers high-concurrency headless newsroom engines featuring sub-50ms edge caching, live multi-journalist desks, automated wire ingestion, and resilient failover.
+            Traditional CMS platforms crumble when 500,000 readers hit breaking news concurrently. eMMSOFT engineers
+            high-concurrency headless newsroom engines featuring sub-50ms edge caching, live multi-journalist desks,
+            automated wire ingestion, and resilient failover.
           </p>
           <div class="hero-actions">
             <a href="contact.html?solution=Newsroom+CMS" class="btn btn-primary">Request Architecture Consultation →</a>
@@ -1756,7 +1865,9 @@
         <div class="interactive-desk-card">
           <div class="desk-header">
             <div class="desk-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z" />
+              </svg>
               Live Editorial Desk Telemetry
             </div>
             <span class="desk-badge">SYNC ACTIVE</span>
@@ -1814,7 +1925,9 @@
         <div class="badge-tag">High-Concurrency Architecture</div>
         <h2>Engineered for zero-crash breaking news spikes.</h2>
         <p>
-          We decouple the editorial write layer from the reader delivery layer. Journalists draft and publish through a distributed API gateway while readers hit ultra-fast Anycast edge caches distributed across 300+ global data centers.
+          We decouple the editorial write layer from the reader delivery layer. Journalists draft and publish through a
+          distributed API gateway while readers hit ultra-fast Anycast edge caches distributed across 300+ global data
+          centers.
         </p>
       </div>
 
@@ -1822,36 +1935,44 @@
         <div class="arch-step-card">
           <span class="arch-step-num">Step 01</span>
           <h3>Ingestion &amp; Desks</h3>
-          <p>Multi-editor concurrent desks, automated Reuters/AP/BSS wire ingestion, and real-time live blogging via WebSockets.</p>
+          <p>Multi-editor concurrent desks, automated Reuters/AP/BSS wire ingestion, and real-time live blogging via
+            WebSockets.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 02</span>
           <h3>Headless Core Engine</h3>
-          <p>Laravel Octane &amp; Go microservices orchestrate article revisions, schema validation, metadata extraction, and tag indexing.</p>
+          <p>Laravel Octane &amp; Go microservices orchestrate article revisions, schema validation, metadata
+            extraction, and tag indexing.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 03</span>
           <h3>Redis &amp; Image DAM</h3>
-          <p>Instantaneous WebP/AVIF compression on the fly, distributed Redis session caching, and automated Google Discover RSS pipelines.</p>
+          <p>Instantaneous WebP/AVIF compression on the fly, distributed Redis session caching, and automated Google
+            Discover RSS pipelines.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 04</span>
           <h3>Global Anycast Edge</h3>
-          <p>Cloudflare Enterprise Anycast network delivers sub-50ms TTFB worldwide with instant cache invalidation triggered in &lt;150ms.</p>
+          <p>Cloudflare Enterprise Anycast network delivers sub-50ms TTFB worldwide with instant cache invalidation
+            triggered in &lt;150ms.</p>
         </div>
       </div>
 
       <div class="arch-callout-box">
         <div class="arch-callout-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
         </div>
         <div class="arch-callout-body">
           <h4>Deterministic Sub-150ms Edge Purging</h4>
           <p>
-            When a breaking news headline or urgent correction is made, eMMSOFT's cache warmer and edge purging pipeline invalidates the stale page across all global CDN edge nodes in under 150 milliseconds without reloading the origin database.
+            When a breaking news headline or urgent correction is made, eMMSOFT's cache warmer and edge purging pipeline
+            invalidates the stale page across all global CDN edge nodes in under 150 milliseconds without reloading the
+            origin database.
           </p>
         </div>
       </div>
@@ -1866,85 +1987,164 @@
       <div class="section-head">
         <div class="badge-tag">Core Features &amp; Modules</div>
         <h2>Enterprise publishing tools designed for demanding newsrooms.</h2>
-        <p>Every tool required by investigative reporters, section editors, and digital publishers to publish faster with zero technical friction.</p>
+        <p>Every tool required by investigative reporters, section editors, and digital publishers to publish faster
+          with zero technical friction.</p>
       </div>
 
       <div class="cap-grid">
         <!-- 1 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
           </div>
           <h3>Collaborative Live Desks</h3>
-          <p>Multi-journalist real-time co-authoring with granular paragraph locking, instant revision histories, and inline editor comments.</p>
+          <p>Multi-journalist real-time co-authoring with granular paragraph locking, instant revision histories, and
+            inline editor comments.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Zero lock conflicts during breaking news</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Instant draft auto-recovery via local cache</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Zero lock conflicts during breaking news</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Instant draft auto-recovery via local cache</li>
           </ul>
         </div>
 
         <!-- 2 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+              <path
+                d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+            </svg>
           </div>
           <h3>Automated Wire Syndication</h3>
-          <p>Direct real-time ingestion from Reuters, AP, AFP, UNB, and BSS. Automated classification, tagging, and one-click editorial rewrite drafts.</p>
+          <p>Direct real-time ingestion from Reuters, AP, AFP, UNB, and BSS. Automated classification, tagging, and
+            one-click editorial rewrite drafts.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Filter by topic, geography &amp; urgency</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automatic media license verification</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Filter by topic, geography &amp; urgency</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Automatic media license verification</li>
           </ul>
         </div>
 
         <!-- 3 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+              <line x1="1" y1="10" x2="23" y2="10" />
+            </svg>
           </div>
           <h3>Dynamic Metered Paywalls</h3>
-          <p>Maximize digital subscription revenue with intelligent metered paywalls, localized payment gateways (bKash, Nagad, Cards), and VIP ad-free reader modes.</p>
+          <p>Maximize digital subscription revenue with intelligent metered paywalls, localized payment gateways (bKash,
+            Nagad, Cards), and VIP ad-free reader modes.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Dynamic meter based on reader intent</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Frictionless recurring mobile billing</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Dynamic meter based on reader intent</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Frictionless recurring mobile billing</li>
           </ul>
         </div>
 
         <!-- 4 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="m4.93 4.93 4.24 4.24" />
+              <path d="m14.83 9.17 4.24-4.24" />
+              <path d="m14.83 14.83 4.24 4.24" />
+              <path d="m9.17 14.83-4.24 4.24" />
+            </svg>
           </div>
           <h3>Automated Google Discover &amp; SEO</h3>
-          <p>Pre-rendered schema metadata, instant JSON-LD NewsArticle generation, dynamic AMP pipelines, and Google Discover image optimization.</p>
+          <p>Pre-rendered schema metadata, instant JSON-LD NewsArticle generation, dynamic AMP pipelines, and Google
+            Discover image optimization.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 100% Core Web Vitals compliance</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automated sitemap pinging within 5 seconds</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> 100% Core Web Vitals compliance</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Automated sitemap pinging within 5 seconds</li>
           </ul>
         </div>
 
         <!-- 5 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
           </div>
           <h3>Intelligent Digital Asset Manager</h3>
-          <p>Instant photo upload with automated focal-point cropping, WebP/AVIF compression, copyright watermarking, and centralized photo archives.</p>
+          <p>Instant photo upload with automated focal-point cropping, WebP/AVIF compression, copyright watermarking,
+            and centralized photo archives.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 70% image bandwidth reduction</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> IPTC &amp; EXIF metadata extraction</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> 70% image bandwidth reduction</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> IPTC &amp; EXIF metadata extraction</li>
           </ul>
         </div>
 
         <!-- 6 -->
         <div class="cap-card">
           <div class="cap-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              <polyline points="2 17 12 22 22 17" />
+              <polyline points="2 12 12 17 22 12" />
+            </svg>
           </div>
           <h3>Omnichannel Headless Distribution</h3>
-          <p>Publish once, deliver everywhere: Next.js website, native iOS &amp; Android Flutter apps, digital billboards, and syndicated partner RSS feeds.</p>
+          <p>Publish once, deliver everywhere: Next.js website, native iOS &amp; Android Flutter apps, digital
+            billboards, and syndicated partner RSS feeds.</p>
           <ul class="cap-bullets">
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Clean GraphQL &amp; RESTful API contracts</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Sub-second push notification dispatch</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Clean GraphQL &amp; RESTful API contracts</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
+              </svg> Sub-second push notification dispatch</li>
           </ul>
         </div>
       </div>
@@ -1965,7 +2165,11 @@
       <div class="stack-matrix-grid">
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
             Frontend Layer
           </div>
           <div class="stack-list">
@@ -1986,7 +2190,10 @@
 
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
             Backend &amp; Desks
           </div>
           <div class="stack-list">
@@ -2007,7 +2214,11 @@
 
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
             Data &amp; Caching
           </div>
           <div class="stack-list">
@@ -2028,7 +2239,9 @@
 
         <div class="stack-col-card">
           <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+            </svg>
             Cloud &amp; Security
           </div>
           <div class="stack-list">
@@ -2071,7 +2284,9 @@
             </div>
             <h3>Daily Janakantha: 28M+ Readers with Zero National Election Downtime</h3>
             <p>
-              Migrated from an aging monolithic PHP system to eMMSOFT's decoupled Next.js &amp; Laravel Octane Newsroom CMS. During breaking news events and national election night, the portal absorbed massive concurrent reader spikes with 99.4% cache hit rates.
+              Migrated from an aging monolithic PHP system to eMMSOFT's decoupled Next.js &amp; Laravel Octane Newsroom
+              CMS. During breaking news events and national election night, the portal absorbed massive concurrent
+              reader spikes with 99.4% cache hit rates.
             </p>
           </div>
           <div class="case-stats-row">
@@ -2099,7 +2314,9 @@
             </div>
             <h3>Channel 24: Real-Time Television Broadcast &amp; Digital Convergence</h3>
             <p>
-              Integrated live broadcast streaming, instant ticker updates, and breaking news alerts directly into an omnichannel digital portal. Reporters can publish breaking videos and bulletin summaries in under 30 seconds from anywhere.
+              Integrated live broadcast streaming, instant ticker updates, and breaking news alerts directly into an
+              omnichannel digital portal. Reporters can publish breaking videos and bulletin summaries in under 30
+              seconds from anywhere.
             </p>
           </div>
           <div class="case-stats-row">
@@ -2133,32 +2350,37 @@
       <div class="section-head">
         <div class="badge-tag">Execution Methodology</div>
         <h2>From legacy migration to zero-downtime cutover.</h2>
-        <p>A deterministic 4-phase rollout designed to safeguard existing search engine indexing and reader continuity.</p>
+        <p>A deterministic 4-phase rollout designed to safeguard existing search engine indexing and reader continuity.
+        </p>
       </div>
 
       <div class="process-timeline">
         <div class="process-node">
           <div class="node-num">1</div>
           <h4>Editorial Workflow Audit</h4>
-          <p>We analyze current reporting bottlenecks, wire ingestion requirements, and categorize all historical article archives for automated migration.</p>
+          <p>We analyze current reporting bottlenecks, wire ingestion requirements, and categorize all historical
+            article archives for automated migration.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">2</div>
           <h4>Headless Core Build</h4>
-          <p>We configure decoupled APIs, custom editorial desk permissions, automated image transcode pipelines, and responsive Next.js frontend templates.</p>
+          <p>We configure decoupled APIs, custom editorial desk permissions, automated image transcode pipelines, and
+            responsive Next.js frontend templates.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">3</div>
           <h4>100k Concurrency Stress Test</h4>
-          <p>We simulate 100,000 simultaneous users hitting breaking news endpoints on staging to guarantee the Redis cache warmer and CDN failover work flawlessly.</p>
+          <p>We simulate 100,000 simultaneous users hitting breaking news endpoints on staging to guarantee the Redis
+            cache warmer and CDN failover work flawlessly.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">4</div>
           <h4>Zero-Downtime DNS Cutover</h4>
-          <p>We execute zero-downtime domain cutover with complete 301 URL redirect preserving 100% of historical Google SEO rankings, backed by 24/7 SLA monitoring.</p>
+          <p>We execute zero-downtime domain cutover with complete 301 URL redirect preserving 100% of historical Google
+            SEO rankings, backed by 24/7 SLA monitoring.</p>
         </div>
       </div>
     </div>
@@ -2169,18 +2391,23 @@
        ========================================================================== -->
   <section class="section-pad cta-banner">
     <div class="container" style="max-width:760px; position:relative; z-index:1;">
-      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+      <div class="badge-tag"
+        style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
         Elevate Your Publication
       </div>
       <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
         Ready to modernize your newsroom infrastructure?
       </h2>
       <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
-        Speak directly with our senior software architects. Receive a comprehensive technical feasibility review, migration strategy, and concurrency assessment within 4 business hours.
+        Speak directly with our senior software architects. Receive a comprehensive technical feasibility review,
+        migration strategy, and concurrency assessment within 4 business hours.
       </p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html?solution=Newsroom+CMS" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Request Technical Proposal →</a>
-        <a href="work.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Live Case Studies</a>
+        <a href="contact.html?solution=Newsroom+CMS" class="btn btn-primary"
+          style="padding:15px 32px; font-size:1.05rem;">Request Technical Proposal →</a>
+        <a href="work.html" class="btn btn-secondary"
+          style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Live Case
+          Studies</a>
       </div>
     </div>
   </section>
@@ -2188,7 +2415,7 @@
   <!-- ==========================================================================
        FOOTER
        ========================================================================== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -2196,18 +2423,21 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce
+            Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
-            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
         <div class="footer-col">
           <h4>Core Solutions</h4>
           <ul>
-            <li><a href="solution-newsroom-cms.html" style="color:var(--brand-emerald-dark); font-weight:700;">Newsroom CMS (Headless)</a></li>
+            <li><a href="solution-newsroom-cms.html" style="color:var(--brand-emerald-dark); font-weight:700;">Newsroom
+                CMS (Headless)</a></li>
             <li><a href="solution-ecommerce.html">E-Commerce Platforms</a></li>
             <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
             <li><a href="solution-enterprise-cms.html">Enterprise Headless CMS</a></li>
@@ -2233,13 +2463,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
@@ -2270,4 +2502,5 @@
   </script>
 
 </body>
+
 </html>

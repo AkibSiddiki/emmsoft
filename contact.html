@@ -120,12 +120,19 @@
       background: none;
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       font-family: inherit;
       font-size: 1rem;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -221,12 +228,20 @@
     }
 
     @keyframes pulseAnim {
-      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
     }
 
-        /* ==========================================================================
+    /* ==========================================================================
      NAVBAR (Synchronized System)
      ========================================================================== */
     .nav {
@@ -358,8 +373,8 @@
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.25s;
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.25s;
       z-index: 300;
     }
 
@@ -725,10 +740,12 @@
     }
 
     @media (max-width: 960px) {
+
       .nav-links,
       .nav-actions .btn {
         display: none;
       }
+
       .nav-burger {
         display: flex;
       }
@@ -739,8 +756,8 @@
        ========================================================================== */
     .contact-hero {
       background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.08) 0%, transparent 45%),
-                  radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-                  var(--bg-main);
+        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+        var(--bg-main);
       padding: clamp(48px, 6vw, 80px) 0 clamp(36px, 4vw, 56px);
       border-bottom: 1px solid var(--border-light);
       position: relative;
@@ -1105,6 +1122,7 @@
       margin: 0;
       line-height: 1.5;
     }
+
     /* ==========================================================================
        FOOTER (Synchronized with team.html)
        ========================================================================== */
@@ -1186,9 +1204,21 @@
       transition: color 0.2s ease;
     }
 
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
 
     .footer-bottom {
       display: flex;
@@ -1217,7 +1247,7 @@
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-</style>
+  </style>
 </head>
 
 <body>
@@ -1236,7 +1266,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1246,13 +1277,18 @@
               <!-- Column 1: Services -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1265,7 +1301,11 @@
 
                   <a href="solution-web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1278,7 +1318,10 @@
 
                   <a href="solution-cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1291,7 +1334,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1304,7 +1352,10 @@
 
                   <a href="contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1320,17 +1371,26 @@
               <!-- Column 2: Flagship Solutions -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span
+                            class="pill-hot">HOT</span></span>
                         <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
@@ -1339,7 +1399,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1352,7 +1417,11 @@
 
                   <a href="solution-enterprise-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <path d="M3 9h18M9 21V9"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1365,7 +1434,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1378,7 +1452,11 @@
 
                   <a href="solution-mobile-apps.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1411,7 +1489,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1420,13 +1499,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1438,7 +1525,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -1449,7 +1537,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -1461,7 +1550,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1478,10 +1571,12 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
-                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    <div
+                      style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                       High-Throughput Engineering
                     </div>
                     <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -1510,21 +1605,29 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+          style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
       <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company</div>
       <a href="about.html">About Us <span>→</span></a>
       <a href="team.html">Team <span>→</span></a>
       <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700; background:var(--brand-emerald-tint);">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html"
+        style="color:var(--brand-emerald-dark); font-weight:700; background:var(--brand-emerald-tint);">Start a Project
+        / Contact <span>→</span></a>
     </div>
   </nav>
 
@@ -1541,14 +1644,18 @@
           </div>
           <h1>Let's build your <span class="text-emerald">next architectural breakthrough</span>.</h1>
           <p>
-            Whether you are launching a high-concurrency Newsroom CMS, building a multi-vendor E-Commerce portal, or migrating microservices to the cloud, our senior engineering team is ready to collaborate.
+            Whether you are launching a high-concurrency Newsroom CMS, building a multi-vendor E-Commerce portal, or
+            migrating microservices to the cloud, our senior engineering team is ready to collaborate.
           </p>
 
           <!-- SLA Strip -->
           <div class="sla-highlights">
             <div class="sla-card">
               <div class="sla-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
               </div>
               <div class="sla-info">
                 <h4>4-Hour SLA</h4>
@@ -1557,7 +1664,9 @@
             </div>
             <div class="sla-card">
               <div class="sla-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
               </div>
               <div class="sla-info">
                 <h4>NDA Guaranteed</h4>
@@ -1566,7 +1675,10 @@
             </div>
             <div class="sla-card">
               <div class="sla-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                </svg>
               </div>
               <div class="sla-info">
                 <h4>Direct Tech Leads</h4>
@@ -1580,13 +1692,21 @@
         <div>
           <div class="tech-lead-badge">
             <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash - CTO" class="tech-lead-avatar">
-            <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); text-transform:uppercase; letter-spacing:0.06em; font-weight:700;">Direct Technical Review</div>
+            <div
+              style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); text-transform:uppercase; letter-spacing:0.06em; font-weight:700;">
+              Direct Technical Review</div>
             <h3 style="color:#ffffff; font-size:1.15rem; margin:4px 0 8px 0;">Nurul Afsar Polash</h3>
             <p style="font-size:0.88rem; color:#94a3b8; margin:0 0 16px 0; line-height:1.45;">
-              "Every project proposal submitted here goes directly to our architecture team for technical feasibility review, stack evaluation, and high-concurrency analysis."
+              "Every project proposal submitted here goes directly to our architecture team for technical feasibility
+              review, stack evaluation, and high-concurrency analysis."
             </p>
-            <div style="display:flex; gap:12px; align-items:center; font-size:0.82rem; color:#cbd5e1; font-family:var(--font-mono);">
-              <span style="display:inline-flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.59L8.41 12 9.83 10.58 13 13.75l5.17-5.17L19.59 10z"/></svg> Senior Lead Review</span>
+            <div
+              style="display:flex; gap:12px; align-items:center; font-size:0.82rem; color:#cbd5e1; font-family:var(--font-mono);">
+              <span style="display:inline-flex; align-items:center; gap:5px;"><svg width="12" height="12"
+                  viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.59L8.41 12 9.83 10.58 13 13.75l5.17-5.17L19.59 10z" />
+                </svg> Senior Lead Review</span>
               <span>•</span>
               <span>Dhaka Studio HQ</span>
             </div>
@@ -1613,31 +1733,53 @@
               </div>
               <div class="interest-chips" id="interestChips">
                 <button type="button" class="chip-btn" data-interest="Newsroom CMS">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z" />
+                  </svg>
                   Newsroom CMS (Headless)
                 </button>
                 <button type="button" class="chip-btn" data-interest="E-Commerce Platform">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
                   E-Commerce &amp; Flash Sales
                 </button>
                 <button type="button" class="chip-btn" data-interest="Cloud & DevOps">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Cloud Architecture &amp; DevOps
                 </button>
                 <button type="button" class="chip-btn" data-interest="Enterprise CMS">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Enterprise Portal
                 </button>
                 <button type="button" class="chip-btn" data-interest="Web Applications & SaaS">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Web Applications &amp; SaaS
                 </button>
                 <button type="button" class="chip-btn" data-interest="Mobile App">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
                   Native Mobile Apps (iOS/Android)
                 </button>
                 <button type="button" class="chip-btn" data-interest="Custom Microservices">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
                   Custom Software / API Audit
                 </button>
               </div>
@@ -1650,11 +1792,13 @@
               <div class="form-grid-2">
                 <div class="field-group">
                   <label for="p-name">Full Name *</label>
-                  <input type="text" id="p-name" name="name" required placeholder="e.g. Tanvir Ahmed" autocomplete="name">
+                  <input type="text" id="p-name" name="name" required placeholder="e.g. Tanvir Ahmed"
+                    autocomplete="name">
                 </div>
                 <div class="field-group">
                   <label for="p-email">Work Email *</label>
-                  <input type="email" id="p-email" name="email" required placeholder="tanvir@company.com" autocomplete="email">
+                  <input type="email" id="p-email" name="email" required placeholder="tanvir@company.com"
+                    autocomplete="email">
                 </div>
               </div>
 
@@ -1688,7 +1832,8 @@
                   <select id="p-budget" name="budget">
                     <option value="Standard Solution ($5k - $15k)">Standard Solution / Turnkey ($5k - $15k)</option>
                     <option value="Enterprise Platform ($15k - $40k)">Enterprise Platform ($15k - $40k)</option>
-                    <option value="Mission-Critical Scale ($40k+)" selected>Mission-Critical / High Concurrency ($40k+)</option>
+                    <option value="Mission-Critical Scale ($40k+)" selected>Mission-Critical / High Concurrency ($40k+)
+                    </option>
                     <option value="Retainer / Ongoing Support">Retainer / Dedicated Architecture Team</option>
                   </select>
                 </div>
@@ -1705,7 +1850,8 @@
               </button>
 
               <div class="form-success-banner" id="formSuccessMessage">
-                ✓ Proposal Submitted Successfully! Our senior systems lead will analyze your project requirements and email you an architectural overview within 4 business hours.
+                ✓ Proposal Submitted Successfully! Our senior systems lead will analyze your project requirements and
+                email you an architectural overview within 4 business hours.
               </div>
             </form>
           </div>
@@ -1717,13 +1863,19 @@
           <!-- Studio Location & Office Card -->
           <div class="sidebar-card">
             <h3>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
               Engineering Studio HQ
             </h3>
-            
+
             <div class="contact-item">
               <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
               </div>
               <div class="contact-item-text">
                 <div class="title">Studio Address</div>
@@ -1733,18 +1885,26 @@
 
             <div class="contact-item">
               <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
               </div>
               <div class="contact-item-text">
                 <div class="title">Official Email</div>
                 <a href="mailto:info@emythmakers.com" class="value">info@emythmakers.com</a><br>
-                <a href="mailto:contact@emmsoft.com" class="value" style="font-size:0.9rem; color:var(--ink-muted);">contact@emmsoft.com</a>
+                <a href="mailto:contact@emmsoft.com" class="value"
+                  style="font-size:0.9rem; color:var(--ink-muted);">contact@emmsoft.com</a>
               </div>
             </div>
 
             <div class="contact-item">
               <div class="contact-item-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
               </div>
               <div class="contact-item-text">
                 <div class="title">Phone &amp; WhatsApp</div>
@@ -1754,15 +1914,22 @@
           </div>
 
           <!-- Studio Guarantee Card -->
-          <div class="sidebar-card" style="background:var(--brand-emerald-tint); border-color:var(--brand-emerald-border);">
+          <div class="sidebar-card"
+            style="background:var(--brand-emerald-tint); border-color:var(--brand-emerald-border);">
             <h3 style="color:var(--brand-emerald-dark);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
               eMMSOFT Production SLA
             </h3>
-            <ul style="font-size:0.88rem; color:var(--ink-secondary); display:flex; flex-direction:column; gap:10px; padding-left:18px; list-style-type:disc;">
-              <li><strong>Sub-50ms TTFB Guarantee:</strong> Optimized database indexing, Redis cluster caching, and Cloudflare Workers edge rules.</li>
-              <li><strong>Zero Downtime Deployments:</strong> Blue/Green automated CI/CD pipelines with health check rollbacks.</li>
-              <li><strong>Dedicated Engineering Squad:</strong> Direct Slack / Teams communication channel with named systems leads.</li>
+            <ul
+              style="font-size:0.88rem; color:var(--ink-secondary); display:flex; flex-direction:column; gap:10px; padding-left:18px; list-style-type:disc;">
+              <li><strong>Sub-50ms TTFB Guarantee:</strong> Optimized database indexing, Redis cluster caching, and
+                Cloudflare Workers edge rules.</li>
+              <li><strong>Zero Downtime Deployments:</strong> Blue/Green automated CI/CD pipelines with health check
+                rollbacks.</li>
+              <li><strong>Dedicated Engineering Squad:</strong> Direct Slack / Teams communication channel with named
+                systems leads.</li>
             </ul>
           </div>
 
@@ -1779,25 +1946,30 @@
       <div style="text-align:center; max-width:640px; margin:0 auto 40px auto;">
         <div class="badge-tag">Proposal FAQ</div>
         <h2>Frequently Asked <span style="color:var(--brand-emerald);">Questions</span></h2>
-        <p style="color:var(--ink-secondary);">Common inquiries regarding project onboarding, timeline estimation, and team allocation.</p>
+        <p style="color:var(--ink-secondary);">Common inquiries regarding project onboarding, timeline estimation, and
+          team allocation.</p>
       </div>
 
       <div class="faq-grid">
         <div class="faq-card">
           <h4>How quickly can eMMSOFT kick off a project?</h4>
-          <p>Upon reviewing your inquiry and conducting an initial architecture discovery call (typically within 24–48 hours), we can assign a dedicated engineering squad within 3 business days.</p>
+          <p>Upon reviewing your inquiry and conducting an initial architecture discovery call (typically within 24–48
+            hours), we can assign a dedicated engineering squad within 3 business days.</p>
         </div>
         <div class="faq-card">
           <h4>Do you sign NDAs before initial discussions?</h4>
-          <p>Yes. We treat all business models, technical assets, and client data with extreme confidentiality. We routinely sign non-disclosure agreements prior to reviewing project codebases or wireframes.</p>
+          <p>Yes. We treat all business models, technical assets, and client data with extreme confidentiality. We
+            routinely sign non-disclosure agreements prior to reviewing project codebases or wireframes.</p>
         </div>
         <div class="faq-card">
           <h4>Can you modernize or rescue an existing codebase?</h4>
-          <p>Absolutely. We specialize in high-concurrency re-architecting, migrating legacy monoliths to headless microservices, and optimizing slow database queries without disrupting live production traffic.</p>
+          <p>Absolutely. We specialize in high-concurrency re-architecting, migrating legacy monoliths to headless
+            microservices, and optimizing slow database queries without disrupting live production traffic.</p>
         </div>
         <div class="faq-card">
           <h4>What support model do you provide post-launch?</h4>
-          <p>We provide comprehensive 24/7 SLA monitoring, automated security patch updates, performance auditing, and ongoing feature enhancement retainers tailored to your platform's operational scale.</p>
+          <p>We provide comprehensive 24/7 SLA monitoring, automated security patch updates, performance auditing, and
+            ongoing feature enhancement retainers tailored to your platform's operational scale.</p>
         </div>
       </div>
     </div>
@@ -1806,7 +1978,7 @@
   <!-- ==========================================================================
      FOOTER (Synchronized System)
      ========================================================================== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -1814,11 +1986,13 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce
+            Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
-            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
@@ -1851,13 +2025,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
@@ -1919,14 +2095,14 @@
         chipButtons.forEach(btn => {
           const interest = (btn.getAttribute('data-interest') || '').toLowerCase().replace(/[^a-z0-9]/g, '');
           if (interest.includes(query) || query.includes(interest) ||
-              (query.includes('newsroom') && interest.includes('newsroom')) ||
-              (query.includes('commerce') && interest.includes('commerce')) ||
-              (query.includes('cloud') && interest.includes('cloud')) ||
-              (query.includes('devops') && interest.includes('devops')) ||
-              (query.includes('enterprise') && interest.includes('enterprise')) ||
-              (query.includes('mobile') && interest.includes('mobile')) ||
-              ((query.includes('webapp') || query.includes('saas')) && interest.includes('webapp')) ||
-              ((query.includes('microservice') || query.includes('custom') || query.includes('sla')) && interest.includes('microservice'))) {
+            (query.includes('newsroom') && interest.includes('newsroom')) ||
+            (query.includes('commerce') && interest.includes('commerce')) ||
+            (query.includes('cloud') && interest.includes('cloud')) ||
+            (query.includes('devops') && interest.includes('devops')) ||
+            (query.includes('enterprise') && interest.includes('enterprise')) ||
+            (query.includes('mobile') && interest.includes('mobile')) ||
+            ((query.includes('webapp') || query.includes('saas')) && interest.includes('webapp')) ||
+            ((query.includes('microservice') || query.includes('custom') || query.includes('sla')) && interest.includes('microservice'))) {
             selectedInterests.add(btn.getAttribute('data-interest'));
             btn.classList.add('is-selected');
           }

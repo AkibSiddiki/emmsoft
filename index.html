@@ -338,7 +338,7 @@
       width: 100%;
     }
 
-        /* ==========================================================================
+    /* ==========================================================================
      NAVBAR (Synchronized System)
      ========================================================================== */
     .nav {
@@ -470,8 +470,8 @@
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.25s;
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.25s;
       z-index: 300;
     }
 
@@ -837,10 +837,12 @@
     }
 
     @media (max-width: 960px) {
+
       .nav-links,
       .nav-actions .btn {
         display: none;
       }
+
       .nav-burger {
         display: flex;
       }
@@ -1311,46 +1313,94 @@
     }
 
     /* Optical sizing per logo for harmonious visual balance */
-    .client-logo-item.item-bdnews24 img { max-height: 28px; }
-    .client-logo-item.item-channel24 img { max-height: 48px; }
-    .client-logo-item.item-janakantha img { max-height: 32px; }
-    .client-logo-item.item-step img { max-height: 40px; }
-    .client-logo-item.item-farming img { max-height: 38px; }
-    .client-logo-item.item-tribune img { max-height: 28px; }
+    .client-logo-item.item-bdnews24 img {
+      max-height: 28px;
+    }
+
+    .client-logo-item.item-channel24 img {
+      max-height: 48px;
+    }
+
+    .client-logo-item.item-janakantha img {
+      max-height: 32px;
+    }
+
+    .client-logo-item.item-step img {
+      max-height: 40px;
+    }
+
+    .client-logo-item.item-farming img {
+      max-height: 38px;
+    }
+
+    .client-logo-item.item-tribune img {
+      max-height: 28px;
+    }
 
     /* Box-shaped & Circular Logos Scaled Up for Balance */
-    .client-logo-item.item-diamond img { max-height: 52px; }
+    .client-logo-item.item-diamond img {
+      max-height: 52px;
+    }
+
     .client-logo-item.item-buet img,
-    .client-logo-item.item-buet svg { max-height: 54px; width: 54px; }
-    .client-logo-item.item-hameem img { max-height: 38px; mix-blend-mode: normal; border-radius: 4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
-    .client-logo-item.item-citygroup img { max-height: 50px; }
+    .client-logo-item.item-buet svg {
+      max-height: 54px;
+      width: 54px;
+    }
+
+    .client-logo-item.item-hameem img {
+      max-height: 38px;
+      mix-blend-mode: normal;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .client-logo-item.item-citygroup img {
+      max-height: 50px;
+    }
+
     .client-logo-item.item-du img,
-    .client-logo-item.item-du svg { max-height: 54px; width: auto; }
-    .client-logo-item.item-walton img { max-height: 42px; }
-    .client-logo-item.item-pran img { max-height: 46px; }
+    .client-logo-item.item-du svg {
+      max-height: 54px;
+      width: auto;
+    }
+
+    .client-logo-item.item-walton img {
+      max-height: 42px;
+    }
+
+    .client-logo-item.item-pran img {
+      max-height: 46px;
+    }
 
     @media (max-width: 768px) {
       .clients-strip-section {
         padding: 14px 0;
       }
+
       .clients-bar-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
       }
+
       .clients-lead-col {
         padding-right: 0;
         gap: 14px;
       }
+
       .clients-heading {
         font-size: 0.96rem;
       }
+
       .clients-separator {
         display: none;
       }
+
       .clients-carousel-wrapper {
         width: 100%;
       }
+
       .clients-track {
         gap: 32px;
       }
@@ -2298,6 +2348,7 @@
         grid-template-columns: 1fr;
       }
     }
+
     /* ==========================================================================
        FOOTER (Synchronized with team.html)
        ========================================================================== */
@@ -2379,9 +2430,21 @@
       transition: color 0.2s ease;
     }
 
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
 
     .footer-bottom {
       display: flex;
@@ -2410,7 +2473,8 @@
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-/* Reveal Utility */
+
+    /* Reveal Utility */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -2635,9 +2699,11 @@
       .mega-menu {
         width: 680px;
       }
+
       .team-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .about-story-grid {
         grid-template-columns: 1fr;
       }
@@ -2647,6 +2713,7 @@
       .team-grid {
         grid-template-columns: 1fr;
       }
+
       .about-values-list {
         grid-template-columns: 1fr;
       }
@@ -2813,7 +2880,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -2823,13 +2891,18 @@
               <!-- Column 1: Services -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2842,7 +2915,11 @@
 
                   <a href="solution-web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2855,7 +2932,10 @@
 
                   <a href="solution-cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2868,7 +2948,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2881,7 +2966,10 @@
 
                   <a href="contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2897,17 +2985,26 @@
               <!-- Column 2: Flagship Solutions -->
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span
+                            class="pill-hot">HOT</span></span>
                         <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
@@ -2916,7 +3013,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2929,7 +3031,11 @@
 
                   <a href="solution-enterprise-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <path d="M3 9h18M9 21V9"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2942,7 +3048,12 @@
 
                   <a href="solution-web-applications.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2955,7 +3066,11 @@
 
                   <a href="solution-mobile-apps.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -2988,7 +3103,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -2997,13 +3113,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -3015,7 +3139,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -3026,7 +3151,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -3038,7 +3164,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -3055,10 +3185,12 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
-                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    <div
+                      style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                       High-Throughput Engineering
                     </div>
                     <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -3087,21 +3219,28 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html" style="color:var(--brand-emerald-dark); font-weight:700;">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+          style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
       <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company</div>
       <a href="about.html">About Us <span>→</span></a>
       <a href="team.html">Team <span>→</span></a>
       <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+        <span>→</span></a>
     </div>
   </nav>
 
@@ -3315,12 +3454,14 @@
           <div class="clients-track-viewport" id="clientsTrackViewport">
             <div class="clients-track" id="clientsTrack">
               <!-- 1. bdnews24.com -->
-              <div class="client-logo-item item-bdnews24" title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
+              <div class="client-logo-item item-bdnews24"
+                title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
                 <img src="assets/clients/bdnews24.svg" alt="bdnews24.com" loading="lazy">
               </div>
 
               <!-- 2. Channel 24 -->
-              <div class="client-logo-item item-channel24" title="Channel 24 - Leading 24/7 News & Infotainment Network">
+              <div class="client-logo-item item-channel24"
+                title="Channel 24 - Leading 24/7 News & Infotainment Network">
                 <img src="assets/clients/channel24_hd.png" alt="Channel 24" loading="lazy">
               </div>
 
@@ -3335,7 +3476,8 @@
               </div>
 
               <!-- 5. Farming Future Bangladesh -->
-              <div class="client-logo-item item-farming" title="Farming Future Bangladesh - Agro Biotechnology Initiative">
+              <div class="client-logo-item item-farming"
+                title="Farming Future Bangladesh - Agro Biotechnology Initiative">
                 <img src="assets/clients/farming_future_alt.png" alt="Farming Future Bangladesh" loading="lazy">
               </div>
 
@@ -3345,7 +3487,8 @@
               </div>
 
               <!-- 7. BUET -->
-              <div class="client-logo-item item-buet" title="BUET - Bangladesh University of Engineering and Technology">
+              <div class="client-logo-item item-buet"
+                title="BUET - Bangladesh University of Engineering and Technology">
                 <img src="assets/clients/buet.svg" alt="BUET" loading="lazy">
               </div>
 
@@ -3355,7 +3498,8 @@
               </div>
 
               <!-- 9. City Group -->
-              <div class="client-logo-item item-citygroup" title="City Group - Premier Food & Consumer Goods Conglomerate">
+              <div class="client-logo-item item-citygroup"
+                title="City Group - Premier Food & Consumer Goods Conglomerate">
                 <img src="assets/clients/city_group.jpg" alt="City Group" loading="lazy">
               </div>
 
@@ -3381,12 +3525,14 @@
 
               <!-- Seamless Infinite Loop Duplicate Set -->
               <!-- 14. bdnews24.com -->
-              <div class="client-logo-item item-bdnews24" title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
+              <div class="client-logo-item item-bdnews24"
+                title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
                 <img src="assets/clients/bdnews24.svg" alt="bdnews24.com" loading="lazy">
               </div>
 
               <!-- 15. Channel 24 -->
-              <div class="client-logo-item item-channel24" title="Channel 24 - Leading 24/7 News & Infotainment Network">
+              <div class="client-logo-item item-channel24"
+                title="Channel 24 - Leading 24/7 News & Infotainment Network">
                 <img src="assets/clients/channel24_hd.png" alt="Channel 24" loading="lazy">
               </div>
 
@@ -3401,7 +3547,8 @@
               </div>
 
               <!-- 18. Farming Future Bangladesh -->
-              <div class="client-logo-item item-farming" title="Farming Future Bangladesh - Agro Biotechnology Initiative">
+              <div class="client-logo-item item-farming"
+                title="Farming Future Bangladesh - Agro Biotechnology Initiative">
                 <img src="assets/clients/farming_future_alt.png" alt="Farming Future Bangladesh" loading="lazy">
               </div>
 
@@ -3411,7 +3558,8 @@
               </div>
 
               <!-- 20. BUET -->
-              <div class="client-logo-item item-buet" title="BUET - Bangladesh University of Engineering and Technology">
+              <div class="client-logo-item item-buet"
+                title="BUET - Bangladesh University of Engineering and Technology">
                 <img src="assets/clients/buet.svg" alt="BUET" loading="lazy">
               </div>
 
@@ -3421,7 +3569,8 @@
               </div>
 
               <!-- 22. City Group -->
-              <div class="client-logo-item item-citygroup" title="City Group - Premier Food & Consumer Goods Conglomerate">
+              <div class="client-logo-item item-citygroup"
+                title="City Group - Premier Food & Consumer Goods Conglomerate">
                 <img src="assets/clients/city_group.jpg" alt="City Group" loading="lazy">
               </div>
 
@@ -3600,8 +3749,10 @@
             <span class="stack-pill">Cloudflare Enterprise</span>
             <span class="stack-pill">PostgreSQL</span>
           </div>
-          <div class="pane-actions" style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <a href="solution-newsroom-cms.html" class="btn btn-primary btn-sm">Explore Newsroom CMS Architecture & Details →</a>
+          <div class="pane-actions"
+            style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="solution-newsroom-cms.html" class="btn btn-primary btn-sm">Explore Newsroom CMS Architecture &
+              Details →</a>
             <a href="contact.html?solution=Newsroom+CMS" class="btn btn-secondary btn-sm">Request Tech Proposal</a>
           </div>
         </div>
@@ -3691,9 +3842,12 @@
             <span class="stack-pill">Tailwind CSS</span>
             <span class="stack-pill">Redis Queues</span>
           </div>
-          <div class="pane-actions" style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <a href="solution-ecommerce.html" class="btn btn-primary btn-sm">Explore E-Commerce Architecture & Details →</a>
-            <a href="contact.html?solution=E-Commerce+Platform" class="btn btn-secondary btn-sm">Request Tech Proposal</a>
+          <div class="pane-actions"
+            style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="solution-ecommerce.html" class="btn btn-primary btn-sm">Explore E-Commerce Architecture & Details
+              →</a>
+            <a href="contact.html?solution=E-Commerce+Platform" class="btn btn-secondary btn-sm">Request Tech
+              Proposal</a>
           </div>
         </div>
         <div class="pane-visual">
@@ -3782,8 +3936,10 @@
             <span class="stack-pill">GitHub Actions CI/CD</span>
             <span class="stack-pill">Prometheus &amp; Grafana</span>
           </div>
-          <div class="pane-actions" style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <a href="solution-cloud-devops.html" class="btn btn-primary btn-sm">Explore Cloud & DevOps Architecture & Details →</a>
+          <div class="pane-actions"
+            style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="solution-cloud-devops.html" class="btn btn-primary btn-sm">Explore Cloud & DevOps Architecture &
+              Details →</a>
             <a href="contact.html?solution=Cloud+%26+DevOps" class="btn btn-secondary btn-sm">Request Tech Proposal</a>
           </div>
         </div>
@@ -3872,8 +4028,10 @@
             <span class="stack-pill">Next.js Frontend</span>
             <span class="stack-pill">AWS S3 / CloudFront</span>
           </div>
-          <div class="pane-actions" style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <a href="solution-enterprise-cms.html" class="btn btn-primary btn-sm">Explore Enterprise Headless CMS Details →</a>
+          <div class="pane-actions"
+            style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="solution-enterprise-cms.html" class="btn btn-primary btn-sm">Explore Enterprise Headless CMS
+              Details →</a>
             <a href="contact.html?solution=Enterprise+CMS" class="btn btn-secondary btn-sm">Request Tech Proposal</a>
           </div>
         </div>
@@ -3962,9 +4120,12 @@
             <span class="stack-pill">Vue.js / React</span>
             <span class="stack-pill">PostgreSQL &amp; Redis</span>
           </div>
-          <div class="pane-actions" style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <a href="solution-web-applications.html" class="btn btn-primary btn-sm">Explore Web Applications & SaaS Details →</a>
-            <a href="contact.html?solution=Custom+Microservices" class="btn btn-secondary btn-sm">Request Tech Proposal</a>
+          <div class="pane-actions"
+            style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="solution-web-applications.html" class="btn btn-primary btn-sm">Explore Web Applications & SaaS
+              Details →</a>
+            <a href="contact.html?solution=Custom+Microservices" class="btn btn-secondary btn-sm">Request Tech
+              Proposal</a>
           </div>
         </div>
         <div class="pane-visual">
@@ -4053,8 +4214,10 @@
             <span class="stack-pill">SQLite / Hive DB</span>
             <span class="stack-pill">Firebase Suite</span>
           </div>
-          <div class="pane-actions" style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <a href="solution-mobile-apps.html" class="btn btn-primary btn-sm">Explore Mobile Apps & Flutter Details →</a>
+          <div class="pane-actions"
+            style="margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="solution-mobile-apps.html" class="btn btn-primary btn-sm">Explore Mobile Apps & Flutter Details
+              →</a>
             <a href="contact.html?solution=Mobile+App" class="btn btn-secondary btn-sm">Request Tech Proposal</a>
           </div>
         </div>
@@ -4399,7 +4562,7 @@
      ========================================================================== -->
   <section class="section-pad about-section" id="about" aria-label="About eMMSOFT Engineering Studio">
     <div class="container">
-      
+
       <!-- Section Header -->
       <div class="section-head reveal">
         <div>
@@ -4410,7 +4573,8 @@
           <h2>Senior craftsmanship with a focus on <span class="highlight">uncompromising reliability</span>.</h2>
         </div>
         <p>
-          Founded on the principle that digital platforms should be durable, fault-tolerant, and exceptionally fast. We partner with tier-1 media organizations, enterprise retailers, and technology startups worldwide.
+          Founded on the principle that digital platforms should be durable, fault-tolerant, and exceptionally fast. We
+          partner with tier-1 media organizations, enterprise retailers, and technology startups worldwide.
         </p>
       </div>
 
@@ -4421,10 +4585,14 @@
           <div class="badge-tag" style="margin-bottom:12px;">Studio Philosophy</div>
           <h3>Built by Engineers, Designed for Mission-Critical Production</h3>
           <p>
-            At eMMSOFT, we deliberately maintain a high ratio of senior engineers to juniors. We eschew bloated frameworks in favor of clean architecture, deterministic caching layers, and battle-tested distributed databases.
+            At eMMSOFT, we deliberately maintain a high ratio of senior engineers to juniors. We eschew bloated
+            frameworks in favor of clean architecture, deterministic caching layers, and battle-tested distributed
+            databases.
           </p>
           <p>
-            Our workstations, continuous integration pipelines, and culture are built around deep focus, rapid prototyping, and automated verification so our clients can sleep soundly during peak election nights or flash sales.
+            Our workstations, continuous integration pipelines, and culture are built around deep focus, rapid
+            prototyping, and automated verification so our clients can sleep soundly during peak election nights or
+            flash sales.
           </p>
 
           <div class="about-values-list">
@@ -4451,14 +4619,18 @@
         <div class="culture-preview-frame">
           <img src="assets/work_culture.jpg" alt="eMMSOFT Software Engineering Studio Work Environment" loading="lazy">
           <div class="culture-frame-overlay">
-            <span class="mega-feature-badge" style="width:fit-content; margin-bottom:8px;">Dhaka Studio HQ &amp; Global Remote</span>
+            <span class="mega-feature-badge" style="width:fit-content; margin-bottom:8px;">Dhaka Studio HQ &amp; Global
+              Remote</span>
             <h4>Our Collaborative Engineering Environment</h4>
             <p>
-              Ergonomic multi-monitor setups, pair programming spaces, dedicated high-throughput test benches, and a culture of continuous learning.
+              Ergonomic multi-monitor setups, pair programming spaces, dedicated high-throughput test benches, and a
+              culture of continuous learning.
             </p>
             <div style="display:flex; gap:12px; flex-wrap:wrap;">
               <a href="#contact" class="btn btn-primary btn-sm">Join Our Team or Partner</a>
-              <a href="ceo-message.html" class="btn btn-secondary btn-sm" style="background:rgba(255,255,255,0.9); border:none; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">Read CEO Letter →</a>
+              <a href="ceo-message.html" class="btn btn-secondary btn-sm"
+                style="background:rgba(255,255,255,0.9); border:none; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">Read
+                CEO Letter →</a>
             </div>
           </div>
         </div>
@@ -4472,7 +4644,8 @@
             <h2>The Minds Behind the <span class="highlight">Architectures</span></h2>
           </div>
           <p>
-            A dedicated collective of senior backend architects, UI/UX craftsmen, distributed systems veterans, and product strategists.
+            A dedicated collective of senior backend architects, UI/UX craftsmen, distributed systems veterans, and
+            product strategists.
           </p>
         </div>
 
@@ -4480,12 +4653,14 @@
           <!-- Member 1: CEO & Founder -->
           <div class="team-card">
             <div class="team-card-avatar-wrap">
-              <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon)" class="team-card-avatar" loading="lazy">
+              <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon)" class="team-card-avatar"
+                loading="lazy">
             </div>
             <span class="team-card-role-badge">Chief Executive Officer</span>
             <div class="team-card-name">Md. Zikrul Ahsan (Shawon)</div>
             <div class="team-card-bio">
-              Guiding eMMSOFT's strategic growth, high-stakes client delivery, and long-term engineering vision for high-concurrency systems.
+              Guiding eMMSOFT's strategic growth, high-stakes client delivery, and long-term engineering vision for
+              high-concurrency systems.
             </div>
             <a href="ceo-message.html" class="team-msg-btn" aria-label="Read Md. Zikrul Ahsan's CEO Message">
               <span>Read Full CEO Letter</span>
@@ -4501,7 +4676,8 @@
             <span class="team-card-role-badge">Chief Technology Officer</span>
             <div class="team-card-name">Nurul Afsar Polash</div>
             <div class="team-card-bio">
-              Architecting sub-50ms TTFB newsroom systems, edge-cached architectures, Kubernetes clustering, and high-volume commerce feeds.
+              Architecting sub-50ms TTFB newsroom systems, edge-cached architectures, Kubernetes clustering, and
+              high-volume commerce feeds.
             </div>
             <a href="cto-message.html" class="team-msg-btn" aria-label="Read Nurul Afsar Polash's CTO Message">
               <span>Read Full CTO Letter</span>
@@ -4517,7 +4693,8 @@
             <span class="team-card-role-badge">Accounts Manager</span>
             <div class="team-card-name">Ziaul Hasan</div>
             <div class="team-card-bio">
-              Financial governance, client billing frameworks, fiscal operations, and contract auditing across all studio engagements.
+              Financial governance, client billing frameworks, fiscal operations, and contract auditing across all
+              studio engagements.
             </div>
             <a href="team.html" class="team-msg-btn">
               <span>View Profile</span>
@@ -4543,7 +4720,8 @@
         </div>
 
         <div style="text-align:center; margin-top:32px;">
-          <a href="team.html" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:14px 32px; font-size:1rem;">
+          <a href="team.html" class="btn btn-primary"
+            style="display:inline-flex; align-items:center; gap:10px; padding:14px 32px; font-size:1rem;">
             <span>Meet Our Complete Studio Squad (12+ Specialists)</span>
             <span style="font-weight:800;">→</span>
           </a>
@@ -4677,7 +4855,7 @@
   <!-- ==========================================================================
      FOOTER (With logo.png and full categorical navigation)
      ========================================================================== -->
-    <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -4685,11 +4863,13 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce
+            Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
-            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
@@ -4722,13 +4902,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
@@ -4756,16 +4938,22 @@
       </div>
       <div class="exec-modal-body">
         <blockquote>
-          "Software architecture isn't just about writing code; it is about guaranteeing certainty for businesses whose livelihoods depend on continuous availability."
+          "Software architecture isn't just about writing code; it is about guaranteeing certainty for businesses whose
+          livelihoods depend on continuous availability."
         </blockquote>
         <p>
-          Welcome to <strong>eMMSOFT</strong>. When we founded this studio, our mandate was clear: bridge the gap between high-velocity modern engineering and mission-critical production stability.
+          Welcome to <strong>eMMSOFT</strong>. When we founded this studio, our mandate was clear: bridge the gap
+          between high-velocity modern engineering and mission-critical production stability.
         </p>
         <p>
-          Too many technology consultancies prioritize flash over substance, delivering architectures that degrade the moment traffic surges. We engineered eMMSOFT from day one as a specialized engineering studio. Whether we are powering the news engine for national dailies serving millions of concurrent readers on breaking news days, or handling complex multi-warehouse inventory systems for retailers, our engineering standard is uncompromising.
+          Too many technology consultancies prioritize flash over substance, delivering architectures that degrade the
+          moment traffic surges. We engineered eMMSOFT from day one as a specialized engineering studio. Whether we are
+          powering the news engine for national dailies serving millions of concurrent readers on breaking news days, or
+          handling complex multi-warehouse inventory systems for retailers, our engineering standard is uncompromising.
         </p>
         <p>
-          We take immense pride in our long-term client relationships. We view ourselves not as an outsourced agency, but as your core engineering partner invested in your scalability, security, and digital sovereignty.
+          We take immense pride in our long-term client relationships. We view ourselves not as an outsourced agency,
+          but as your core engineering partner invested in your scalability, security, and digital sovereignty.
         </p>
         <p style="margin-top:20px; font-weight:600; color:var(--ink-primary);">
           — Md. Zikrul Ahsan (Shawon)<br>
@@ -4794,16 +4982,23 @@
       </div>
       <div class="exec-modal-body">
         <blockquote>
-          "True engineering beauty lies in low latency, self-healing topologies, deterministic deployments, and systems that scale gracefully without human panic."
+          "True engineering beauty lies in low latency, self-healing topologies, deterministic deployments, and systems
+          that scale gracefully without human panic."
         </blockquote>
         <p>
-          At eMMSOFT, our architectural philosophy is rooted in pragmatism and mechanical sympathy. We design software architectures that respect hardware constraints, optimize network hops, and eliminate single points of failure.
+          At eMMSOFT, our architectural philosophy is rooted in pragmatism and mechanical sympathy. We design software
+          architectures that respect hardware constraints, optimize network hops, and eliminate single points of
+          failure.
         </p>
         <p>
-          Our technical stack is deliberately curated: high-throughput Node.js and Go microservices, ACID-compliant PostgreSQL schemas, in-memory Redis caching clusters, containerized Kubernetes orchestration, and Cloudflare Enterprise edge workers. For our Newsroom CMS systems, our average TTFB remains strictly under 50 milliseconds even under sustained DDOS or sudden nationwide breaking news floods.
+          Our technical stack is deliberately curated: high-throughput Node.js and Go microservices, ACID-compliant
+          PostgreSQL schemas, in-memory Redis caching clusters, containerized Kubernetes orchestration, and Cloudflare
+          Enterprise edge workers. For our Newsroom CMS systems, our average TTFB remains strictly under 50 milliseconds
+          even under sustained DDOS or sudden nationwide breaking news floods.
         </p>
         <p>
-          When you partner with our studio, your code is reviewed by senior practitioners, automated with comprehensive end-to-end regression suites, and deployed with enterprise precision. That is our engineering promise.
+          When you partner with our studio, your code is reviewed by senior practitioners, automated with comprehensive
+          end-to-end regression suites, and deployed with enterprise precision. That is our engineering promise.
         </p>
         <p style="margin-top:20px; font-weight:600; color:var(--ink-primary);">
           — Nurul Afsar Polash<br>
