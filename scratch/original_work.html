@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work — eMMSOFT (eMythMakers) | Production Systems, Newsrooms &amp; Enterprise Platforms</title>
+  <meta name="description"
+    content="Explore production platforms engineered by eMythMakers (eMMSOFT), including bdnews24.com, Dhaka Tribune, Channel 24, Walton, Step Footwear, ITN-BUET, and HRC Shipping. 15+ years of high-concurrency systems delivery.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS (Synchronized with eMMSOFT Design System)
+       ========================================================================== */
+    :root {
+      --brand-emerald: #049449;
+      --brand-emerald-dark: #037339;
+      --brand-emerald-light: #05a852;
+      --brand-emerald-accent: #10b981;
+      --brand-emerald-tint: #ecf8f1;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.08);
+      --brand-emerald-glow: rgba(4, 148, 73, 0.22);
+      --brand-emerald-border: rgba(4, 148, 73, 0.25);
+
+      --brand-slate: #374049;
+      --dark-950: #0b0f15;
+      --dark-900: #101620;
+      --dark-850: #151d2a;
+      --dark-800: #1d2737;
+      --dark-700: #2d3b4f;
+      --dark-600: #425268;
+
+      --bg-main: #fbfcfb;
+      --bg-surface: #ffffff;
+      --bg-alt: #f3f6f4;
+      --bg-subtle: #edf2ee;
+
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
+
+      --border-light: #e3e8e5;
+      --border-focus: #049449;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container: 1240px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 12px 30px rgba(16, 24, 40, 0.1);
+      --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--ink-primary);
+      line-height: 1.25;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: clamp(68px, 8vw, 112px) 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-emerald);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+      border-color: var(--ink-faint);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+    }
+
+    /* ==========================================================================
+       NAVBAR (Synchronized System)
+       ========================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(251, 252, 251, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom-color: rgba(227, 232, 229, 0.8);
+      box-shadow: 0 4px 20px -2px rgba(18, 25, 34, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: clamp(14px, 2.2vw, 32px);
+      position: relative;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.8vw, 28px);
+      flex-wrap: nowrap;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: color 0.18s ease;
+      padding: 6px 0;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--brand-emerald-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Dropdown & Mega Menu System - Symmetrically Centered in Header */
+    .nav-item-dropdown {
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      height: 76px;
+    }
+
+    .nav-item-dropdown .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown-chevron {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+    }
+
+    .nav-item-dropdown:hover .dropdown-chevron,
+    .nav-item-dropdown:focus-within .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--brand-emerald);
+    }
+
+    .mega-menu-bridge {
+      display: none;
+      position: absolute;
+      top: 56px;
+      left: 0;
+      right: 0;
+      height: 28px;
+      content: "";
+      pointer-events: auto;
+      z-index: 290;
+    }
+
+    .nav-item-dropdown:hover .mega-menu-bridge,
+    .nav-item-dropdown:focus-within .mega-menu-bridge {
+      display: block;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      width: 760px;
+      max-width: 92vw;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(227, 232, 229, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 56px -12px rgba(18, 25, 34, 0.16), 0 4px 16px rgba(4, 148, 73, 0.06);
+      padding: 22px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.25s;
+      z-index: 300;
+    }
+
+    .mega-menu::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: transparent;
+    }
+
+    .mega-menu.mega-menu-left {
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+    }
+
+    .nav-item-dropdown:hover .mega-menu,
+    .nav-item-dropdown:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-item-dropdown:hover .mega-menu.mega-menu-left,
+    .nav-item-dropdown:focus-within .mega-menu.mega-menu-left {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .pill-hot {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: #ef4444;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .mega-menu-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mega-menu-label {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .mega-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mega-link-card:hover {
+      background: var(--brand-emerald-tint);
+      border-color: var(--brand-emerald-border);
+      transform: translateX(4px);
+    }
+
+    .mega-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-emerald);
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.2);
+    }
+
+    .mega-link-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-link-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    .mega-link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mega-link-card-body .mega-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-link-card:hover .mega-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-link-card-body .mega-desc {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      line-height: 1.35;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-arrow {
+      font-size: 0.85rem;
+      color: var(--brand-emerald);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .mega-feature-card {
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .mega-feature-card:hover {
+      border-color: var(--brand-emerald);
+      box-shadow: 0 12px 30px rgba(4, 148, 73, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .mega-feature-thumb {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+    }
+
+    .mega-feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .mega-feature-card:hover .mega-feature-thumb img {
+      transform: scale(1.05);
+    }
+
+    .mega-feature-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(11, 15, 21, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      z-index: 2;
+    }
+
+    .mega-feature-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .mega-feature-title {
+      font-family: var(--font-heading);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mega-feature-desc {
+      font-size: 0.82rem;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .mega-feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    /* Mobile Drawer */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav-burger span {
+      width: 100%;
+      height: 2px;
+      background: var(--ink-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-surface);
+      z-index: 190;
+      padding: 24px;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .mobile-panel.is-open {
+      display: flex;
+    }
+
+    .mobile-panel a {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .mobile-panel a:hover {
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      padding-left: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-menu { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ==========================================================================
+       WORK HERO SECTION
+       ========================================================================== */
+    .work-hero {
+      background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 45%),
+                  radial-gradient(circle at 10% 75%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+                  var(--bg-main);
+      padding: clamp(56px, 7vw, 92px) 0 clamp(44px, 5vw, 68px);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .work-hero-inner {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .work-hero h1 {
+      font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.14;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .work-hero h1 .text-emerald {
+      color: var(--brand-emerald);
+      background: linear-gradient(135deg, #049449 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .work-hero p {
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      color: var(--ink-secondary);
+      line-height: 1.7;
+      margin: 0 auto 36px auto;
+      max-width: 760px;
+    }
+
+    .work-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .work-stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .work-stat-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .work-stat-pill:hover {
+      border-color: var(--brand-emerald-border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .work-stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--brand-emerald-dark);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .work-stat-label {
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    /* ==========================================================================
+       CATEGORY FILTER & SEARCH BAR
+       ========================================================================== */
+    .filter-bar-section {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 20px 0;
+      position: sticky;
+      top: 76px;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .filter-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chips-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+
+    .filter-chips-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-chip {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      background: var(--bg-alt);
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .filter-chip:hover {
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+    }
+
+    .filter-chip.is-active {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.3);
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 240px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 8px 14px 8px 36px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-light);
+      background: var(--bg-main);
+      font-size: 0.88rem;
+      color: var(--ink-primary);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      border-color: var(--brand-emerald);
+      box-shadow: 0 0 0 3px var(--brand-emerald-soft);
+      background: #ffffff;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-muted);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       PROJECTS GRID & CARDS
+       ========================================================================== */
+    .projects-section {
+      background: var(--bg-main);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 1060px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--brand-emerald-border);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-header-banner {
+      padding: 24px;
+      background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg-subtle) 100%);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 96px;
+      position: relative;
+    }
+
+    .project-logo-wrap {
+      max-height: 48px;
+      max-width: 160px;
+      display: flex;
+      align-items: center;
+    }
+
+    .project-logo-wrap img {
+      max-height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .category-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 14px;
+    }
+
+    .project-title {
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      margin: 0;
+      flex: 1;
+    }
+
+    .metric-badge {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-badge svg {
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    .tech-stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      background: var(--bg-alt);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .project-card-footer {
+      padding: 16px 24px;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .external-link-btn {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .external-link-btn:hover {
+      color: var(--brand-emerald);
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       FLAGSHIP CASE STUDY SPOTLIGHT
+       ========================================================================== */
+    .spotlight-section {
+      background: var(--dark-950);
+      color: #ffffff;
+      border-top: 1px solid var(--dark-800);
+      border-bottom: 1px solid var(--dark-800);
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .spotlight-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    .spotlight-content h2 {
+      color: #ffffff;
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
+      margin-bottom: 18px;
+    }
+
+    .spotlight-content p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .spotlight-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .spotlight-stat-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .spotlight-stat-box .val {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--brand-emerald-accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .spotlight-stat-box .lbl {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .spotlight-media {
+      background: rgba(21, 29, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .code-telemetry-box {
+      background: #0b0f15;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #38bdf8;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       CALL TO ACTION
+       ========================================================================== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%);
+      color: #ffffff;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background: var(--dark-950);
+      color: #94a3b8;
+      padding-top: clamp(64px, 8vw, 96px);
+      border-top: 1px solid var(--dark-800);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: minmax(0, 360px) repeat(3, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 56px);
+      padding-bottom: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+    }
+
+    .footer-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      transition: color 0.18s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--brand-emerald-accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--dark-800);
+      padding: 24px 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.86rem;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+     HEADER / NAVIGATION (Synchronized eMMSOFT Navbar)
+     ========================================================================== -->
+  <nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-link" aria-label="eMMSOFT Home">
+        <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+      </a>
+
+      <div class="nav-menu">
+        <!-- Solutions Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu mega-menu-left" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col-left">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  Flagship Engineering Solutions
+                </div>
+                <div class="mega-links-list">
+                  <a href="index.html#specializations" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-concurrency headless publishing &amp; edge caching</p>
+                    </div>
+                  </a>
+                  <a href="index.html#ecommerce" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Multi-vendor architectures &amp; flash sale sync</p>
+                    </div>
+                  </a>
+                  <a href="index.html#cloud-apps" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud &amp; Apps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Distributed microservices &amp; mobile apps</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="mega-menu-col-right">
+                <a href="index.html#solutions" class="mega-feature-card">
+                  <div class="mega-feature-thumb" style="height:116px; background:linear-gradient(135deg, #0b0f15 0%, #151d2a 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                    <div style="position:absolute; inset:0; background:radial-gradient(circle at 75% 30%, rgba(4,148,73,0.35) 0%, transparent 65%);"></div>
+                    <span class="mega-feature-badge">6 Pillars</span>
+                    <div style="text-align:center; position:relative; z-index:1; padding:10px;">
+                      <div style="color:var(--brand-emerald-accent); font-family:var(--font-mono); font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">Interactive Demo</div>
+                      <div style="color:#ffffff; font-family:var(--font-heading); font-weight:700; font-size:1.05rem; margin-top:3px;">Solutions Suite</div>
+                    </div>
+                  </div>
+                  <div class="mega-feature-body">
+                    <div class="mega-feature-title">
+                      <span>Explore All Solutions</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                    <p class="mega-feature-desc">Interactive tabs for Newsroom, E-Commerce, Cloud &amp; Mobile.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Us Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col-left">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Leadership &amp; Studio Team
+                </div>
+                <div class="mega-links-list">
+                  <a href="about.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>About eMMSOFT</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Founding story, values &amp; engineering ethos</p>
+                    </div>
+                  </a>
+
+                  <a href="ceo-message.html" class="mega-link-card">
+                    <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon), CEO" class="mega-avatar">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CEO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Md. Zikrul Ahsan (Shawon) — Vision &amp; ethos</p>
+                    </div>
+                  </a>
+                  <a href="cto-message.html" class="mega-link-card">
+                    <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash, CTO" class="mega-avatar">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CTO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Nurul Afsar Polash — Architecture &amp; low-latency stack</p>
+                    </div>
+                  </a>
+                  <a href="team.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Meet Our Full Team</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Explore our 12+ engineers &amp; architects</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="mega-menu-col-right">
+                <a href="team.html#studio-culture" class="mega-feature-card">
+                  <div class="mega-feature-thumb">
+                    <img src="assets/work_culture.jpg" alt="eMMSOFT Studio Workspace" loading="lazy">
+                    <span class="mega-feature-badge">Inside eMMSOFT</span>
+                  </div>
+                  <div class="mega-feature-body">
+                    <div class="mega-feature-title">
+                      <span>Work Environment</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                    <p class="mega-feature-desc">See how we collaborate and engineer mission-critical systems.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="work.html" class="nav-link is-active">Work</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="index.html">Home <span>→</span></a>
+      <a href="about.html">About Us <span>→</span></a>
+      <a href="team.html">Team <span>→</span></a>
+      <a href="work.html" style="color:var(--brand-emerald-dark); font-weight:700;">Work / Portfolio <span>→</span></a>
+      <a href="ceo-message.html">CEO Message <span>→</span></a>
+      <a href="cto-message.html">CTO Message <span>→</span></a>
+      <a href="contact.html">Start a Project / Contact <span>→</span></a>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+     HERO: OUR WORK & PORTFOLIO
+     ========================================================================== -->
+  <section class="work-hero">
+    <div class="container work-hero-inner">
+      <div class="badge-tag">
+        <span class="pulse-dot"></span>
+        15+ Years · 250+ Portals &amp; Systems Deployed · eMythMakers Engineering
+      </div>
+      <h1>Production software engineered for <span class="text-emerald">national scale</span> &amp; resilience.</h1>
+      <p>
+        From the most visited 24/7 breaking newsrooms in South Asia to multi-warehouse e-commerce operations, institutional repositories, and global maritime logistics—explore real-world platforms engineered by eMythMakers (eMMSOFT).
+      </p>
+
+      <div class="work-stats-bar">
+        <div class="work-stat-pill">
+          <div class="work-stat-num">250+</div>
+          <div class="work-stat-label">Production Portals &amp; Systems</div>
+        </div>
+        <div class="work-stat-pill">
+          <div class="work-stat-num">120M+</div>
+          <div class="work-stat-label">Monthly Active Digital Readers</div>
+        </div>
+        <div class="work-stat-pill">
+          <div class="work-stat-num">500k+</div>
+          <div class="work-stat-label">Peak Concurrent Traffic Spike</div>
+        </div>
+        <div class="work-stat-pill">
+          <div class="work-stat-num">99.99%</div>
+          <div class="work-stat-label">Production SLA Availability</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FILTER BAR
+     ========================================================================== -->
+  <div class="filter-bar-section">
+    <div class="container filter-bar-inner">
+      <div class="filter-chips-list" id="categoryFilterList">
+        <button class="filter-chip is-active" data-cat="all">All Products (16)</button>
+        <button class="filter-chip" data-cat="newsrooms">Newsrooms &amp; Media</button>
+        <button class="filter-chip" data-cat="ecommerce">Enterprise &amp; Retail</button>
+        <button class="filter-chip" data-cat="academic">Academia &amp; Repositories</button>
+        <button class="filter-chip" data-cat="corporate">Logistics &amp; Corporate</button>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="projectSearchInput" placeholder="Filter by client, tech, or sector...">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+     PROJECTS SHOWCASE GRID
+     ========================================================================== -->
+  <section class="section-pad projects-section">
+    <div class="container">
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- 1. bdnews24.com -->
+        <div class="project-card" data-category="newsrooms">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/bdnews24.png" alt="bdnews24 Logo" loading="lazy">
+            </div>
+            <span class="category-tag">Newsroom CMS</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">bdnews24.com</h3>
+            <p class="project-desc">
+              Bangladesh's pioneer 24/7 digital news publisher. We architected their custom headless newsroom engine and Anycast edge caching layer capable of sustaining tens of millions of pageviews during national elections and historic breaking news without slowdown.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <span>28M+ Readers · &lt; 40ms TTFB · 100% Uptime</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">PHP 8.3 JIT</span>
+              <span class="tech-pill">Redis 7 Cluster</span>
+              <span class="tech-pill">Next.js SSR</span>
+              <span class="tech-pill">Cloudflare Enterprise</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Flagship Media Partner</span>
+            <a href="https://bdnews24.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Channel 24 -->
+        <div class="project-card" data-category="newsrooms">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/channel24.png" alt="Channel 24 Logo" loading="lazy">
+            </div>
+            <span class="category-tag">Broadcast News</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Channel 24 (channel24bd.tv)</h3>
+            <p class="project-desc">
+              Premier national satellite television network. Engineered their high-throughput live broadcasting news portal featuring automated video stream transcoding, live breaking ticker syndication, and multi-desk video publishing.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Live HLS Stream · 15M+ Monthly Views</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Go Services</span>
+              <span class="tech-pill">HLS Video CDN</span>
+              <span class="tech-pill">Redis</span>
+              <span class="tech-pill">Kubernetes</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Broadcast Media</span>
+            <a href="https://channel24bd.tv" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Dhaka Tribune -->
+        <div class="project-card" data-category="newsrooms">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/dhaka_tribune.svg" alt="Dhaka Tribune Logo" loading="lazy">
+            </div>
+            <span class="category-tag">National English Daily</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Dhaka Tribune</h3>
+            <p class="project-desc">
+              Leading English-language national broadsheet newspaper. Engineered a modular headless content management architecture supporting high-volume multimedia reporting, instant mobile edge caching, and automated newsletter distribution.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>18M+ Global Readers · Core Web Vitals 99</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Headless CMS</span>
+              <span class="tech-pill">Next.js Edge</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Fastly</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Print &amp; Digital</span>
+            <a href="https://dhakatribune.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Daily Janakantha -->
+        <div class="project-card" data-category="newsrooms">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/janakantha_web.jpg" alt="Daily Janakantha Logo" loading="lazy">
+            </div>
+            <span class="category-tag">National Bengali Daily</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Daily Janakantha</h3>
+            <p class="project-desc">
+              One of Bangladesh's most historic national Bengali dailies. Transitioned their print legacy archive into a blazing-fast, modern digital edition featuring localized divisional bureaus and multi-decade searchable article archives.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              <span>30+ Years News Archive · Sub-50ms TTFB</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">PHP 8.2</span>
+              <span class="tech-pill">MySQL Percona</span>
+              <span class="tech-pill">Varnish Cache</span>
+              <span class="tech-pill">NGINX Plus</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Bengali Daily</span>
+            <a href="https://dailyjanakantha.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Walton Hi-Tech Industries -->
+        <div class="project-card" data-category="ecommerce">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/walton.png" alt="Walton Hi-Tech Logo" loading="lazy">
+            </div>
+            <span class="category-tag">Industrial Retail</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Walton Hi-Tech Industries</h3>
+            <p class="project-desc">
+              Bangladesh's flagship electronics and appliance manufacturing giant. Architected enterprise digital portals, online product catalogs, and dealer synchronization services supporting thousands of national distributor nodes.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <span>5,000+ Outlets · High-Load Product Catalog</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Laravel Enterprise</span>
+              <span class="tech-pill">Vue.js 3</span>
+              <span class="tech-pill">Redis Cluster</span>
+              <span class="tech-pill">AWS EKS</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Consumer Electronics</span>
+            <a href="https://waltonbd.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Step Footwear -->
+        <div class="project-card" data-category="ecommerce">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/step_footwear.png" alt="Step Footwear Logo" loading="lazy">
+            </div>
+            <span class="category-tag">E-Commerce Engine</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Step Footwear E-Commerce</h3>
+            <p class="project-desc">
+              National multi-outlet footwear brand. Engineered a high-concurrency transactional storefront capable of surviving intense seasonal flash sale campaigns with real-time inventory locking and automated courier API dispatch.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span>10,000+ Orders/hr · 0 Checkout Drops</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Laravel</span>
+              <span class="tech-pill">Vue 3</span>
+              <span class="tech-pill">Redis</span>
+              <span class="tech-pill">bKash/Nagad/SSLCommerz</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Retail Footwear</span>
+            <a href="https://step.com.bd" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. PRAN-RFL Group -->
+        <div class="project-card" data-category="ecommerce">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/pran.png" alt="PRAN-RFL Logo" loading="lazy">
+            </div>
+            <span class="category-tag">FMCG Conglomerate</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">PRAN-RFL Global Brand Ecosystem</h3>
+            <p class="project-desc">
+              Bangladesh's premier food and consumer goods exporter with distribution in over 140 nations. Engineered multi-brand corporate portals, product verification gateways, and supply-chain digital touchpoints.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span>140+ Countries · Global Supply Chain</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Enterprise CMS</span>
+              <span class="tech-pill">Cloudflare</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">REST APIs</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">FMCG / Agro</span>
+            <a href="https://pranfoods.net" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. ITN-BUET (Sanitation Knowledge Repository) -->
+        <div class="project-card" data-category="academic">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/buet.svg" alt="BUET Logo" loading="lazy">
+            </div>
+            <span class="category-tag">National Repository</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">ITN-BUET (Sanitation Repository)</h3>
+            <p class="project-desc">
+              Developed for the International Training Network at BUET. Architected the national Sanitation Knowledge Repository (sanirepo.com) tracking Citywide Inclusive Sanitation (CWIS) and Faecal Sludge Management (FSM) data across all Bangladesh municipalities.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>National CWIS Hub · 64 Districts GIS</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">PostgreSQL GIS</span>
+              <span class="tech-pill">PHP 8.2</span>
+              <span class="tech-pill">Vue.js</span>
+              <span class="tech-pill">Data Visualizer</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Research &amp; Gov</span>
+            <a href="https://sanirepo.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. University of Dhaka -->
+        <div class="project-card" data-category="academic">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/dhaka_university.svg" alt="Dhaka University Logo" loading="lazy">
+            </div>
+            <span class="category-tag">Higher Education</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">University of Dhaka (du.ac.bd)</h3>
+            <p class="project-desc">
+              Bangladesh's premier national university. Engineered institutional web platforms, departmental portal frameworks, academic research archives, and high-load admission announcement distribution systems.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              <span>40,000+ Students · High-Security Architecture</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">PHP 8</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">NGINX Plus</span>
+              <span class="tech-pill">Cloudflare SSL</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Academic Portal</span>
+            <a href="https://du.ac.bd" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 10. HRC Shipping -->
+        <div class="project-card" data-category="corporate">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.3rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span style="background:var(--brand-emerald); color:#fff; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">H</span>
+                HRC Shipping
+              </div>
+            </div>
+            <span class="category-tag">Maritime Logistics</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">HRC Shipping Maritime Portal</h3>
+            <p class="project-desc">
+              Developed for HRC Shipping Ltd, a pioneer in Bangladeshi ocean shipping. Engineered real-time container tracking interfaces, vessel arrival/departure schedules, automated bill of lading retrieval, and port clearance records.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>Global Container Tracking · Automated B/L</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Enterprise Portal</span>
+              <span class="tech-pill">REST APIs</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">SSL 256-bit</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Maritime / Logistics</span>
+            <a href="https://hrcbd.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 11. Diamond World -->
+        <div class="project-card" data-category="ecommerce">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/diamond_world.jpg" alt="Diamond World Logo" loading="lazy">
+            </div>
+            <span class="category-tag">Luxury E-Commerce</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Diamond World Store</h3>
+            <p class="project-desc">
+              Bangladesh's premier certified diamond and luxury jewelry retailer. Engineered a high-security transactional store featuring live gold and bullion rate sync, secure vault reservation, and multi-currency checkout.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <span>High-Value Transactions · Fraud Defense</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Laravel</span>
+              <span class="tech-pill">Vue.js</span>
+              <span class="tech-pill">PCI-DSS Gateways</span>
+              <span class="tech-pill">Redis</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Luxury Retail</span>
+            <a href="https://diamondworldltd.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 12. Ha-Meem Group -->
+        <div class="project-card" data-category="corporate">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <img src="assets/clients/ha_meem.jpg" alt="Ha-Meem Group Logo" loading="lazy">
+            </div>
+            <span class="category-tag">Textile Conglomerate</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Ha-Meem Group Enterprise Portal</h3>
+            <p class="project-desc">
+              One of Bangladesh's largest garment manufacturing conglomerates exporting globally. Engineered their corporate digital identity, buyer compliance transparency portals, and multi-factory industrial showcases.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              <span>Global Buyer Hub · Multi-factory Showcase</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Enterprise CMS</span>
+              <span class="tech-pill">Next.js</span>
+              <span class="tech-pill">Cloudflare CDN</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Textile Export</span>
+            <a href="https://hameemgroup.net" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 13. Roma Tiles -->
+        <div class="project-card" data-category="ecommerce">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span style="background:#e11d48; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
+                Roma Tiles
+              </div>
+            </div>
+            <span class="category-tag">Ceramic Manufacturing</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Roma Tiles Product Showroom</h3>
+            <p class="project-desc">
+              Leading ceramic tile manufacturer in Bangladesh. Engineered their digital product showcase, interactive room tile visualizer, dealer locator, and wholesale catalog request portal.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>Interactive Tile Visualizer · 500+ SKU Catalog</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Custom Web Engine</span>
+              <span class="tech-pill">Vue 3</span>
+              <span class="tech-pill">Image Optimizer</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Building Materials</span>
+            <a href="https://romatiles.com.bd" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 14. Banglavision TV -->
+        <div class="project-card" data-category="newsrooms">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span style="background:var(--brand-emerald); color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">BV</span>
+                Banglavision
+              </div>
+            </div>
+            <span class="category-tag">Satellite TV Portal</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Banglavision News Portal</h3>
+            <p class="project-desc">
+              Pioneer private satellite TV channel. Engineered a real-time web newsroom integrating live TV streams, daily program schedules, breaking video clips, and accelerated mobile loading for breaking headlines.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Live Broadcast Stream · Sub-1s Publishing</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Headless News CMS</span>
+              <span class="tech-pill">Go</span>
+              <span class="tech-pill">Redis</span>
+              <span class="tech-pill">AWS Video Transcoding</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Television Media</span>
+            <a href="https://banglavision.tv" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 15. RisingBD -->
+        <div class="project-card" data-category="newsrooms">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span style="background:#0ea5e9; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
+                RisingBD
+              </div>
+            </div>
+            <span class="category-tag">24/7 Digital News</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">RisingBD Online Portal</h3>
+            <p class="project-desc">
+              High-volume national digital news portal. Engineered custom multi-category publishing workflows, live cricket scoreboards, social media auto-syndication, and high-concurrency database connection pooling.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <span>12M+ Monthly Readers · Live Sports API</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">PHP 8.2</span>
+              <span class="tech-pill">Varnish Cache</span>
+              <span class="tech-pill">Redis</span>
+              <span class="tech-pill">Percona MySQL</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Digital News</span>
+            <a href="https://risingbd.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 16. Bangladesh Astronomical Association -->
+        <div class="project-card" data-category="academic">
+          <div class="project-header-banner">
+            <div class="project-logo-wrap">
+              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.15rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span style="background:#6366f1; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">✦</span>
+                Astronomy BD
+              </div>
+            </div>
+            <span class="category-tag">Science &amp; Astronomy</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Bangladesh Astronomical Association</h3>
+            <p class="project-desc">
+              Pioneer astronomy institution in Bangladesh. Engineered community portals, eclipse and celestial calendar trackers, telescope observation archives, and scientific magazine publication repositories.
+            </p>
+            <div class="metric-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 16 12 12 8"></polygon></svg>
+              <span>Scientific Community Hub · Celestial Calendar</span>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tech-pill">Custom Web Portal</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Cloudflare CDN</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span style="font-size:0.82rem; color:var(--ink-muted);">Science / Non-Profit</span>
+            <a href="https://astronomy-bd.com" target="_blank" rel="noopener" class="external-link-btn">
+              Visit Live ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FLAGSHIP CASE STUDY SPOTLIGHT: THE BDNEWS24 ARCHITECTURE
+     ========================================================================== -->
+  <section class="section-pad spotlight-section">
+    <div class="container">
+      <div class="spotlight-grid">
+        <div class="spotlight-content">
+          <div class="badge-tag" style="background:rgba(4,148,73,0.25); color:var(--brand-emerald-accent); border-color:var(--brand-emerald-border);">
+            Flagship Production Architecture
+          </div>
+          <h2>How eMythMakers Powers 28M+ Readers with Zero Crashes</h2>
+          <p>
+            During breaking news events such as national elections or cyclone warnings, news portals typically experience traffic bursts of 500,000+ simultaneous readers. Standard databases lock up under write contention.
+          </p>
+          <p>
+            Our architecture solves this through an Anycast edge caching mesh paired with a Redis in-memory query bus and Go microservices. Over 94% of page hits are absorbed at the edge without touching core application servers.
+          </p>
+          <div class="spotlight-stats">
+            <div class="spotlight-stat-box">
+              <div class="val">&lt; 40ms</div>
+              <div class="lbl">Edge TTFB Response</div>
+            </div>
+            <div class="spotlight-stat-box">
+              <div class="val">94.8%</div>
+              <div class="lbl">Edge Cache Hit Ratio</div>
+            </div>
+            <div class="spotlight-stat-box">
+              <div class="val">99.99%</div>
+              <div class="lbl">Guaranteed Uptime</div>
+            </div>
+          </div>
+          <div style="margin-top:20px;">
+            <a href="contact.html" class="btn btn-primary">Engineer Your Platform with Us →</a>
+          </div>
+        </div>
+
+        <div class="spotlight-media">
+          <div class="code-telemetry-box">
+            <div style="color:#10b981; margin-bottom:8px;">// Production Telemetry Stream · Live Newsroom Mesh</div>
+            <div>[EDGE_INGRESS] HTTP/3 200 OK - 38ms - 524,180 req/min</div>
+            <div style="color:#94a3b8;">[CACHE_HIT] Redis Cluster (Master-Replica) - 1.8ms</div>
+            <div style="color:#94a3b8;">[DB_ENGINE] PostgreSQL Connection Pool: 24/200 active</div>
+            <div style="color:#94a3b8;">[K8S_AUTOSCALE] 18 Pods Healthy (HPA headroom 62%)</div>
+            <div style="color:#f59e0b; margin-top:10px;">[SRE_STATUS] 0 dropped packets · 99.999% SLA active</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CALL TO ACTION
+     ========================================================================== -->
+  <section class="section-pad cta-banner">
+    <div class="container" style="max-width:780px;">
+      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+        Start Your Enterprise Transformation
+      </div>
+      <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 3rem); margin-bottom:18px;">
+        Ready to take your next product to production?
+      </h2>
+      <p style="color:#94a3b8; font-size:1.1rem; line-height:1.7; margin-bottom:34px;">
+        Partner directly with eMMSOFT's Senior Systems Architects for a comprehensive architectural roadmap, scalability feasibility study, and production proposal within 4 business hours.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Start a Project Proposal →</a>
+        <a href="about.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">Explore Our Story &amp; Tech</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
+          </div>
+          <p>
+            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="index.html#specializations">Newsroom CMS (Headless)</a></li>
+            <li><a href="index.html#ecommerce">E-Commerce Platforms</a></li>
+            <li><a href="index.html#cloud-apps">Cloud Architecture &amp; Apps</a></li>
+            <li><a href="index.html#solutions">Full 6-Pillar Solutions Suite</a></li>
+            <li><a href="index.html#enterprise">Enterprise CMS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Leadership &amp; Studio</h4>
+          <ul>
+            <li><a href="about.html">About eMMSOFT (Overview)</a></li>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="work.html" style="color:var(--brand-emerald-accent); font-weight:700;">Our Work &amp; Products</a></li>
+            <li><a href="contact.html">Start a Project / Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">SLA &amp; Uptime Guarantee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     INTERACTIVE JAVASCRIPT
+     ========================================================================== -->
+  <script>
+    // 1. Dynamic Copyright Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 2. Sticky Nav scroll effect
+    const siteNav = document.getElementById('siteNav');
+    const handleScroll = () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // 3. Mobile Navigation Drawer
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // 4. Interactive Category Filter & Live Search
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const projectCards = document.querySelectorAll('.project-card');
+    const searchInput = document.getElementById('projectSearchInput');
+    let currentCategory = 'all';
+
+    function applyFilterAndSearch() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const cardText = card.textContent.toLowerCase();
+
+        const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchesQuery = (!query || cardText.includes(query));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        currentCategory = chip.getAttribute('data-cat');
+        applyFilterAndSearch();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilterAndSearch);
+  </script>
+
+</body>
+
+</html>

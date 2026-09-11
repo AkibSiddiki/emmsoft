@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #f0f0f0; }
+.nav { background: #fff; border-bottom: 1px solid #ccc; }
+.container { width: 1200px; margin: 0 auto; position: relative; height: 76px; display: flex; align-items: center; justify-content: space-between; border: 1px dashed red; }
+.nav-menu { display: flex; gap: 20px; }
+.nav-item-dropdown { position: static; height: 76px; display: inline-flex; align-items: center; cursor: pointer; }
+.nav-link { padding: 8px 12px; background: #eee; border-radius: 4px; }
+.mega-menu-bridge { display: none; position: absolute; top: 60px; left: 0; right: 0; height: 24px; z-index: 290; }
+.nav-item-dropdown:hover .mega-menu-bridge { display: block; }
+.mega-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 760px;
+  background: #fff;
+  border: 2px solid green;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 300;
+}
+.mega-menu::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+.nav-item-dropdown:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container">
+    <div>LOGO</div>
+    <div class="nav-menu">
+      <div class="nav-item-dropdown">
+        <span class="nav-link">Solutions ▼</span>
+        <div class="mega-menu-bridge"></div>
+        <div class="mega-menu">
+          <h2>Solutions Mega Menu</h2>
+          <p>I am centered in the container!</p>
+        </div>
+      </div>
+      <div class="nav-item-dropdown">
+        <span class="nav-link">About Us ▼</span>
+        <div class="mega-menu-bridge"></div>
+        <div class="mega-menu">
+          <h2>About Us Mega Menu</h2>
+          <p>I am also centered in the container!</p>
+        </div>
+      </div>
+      <span class="nav-link">Team</span>
+      <span class="nav-link">Work</span>
+      <span class="nav-link">Contact</span>
+    </div>
+    <button>Start Project</button>
+  </div>
+</nav>
+<div style="width: 1200px; margin: 40px auto; padding: 20px; background: #fff;">
+  <p>Page Content Below</p>
+</div>
+</body>
+</html>

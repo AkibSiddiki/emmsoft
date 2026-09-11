@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container { width: 1200px; margin: 0 auto; position: relative; border: 2px solid red; height: 76px; }
+.nav-menu { display: flex; gap: 20px; }
+.nav-item-dropdown { position: static; height: 76px; display: inline-flex; align-items: center; }
+.mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 760px; background: #eee; border: 1px solid blue; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav-menu">
+    <div class="nav-item-dropdown">
+      <a>Solutions</a>
+      <div class="mega-menu">Mega Menu Content</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
