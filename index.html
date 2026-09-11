@@ -2245,12 +2245,37 @@
       z-index: 300;
     }
 
+    .mega-menu.mega-menu-left {
+      left: 0;
+      transform: translateY(12px);
+    }
+
     .nav-item-dropdown:hover .mega-menu,
     .nav-item-dropdown:focus-within .mega-menu {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
       transform: translateX(-40%) translateY(0);
+    }
+
+    .nav-item-dropdown:hover .mega-menu.mega-menu-left,
+    .nav-item-dropdown:focus-within .mega-menu.mega-menu-left {
+      transform: translateY(0);
+    }
+
+    .pill-hot {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: #ef4444;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
     }
 
     .mega-menu-grid {
@@ -2898,10 +2923,98 @@
       </a>
 
       <div class="nav-menu">
-        <a href="#solutions" class="nav-link">Solutions</a>
-        <a href="#specializations" class="nav-link has-pill">Newsroom CMS</a>
-        <a href="#ecommerce" class="nav-link">E-Commerce</a>
-        <a href="#cloud-apps" class="nav-link">Cloud &amp; Apps</a>
+        <!-- Solutions Mega Menu (Newsroom CMS HOT, E-Commerce, Cloud & Apps) -->
+        <div class="nav-item-dropdown" id="solutionsDropdown">
+          <a href="#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <!-- Hover bridge -->
+          <div class="mega-menu-bridge"></div>
+
+          <!-- Solutions Mega Menu -->
+          <div class="mega-menu mega-menu-left" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <!-- Left Column: 3 Core Solutions (Newsroom CMS HOT, E-Commerce, Cloud & Apps) -->
+              <div class="mega-menu-col-left">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  Flagship Engineering Solutions
+                </div>
+                <div class="mega-links-list">
+                  <!-- 1. Newsroom CMS [HOT] -->
+                  <a href="#specializations" class="mega-link-card" aria-label="Newsroom CMS">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-concurrency headless publishing, editorial desks &amp; instant edge caching</p>
+                    </div>
+                  </a>
+
+                  <!-- 2. E-Commerce -->
+                  <a href="#ecommerce" class="mega-link-card" aria-label="E-Commerce Architecture">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-conversion multi-vendor architectures, flash sale resilience &amp; sync</p>
+                    </div>
+                  </a>
+
+                  <!-- 3. Cloud & Apps -->
+                  <a href="#cloud-apps" class="mega-link-card" aria-label="Cloud & Apps">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud &amp; Apps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Distributed microservices, AWS/Cloudflare DevOps &amp; native mobile apps</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right Column: Interactive Suite Highlight -->
+              <div class="mega-menu-col-right">
+                <a href="#solutions" class="mega-feature-card" aria-label="Explore Full Solutions Suite">
+                  <div class="mega-feature-thumb" style="height:116px; background:linear-gradient(135deg, #0b0f15 0%, #151d2a 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                    <div style="position:absolute; inset:0; background:radial-gradient(circle at 75% 30%, rgba(4,148,73,0.35) 0%, transparent 65%);"></div>
+                    <span class="mega-feature-badge">6 Pillars</span>
+                    <div style="text-align:center; position:relative; z-index:1; padding:10px;">
+                      <div style="color:var(--brand-emerald-accent); font-family:var(--font-mono); font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">Interactive Demo</div>
+                      <div style="color:#ffffff; font-family:var(--font-heading); font-weight:700; font-size:1.05rem; margin-top:3px;">Solutions Suite</div>
+                    </div>
+                  </div>
+                  <div class="mega-feature-body">
+                    <div class="mega-feature-title">
+                      <span>Explore All Solutions</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                    <p class="mega-feature-desc">Interactive tabs for Newsroom, E-Commerce, Cloud, Enterprise CMS &amp; Mobile.</p>
+                    <div class="mega-feature-cta">
+                      <span>View Live Interactive Suite</span>
+                      <span>→</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- About Us Dropdown with Rich Interactive Mega Menu -->
         <div class="nav-item-dropdown" id="aboutDropdown">
@@ -2925,40 +3038,40 @@
                 </div>
                 <div class="mega-links-list">
                   <!-- 1. CEO Message Link -->
-                  <button type="button" class="mega-link-card open-ceo-modal" aria-label="Read CEO Message">
-                    <img src="assets/ceo_portrait.jpg" alt="Tareq Rahman, CEO & Founder" class="mega-avatar">
+                  <a href="ceo-message.html" class="mega-link-card" aria-label="Read CEO Message">
+                    <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon), CEO" class="mega-avatar">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
                         <span class="mega-arrow">→</span>
                       </div>
-                      <p class="mega-desc">Vision, engineering ethos &amp; zero-compromise reliability</p>
+                      <p class="mega-desc">Md. Zikrul Ahsan (Shawon) — Studio vision &amp; ethos</p>
                     </div>
-                  </button>
+                  </a>
 
                   <!-- 2. CTO Message Link -->
-                  <button type="button" class="mega-link-card open-cto-modal" aria-label="Read CTO Message">
-                    <img src="assets/cto_portrait.jpg" alt="Shahed Hossain, CTO & Lead Architect" class="mega-avatar">
+                  <a href="cto-message.html" class="mega-link-card" aria-label="Read CTO Message">
+                    <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash, CTO" class="mega-avatar">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
                         <span class="mega-arrow">→</span>
                       </div>
-                      <p class="mega-desc">Architecture philosophy, low-latency stack &amp; scalability</p>
+                      <p class="mega-desc">Nurul Afsar Polash — Architecture &amp; low-latency stack</p>
                     </div>
-                  </button>
+                  </a>
 
                   <!-- 3. Our Team Link -->
-                  <a href="#about-team" class="mega-link-card" aria-label="Meet Our Team">
+                  <a href="team.html" class="mega-link-card" aria-label="Meet Our Team">
                     <div class="mega-link-icon-wrap">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span>Meet Our Team</span>
+                        <span>Meet Our Full Team</span>
                         <span class="mega-arrow">→</span>
                       </div>
-                      <p class="mega-desc">Senior systems architects, designers &amp; DevOps engineers</p>
+                      <p class="mega-desc">Explore our 12+ engineers, architects &amp; designers</p>
                     </div>
                   </a>
                 </div>
@@ -2988,6 +3101,7 @@
           </div>
         </div>
 
+        <a href="team.html" class="nav-link">Team</a>
         <a href="#projects" class="nav-link">Work</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
@@ -3004,10 +3118,19 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="#home">Home <span>→</span></a>
-      <a href="#solutions">Solutions Suite <span>→</span></a>
-      <a href="#specializations">Newsroom CMS <span>→</span></a>
-      <a href="#ecommerce">E-Commerce Architecture <span>→</span></a>
-      <a href="#cloud-apps">Cloud, Web &amp; Mobile Apps <span>→</span></a>
+
+      <!-- Mobile Solutions Accordion -->
+      <div>
+        <button class="mobile-dropdown-btn" id="mobileSolutionsToggle" type="button">
+          Solutions <span id="mobileSolutionsArrow">↓</span>
+        </button>
+        <div class="mobile-dropdown-sub" id="mobileSolutionsSub">
+          <a href="#specializations" class="mobile-sub-link">✦ Newsroom CMS <span class="pill-hot" style="margin-left:6px;">HOT</span></a>
+          <a href="#ecommerce" class="mobile-sub-link">✦ E-Commerce Platforms</a>
+          <a href="#cloud-apps" class="mobile-sub-link">✦ Cloud &amp; Apps</a>
+          <a href="#solutions" class="mobile-sub-link">✦ Interactive Solutions Suite (All 6 Pillars)</a>
+        </div>
+      </div>
 
       <!-- Mobile About Us Accordion -->
       <div>
@@ -3016,13 +3139,14 @@
         </button>
         <div class="mobile-dropdown-sub" id="mobileAboutSub">
           <a href="#about" class="mobile-sub-link">✦ About Company Overview</a>
-          <button type="button" class="mobile-sub-link open-ceo-modal" style="background:none; border:none; width:100%; text-align:left; cursor:pointer;">✦ Read CEO's Message</button>
-          <button type="button" class="mobile-sub-link open-cto-modal" style="background:none; border:none; width:100%; text-align:left; cursor:pointer;">✦ Read CTO's Message</button>
-          <a href="#about-team" class="mobile-sub-link">✦ Meet Our Team</a>
+          <a href="ceo-message.html" class="mobile-sub-link">✦ Read CEO's Message</a>
+          <a href="cto-message.html" class="mobile-sub-link">✦ Read CTO's Message</a>
+          <a href="team.html" class="mobile-sub-link">✦ Meet Our Full Team</a>
           <a href="#about-environment" class="mobile-sub-link">✦ Our Work Environment</a>
         </div>
       </div>
 
+      <a href="team.html">Our Team <span>→</span></a>
       <a href="#projects">Selected Projects <span>→</span></a>
       <a href="#contact">Contact &amp; Estimate <span>→</span></a>
       <div style="margin-top:24px;">
@@ -4671,7 +4795,7 @@
             </p>
             <div style="display:flex; gap:12px; flex-wrap:wrap;">
               <a href="#contact" class="btn btn-primary btn-sm">Join Our Team or Partner</a>
-              <button type="button" class="btn btn-secondary btn-sm open-ceo-modal" style="background:rgba(255,255,255,0.9); border:none;">Read CEO Letter</button>
+              <a href="ceo-message.html" class="btn btn-secondary btn-sm" style="background:rgba(255,255,255,0.9); border:none; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">Read CEO Letter →</a>
             </div>
           </div>
         </div>
@@ -4693,66 +4817,73 @@
           <!-- Member 1: CEO & Founder -->
           <div class="team-card">
             <div class="team-card-avatar-wrap">
-              <img src="assets/ceo_portrait.jpg" alt="Tareq Rahman" class="team-card-avatar" loading="lazy">
+              <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon)" class="team-card-avatar" loading="lazy">
             </div>
             <span class="team-card-role-badge">Chief Executive Officer</span>
-            <div class="team-card-name">Tareq Rahman</div>
+            <div class="team-card-name">Md. Zikrul Ahsan (Shawon)</div>
             <div class="team-card-bio">
-              14+ years scaling large-scale software ventures, media operations, and enterprise software partnerships across South Asia &amp; North America.
+              Guiding eMMSOFT's strategic growth, high-stakes client delivery, and long-term engineering vision for high-concurrency systems.
             </div>
-            <button type="button" class="team-msg-btn open-ceo-modal" aria-label="Read Tareq Rahman's CEO Message">
-              <span>Read Message</span>
+            <a href="ceo-message.html" class="team-msg-btn" aria-label="Read Md. Zikrul Ahsan's CEO Message">
+              <span>Read Full CEO Letter</span>
               <span>→</span>
-            </button>
+            </a>
           </div>
 
           <!-- Member 2: CTO & Systems Architect -->
           <div class="team-card">
             <div class="team-card-avatar-wrap">
-              <img src="assets/cto_portrait.jpg" alt="Shahed Hossain" class="team-card-avatar" loading="lazy">
+              <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash" class="team-card-avatar" loading="lazy">
             </div>
             <span class="team-card-role-badge">Chief Technology Officer</span>
-            <div class="team-card-name">Shahed Hossain</div>
+            <div class="team-card-name">Nurul Afsar Polash</div>
             <div class="team-card-bio">
-              Distributed systems specialist with expertise in multi-tenant headless CMS, Kubernetes clustering, and high-volume real-time commerce feeds.
+              Architecting sub-50ms TTFB newsroom systems, edge-cached architectures, Kubernetes clustering, and high-volume commerce feeds.
             </div>
-            <button type="button" class="team-msg-btn open-cto-modal" aria-label="Read Shahed Hossain's CTO Message">
-              <span>Read Message</span>
-              <span>→</span>
-            </button>
-          </div>
-
-          <!-- Member 3: VP of Engineering -->
-          <div class="team-card">
-            <div class="team-card-avatar-wrap">
-              <img src="assets/vp_eng_portrait.jpg" alt="Elena Rostova" class="team-card-avatar" loading="lazy">
-            </div>
-            <span class="team-card-role-badge">VP of Engineering</span>
-            <div class="team-card-name">Elena Rostova</div>
-            <div class="team-card-bio">
-              Oversees sprint delivery, microservices stability, and enterprise SLAs. Pioneer in automated CI/CD testing and seamless blue/green rollouts.
-            </div>
-            <a href="#contact" class="team-msg-btn">
-              <span>Connect</span>
+            <a href="cto-message.html" class="team-msg-btn" aria-label="Read Nurul Afsar Polash's CTO Message">
+              <span>Read Full CTO Letter</span>
               <span>→</span>
             </a>
           </div>
 
-          <!-- Member 4: Head of Product & UX -->
+          <!-- Member 3: Accounts Manager -->
           <div class="team-card">
             <div class="team-card-avatar-wrap">
-              <img src="assets/head_product_portrait.jpg" alt="Priya Sharma" class="team-card-avatar" loading="lazy">
+              <img src="assets/team/member_3.jpg" alt="Ziaul Hasan" class="team-card-avatar" loading="lazy">
             </div>
-            <span class="team-card-role-badge">Head of Product Design</span>
-            <div class="team-card-name">Priya Sharma</div>
+            <span class="team-card-role-badge">Accounts Manager</span>
+            <div class="team-card-name">Ziaul Hasan</div>
             <div class="team-card-bio">
-              Design system advocate crafting conversion-focused e-commerce storefronts and clutter-free, rapid-publishing editorial newsroom cockpits.
+              Financial governance, client billing frameworks, fiscal operations, and contract auditing across all studio engagements.
             </div>
-            <a href="#contact" class="team-msg-btn">
-              <span>Connect</span>
+            <a href="team.html" class="team-msg-btn">
+              <span>View Profile</span>
               <span>→</span>
             </a>
           </div>
+
+          <!-- Member 4: HR & Admin Manager -->
+          <div class="team-card">
+            <div class="team-card-avatar-wrap">
+              <img src="assets/team/member_4.jpg" alt="Armin Islam Bipa" class="team-card-avatar" loading="lazy">
+            </div>
+            <span class="team-card-role-badge">HR &amp; Admin Manager</span>
+            <div class="team-card-name">Armin Islam Bipa</div>
+            <div class="team-card-bio">
+              Engineering talent acquisition, people operations, studio culture, and organizational administration.
+            </div>
+            <a href="team.html" class="team-msg-btn">
+              <span>View Profile</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:32px;">
+          <a href="team.html" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:14px 32px; font-size:1rem;">
+            <span>Meet Our Complete Studio Squad (12+ Specialists)</span>
+            <span style="font-weight:800;">→</span>
+          </a>
         </div>
       </div>
 
@@ -4929,14 +5060,14 @@
         </div>
 
         <div class="footer-col">
-          <h4>Company &amp; Studio</h4>
+          <h4>Leadership &amp; Studio</h4>
           <ul>
-            <li><a href="#about">About eMMSOFT</a></li>
-            <li><a href="#about-team">Leadership &amp; Team</a></li>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Studio Team (12+ Members)</a></li>
             <li><a href="#about-environment">Our Work Environment</a></li>
             <li><a href="#projects">Selected Production Work</a></li>
             <li><a href="#process">Our 6-Stage Process</a></li>
-            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
             <li><a href="#contact">Start a Project →</a></li>
           </ul>
         </div>
@@ -4961,10 +5092,10 @@
     <div class="exec-modal-dialog">
       <div class="exec-modal-header">
         <div class="exec-modal-profile">
-          <img src="assets/ceo_portrait.jpg" alt="Tareq Rahman" class="exec-modal-avatar">
+          <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon)" class="exec-modal-avatar">
           <div class="exec-modal-title">
-            <h3 id="ceoModalTitle">Tareq Rahman</h3>
-            <span>Chief Executive Officer &amp; Founder</span>
+            <h3 id="ceoModalTitle">Md. Zikrul Ahsan (Shawon)</h3>
+            <span>Chief Executive Officer</span>
           </div>
         </div>
         <button type="button" class="exec-modal-close close-exec-modal" aria-label="Close modal">&times;</button>
@@ -4980,11 +5111,11 @@
           Too many technology consultancies prioritize flash over substance, delivering architectures that degrade the moment traffic surges. We engineered eMMSOFT from day one as a specialized engineering studio. Whether we are powering the news engine for national dailies serving millions of concurrent readers on breaking news days, or handling complex multi-warehouse inventory systems for retailers, our engineering standard is uncompromising.
         </p>
         <p>
-          We take immense pride in our long-term client relationships. We view ourselves not as an outsourced agency, but as your core engineering partner invested in your scalability, security, and digital sovereignity.
+          We take immense pride in our long-term client relationships. We view ourselves not as an outsourced agency, but as your core engineering partner invested in your scalability, security, and digital sovereignty.
         </p>
         <p style="margin-top:20px; font-weight:600; color:var(--ink-primary);">
-          — Tareq Rahman<br>
-          <span style="font-size:0.85rem; font-weight:normal; color:var(--ink-muted);">CEO &amp; Founder, eMMSOFT</span>
+          — Md. Zikrul Ahsan (Shawon)<br>
+          <span style="font-size:0.85rem; font-weight:normal; color:var(--ink-muted);">CEO, eMMSOFT</span>
         </p>
       </div>
       <div class="exec-modal-footer">
@@ -4999,10 +5130,10 @@
     <div class="exec-modal-dialog">
       <div class="exec-modal-header">
         <div class="exec-modal-profile">
-          <img src="assets/cto_portrait.jpg" alt="Shahed Hossain" class="exec-modal-avatar">
+          <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash" class="exec-modal-avatar">
           <div class="exec-modal-title">
-            <h3 id="ctoModalTitle">Shahed Hossain</h3>
-            <span>Chief Technology Officer &amp; Lead Systems Architect</span>
+            <h3 id="ctoModalTitle">Nurul Afsar Polash</h3>
+            <span>Chief Technology Officer</span>
           </div>
         </div>
         <button type="button" class="exec-modal-close close-exec-modal" aria-label="Close modal">&times;</button>
@@ -5021,8 +5152,8 @@
           When you partner with our studio, your code is reviewed by senior practitioners, automated with comprehensive end-to-end regression suites, and deployed with enterprise precision. That is our engineering promise.
         </p>
         <p style="margin-top:20px; font-weight:600; color:var(--ink-primary);">
-          — Shahed Hossain<br>
-          <span style="font-size:0.85rem; font-weight:normal; color:var(--ink-muted);">CTO &amp; Systems Architect, eMMSOFT</span>
+          — Nurul Afsar Polash<br>
+          <span style="font-size:0.85rem; font-weight:normal; color:var(--ink-muted);">CTO, eMMSOFT</span>
         </p>
       </div>
       <div class="exec-modal-footer">
@@ -5044,7 +5175,7 @@
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    // 2. Mobile Menu Toggle & Accordion
+    // 2. Mobile Menu Toggle & Accordions
     const burgerBtn = document.getElementById('burgerBtn');
     const mobilePanel = document.getElementById('mobilePanel');
     const mobileAboutToggle = document.getElementById('mobileAboutToggle');
@@ -5055,6 +5186,17 @@
       mobileAboutToggle.addEventListener('click', () => {
         const isOpen = mobileAboutSub.classList.toggle('is-open');
         if (mobileAboutArrow) mobileAboutArrow.textContent = isOpen ? '↑' : '↓';
+      });
+    }
+
+    const mobileSolutionsToggle = document.getElementById('mobileSolutionsToggle');
+    const mobileSolutionsSub = document.getElementById('mobileSolutionsSub');
+    const mobileSolutionsArrow = document.getElementById('mobileSolutionsArrow');
+
+    if (mobileSolutionsToggle && mobileSolutionsSub) {
+      mobileSolutionsToggle.addEventListener('click', () => {
+        const isOpen = mobileSolutionsSub.classList.toggle('is-open');
+        if (mobileSolutionsArrow) mobileSolutionsArrow.textContent = isOpen ? '↑' : '↓';
       });
     }
 
