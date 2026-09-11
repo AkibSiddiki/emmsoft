@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Applications &amp; SaaS — eMMSOFT Software Engineering Studio | Mission-Critical Platforms</title>
+  <meta name="description"
+    content="Custom web applications, responsive enterprise portals, and multi-tenant SaaS architectures engineered with real-time WebSockets, robust RBAC, and low-latency database backends.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      --brand-emerald: #049449;
+      --brand-emerald-dark: #037339;
+      --brand-emerald-light: #05a852;
+      --brand-emerald-accent: #10b981;
+      --brand-emerald-tint: #ecf8f1;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.08);
+      --brand-emerald-glow: rgba(4, 148, 73, 0.22);
+      --brand-emerald-border: rgba(4, 148, 73, 0.25);
+
+      --brand-slate: #374049;
+      --dark-950: #0b0f15;
+      --dark-900: #101620;
+      --dark-850: #151d2a;
+      --dark-800: #1d2737;
+      --dark-700: #2d3b4f;
+      --dark-600: #425268;
+
+      --bg-main: #fbfcfb;
+      --bg-surface: #ffffff;
+      --bg-alt: #f3f6f4;
+      --bg-subtle: #edf2ee;
+
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
+
+      --border-light: #e3e8e5;
+      --border-focus: #049449;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container: 1220px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 12px 30px rgba(16, 24, 40, 0.1);
+      --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--ink-primary);
+      line-height: 1.25;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: clamp(64px, 8vw, 108px) 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-emerald);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+      border-color: var(--ink-faint);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+    }
+
+    .pill-hot {
+      font-size: 0.70rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      background: #dc2626;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ==========================================================================
+       NAVBAR
+       ========================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: clamp(14px, 2.2vw, 32px);
+      position: relative;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.8vw, 28px);
+      flex-wrap: nowrap;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: color 0.18s ease;
+      padding: 6px 0;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--brand-emerald-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-item-dropdown {
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      height: 76px;
+    }
+
+    .nav-item-dropdown .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown-chevron {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .nav-item-dropdown:hover .dropdown-chevron,
+    .nav-item-dropdown:focus-within .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-menu-bridge {
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      z-index: 1001;
+      display: none;
+    }
+
+    .nav-item-dropdown:hover .mega-menu-bridge,
+    .nav-item-dropdown:focus-within .mega-menu-bridge {
+      display: block;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: 76px;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: min(880px, calc(100vw - 32px));
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 48px rgba(16, 24, 40, 0.12), 0 4px 12px rgba(16, 24, 40, 0.04);
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+      z-index: 1002;
+    }
+
+    .nav-item-dropdown:hover .mega-menu,
+    .nav-item-dropdown:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .mega-menu-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mega-menu-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mega-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mega-link-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mega-link-card:hover {
+      background: var(--brand-emerald-tint);
+    }
+
+    .mega-link-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-alt);
+      color: var(--brand-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: var(--transition);
+    }
+
+    .mega-link-card:hover .mega-link-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    .mega-link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mega-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-link-card:hover .mega-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-desc {
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      line-height: 1.3;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-arrow {
+      font-size: 0.85rem;
+      color: var(--brand-emerald);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .mega-menu-footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .mega-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-muted);
+      font-size: 0.80rem;
+    }
+
+    .mega-footer-link {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .mega-footer-link:hover {
+      color: var(--brand-emerald-light);
+      transform: translateX(2px);
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      cursor: pointer;
+    }
+
+    .nav-burger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--ink-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .nav-burger.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-burger.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-burger.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      padding: 24px;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+
+    .mobile-panel.is-open {
+      display: flex;
+    }
+
+    .mobile-panel a {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-panel a:hover {
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+    }
+
+    /* ==========================================================================
+       PAGE HERO
+       ========================================================================== */
+    .solution-hero {
+      background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 60%),
+                  linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
+      border-bottom: 1px solid var(--border-light);
+      padding: clamp(48px, 6vw, 84px) 0 clamp(40px, 5vw, 68px);
+      position: relative;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumbs a {
+      color: var(--ink-muted);
+      transition: color 0.18s ease;
+    }
+
+    .breadcrumbs a:hover {
+      color: var(--brand-emerald-dark);
+    }
+
+    .breadcrumbs span.sep {
+      color: var(--border-light);
+    }
+
+    .breadcrumbs span.current {
+      color: var(--brand-emerald-dark);
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.3rem, 4.4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.14;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .text-emerald {
+      color: var(--brand-emerald);
+      position: relative;
+    }
+
+    .hero-lead {
+      font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-val {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.2vw, 1.95rem);
+      font-weight: 800;
+      color: var(--brand-emerald-dark);
+      line-height: 1.1;
+    }
+
+    .metric-lbl {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      font-weight: 500;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* Interactive Telemetry Card */
+    .interactive-webapp-card {
+      background: var(--dark-950);
+      border: 1px solid var(--dark-700);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-lg), 0 0 35px rgba(4, 148, 73, 0.15);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interactive-webapp-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(4, 148, 73, 0.4) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .webapp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--dark-800);
+    }
+
+    .webapp-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .webapp-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(4, 148, 73, 0.25);
+      color: var(--brand-emerald-accent);
+      border: 1px solid var(--brand-emerald-border);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .telemetry-box {
+      background: var(--dark-900);
+      border: 1px solid var(--dark-800);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+
+    .telemetry-box .lbl {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .telemetry-box .val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 4px;
+      font-family: var(--font-heading);
+    }
+
+    .webapp-stream {
+      background: var(--dark-900);
+      border: 1px solid var(--dark-800);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stream-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stream-tag {
+      color: var(--brand-emerald-accent);
+      font-weight: 600;
+    }
+
+    .webapp-footer-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.80rem;
+      color: #94a3b8;
+      padding-top: 12px;
+      border-top: 1px solid var(--dark-800);
+    }
+
+    .webapp-footer-status .status-ok {
+      color: var(--brand-emerald-accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ==========================================================================
+       ARCHITECTURE DEEP-DIVE
+       ========================================================================== */
+    .arch-section {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .section-head {
+      margin-bottom: clamp(36px, 5vw, 56px);
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-top: 10px;
+    }
+
+    .section-head p {
+      font-size: 1.08rem;
+      color: var(--ink-secondary);
+      max-width: 680px;
+      margin-top: 12px;
+    }
+
+    .arch-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .arch-step-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      transition: var(--transition);
+    }
+
+    .arch-step-card:hover {
+      border-color: var(--brand-emerald-border);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .arch-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .arch-step-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .arch-step-card p {
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .arch-callout-box {
+      background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .arch-callout-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(4, 148, 73, 0.2);
+      border: 1px solid var(--brand-emerald-border);
+      color: var(--brand-emerald-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arch-callout-body h4 {
+      color: #ffffff;
+      font-size: 1.08rem;
+      margin-bottom: 4px;
+    }
+
+    .arch-callout-body p {
+      color: #94a3b8;
+      font-size: 0.90rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       KEY CAPABILITY PILLARS
+       ========================================================================== */
+    .capabilities-section {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cap-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .cap-card:hover {
+      border-color: var(--brand-emerald-border);
+      box-shadow: 0 10px 28px rgba(4, 148, 73, 0.10);
+      transform: translateY(-3px);
+    }
+
+    .cap-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .cap-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .cap-card p {
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .cap-bullets {
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 14px;
+    }
+
+    .cap-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cap-bullets li svg {
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       TECH STACK MATRIX
+       ========================================================================== */
+    .stack-section {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .stack-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stack-col-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .stack-col-header {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brand-emerald-dark);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .stack-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .stack-item-name {
+      font-family: var(--font-heading);
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .stack-item-role {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+    /* ==========================================================================
+       CASE STUDIES SPOTLIGHT
+       ========================================================================== */
+    .case-section {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .case-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .case-card:hover {
+      border-color: var(--brand-emerald-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .case-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .case-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .case-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--brand-emerald-border);
+    }
+
+    .case-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .case-card p {
+      font-size: 0.94rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .case-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 14px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .case-stat-item {
+      text-align: center;
+    }
+
+    .case-stat-val {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--brand-emerald-dark);
+    }
+
+    .case-stat-lbl {
+      font-size: 0.70rem;
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       PROCESS / ROADMAP
+       ========================================================================== */
+    .process-section {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .process-node {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      position: relative;
+    }
+
+    .node-num {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--brand-emerald);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .process-node h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .process-node p {
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       CTA BANNER
+       ========================================================================== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%);
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(4, 148, 73, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      padding: 64px 0 32px;
+      font-size: 0.92rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: clamp(24px, 4vw, 48px);
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: var(--ink-secondary);
+      font-size: 0.90rem;
+      line-height: 1.6;
+      margin-top: 14px;
+      max-width: 320px;
+    }
+
+    .footer-logo {
+      height: 24px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      color: var(--ink-muted);
+      transition: color 0.18s ease;
+      font-size: 0.88rem;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--brand-emerald-dark);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+      padding-top: 24px;
+      color: var(--ink-muted);
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-legal a {
+      color: var(--ink-muted);
+    }
+
+    .footer-legal a:hover {
+      color: var(--brand-emerald-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-flow-grid,
+      .cap-grid,
+      .stack-matrix-grid,
+      .process-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-actions .btn {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
+
+      .metrics-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .arch-flow-grid,
+      .cap-grid,
+      .stack-matrix-grid,
+      .case-grid,
+      .process-timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       HEADER / NAVIGATION
+       ========================================================================== -->
+  <nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="eMMSOFT Home">
+        <img src="logo.png" alt="eMMSOFT" class="nav-logo">
+      </a>
+
+      <div class="nav-links">
+        <!-- Solutions Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#solutions" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <!-- Column 1: Services -->
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  Engineering Services
+                </div>
+                <div class="mega-links-list">
+                  <a href="solution-cloud-devops.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud Solutions &amp; DevOps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">AWS / GCP migration, Kubernetes &amp; CI/CD</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html#microservices" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>API &amp; Microservices</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-throughput REST, GraphQL &amp; caching</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-cloud-devops.html#audits" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Architecture &amp; Code Audits</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Low-latency tuning, database indexing &amp; security</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html" class="mega-link-card" style="background:var(--brand-emerald-tint);">
+                    <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="color:var(--brand-emerald-dark);">Custom Software Engineering</span>
+                        <span class="mega-arrow" style="opacity:1; transform:translateX(0);">→</span>
+                      </div>
+                      <p class="mega-desc">Bespoke platforms &amp; legacy system modernization</p>
+                    </div>
+                  </a>
+
+                  <a href="contact.html?service=sla" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>24/7 SLA &amp; Support</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">99.99% uptime monitoring &amp; mission-critical ops</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2: Flagship Solutions -->
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  Flagship Solutions
+                </div>
+                <div class="mega-links-list">
+                  <a href="solution-newsroom-cms.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-ecommerce.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce Platforms</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Flash-sale resilience, multi-warehouse &amp; ERP sync</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-enterprise-cms.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Enterprise Headless CMS</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Omnichannel content distribution &amp; RBAC governance</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html" class="mega-link-card" style="background:var(--brand-emerald-tint);">
+                    <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="color:var(--brand-emerald-dark);">Web Applications &amp; SaaS</span>
+                        <span class="mega-arrow" style="opacity:1; transform:translateX(0);">→</span>
+                      </div>
+                      <p class="mega-desc">Reactive web portals, dashboards &amp; tools</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-mobile-apps.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Mobile Applications</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">iOS &amp; Android Flutter apps with offline-first sync</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Strip -->
+            <div class="mega-menu-footer">
+              <div class="mega-footer-left">
+                <span class="pulse-dot"></span>
+                <span>Powering 50M+ monthly transactions &amp; readers across Bangladesh &amp; global</span>
+              </div>
+              <a href="work.html" class="mega-footer-link">
+                View All Case Studies <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="work.html" class="nav-link">Work</a>
+
+        <!-- About Us Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Leadership &amp; Studio Team
+                </div>
+                <div class="mega-links-list">
+                  <a href="about.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>About eMMSOFT</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Founding story, values &amp; engineering ethos</p>
+                    </div>
+                  </a>
+
+                  <a href="ceo-message.html" class="mega-link-card">
+                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CEO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Md. Zikrul Ahsan (Shawon) — Vision &amp; ethos</p>
+                    </div>
+                  </a>
+
+                  <a href="cto-message.html" class="mega-link-card">
+                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CTO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Nurul Afsar Polash — Architecture &amp; low-latency stack</p>
+                    </div>
+                  </a>
+
+                  <a href="team.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Meet Our Full Team</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Explore our 12+ engineers &amp; architects</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2: Studio Culture -->
+              <div class="mega-menu-col">
+                <a href="about.html#studio-culture" class="mega-feature-card">
+                  <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div style="padding:14px;">
+                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                      High-Throughput Engineering
+                    </div>
+                    <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
+                      Learn how our Dhaka squad eliminates meetings in favor of deterministic production deploys.
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html?solution=Web+Applications" class="btn btn-primary btn-sm">Request Tech Proposal →</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="index.html">Home <span>→</span></a>
+      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
+      <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
+      <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
+      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <a href="about.html">About Us <span>→</span></a>
+      <a href="team.html">Team <span>→</span></a>
+      <a href="work.html">Work / Portfolio <span>→</span></a>
+      <a href="ceo-message.html">CEO Message <span>→</span></a>
+      <a href="cto-message.html">CTO Message <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       PAGE HERO
+       ========================================================================== -->
+  <section class="solution-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <a href="index.html#solutions">Solutions</a>
+        <span class="sep">/</span>
+        <span class="current">Web Applications &amp; SaaS</span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            Web Applications &amp; SaaS · Mission-Critical Systems
+          </div>
+          <h1>Custom <span class="text-emerald">Web Applications, Portals</span> &amp; Multi-Tenant SaaS.</h1>
+          <p class="hero-lead">
+            Transforming intricate business logic and massive corporate datasets into reactive, lightning-fast web applications. We design secure, role-driven platforms with real-time WebSocket sync, multi-tenant schema isolation, automated financial ledgers, and deterministic speed.
+          </p>
+          <div class="hero-actions">
+            <a href="contact.html?solution=Web+Applications" class="btn btn-primary">Request Architecture Consultation →</a>
+            <a href="#case-studies" class="btn btn-secondary">Explore Client Case Studies</a>
+          </div>
+
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <div class="metric-val">2.5M+</div>
+              <div class="metric-lbl">Daily Transactions Processed</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">&lt;100ms</div>
+              <div class="metric-lbl">Median Database Query SLA</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">100%</div>
+              <div class="metric-lbl">Multi-Tenant Schema Isolation</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">SOC2</div>
+              <div class="metric-lbl">Security Compliant Architecture</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Telemetry Simulation -->
+        <div class="interactive-webapp-card">
+          <div class="webapp-header">
+            <div class="webapp-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              SaaS Telemetry &amp; Event Bus
+            </div>
+            <span class="webapp-badge">REAL-TIME</span>
+          </div>
+
+          <div class="telemetry-grid">
+            <div class="telemetry-box">
+              <div class="lbl">Active Users</div>
+              <div class="val" style="color:var(--brand-emerald-accent);">6,840 Live</div>
+            </div>
+            <div class="telemetry-box">
+              <div class="lbl">WebSocket Bus</div>
+              <div class="val">&lt;12ms Roundtrip</div>
+            </div>
+            <div class="telemetry-box">
+              <div class="lbl">Job Queue Rate</div>
+              <div class="val">1,820 jobs/sec</div>
+            </div>
+            <div class="telemetry-box">
+              <div class="lbl">Ledger Status</div>
+              <div class="val" style="color:var(--brand-emerald-accent);">100% Balanced</div>
+            </div>
+          </div>
+
+          <div class="webapp-stream">
+            <div class="stream-row">
+              <span>[WEBSOCKET] Real-time maritime cargo telemetry</span>
+              <span class="stream-tag">Synced</span>
+            </div>
+            <div class="stream-row">
+              <span>[ASYNC QUEUE] 1,200 PDF invoices generated &amp; dispatched</span>
+              <span class="stream-tag">1.2s Duration</span>
+            </div>
+            <div class="stream-row">
+              <span>[TENANT ISOLATION] Cross-tenant perimeter audit verified</span>
+              <span class="stream-tag">Zero Leaks</span>
+            </div>
+          </div>
+
+          <div class="webapp-footer-status">
+            <span>Platform Concurrency:</span>
+            <span class="status-ok">99.98% Healthy Under Full Load</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ARCHITECTURE DEEP-DIVE
+       ========================================================================== -->
+  <section class="section-pad arch-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge-tag">SaaS Architecture</div>
+        <h2>Engineered for real-time collaboration and strict tenant security.</h2>
+        <p>
+          We construct reactive single-page frontends backed by event-driven microservices, WebSocket communication channels, and segregated database schemas to guarantee isolation and speed.
+        </p>
+      </div>
+
+      <div class="arch-flow-grid">
+        <div class="arch-step-card">
+          <span class="arch-step-num">Step 01</span>
+          <h3>Reactive Frontend</h3>
+          <p>Next.js &amp; React client-side dashboards with TanStack Query caching, optimistic UI updates, and zero screen flickering.</p>
+        </div>
+
+        <div class="arch-step-card">
+          <span class="arch-step-num">Step 02</span>
+          <h3>API Gateway &amp; Auth</h3>
+          <p>JWT authentication with cryptographic rotating refresh tokens, rate limiters, and granular RBAC role verification.</p>
+        </div>
+
+        <div class="arch-step-card">
+          <span class="arch-step-num">Step 03</span>
+          <h3>WebSocket Event Bus</h3>
+          <p>Bidirectional Socket.io &amp; Go WebSocket channels push real-time alerts, collaborative cursor locks, and live status charts.</p>
+        </div>
+
+        <div class="arch-step-card">
+          <span class="arch-step-num">Step 04</span>
+          <h3>Multi-Tenant Storage</h3>
+          <p>PostgreSQL schema-per-tenant isolation paired with Redis BullMQ asynchronous queues for heavy background tasks.</p>
+        </div>
+      </div>
+
+      <div class="arch-callout-box" id="microservices">
+        <div class="arch-callout-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="arch-callout-body">
+          <h4>API &amp; Microservices Architecture</h4>
+          <p>
+            When applications outgrow monolithic frameworks, eMMSOFT decomposes core business functions into decoupled, self-contained microservices communicating over gRPC and RESTful event contracts with dedicated Redis caching layers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       KEY CAPABILITY PILLARS
+       ========================================================================== -->
+  <section class="section-pad capabilities-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge-tag">Core Features &amp; Modules</div>
+        <h2>Full-spectrum enterprise web application capabilities.</h2>
+        <p>Architected for complex enterprise operations, supply chain logistics, and high-volume digital workflows.</p>
+      </div>
+
+      <div class="cap-grid">
+        <!-- 1 -->
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Multi-Tenant SaaS Architecture</h3>
+          <p>Rigid tenant data segregation using schema-per-tenant or row-level security (RLS) models with automated tenant provisioning.</p>
+          <ul class="cap-bullets">
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Zero cross-tenant data leak risk</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Custom domain &amp; branding support</li>
+          </ul>
+        </div>
+
+        <!-- 2 -->
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          </div>
+          <h3>Real-Time WebSockets &amp; Telemetry</h3>
+          <p>Bi-directional event streaming delivering instant dashboard metrics, multi-user live cursors, notifications, and status telemetry.</p>
+          <ul class="cap-bullets">
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Sub-15ms client notification latency</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Reconnection &amp; message queue fallback</li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Granular RBAC &amp; Permission Matrix</h3>
+          <p>Define dynamic roles with attribute-based access control (ABAC). Restrict access by branch, department, transaction amount, or IP whitelist.</p>
+          <ul class="cap-bullets">
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Granular action-level permissions</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Complete immutable audit logs</li>
+          </ul>
+        </div>
+
+        <!-- 4 -->
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <h3>High-Performance Analytics &amp; Reports</h3>
+          <p>Aggregate millions of records with sub-second queries. Interactive charts, cohort funnels, and automated scheduled PDF/Excel exports.</p>
+          <ul class="cap-bullets">
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Instant client-side filtering &amp; sorting</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> ClickHouse columnar analytics acceleration</li>
+          </ul>
+        </div>
+
+        <!-- 5 -->
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+          </div>
+          <h3>Asynchronous Worker Queues</h3>
+          <p>Offload heavy computational jobs, email dispatches, and report compilation to Redis BullMQ worker pools without locking user UI interactions.</p>
+          <ul class="cap-bullets">
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Automatic retry &amp; dead-letter queues</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Progress bars with WebSocket updates</li>
+          </ul>
+        </div>
+
+        <!-- 6 -->
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Third-Party Enterprise Integrations</h3>
+          <p>Seamlessly integrate with legacy ERPs, payment gateways, telco SMS gateways, WhatsApp Business APIs, and single sign-on providers.</p>
+          <ul class="cap-bullets">
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Robust webhook validation &amp; idempotency</li>
+            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Certified banking API protocol support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRODUCTION TECH STACK MATRIX
+       ========================================================================== -->
+  <section class="section-pad stack-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge-tag">Battle-Tested Components</div>
+        <h2>Enterprise web application technology stack.</h2>
+        <p>Built with robust reactive frameworks, strongly typed contracts, and enterprise databases.</p>
+      </div>
+
+      <div class="stack-matrix-grid">
+        <div class="stack-col-card">
+          <div class="stack-col-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Frontend &amp; UI
+          </div>
+          <div class="stack-list">
+            <div class="stack-item">
+              <span class="stack-item-name">Next.js / React 18</span>
+              <span class="stack-item-role">Reactive App Shell</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">TypeScript</span>
+              <span class="stack-item-role">Strict Type Contracts</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">TanStack Query</span>
+              <span class="stack-item-role">Client State &amp; Cache</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-col-card">
+          <div class="stack-col-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Backend &amp; Sockets
+          </div>
+          <div class="stack-list">
+            <div class="stack-item">
+              <span class="stack-item-name">Node.js / NestJS</span>
+              <span class="stack-item-role">Microservices Architecture</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">Go (Golang)</span>
+              <span class="stack-item-role">High-Concurrency Sockets</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">Python FastAPI</span>
+              <span class="stack-item-role">Data Pipelines &amp; AI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-col-card">
+          <div class="stack-col-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            Data &amp; Queues
+          </div>
+          <div class="stack-list">
+            <div class="stack-item">
+              <span class="stack-item-name">PostgreSQL Aurora</span>
+              <span class="stack-item-role">ACID Relational Core</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">Redis &amp; BullMQ</span>
+              <span class="stack-item-role">Async Background Workers</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">ClickHouse</span>
+              <span class="stack-item-role">Columnar Analytics Store</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-col-card">
+          <div class="stack-col-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Security &amp; Cloud
+          </div>
+          <div class="stack-list">
+            <div class="stack-item">
+              <span class="stack-item-name">Docker &amp; K8s</span>
+              <span class="stack-item-role">Auto-scaling Pods</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">OAuth2 &amp; JWT</span>
+              <span class="stack-item-role">Tokenized Session Security</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">Cloudflare WAF</span>
+              <span class="stack-item-role">Zero-Trust Network Access</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CASE STUDIES SPOTLIGHT
+       ========================================================================== -->
+  <section class="section-pad case-section" id="case-studies">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge-tag">Case Studies &amp; Evidence</div>
+        <h2>Powering maritime logistics &amp; higher education.</h2>
+        <p>Production enterprise platforms handling thousands of operational workflows daily.</p>
+      </div>
+
+      <div class="case-grid">
+        <!-- HRC Shipping -->
+        <div class="case-card">
+          <div>
+            <div class="case-brand-row">
+              <img src="assets/clients/city_group.jpg" alt="City Group / Shipping" class="case-logo">
+              <span class="case-tag">Maritime Logistics Portal</span>
+            </div>
+            <h3>HRC Shipping: Real-Time Cargo Manifest &amp; Vessel Tracking Portal</h3>
+            <p>
+              eMMSOFT engineered a mission-critical maritime operations platform for HRC Shipping. Automates ocean container tracking, port berth scheduling, customer bill of lading generation, and customs documentation processing.
+            </p>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat-item">
+              <div class="case-stat-val">100%</div>
+              <div class="case-stat-lbl">Digital Manifests</div>
+            </div>
+            <div class="case-stat-item">
+              <div class="case-stat-val">&lt;3s</div>
+              <div class="case-stat-lbl">Doc Generation</div>
+            </div>
+            <div class="case-stat-item">
+              <div class="case-stat-val">24/7</div>
+              <div class="case-stat-lbl">Port Telemetry</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- University of Dhaka -->
+        <div class="case-card">
+          <div>
+            <div class="case-brand-row">
+              <img src="assets/clients/dhaka_university.svg" alt="University of Dhaka" class="case-logo">
+              <span class="case-tag">Higher Education</span>
+            </div>
+            <h3>University of Dhaka: Digital Academic Portal for 40,000+ Students</h3>
+            <p>
+              Architected the core digital portal for Bangladesh's premier university. Centralized faculty grade submissions, digital course enrollments, online payment verifications, and digital transcript generation with zero downtime during semester peak rushes.
+            </p>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat-item">
+              <div class="case-stat-val">40k+</div>
+              <div class="case-stat-lbl">Active Students</div>
+            </div>
+            <div class="case-stat-item">
+              <div class="case-stat-val">99.9%</div>
+              <div class="case-stat-lbl">Peak Uptime</div>
+            </div>
+            <div class="case-stat-item">
+              <div class="case-stat-val">Multi-Dept</div>
+              <div class="case-stat-lbl">Faculty Roles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:36px;">
+        <a href="work.html" class="btn btn-secondary">Explore All 16+ Production Case Studies in Portfolio →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ROADMAP / ENGINEERING PROCESS
+       ========================================================================== -->
+  <section class="section-pad process-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge-tag">Execution Methodology</div>
+        <h2>Enterprise web application development lifecycle.</h2>
+        <p>A rigorous 4-step engineering methodology guaranteeing on-time delivery and predictable sprint velocity.</p>
+      </div>
+
+      <div class="process-timeline">
+        <div class="process-node">
+          <div class="node-num">1</div>
+          <h4>Domain-Driven Design</h4>
+          <p>We map your enterprise business rules, user personas, transactional entities, and document strict API contracts.</p>
+        </div>
+
+        <div class="process-node">
+          <div class="node-num">2</div>
+          <h4>Bi-Weekly Agile Sprints</h4>
+          <p>Our senior squads build reactive interfaces and microservice endpoints in 2-week iterations with interactive staging demos.</p>
+        </div>
+
+        <div class="process-node">
+          <div class="node-num">3</div>
+          <h4>Security &amp; Load Testing</h4>
+          <p>Penetration testing, static code analysis, and concurrent WebSocket stress-testing ensure stability before launch.</p>
+        </div>
+
+        <div class="process-node">
+          <div class="node-num">4</div>
+          <h4>Production Rollout &amp; SLA</h4>
+          <p>Gradual user onboarding, enterprise single sign-on enablement, and ongoing maintenance backed by dedicated support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CALL TO ACTION BANNER
+       ========================================================================== -->
+  <section class="section-pad cta-banner">
+    <div class="container" style="max-width:760px; position:relative; z-index:1;">
+      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+        Build High-Performance SaaS
+      </div>
+      <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
+        Ready to engineer your next mission-critical web platform?
+      </h2>
+      <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
+        Collaborate directly with our Principal Web Architects. Receive a technical architecture proposal, data model review, and sprint timeline within 4 business hours.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html?solution=Web+Applications" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Request Platform Proposal →</a>
+        <a href="work.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Live Case Studies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
+          </div>
+          <p>
+            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
+            <li><a href="solution-ecommerce.html">E-Commerce Platforms</a></li>
+            <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
+            <li><a href="solution-enterprise-cms.html">Enterprise Headless CMS</a></li>
+            <li><a href="solution-web-applications.html" style="color:var(--brand-emerald-accent); font-weight:700;">Web Applications &amp; SaaS</a></li>
+            <li><a href="solution-mobile-apps.html">Mobile Apps (iOS &amp; Android)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Leadership &amp; Studio</h4>
+          <ul>
+            <li><a href="about.html">About eMMSOFT (Overview)</a></li>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="work.html">Work &amp; Case Studies</a></li>
+            <li><a href="contact.html">Start a Project / Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">SLA &amp; Uptime Guarantee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    const siteNav = document.getElementById('siteNav');
+    const handleScroll = () => {
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  </script>
+
+</body>
+</html>

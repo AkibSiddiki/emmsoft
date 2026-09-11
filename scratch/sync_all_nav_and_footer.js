@@ -1,0 +1,366 @@
+const fs = require('fs');
+
+function generateNav(activePage = '') {
+  const isSolutions = activePage === 'solutions';
+  const isWork = activePage === 'work';
+  const isAbout = ['about', 'team', 'ceo', 'cto'].includes(activePage);
+  const isContact = activePage === 'contact';
+
+  return `<nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="eMMSOFT Home">
+        <img src="logo.png" alt="eMMSOFT" class="nav-logo">
+      </a>
+
+      <div class="nav-links">
+        <!-- Solutions Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#solutions" class="nav-link${isSolutions ? ' is-active' : ''}" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <!-- Column 1: Services -->
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  Engineering Services
+                </div>
+                <div class="mega-links-list">
+                  <a href="solution-cloud-devops.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud Solutions &amp; DevOps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">AWS / GCP migration, Kubernetes &amp; CI/CD</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html#microservices" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>API &amp; Microservices</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-throughput REST, GraphQL &amp; caching</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-cloud-devops.html#audits" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Architecture &amp; Code Audits</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Low-latency tuning, database indexing &amp; security</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Custom Software Engineering</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Bespoke platforms &amp; legacy system modernization</p>
+                    </div>
+                  </a>
+
+                  <a href="contact.html?service=sla" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>24/7 SLA &amp; Support</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">99.99% uptime monitoring &amp; mission-critical ops</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2: Flagship Solutions -->
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  Flagship Solutions
+                </div>
+                <div class="mega-links-list">
+                  <a href="solution-newsroom-cms.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-ecommerce.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce Platforms</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Flash-sale resilience &amp; global retail stores</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-enterprise-cms.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Enterprise Headless CMS</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Omnichannel content distribution &amp; RBAC governance</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Web Applications &amp; SaaS</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Reactive web portals, dashboards &amp; tools</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-mobile-apps.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Mobile Applications</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">iOS &amp; Android Flutter apps with offline-first sync</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Strip -->
+            <div class="mega-menu-footer">
+              <div class="mega-footer-left">
+                <span class="pulse-dot"></span>
+                <span>Powering 50M+ monthly transactions &amp; readers across Bangladesh &amp; global</span>
+              </div>
+              <a href="work.html" class="mega-footer-link">
+                View All Case Studies <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="work.html" class="nav-link${isWork ? ' is-active' : ''}">Work</a>
+
+        <!-- About Us Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" class="nav-link${isAbout ? ' is-active' : ''}" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Leadership &amp; Studio Team
+                </div>
+                <div class="mega-links-list">
+                  <a href="about.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>About eMMSOFT</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Founding story, values &amp; engineering ethos</p>
+                    </div>
+                  </a>
+
+                  <a href="ceo-message.html" class="mega-link-card">
+                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CEO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Md. Zikrul Ahsan (Shawon) — Vision &amp; ethos</p>
+                    </div>
+                  </a>
+
+                  <a href="cto-message.html" class="mega-link-card">
+                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CTO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Nurul Afsar Polash — Architecture &amp; low-latency stack</p>
+                    </div>
+                  </a>
+
+                  <a href="team.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Meet Our Full Team</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Explore our 12+ engineers &amp; architects</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2: Studio Culture -->
+              <div class="mega-menu-col">
+                <a href="about.html#studio-culture" class="mega-feature-card">
+                  <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
+                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div style="padding:14px;">
+                    <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                      High-Throughput Engineering
+                    </div>
+                    <p style="font-size:0.78rem; color:var(--ink-muted); margin:0; line-height:1.4;">
+                      Learn how our Dhaka squad eliminates meetings in favor of deterministic production deploys.
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="contact.html" class="nav-link${isContact ? ' is-active' : ''}">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">Start a Project →</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="index.html"${activePage === 'home' ? ' style="color:var(--brand-emerald-dark); font-weight:700;"' : ''}>Home <span>→</span></a>
+      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
+      <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
+      <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
+      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company</div>
+      <a href="about.html"${activePage === 'about' ? ' style="color:var(--brand-emerald-dark); font-weight:700;"' : ''}>About Us <span>→</span></a>
+      <a href="team.html"${activePage === 'team' ? ' style="color:var(--brand-emerald-dark); font-weight:700;"' : ''}>Team <span>→</span></a>
+      <a href="work.html"${activePage === 'work' ? ' style="color:var(--brand-emerald-dark); font-weight:700;"' : ''}>Work / Portfolio <span>→</span></a>
+      <a href="ceo-message.html"${activePage === 'ceo' ? ' style="color:var(--brand-emerald-dark); font-weight:700;"' : ''}>CEO Message <span>→</span></a>
+      <a href="cto-message.html"${activePage === 'cto' ? ' style="color:var(--brand-emerald-dark); font-weight:700;"' : ''}>CTO Message <span>→</span></a>
+      <a href="contact.html"${activePage === 'contact' ? ' style="color:var(--brand-emerald-dark); font-weight:700; background:var(--brand-emerald-tint);"' : ' style="color:var(--brand-emerald-dark); font-weight:700;"'}>Start a Project / Contact <span>→</span></a>
+    </div>
+  </nav>`;
+}
+
+const targetFiles = [
+  { file: 'index.html', active: 'home' },
+  { file: 'about.html', active: 'about' },
+  { file: 'work.html', active: 'work' },
+  { file: 'team.html', active: 'team' },
+  { file: 'contact.html', active: 'contact' },
+  { file: 'ceo-message.html', active: 'ceo' },
+  { file: 'cto-message.html', active: 'cto' }
+];
+
+const standardFooterCore = `        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
+            <li><a href="solution-ecommerce.html">E-Commerce Platforms</a></li>
+            <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
+            <li><a href="solution-enterprise-cms.html">Enterprise Headless CMS</a></li>
+            <li><a href="solution-web-applications.html">Web Applications &amp; SaaS</a></li>
+            <li><a href="solution-mobile-apps.html">Mobile Apps (iOS &amp; Android)</a></li>
+          </ul>
+        </div>`;
+
+targetFiles.forEach(({ file, active }) => {
+  let content = fs.readFileSync(file, 'utf8');
+
+  // 1. Replace nav
+  const navStart = content.indexOf('<nav class="nav" id="siteNav">');
+  const navEnd = content.indexOf('</nav>', navStart) + 6;
+  if (navStart === -1 || navEnd === -1) {
+    console.error(`Nav not found in ${file}`);
+  } else {
+    const newNav = generateNav(active);
+    content = content.substring(0, navStart) + newNav + content.substring(navEnd);
+    console.log(`Updated nav in ${file}`);
+  }
+
+  // 2. Replace footer Core Solutions
+  const coreSolIdx = content.indexOf('<h4>Core Solutions</h4>');
+  if (coreSolIdx !== -1) {
+    // Find the enclosing <div class="footer-col">
+    const colStart = content.lastIndexOf('<div class="footer-col">', coreSolIdx);
+    const colEnd = content.indexOf('</div>', coreSolIdx) + 6;
+    if (colStart !== -1 && colEnd !== -1) {
+      content = content.substring(0, colStart) + standardFooterCore + content.substring(colEnd);
+      console.log(`Updated footer Core Solutions in ${file}`);
+    } else {
+      console.warn(`Could not find enclosing footer-col in ${file}`);
+    }
+  } else {
+    console.warn(`Core Solutions not found in footer of ${file}`);
+  }
+
+  fs.writeFileSync(file, content, 'utf8');
+});
+
+console.log('Finished updating nav and footer in all 7 files.');
