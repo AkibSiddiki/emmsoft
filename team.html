@@ -965,7 +965,7 @@
     }
 
     /* ==========================================================================
-       EXECUTIVE SPOTLIGHT (Inspired by BRAC IT Top Officers Section)
+       EXECUTIVE LEADERSHIP SPOTLIGHT (CEO & CTO)
        ========================================================================== */
     .executive-section {
       padding: clamp(48px, 6vw, 76px) 0 32px;
@@ -994,11 +994,11 @@
     }
 
     .exec-card {
-      background: var(--bg-surface);
+      background: linear-gradient(180deg, #ffffff 0%, #fcfdfc 100%);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-xl);
       padding: 32px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 20px -2px rgba(16, 24, 40, 0.05);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
@@ -1013,141 +1013,196 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--brand-emerald) 0%, var(--brand-emerald-accent) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      background: linear-gradient(90deg, var(--brand-emerald) 0%, var(--brand-emerald-accent) 60%, var(--brand-emerald-light) 100%);
+      opacity: 0.95;
+      transition: height 0.25s ease;
     }
 
     .exec-card:hover {
       border-color: var(--brand-emerald-border);
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 18px 38px -10px rgba(4, 148, 73, 0.18), 0 4px 16px rgba(0, 0, 0, 0.04);
       transform: translateY(-4px);
     }
 
     .exec-card:hover::before {
-      opacity: 1;
+      height: 5px;
     }
 
-    .exec-top-row {
+    /* Executive Header */
+    .exec-header {
       display: flex;
-      gap: 28px;
-      align-items: center;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 22px;
+      margin-bottom: 20px;
     }
 
-    .exec-photo-wrap {
+    .exec-portrait-box {
       position: relative;
-      width: 380px;
-      height: 380px;
-      max-width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 24px;
+      width: 270px;
+      height: 300px;
+      border-radius: 20px;
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 0 0 5px var(--brand-emerald-tint), 0 12px 36px rgba(4, 148, 73, 0.25);
-      border: 3px solid var(--brand-emerald);
       background: var(--bg-alt);
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2px rgba(4, 148, 73, 0.22), 0 10px 24px -4px rgba(4, 148, 73, 0.2);
     }
 
-    .exec-photo {
+    .exec-portrait-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      object-position: center 10%;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
     }
 
-    .exec-card:hover .exec-photo {
+    .exec-card:hover .exec-portrait-img {
       transform: scale(1.06);
     }
 
-    .exec-info {
+    .exec-header-info {
       flex: 1;
-      min-width: 260px;
+      min-width: 0;
     }
 
-    .exec-info h3 {
-      font-size: 1.55rem;
+    .exec-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: 1px solid var(--brand-emerald-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .exec-kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+    }
+
+    .exec-name {
+      font-size: 1.45rem;
       font-weight: 800;
       color: var(--ink-primary);
-      margin-bottom: 6px;
+      line-height: 1.25;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
     }
 
-    .exec-designation {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--brand-emerald-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .exec-role-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
       margin-bottom: 10px;
-      display: inline-block;
     }
 
-    .exec-badges {
+    .exec-meta-chips {
       display: flex;
       align-items: center;
       gap: 8px;
       flex-wrap: wrap;
     }
 
-    .blood-badge {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: #fef2f2;
-      color: #dc2626;
-      border: 1px solid #fee2e2;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .contact-link-pill {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 4px;
-      background: var(--bg-alt);
-      color: var(--ink-secondary);
-      border: 1px solid var(--border-light);
+    .exec-chip {
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: var(--bg-alt);
+      color: var(--ink-secondary);
+      border: 1px solid var(--border-light);
+      text-decoration: none;
       transition: var(--transition);
     }
 
-    .contact-link-pill:hover {
+    .exec-chip:hover {
       background: var(--brand-emerald-tint);
-      color: var(--brand-emerald-dark);
       border-color: var(--brand-emerald-border);
+      color: var(--brand-emerald-dark);
     }
 
-    .exec-quote {
+    .exec-chip-blood {
+      background: #fef2f2;
+      color: #b91c1c;
+      border-color: #fee2e2;
+      font-weight: 700;
+    }
+
+    /* Focus Pills */
+    .exec-focus-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .focus-pill {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 600;
+      color: var(--dark-700);
+      background: #f1f5f3;
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Quote Box */
+    .exec-quote-box {
+      position: relative;
+      background: linear-gradient(135deg, rgba(4, 148, 73, 0.05) 0%, rgba(243, 246, 244, 0.6) 100%);
+      border: 1px solid rgba(4, 148, 73, 0.18);
+      border-left: 3px solid var(--brand-emerald);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 14px 18px 14px 40px;
+      margin-bottom: 16px;
+    }
+
+    .quote-icon-svg {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      color: var(--brand-emerald);
+      opacity: 0.7;
+    }
+
+    .exec-quote-text {
       font-family: var(--font-heading);
-      font-size: 1.02rem;
+      font-size: 0.92rem;
       font-style: italic;
       color: var(--ink-primary);
-      background: var(--brand-emerald-tint);
-      border-left: 3px solid var(--brand-emerald);
-      padding: 14px 18px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin-bottom: 18px;
-      line-height: 1.5;
+      line-height: 1.55;
+      margin: 0;
     }
 
-    /* Unfold / Show More (BRAC IT Style) */
+    /* Unfold / Expandable Content */
+    .unfold-card-wrap {
+      margin-bottom: 16px;
+    }
+
     .unfold-content {
-      font-size: 0.92rem;
+      font-size: 0.91rem;
       color: var(--ink-secondary);
-      line-height: 1.6;
-      max-height: 80px;
+      line-height: 1.62;
+      max-height: 76px;
       overflow: hidden;
       position: relative;
-      transition: max-height 0.4s ease;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .unfold-content.is-expanded {
@@ -1159,8 +1214,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 48px;
-      background: linear-gradient(to top, var(--bg-surface) 10%, transparent 100%);
+      height: 40px;
+      background: linear-gradient(to top, #ffffff 10%, transparent 100%);
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
@@ -1174,12 +1229,12 @@
       align-items: center;
       gap: 6px;
       font-family: var(--font-heading);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
       color: var(--brand-emerald-dark);
       background: none;
       border: none;
-      padding: 10px 0 0 0;
+      padding: 8px 0 0 0;
       cursor: pointer;
       transition: color 0.2s ease;
     }
@@ -1188,16 +1243,57 @@
       color: var(--brand-emerald);
     }
 
-    .exec-socials {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
+    /* Footer / Action Row */
+    .exec-footer-row {
+      margin-top: auto;
       padding-top: 16px;
       border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .social-btn {
+    .exec-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand-emerald);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(4, 148, 73, 0.25);
+      text-decoration: none;
+    }
+
+    .exec-cta-btn:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(4, 148, 73, 0.32);
+      color: #ffffff;
+    }
+
+    .exec-cta-btn .cta-arrow {
+      transition: transform 0.2s ease;
+      font-weight: 800;
+    }
+
+    .exec-cta-btn:hover .cta-arrow {
+      transform: translateX(3px);
+    }
+
+    .exec-social-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .exec-social-btn {
       width: 34px;
       height: 34px;
       border-radius: 8px;
@@ -1208,9 +1304,10 @@
       justify-content: center;
       transition: var(--transition);
       border: 1px solid var(--border-light);
+      text-decoration: none;
     }
 
-    .social-btn:hover {
+    .exec-social-btn:hover {
       background: var(--brand-emerald);
       color: #ffffff;
       border-color: var(--brand-emerald);
@@ -1220,6 +1317,36 @@
     @media (max-width: 900px) {
       .exec-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .exec-card {
+        padding: 24px 18px;
+      }
+
+      .exec-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .exec-portrait-box {
+        width: 110px;
+        height: 110px;
+      }
+
+      .exec-footer-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .exec-cta-btn {
+        justify-content: center;
+      }
+
+      .exec-social-group {
+        justify-content: center;
       }
     }
 
@@ -2250,27 +2377,32 @@
       <div class="section-title-wrap">
         <div class="badge-tag">Executive Direction</div>
         <h2>Studio Leadership &amp; Architecture Vision</h2>
-        <p>Directing technical excellence, client partnerships, and resilient platform engineering.</p>
+        <p>Directing technical excellence, enterprise client partnerships, and resilient platform engineering.</p>
       </div>
 
       <div class="exec-grid">
         <!-- 1. CEO Card: Md. Zikrul Ahsan (Shawon) -->
         <article class="exec-card" data-category="leadership" data-name="Md. Zikrul Ahsan Shawon CEO">
-          <div class="exec-top-row">
-            <div class="exec-photo-wrap">
-              <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon)" class="exec-photo">
+          <!-- Executive Header -->
+          <div class="exec-header">
+            <div class="exec-portrait-box">
+              <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon) - CEO" class="exec-portrait-img">
             </div>
-            <div class="exec-info">
-              <h3>Md. Zikrul Ahsan (Shawon)</h3>
-              <span class="exec-designation">Chief Executive Officer (CEO)</span>
-              <div class="exec-badges">
-                <span class="blood-badge">
+            <div class="exec-header-info">
+              <div class="exec-kicker">
+                <span class="exec-kicker-dot"></span>
+                Founding Partner &amp; CEO
+              </div>
+              <h3 class="exec-name">Md. Zikrul Ahsan (Shawon)</h3>
+              <div class="exec-role-title">Chief Executive Officer · Studio Strategy &amp; Growth</div>
+              <div class="exec-meta-chips">
+                <span class="exec-chip exec-chip-blood" title="Blood Group">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
                   </svg>
                   Blood: O+
                 </span>
-                <a href="mailto:pipasha@gmail.com" class="contact-link-pill" title="Send Email">
+                <a href="mailto:pipasha@gmail.com" class="exec-chip" title="Direct Email">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
@@ -2281,12 +2413,27 @@
             </div>
           </div>
 
-          <div class="exec-quote">
-            "Software architecture isn't just about lines of code; it is about guaranteeing certainty for enterprises
-            whose operations depend on continuous availability."
+          <!-- Strategic Focus Domain Tags -->
+          <div class="exec-focus-row">
+            <span class="focus-pill">Enterprise Strategy</span>
+            <span class="focus-pill">Mission-Critical Delivery</span>
+            <span class="focus-pill">Media Technology</span>
+            <span class="focus-pill">20+ Yrs Leadership</span>
           </div>
 
-          <!-- Expandable / Unfold Bio (BRAC IT Style) -->
+          <!-- Pull Quote -->
+          <div class="exec-quote-box">
+            <svg class="quote-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="exec-quote-text">
+              "Software architecture isn't just about lines of code; it is about guaranteeing certainty for enterprises
+              whose operations depend on continuous availability."
+            </p>
+          </div>
+
+          <!-- Expandable / Unfold Bio -->
           <div class="unfold-card-wrap">
             <div class="unfold-content" id="bioCeo">
               <p>
@@ -2296,7 +2443,7 @@
                 high-transaction e-commerce architectures across Bangladesh.
               </p>
               <p style="margin-top: 10px;">
-                With over a decade of deep industry expertise, he ensures that our engineering ethos focuses on
+                With over two decades of deep industry expertise, he ensures that our engineering ethos focuses on
                 measurable business impact, absolute delivery transparency, and unwavering reliability for enterprise
                 clients.
               </p>
@@ -2307,29 +2454,28 @@
             </button>
           </div>
 
-          <div
-            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light);">
-            <a href="ceo-message.html" class="btn btn-primary btn-sm"
-              style="display:inline-flex; align-items:center; gap:8px;">
+          <!-- Card Action Footer -->
+          <div class="exec-footer-row">
+            <a href="ceo-message.html" class="exec-cta-btn">
               <span>Read Full CEO Letter</span>
-              <span style="font-weight:800;">→</span>
+              <span class="cta-arrow">→</span>
             </a>
-            <div class="exec-socials" style="margin:0;">
-              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="social-btn"
+            <div class="exec-social-group">
+              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="exec-social-btn"
                 aria-label="Facebook">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a>
-              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="social-btn"
+              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="exec-social-btn"
                 aria-label="Twitter/X">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener" class="social-btn"
-                aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener"
+                class="exec-social-btn" aria-label="LinkedIn">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                   <rect x="2" y="9" width="4" height="12"></rect>
@@ -2342,21 +2488,26 @@
 
         <!-- 2. CTO Card: Nurul Afsar Polash -->
         <article class="exec-card" data-category="leadership" data-name="Nurul Afsar Polash CTO">
-          <div class="exec-top-row">
-            <div class="exec-photo-wrap">
-              <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash" class="exec-photo">
+          <!-- Executive Header -->
+          <div class="exec-header">
+            <div class="exec-portrait-box">
+              <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash - CTO" class="exec-portrait-img">
             </div>
-            <div class="exec-info">
-              <h3>Nurul Afsar Polash</h3>
-              <span class="exec-designation">Chief Technology Officer (CTO)</span>
-              <div class="exec-badges">
-                <span class="blood-badge">
+            <div class="exec-header-info">
+              <div class="exec-kicker">
+                <span class="exec-kicker-dot"></span>
+                Co-Founder &amp; CTO
+              </div>
+              <h3 class="exec-name">Nurul Afsar Polash</h3>
+              <div class="exec-role-title">Chief Technology Officer · Systems Architect &amp; Platforms</div>
+              <div class="exec-meta-chips">
+                <span class="exec-chip exec-chip-blood" title="Blood Group">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
                   </svg>
                   Blood: AB+
                 </span>
-                <a href="mailto:polash@emythmakers.com" class="contact-link-pill" title="Send Email">
+                <a href="mailto:polash@emythmakers.com" class="exec-chip" title="Direct Email">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
@@ -2367,12 +2518,27 @@
             </div>
           </div>
 
-          <div class="exec-quote">
-            "True engineering elegance lies in low latency, self-healing topologies, deterministic deployments, and
-            systems that scale gracefully without human panic."
+          <!-- Strategic Focus Domain Tags -->
+          <div class="exec-focus-row">
+            <span class="focus-pill">Distributed Systems</span>
+            <span class="focus-pill">Sub-50ms TTFB</span>
+            <span class="focus-pill">High-Concurrency DB</span>
+            <span class="focus-pill">Cloud &amp; SRE Resiliency</span>
           </div>
 
-          <!-- Expandable / Unfold Bio (BRAC IT Style) -->
+          <!-- Pull Quote -->
+          <div class="exec-quote-box">
+            <svg class="quote-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="exec-quote-text">
+              "True engineering elegance lies in low latency, self-healing topologies, deterministic deployments, and
+              systems that scale gracefully without human panic."
+            </p>
+          </div>
+
+          <!-- Expandable / Unfold Bio -->
           <div class="unfold-card-wrap">
             <div class="unfold-content" id="bioCto">
               <p>
@@ -2393,29 +2559,28 @@
             </button>
           </div>
 
-          <div
-            style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light);">
-            <a href="cto-message.html" class="btn btn-primary btn-sm"
-              style="display:inline-flex; align-items:center; gap:8px;">
+          <!-- Card Action Footer -->
+          <div class="exec-footer-row">
+            <a href="cto-message.html" class="exec-cta-btn">
               <span>Read Full CTO Letter</span>
-              <span style="font-weight:800;">→</span>
+              <span class="cta-arrow">→</span>
             </a>
-            <div class="exec-socials" style="margin:0;">
-              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="social-btn"
+            <div class="exec-social-group">
+              <a href="https://www.facebook.com/emythmakers" target="_blank" rel="noopener" class="exec-social-btn"
                 aria-label="Facebook">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a>
-              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="social-btn"
+              <a href="https://twitter.com/eMytyhMakers" target="_blank" rel="noopener" class="exec-social-btn"
                 aria-label="Twitter/X">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener" class="social-btn"
-                aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/emythmakers/" target="_blank" rel="noopener"
+                class="exec-social-btn" aria-label="LinkedIn">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                   <rect x="2" y="9" width="4" height="12"></rect>
@@ -2877,7 +3042,8 @@
             <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            High-performance software engineering studio — Newsroom CMS, E-Commerce, Cloud Infrastructure, and Enterprise Applications.
+            High-performance software engineering studio — Newsroom CMS, E-Commerce, Cloud Infrastructure, and
+            Enterprise Applications.
           </p>
           <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
             <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
