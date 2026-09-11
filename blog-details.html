@@ -9,8 +9,11 @@
     content="An architectural deep dive into multi-tier Varnish caching, Redis session clustering, and MySQL concurrency modeling powering South Asia's largest newsrooms.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +121,12 @@
       background: none;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -251,7 +259,7 @@
     }
 
     .nav-logo {
-      height: 38px;
+      height: 22px;
       width: auto;
     }
 
@@ -526,10 +534,12 @@
     }
 
     @media (max-width: 960px) {
+
       .nav-links,
       .nav-actions .btn {
         display: none;
       }
+
       .nav-burger {
         display: flex;
       }
@@ -540,7 +550,7 @@
        ========================================================================== */
     .article-header-section {
       background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.08) 0%, transparent 50%),
-                  var(--bg-main);
+        var(--bg-main);
       padding: clamp(48px, 6vw, 72px) 0 clamp(36px, 4vw, 48px);
       border-bottom: 1px solid var(--border-light);
     }
@@ -796,11 +806,27 @@
       color: #e2e8f0;
     }
 
-    .code-body .c-keyword { color: #f43f5e; font-weight: 600; }
-    .code-body .c-func { color: #38bdf8; }
-    .code-body .c-string { color: #a3e635; }
-    .code-body .c-comment { color: #64748b; font-style: italic; }
-    .code-body .c-var { color: #fbbf24; }
+    .code-body .c-keyword {
+      color: #f43f5e;
+      font-weight: 600;
+    }
+
+    .code-body .c-func {
+      color: #38bdf8;
+    }
+
+    .code-body .c-string {
+      color: #a3e635;
+    }
+
+    .code-body .c-comment {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .code-body .c-var {
+      color: #fbbf24;
+    }
 
     /* Benchmark Table */
     .table-wrapper {
@@ -1128,7 +1154,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1137,13 +1164,20 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
                   Engineering Flagships
                 </div>
                 <div class="mega-links-list">
                   <a href="solution-newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2">
+                        </path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1156,7 +1190,12 @@
 
                   <a href="solution-ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1169,7 +1208,10 @@
 
                   <a href="solution-cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1184,7 +1226,9 @@
 
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  </svg>
                   Custom Enterprise
                 </div>
                 <div class="mega-links-list">
@@ -1229,7 +1273,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1238,13 +1283,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1256,7 +1309,8 @@
                   </a>
 
                   <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_1.jpg" alt="CEO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -1267,7 +1321,8 @@
                   </a>
 
                   <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <img src="assets/team/member_2.jpg" alt="CTO"
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -1279,7 +1334,11 @@
 
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1293,8 +1352,10 @@
               </div>
 
               <div class="mega-menu-col">
-                <a href="about.html#studio-culture" class="mega-link-card" style="padding:14px; background:var(--bg-alt); border-radius:var(--radius-md); border:1px solid var(--border-light); flex-direction:column; align-items:flex-start;">
-                  <div style="font-family:var(--font-heading); font-size:0.92rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                <a href="about.html#studio-culture" class="mega-link-card"
+                  style="padding:14px; background:var(--bg-alt); border-radius:var(--radius-md); border:1px solid var(--border-light); flex-direction:column; align-items:flex-start;">
+                  <div
+                    style="font-family:var(--font-heading); font-size:0.92rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
                     Dhaka Studio HQ &amp; Culture
                   </div>
                   <p style="font-size:0.80rem; color:var(--ink-muted); margin:0; line-height:1.4;">
@@ -1323,21 +1384,29 @@
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
       <a href="index.html">Home <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
+        Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+          style="font-size:0.65rem;">HOT</span> <span>→</span></a>
       <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
       <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
       <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
       <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
-      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company &amp; Insights</div>
+      <div
+        style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+        Company &amp; Insights</div>
       <a href="about.html">About Us <span>→</span></a>
       <a href="team.html">Team <span>→</span></a>
       <a href="work.html">Work / Portfolio <span>→</span></a>
-      <a href="blog.html" style="color:var(--brand-emerald-dark); font-weight:700;">Blog / Engineering Insights <span>→</span></a>
+      <a href="blog.html" style="color:var(--brand-emerald-dark); font-weight:700;">Blog / Engineering Insights
+        <span>→</span></a>
       <a href="ceo-message.html">CEO Message <span>→</span></a>
       <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+        <span>→</span></a>
     </div>
   </nav>
 
@@ -1351,18 +1420,22 @@
         <span>/</span>
         <a href="blog.html">Engineering Blog</a>
         <span>/</span>
-        <span id="breadcrumbCategory" style="color:var(--brand-emerald-dark); font-weight:600;">Newsroom Architecture</span>
+        <span id="breadcrumbCategory" style="color:var(--brand-emerald-dark); font-weight:600;">Newsroom
+          Architecture</span>
       </div>
 
       <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
         <span class="badge-tag" id="articleCategoryTag" style="margin-bottom:0;">Newsroom Architecture</span>
-        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);" id="articleReadTime">8 min read</span>
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);" id="articleReadTime">8
+          min read</span>
         <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);">·</span>
-        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);" id="articleDate">September 4, 2026</span>
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);"
+          id="articleDate">September 4, 2026</span>
       </div>
 
       <h1 class="article-headline" id="articleHeadline">
-        How eMythMakers Powers 120M+ Digital Readers with Zero Crashes: Multi-Tier Reverse Proxy &amp; Concurrency Architecture
+        How eMythMakers Powers 120M+ Digital Readers with Zero Crashes: Multi-Tier Reverse Proxy &amp; Concurrency
+        Architecture
       </h1>
 
       <div class="article-author-bar">
@@ -1376,11 +1449,18 @@
 
         <div class="share-group">
           <button class="share-btn" onclick="copyArticleLink()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
             <span>Share</span>
           </button>
           <a href="#" target="_blank" class="share-btn" id="shareLinkedIn" aria-label="Share on LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
             <span>LinkedIn</span>
           </a>
         </div>
@@ -1397,7 +1477,10 @@
       <!-- Lead Summary -->
       <div class="lead-summary-card">
         <p id="articleLead">
-          When national elections or catastrophic breaking news occurs in South Asia, digital media traffic does not ramp up smoothly—it hits like a tsunami. Standard monolithic setups crash when simultaneous requests spike from 2,000 to 60,000 in under 90 seconds. Here is the unvarnished engineering blueprint of how eMythMakers keeps Bangladesh's largest media portals responsive with sub-50ms TTFB.
+          When national elections or catastrophic breaking news occurs in South Asia, digital media traffic does not
+          ramp up smoothly—it hits like a tsunami. Standard monolithic setups crash when simultaneous requests spike
+          from 2,000 to 60,000 in under 90 seconds. Here is the unvarnished engineering blueprint of how eMythMakers
+          keeps Bangladesh's largest media portals responsive with sub-50ms TTFB.
         </p>
       </div>
 
@@ -1406,13 +1489,18 @@
 
         <h2>1. The Problem: The Anatomy of a Breaking News Collapse</h2>
         <p>
-          Most publishing platforms fail not because the server CPU lacks raw power, but because of database connection pool exhaustion. In traditional architectures (WordPress, standard monolithic PHP/Node apps), every visitor request triggers database queries: session validation, taxonomy checks, related article queries, and user cookie evaluation.
+          Most publishing platforms fail not because the server CPU lacks raw power, but because of database connection
+          pool exhaustion. In traditional architectures (WordPress, standard monolithic PHP/Node apps), every visitor
+          request triggers database queries: session validation, taxonomy checks, related article queries, and user
+          cookie evaluation.
         </p>
         <p>
-          Under normal traffic of 1,500 readers, MySQL handles 300 queries per second effortlessly. But when breaking news alerts blast out to millions on social media:
+          Under normal traffic of 1,500 readers, MySQL handles 300 queries per second effortlessly. But when breaking
+          news alerts blast out to millions on social media:
         </p>
         <ul>
-          <li>Connection pools fill within 3 seconds, reaching the max connection ceiling (e.g. 500 max connections).</li>
+          <li>Connection pools fill within 3 seconds, reaching the max connection ceiling (e.g. 500 max connections).
+          </li>
           <li>Subsequent PHP-FPM worker threads queue up waiting for an open database slot.</li>
           <li>Worker threads consume server RAM while idle, triggering the Linux kernel Out-Of-Memory (OOM) killer.</li>
           <li>Nginx returns <strong>HTTP 502 Bad Gateway</strong> or <strong>HTTP 504 Gateway Timeout</strong>.</li>
@@ -1421,46 +1509,51 @@
         <!-- Architecture Flow Box -->
         <div class="arch-diagram-box">
           <div class="arch-diagram-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
             eMMSOFT Multi-Tier Caching &amp; Edge Pipeline
           </div>
           <div class="diagram-ascii">
-[ 100k Concurrent Visitors ]
-             │
-             ▼
-┌──────────────────────────────────────────────┐
-│  Anycast Cloud Edge CDN (DDoS Scrubbing)     │ ──▶ Serves Static CSS/JS/Images
-└──────────────────────────────────────────────┘
-             │ (Cache Miss)
-             ▼
-┌──────────────────────────────────────────────┐
-│  Dedicated Varnish 7 Reverse Proxy In-Memory │ ──▶ Serves 98.4% of Read Requests
-│  - Grace Mode: 6 Hours (Stale-While-Reval)   │     <span class="node-active">[ Response: 18ms TTFB ]</span>
-└──────────────────────────────────────────────┘
-             │ (Cold Cache / Editorial Bypass)
-             ▼
-┌──────────────────────────────────────────────┐
-│  NGINX Reverse Proxy + FastCGI Cache Ring    │
-└──────────────────────────────────────────────┘
-             │
-             ▼
-┌──────────────────────────────────────────────┐
-│  Stateless Application Workers (PHP 8 / Go)  │ ◀── Redis Cluster (Session State)
-└──────────────────────────────────────────────┘
-             │ (Batched Read Queries Only)
-             ▼
-┌──────────────────────────────────────────────┐
-│  MySQL / MariaDB Galera (1 Master + 3 Read)  │
-└──────────────────────────────────────────────┘
+            [ 100k Concurrent Visitors ]
+            │
+            ▼
+            ┌──────────────────────────────────────────────┐
+            │ Anycast Cloud Edge CDN (DDoS Scrubbing) │ ──▶ Serves Static CSS/JS/Images
+            └──────────────────────────────────────────────┘
+            │ (Cache Miss)
+            ▼
+            ┌──────────────────────────────────────────────┐
+            │ Dedicated Varnish 7 Reverse Proxy In-Memory │ ──▶ Serves 98.4% of Read Requests
+            │ - Grace Mode: 6 Hours (Stale-While-Reval) │ <span class="node-active">[ Response: 18ms TTFB ]</span>
+            └──────────────────────────────────────────────┘
+            │ (Cold Cache / Editorial Bypass)
+            ▼
+            ┌──────────────────────────────────────────────┐
+            │ NGINX Reverse Proxy + FastCGI Cache Ring │
+            └──────────────────────────────────────────────┘
+            │
+            ▼
+            ┌──────────────────────────────────────────────┐
+            │ Stateless Application Workers (PHP 8 / Go) │ ◀── Redis Cluster (Session State)
+            └──────────────────────────────────────────────┘
+            │ (Batched Read Queries Only)
+            ▼
+            ┌──────────────────────────────────────────────┐
+            │ MySQL / MariaDB Galera (1 Master + 3 Read) │
+            └──────────────────────────────────────────────┘
           </div>
         </div>
 
         <h2>2. Varnish 7 VCL: Serving 98.4% of Traffic Directly from RAM</h2>
         <p>
-          Our first line of defense is a custom-compiled Varnish 7 reverse-proxy caching layer deployed on dual dedicated bare-metal nodes. By configuring granular cache key hashing, we strip non-essential analytical cookies (e.g. Google Analytics, Facebook Pixel) at the edge before evaluating the cache hash.
+          Our first line of defense is a custom-compiled Varnish 7 reverse-proxy caching layer deployed on dual
+          dedicated bare-metal nodes. By configuring granular cache key hashing, we strip non-essential analytical
+          cookies (e.g. Google Analytics, Facebook Pixel) at the edge before evaluating the cache hash.
         </p>
         <p>
-          Below is a sanitized snippet of our production Varnish VCL configuration implemented across major tier-1 media deployments:
+          Below is a sanitized snippet of our production Varnish VCL configuration implemented across major tier-1 media
+          deployments:
         </p>
 
         <!-- Code Snippet -->
@@ -1510,7 +1603,9 @@
 
         <h2>3. Production Benchmarks: Before vs. After Optimization</h2>
         <p>
-          We benchmarked these optimizations by simulating 50,000 concurrent virtual users performing randomized article browsing, breaking news reloads, and category navigation over a 15-minute test window using distributed load generators.
+          We benchmarked these optimizations by simulating 50,000 concurrent virtual users performing randomized article
+          browsing, breaking news reloads, and category navigation over a 15-minute test window using distributed load
+          generators.
         </p>
 
         <!-- Benchmark Table -->
@@ -1561,14 +1656,21 @@
 
         <h2>4. Five Non-Negotiable Rules for Concurrency Engineering</h2>
         <p>
-          Through 15 years of engineering high-traffic media and enterprise platforms in Dhaka, our team has distilled five core rules that every architect should adhere to:
+          Through 15 years of engineering high-traffic media and enterprise platforms in Dhaka, our team has distilled
+          five core rules that every architect should adhere to:
         </p>
         <ol>
-          <li><strong>Never let unauthenticated readers touch the database:</strong> If an article is publicly readable, it must be served from memory or edge proxy. Period.</li>
-          <li><strong>Implement Grace Mode on all reverse proxies:</strong> If the database freezes or an upstream worker crashes, Varnish must serve the last known good copy of the page rather than showing an error screen.</li>
-          <li><strong>Decouple session state into Redis clusters:</strong> Application workers must remain entirely stateless so instances can be scaled horizontally without dropping user authentication.</li>
-          <li><strong>Sanitize and normalize tracking cookies at the edge:</strong> Client-side analytics cookies that differ per visitor will destroy cache hit rates if not stripped before cache key hashing.</li>
-          <li><strong>Test under synthetic chaos:</strong> Run load simulations that purposely kill application nodes during peak traffic. If the user notices a single glitch, your failover is incomplete.</li>
+          <li><strong>Never let unauthenticated readers touch the database:</strong> If an article is publicly readable,
+            it must be served from memory or edge proxy. Period.</li>
+          <li><strong>Implement Grace Mode on all reverse proxies:</strong> If the database freezes or an upstream
+            worker crashes, Varnish must serve the last known good copy of the page rather than showing an error screen.
+          </li>
+          <li><strong>Decouple session state into Redis clusters:</strong> Application workers must remain entirely
+            stateless so instances can be scaled horizontally without dropping user authentication.</li>
+          <li><strong>Sanitize and normalize tracking cookies at the edge:</strong> Client-side analytics cookies that
+            differ per visitor will destroy cache hit rates if not stripped before cache key hashing.</li>
+          <li><strong>Test under synthetic chaos:</strong> Run load simulations that purposely kill application nodes
+            during peak traffic. If the user notices a single glitch, your failover is incomplete.</li>
         </ol>
 
       </div>
@@ -1580,10 +1682,14 @@
           <h4 id="bioName">Nurul Afsar Polash</h4>
           <span class="bio-role" id="bioRole">Chief Technology Officer &amp; Lead Systems Architect</span>
           <p id="bioText">
-            Nurul Afsar Polash oversees systems architecture, low-latency database design, and cloud infrastructure at eMMSOFT. Over the past 15 years, he has designed and maintained the high-concurrency backbones of South Asia's most prominent newsrooms, including bdnews24.com, Channel 24, and Dhaka Tribune.
+            Nurul Afsar Polash oversees systems architecture, low-latency database design, and cloud infrastructure at
+            eMMSOFT. Over the past 15 years, he has designed and maintained the high-concurrency backbones of South
+            Asia's most prominent newsrooms, including bdnews24.com, Channel 24, and Dhaka Tribune.
           </p>
           <div style="margin-top:12px;">
-            <a href="cto-message.html" style="font-family:var(--font-heading); font-size:0.84rem; font-weight:700; color:var(--brand-emerald-dark);">Read CTO's Full Architectural Philosophy →</a>
+            <a href="cto-message.html"
+              style="font-family:var(--font-heading); font-size:0.84rem; font-weight:700; color:var(--brand-emerald-dark);">Read
+              CTO's Full Architectural Philosophy →</a>
           </div>
         </div>
       </div>
@@ -1635,20 +1741,26 @@
   <!-- ==========================================================================
      CALL TO ACTION
      ========================================================================== -->
-  <section class="section-pad" style="background:linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%); color:#ffffff; text-align:center;">
+  <section class="section-pad"
+    style="background:linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%); color:#ffffff; text-align:center;">
     <div class="container" style="max-width:760px;">
-      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+      <div class="badge-tag"
+        style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
         Engineering Partnership
       </div>
       <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
         Need systems built with zero-downtime durability?
       </h2>
       <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
-        Consult with our senior architects to review your platform architecture, concurrency bottlenecks, and cloud infrastructure requirements.
+        Consult with our senior architects to review your platform architecture, concurrency bottlenecks, and cloud
+        infrastructure requirements.
       </p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Schedule Architecture Consultation →</a>
-        <a href="work.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Client Case Studies</a>
+        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Schedule
+          Architecture Consultation →</a>
+        <a href="work.html" class="btn btn-secondary"
+          style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Client
+          Case Studies</a>
       </div>
     </div>
   </section>
@@ -1664,7 +1776,8 @@
             <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
           </div>
           <p>
-            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and
+            fault-tolerant cloud solutions for global enterprises.
           </p>
         </div>
 
@@ -1687,7 +1800,8 @@
             <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
             <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
             <li><a href="team.html">Our Team &amp; Roster</a></li>
-            <li><a href="blog.html" style="color:var(--brand-emerald-accent); font-weight:700;">Engineering Blog &amp; Insights</a></li>
+            <li><a href="blog.html" style="color:var(--brand-emerald-accent); font-weight:700;">Engineering Blog &amp;
+                Insights</a></li>
             <li><a href="contact.html">Start a Project / Contact</a></li>
           </ul>
         </div>
@@ -1697,13 +1811,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
@@ -1864,4 +1980,5 @@
   </script>
 
 </body>
+
 </html>

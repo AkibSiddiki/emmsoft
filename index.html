@@ -8,9 +8,12 @@
   <meta name="description"
     content="eMMSOFT is a high-performance software engineering studio specializing in E-Commerce platforms, Newsroom & Enterprise CMS, Cloud Infrastructure, Web Applications, and Mobile Apps.">
 
-  <!-- Favicon: Inline SVG matching eMMSOFT leaf logo -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1849,98 +1852,6 @@
       }
     }
 
-    /* ==========================================================================
-     NEWSROOM & E-COMMERCE DEEP DIVE SPOTLIGHT BANNER
-     ========================================================================== */
-    .spotlight-section {
-      background: var(--dark-950);
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .spotlight-section::after {
-      content: "";
-      position: absolute;
-      bottom: -100px;
-      left: 20%;
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(4, 148, 73, 0.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .spotlight-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(28px, 4vw, 48px);
-    }
-
-    .spotlight-card {
-      background: var(--dark-900);
-      border: 1px solid var(--dark-700);
-      border-radius: var(--radius-lg);
-      padding: clamp(32px, 4vw, 48px);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .spotlight-tag {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--brand-emerald-accent);
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      width: fit-content;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-
-    .spotlight-card h3 {
-      color: #ffffff;
-      font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .spotlight-card p {
-      color: #94a3b8;
-      font-size: 1.02rem;
-      line-height: 1.65;
-      margin-bottom: 28px;
-    }
-
-    .spotlight-features {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .s-feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.94rem;
-      color: #e2e8f0;
-    }
-
-    .s-feature svg {
-      width: 18px;
-      height: 18px;
-      color: var(--brand-emerald-accent);
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 900px) {
-      .spotlight-grid {
-        grid-template-columns: 1fr;
-      }
-    }
 
     /* ==========================================================================
      TECH STACK & ARCHITECTURE ECOSYSTEM
@@ -4314,94 +4225,6 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-     SPECIAL SPOTLIGHT: NEWSROOM CMS & HIGH-CONCURRENCY COMMERCE
-     ========================================================================== -->
-  <section class="section-pad spotlight-section">
-    <div class="container">
-      <div class="spotlight-grid">
-        <!-- Spotlight 1: Newsroom CMS -->
-        <div class="spotlight-card">
-          <div>
-            <span class="spotlight-tag">NEWSROOM CMS ARCHITECTURE</span>
-            <h3>Built for the 100,000 Concurrent Readers Spike</h3>
-            <p>
-              When a major story breaks, server crashes kill revenue and journalistic trust. eMMSOFT’s Newsroom Engine
-              utilizes edge micro-caching, distributed Redis memory stores, and database read-replicas to serve breaking
-              articles with <strong>under 60ms latency</strong> at zero packet drop.
-            </p>
-            <div class="spotlight-features">
-              <div class="s-feature">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Instant push to Google News, Apple News &amp; RSS feeds</span>
-              </div>
-              <div class="s-feature">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Integrated live blogging suite with real-time commentator feeds</span>
-              </div>
-              <div class="s-feature">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Dynamic metered paywalls linked to Stripe and local wallets</span>
-              </div>
-            </div>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
-              <a href="solution-newsroom-cms.html" class="btn btn-primary">Explore Full Newsroom Solution →</a>
-              <a href="contact.html?solution=Newsroom+CMS" class="btn btn-secondary">Request Tech Proposal</a>
-            </div>
-        </div>
-
-        <!-- Spotlight 2: Flash-Sale E-Commerce -->
-        <div class="spotlight-card">
-          <div>
-            <span class="spotlight-tag">ENTERPRISE E-COMMERCE ENGINE</span>
-            <h3>Zero-Friction Checkout &amp; Multi-Vendor Scale</h3>
-            <p>
-              Whether running a direct-to-consumer flagship or a multi-merchant marketplace, cart abandonment happens in
-              the milliseconds of delay. Our headless storefronts decouple frontend rendering from transaction backends,
-              allowing tens of thousands of shoppers to buy simultaneously.
-            </p>
-            <div class="spotlight-features">
-              <div class="s-feature">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Optimized 1-step checkout with biometric payment support</span>
-              </div>
-              <div class="s-feature">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Automated tax, multi-currency conversion &amp; localized shipping</span>
-              </div>
-              <div class="s-feature">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Automated inventory sync across ERP, Shopify &amp; physical POS</span>
-              </div>
-            </div>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
-              <a href="solution-ecommerce.html" class="btn btn-primary">Explore E-Commerce Architecture →</a>
-              <a href="contact.html?solution=E-Commerce+Platform" class="btn btn-secondary">Request Tech Proposal</a>
-            </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==========================================================================
      TECH STACK & ARCHITECTURE ECOSYSTEM
