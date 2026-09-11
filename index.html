@@ -336,23 +336,28 @@
     }
 
     /* ==========================================================================
-     NAVIGATION BAR
-     ========================================================================== */
+       NAVIGATION BAR (Blurry Frosted Glass Aesthetic)
+       ========================================================================== */
     .nav {
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(251, 252, 251, 0.92);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border-bottom: 1px solid var(--border-subtle);
-      transition: all 0.25s ease;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(227, 232, 229, 0.65);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .nav.is-scrolled {
-      background: rgba(255, 255, 255, 0.98);
-      border-bottom-color: var(--border-light);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border-bottom-color: rgba(227, 232, 229, 0.85);
+      box-shadow: 0 12px 32px -8px rgba(18, 25, 34, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     .nav-inner {
@@ -360,14 +365,14 @@
       align-items: center;
       justify-content: space-between;
       height: 76px;
-      gap: clamp(20px, 3vw, 40px);
+      gap: clamp(14px, 2.2vw, 32px);
     }
 
     .brand-link {
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      margin-right: clamp(16px, 2.5vw, 36px);
+      margin-right: clamp(10px, 1.8vw, 24px);
     }
 
     .nav-logo {
@@ -384,7 +389,8 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: clamp(12px, 1.6vw, 22px);
+      flex-wrap: nowrap;
+      gap: clamp(10px, 1.4vw, 22px);
     }
 
     .nav-link {
@@ -394,6 +400,9 @@
       transition: color 0.18s ease;
       padding: 8px 2px;
       position: relative;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
     }
 
     .nav-link:hover {
@@ -409,13 +418,16 @@
       padding: 2px 5px;
       border-radius: 4px;
       margin-left: 6px;
-      vertical-align: top;
+      line-height: 1.2;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 14px;
+      flex-shrink: 0;
     }
 
     .nav-burger {
@@ -458,7 +470,9 @@
       top: 76px;
       inset-inline: 0;
       bottom: 0;
-      background: var(--bg-surface);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       z-index: 199;
       padding: 28px clamp(20px, 5vw, 40px) 40px;
       overflow-y: auto;
@@ -485,7 +499,7 @@
       color: var(--brand-emerald);
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1080px) {
       .nav-menu {
         display: none;
       }
@@ -563,6 +577,13 @@
     }
 
     .hero-pillars-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .hero-pillars-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -837,6 +858,168 @@
       .hero-architecture-canvas {
         max-width: 540px;
         margin: 0 auto;
+      }
+    }
+
+    /* ==========================================================================
+       OUR CLIENTS BAR SECTION (Matching Reference Screenshot & Theme)
+       ========================================================================== */
+    .clients-strip-section {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 16px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .clients-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Left Heading & Divider */
+    .clients-lead-col {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+      padding-right: 6px;
+    }
+
+    .clients-heading {
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
+      text-transform: capitalize;
+    }
+
+    .clients-separator {
+      display: inline-block;
+      width: 1px;
+      height: 36px;
+      background: var(--border-light);
+    }
+
+    /* Carousel Container */
+    .clients-carousel-wrapper {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      min-width: 0;
+      position: relative;
+    }
+
+    /* Track Viewport */
+    .clients-track-viewport {
+      flex-grow: 1;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      mask-image: linear-gradient(to right, transparent, black 36px, black calc(100% - 36px), transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 36px, black calc(100% - 36px), transparent);
+      cursor: grab;
+    }
+
+    .clients-track-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .clients-track {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      width: max-content;
+      padding: 6px 12px;
+      user-select: none;
+    }
+
+    /* Individual Logo Item */
+    .client-logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      min-width: 90px;
+      padding: 2px 8px;
+      opacity: 0.9;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .client-logo-item:hover {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .client-logo-item img {
+      max-height: 52px;
+      max-width: 140px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: grayscale(12%);
+      transition: filter 0.25s ease;
+    }
+
+    .client-logo-item:hover img {
+      filter: grayscale(0%);
+    }
+
+    /* Optical sizing per logo for harmonious visual balance */
+    .client-logo-item.item-bdnews24 img { max-height: 28px; }
+    .client-logo-item.item-channel24 img { max-height: 48px; }
+    .client-logo-item.item-janakantha img { max-height: 32px; }
+    .client-logo-item.item-step img { max-height: 40px; }
+    .client-logo-item.item-farming img { max-height: 38px; }
+    .client-logo-item.item-tribune img { max-height: 28px; }
+
+    /* Box-shaped & Circular Logos Scaled Up for Balance */
+    .client-logo-item.item-diamond img { max-height: 52px; }
+    .client-logo-item.item-buet img,
+    .client-logo-item.item-buet svg { max-height: 54px; width: 54px; }
+    .client-logo-item.item-hameem img { max-height: 38px; mix-blend-mode: normal; border-radius: 4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
+    .client-logo-item.item-citygroup img { max-height: 50px; }
+    .client-logo-item.item-du img,
+    .client-logo-item.item-du svg { max-height: 54px; width: auto; }
+    .client-logo-item.item-walton img { max-height: 42px; }
+    .client-logo-item.item-pran img { max-height: 46px; }
+
+    @media (max-width: 768px) {
+      .clients-strip-section {
+        padding: 14px 0;
+      }
+      .clients-bar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .clients-lead-col {
+        padding-right: 0;
+        gap: 14px;
+      }
+      .clients-heading {
+        font-size: 0.96rem;
+      }
+      .clients-separator {
+        display: none;
+      }
+      .clients-carousel-wrapper {
+        width: 100%;
+      }
+      .clients-track {
+        gap: 32px;
       }
     }
 
@@ -1434,7 +1617,7 @@
      ========================================================================== */
     .stack-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
@@ -1998,6 +2181,708 @@
       opacity: 1;
       transform: none;
     }
+
+    /* ==========================================================================
+       ABOUT US MEGA MENU & DROPDOWN STYLES
+       ========================================================================== */
+    .nav-item-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 76px;
+    }
+
+    .nav-item-dropdown .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown-chevron {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+    }
+
+    .nav-item-dropdown:hover .dropdown-chevron,
+    .nav-item-dropdown:focus-within .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--brand-emerald);
+    }
+
+    .mega-menu-bridge {
+      position: absolute;
+      top: 100%;
+      left: -150px;
+      right: -150px;
+      height: 18px;
+      content: "";
+      display: block;
+      pointer-events: auto;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-40%) translateY(12px);
+      width: 760px;
+      max-width: 92vw;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(227, 232, 229, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 56px -12px rgba(18, 25, 34, 0.16), 0 4px 16px rgba(4, 148, 73, 0.06);
+      padding: 22px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.25s;
+      z-index: 300;
+    }
+
+    .nav-item-dropdown:hover .mega-menu,
+    .nav-item-dropdown:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-40%) translateY(0);
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .mega-menu-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mega-menu-label {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .mega-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mega-link-card:hover {
+      background: var(--brand-emerald-tint);
+      border-color: var(--brand-emerald-border);
+      transform: translateX(4px);
+    }
+
+    .mega-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-emerald);
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.2);
+    }
+
+    .mega-link-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-link-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    .mega-link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mega-link-card-body .mega-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-link-card:hover .mega-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-link-card-body .mega-desc {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      line-height: 1.35;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-arrow {
+      font-size: 0.85rem;
+      color: var(--brand-emerald);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Work Environment Mega Menu Feature Card */
+    .mega-feature-card {
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .mega-feature-card:hover {
+      border-color: var(--brand-emerald);
+      box-shadow: 0 12px 30px rgba(4, 148, 73, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .mega-feature-thumb {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+    }
+
+    .mega-feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .mega-feature-card:hover .mega-feature-thumb img {
+      transform: scale(1.06);
+    }
+
+    .mega-feature-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(4, 148, 73, 0.92);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .mega-feature-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .mega-feature-title {
+      font-family: var(--font-heading);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mega-feature-card:hover .mega-feature-title {
+      color: var(--brand-emerald);
+    }
+
+    .mega-feature-desc {
+      font-size: 0.82rem;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .mega-feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    /* Mobile Drawer Sub-Accordion for About Us */
+    .mobile-dropdown-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--ink-primary);
+      text-align: left;
+    }
+
+    .mobile-dropdown-sub {
+      display: none;
+      padding: 8px 0 14px 16px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .mobile-dropdown-sub.is-open {
+      display: block;
+    }
+
+    .mobile-sub-link {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      padding: 10px 0 !important;
+      border-bottom: none !important;
+      color: var(--ink-secondary) !important;
+    }
+
+    .mobile-sub-link:hover {
+      color: var(--brand-emerald) !important;
+    }
+
+    /* ==========================================================================
+       ABOUT US SECTION STYLES (Overview, Team, Culture)
+       ========================================================================== */
+    .about-section {
+      background: var(--bg-main);
+      position: relative;
+    }
+
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      margin-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .about-story-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-story-card h3 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--ink-primary);
+    }
+
+    .about-story-card p {
+      color: var(--ink-secondary);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .about-values-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .about-value-pill {
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .about-value-pill strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--brand-slate);
+      margin-bottom: 2px;
+    }
+
+    .about-value-pill span {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    .culture-preview-frame {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .culture-preview-frame img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .culture-preview-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .culture-frame-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 15, 21, 0.1) 0%, rgba(11, 15, 21, 0.82) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(24px, 4vw, 36px);
+      color: #fff;
+    }
+
+    .culture-frame-overlay h4 {
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .culture-frame-overlay p {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      max-width: 460px;
+    }
+
+    /* Team Members Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(20px, 2.5vw, 28px);
+      margin-top: 40px;
+    }
+
+    .team-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--brand-emerald);
+      box-shadow: 0 16px 36px -8px rgba(4, 148, 73, 0.14);
+    }
+
+    .team-card-avatar-wrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 16px;
+    }
+
+    .team-card-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--brand-emerald-tint);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transition: border-color 0.2s ease;
+    }
+
+    .team-card:hover .team-card-avatar {
+      border-color: var(--brand-emerald);
+    }
+
+    .team-card-role-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+    }
+
+    .team-card-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 4px;
+    }
+
+    .team-card-bio {
+      font-size: 0.84rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .team-msg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .team-msg-btn:hover {
+      background: var(--brand-emerald);
+      color: #fff;
+      border-color: var(--brand-emerald);
+      box-shadow: var(--shadow-emerald);
+    }
+
+    @media (max-width: 1040px) {
+      .mega-menu {
+        width: 680px;
+      }
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-story-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-values-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       LEADERSHIP MESSAGE MODAL (Popups for CEO & CTO Letters)
+       ========================================================================== */
+    .exec-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 15, 21, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s;
+    }
+
+    .exec-modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .exec-modal-dialog {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.3);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .exec-modal-backdrop.is-open .exec-modal-dialog {
+      transform: translateY(0) scale(1);
+    }
+
+    .exec-modal-header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    .exec-modal-profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .exec-modal-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--brand-emerald);
+      box-shadow: 0 4px 12px rgba(4, 148, 73, 0.2);
+    }
+
+    .exec-modal-title h3 {
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+      margin-bottom: 4px;
+    }
+
+    .exec-modal-title span {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .exec-modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-secondary);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .exec-modal-close:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #b91c1c;
+    }
+
+    .exec-modal-body {
+      padding: 32px;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink-secondary);
+    }
+
+    .exec-modal-body p {
+      margin-bottom: 16px;
+    }
+
+    .exec-modal-body blockquote {
+      margin: 20px 0;
+      padding: 16px 20px;
+      background: var(--brand-emerald-tint);
+      border-left: 4px solid var(--brand-emerald);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink-primary);
+    }
+
+    .exec-modal-footer {
+      padding: 18px 32px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      background: var(--bg-surface);
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    }
   </style>
 </head>
 
@@ -2017,6 +2902,92 @@
         <a href="#specializations" class="nav-link has-pill">Newsroom CMS</a>
         <a href="#ecommerce" class="nav-link">E-Commerce</a>
         <a href="#cloud-apps" class="nav-link">Cloud &amp; Apps</a>
+
+        <!-- About Us Dropdown with Rich Interactive Mega Menu -->
+        <div class="nav-item-dropdown" id="aboutDropdown">
+          <a href="#about" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <!-- Hover bridge to guarantee smooth mouse movement -->
+          <div class="mega-menu-bridge"></div>
+
+          <!-- Floating Mega Menu -->
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <!-- Left Column: Leadership Messages & Team -->
+              <div class="mega-menu-col-left">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  Leadership &amp; Studio Team
+                </div>
+                <div class="mega-links-list">
+                  <!-- 1. CEO Message Link -->
+                  <button type="button" class="mega-link-card open-ceo-modal" aria-label="Read CEO Message">
+                    <img src="assets/ceo_portrait.jpg" alt="Tareq Rahman, CEO & Founder" class="mega-avatar">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CEO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Vision, engineering ethos &amp; zero-compromise reliability</p>
+                    </div>
+                  </button>
+
+                  <!-- 2. CTO Message Link -->
+                  <button type="button" class="mega-link-card open-cto-modal" aria-label="Read CTO Message">
+                    <img src="assets/cto_portrait.jpg" alt="Shahed Hossain, CTO & Lead Architect" class="mega-avatar">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CTO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Architecture philosophy, low-latency stack &amp; scalability</p>
+                    </div>
+                  </button>
+
+                  <!-- 3. Our Team Link -->
+                  <a href="#about-team" class="mega-link-card" aria-label="Meet Our Team">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Meet Our Team</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Senior systems architects, designers &amp; DevOps engineers</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right Column: Work Environment Card with Image -->
+              <div class="mega-menu-col-right">
+                <a href="#about-environment" class="mega-feature-card" aria-label="Explore Our Work Environment">
+                  <div class="mega-feature-thumb">
+                    <img src="assets/work_culture.jpg" alt="eMMSOFT High-Tech Studio Workspace" loading="lazy">
+                    <span class="mega-feature-badge">Inside eMMSOFT</span>
+                  </div>
+                  <div class="mega-feature-body">
+                    <div class="mega-feature-title">
+                      <span>Work Environment</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                    <p class="mega-feature-desc">See how we collaborate, innovate, and engineer mission-critical systems in our studio.</p>
+                    <div class="mega-feature-cta">
+                      <span>Explore Studio Life</span>
+                      <span>→</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <a href="#projects" class="nav-link">Work</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
@@ -2037,6 +3008,21 @@
       <a href="#specializations">Newsroom CMS <span>→</span></a>
       <a href="#ecommerce">E-Commerce Architecture <span>→</span></a>
       <a href="#cloud-apps">Cloud, Web &amp; Mobile Apps <span>→</span></a>
+
+      <!-- Mobile About Us Accordion -->
+      <div>
+        <button class="mobile-dropdown-btn" id="mobileAboutToggle" type="button">
+          About Us <span id="mobileAboutArrow">↓</span>
+        </button>
+        <div class="mobile-dropdown-sub" id="mobileAboutSub">
+          <a href="#about" class="mobile-sub-link">✦ About Company Overview</a>
+          <button type="button" class="mobile-sub-link open-ceo-modal" style="background:none; border:none; width:100%; text-align:left; cursor:pointer;">✦ Read CEO's Message</button>
+          <button type="button" class="mobile-sub-link open-cto-modal" style="background:none; border:none; width:100%; text-align:left; cursor:pointer;">✦ Read CTO's Message</button>
+          <a href="#about-team" class="mobile-sub-link">✦ Meet Our Team</a>
+          <a href="#about-environment" class="mobile-sub-link">✦ Our Work Environment</a>
+        </div>
+      </div>
+
       <a href="#projects">Selected Projects <span>→</span></a>
       <a href="#contact">Contact &amp; Estimate <span>→</span></a>
       <div style="margin-top:24px;">
@@ -2072,38 +3058,42 @@
         </div>
 
         <div class="hero-pillars-strip">
-          <div class="pillar-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
-            </svg>
-            E-Commerce
+          <div class="hero-pillars-row">
+            <div class="pillar-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
+              </svg>
+              E-Commerce
+            </div>
+            <div class="pillar-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+              </svg>
+              Newsroom CMS
+            </div>
+            <div class="pillar-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+              </svg>
+              Cloud Solutions
+            </div>
           </div>
-          <div class="pillar-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
-            </svg>
-            Newsroom CMS
-          </div>
-          <div class="pillar-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-            </svg>
-            Cloud Solutions
-          </div>
-          <div class="pillar-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="5" y="2" width="14" height="20" rx="2" />
-              <path d="M12 18h.01" />
-            </svg>
-            Mobile Apps
-          </div>
-          <div class="pillar-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <path d="M3 9h18M9 21V9" />
-            </svg>
-            Web Platforms
+          <div class="hero-pillars-row">
+            <div class="pillar-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" />
+                <path d="M12 18h.01" />
+              </svg>
+              Mobile Apps
+            </div>
+            <div class="pillar-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18M9 21V9" />
+              </svg>
+              Web Platforms
+            </div>
           </div>
         </div>
       </div>
@@ -2233,6 +3223,159 @@
       </div>
     </div>
   </header>
+
+  <!-- ==========================================================================
+     OUR CLIENTS SHOWCASE STRIP (Interactive Carousel with Original Logos)
+     ========================================================================== -->
+  <section class="clients-strip-section" aria-label="Our Trusted Clients">
+    <div class="container">
+      <div class="clients-bar-inner">
+        <!-- Leading Label with Divider -->
+        <div class="clients-lead-col">
+          <span class="clients-heading">Our<br>Clients</span>
+          <span class="clients-separator" aria-hidden="true"></span>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="clients-carousel-wrapper">
+          <div class="clients-track-viewport" id="clientsTrackViewport">
+            <div class="clients-track" id="clientsTrack">
+              <!-- 1. bdnews24.com -->
+              <div class="client-logo-item item-bdnews24" title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
+                <img src="assets/clients/bdnews24.svg" alt="bdnews24.com" loading="lazy">
+              </div>
+
+              <!-- 2. Channel 24 -->
+              <div class="client-logo-item item-channel24" title="Channel 24 - Leading 24/7 News & Infotainment Network">
+                <img src="assets/clients/channel24_hd.png" alt="Channel 24" loading="lazy">
+              </div>
+
+              <!-- 3. Daily Janakantha -->
+              <div class="client-logo-item item-janakantha" title="Daily Janakantha - National Bengali Daily">
+                <img src="assets/clients/janakantha_web.jpg" alt="Daily Janakantha" loading="lazy">
+              </div>
+
+              <!-- 4. Step Footwear -->
+              <div class="client-logo-item item-step" title="Step Footwear - Pioneer Footwear Brand">
+                <img src="assets/clients/step_steptm.jpg" alt="Step Footwear" loading="lazy">
+              </div>
+
+              <!-- 5. Farming Future Bangladesh -->
+              <div class="client-logo-item item-farming" title="Farming Future Bangladesh - Agro Biotechnology Initiative">
+                <img src="assets/clients/farming_future_alt.png" alt="Farming Future Bangladesh" loading="lazy">
+              </div>
+
+              <!-- 6. Diamond World -->
+              <div class="client-logo-item item-diamond" title="Diamond World - The Art of Beauty">
+                <img src="assets/clients/diamond_world.jpg" alt="Diamond World" loading="lazy">
+              </div>
+
+              <!-- 7. BUET -->
+              <div class="client-logo-item item-buet" title="BUET - Bangladesh University of Engineering and Technology">
+                <img src="assets/clients/buet.svg" alt="BUET" loading="lazy">
+              </div>
+
+              <!-- 8. Ha-Meem Group -->
+              <div class="client-logo-item item-hameem" title="Ha-Meem Group - Global Textile & Garments Conglomerate">
+                <img src="assets/clients/ha_meem.jpg" alt="Ha-Meem Group" loading="lazy">
+              </div>
+
+              <!-- 9. City Group -->
+              <div class="client-logo-item item-citygroup" title="City Group - Premier Food & Consumer Goods Conglomerate">
+                <img src="assets/clients/city_group.jpg" alt="City Group" loading="lazy">
+              </div>
+
+              <!-- 10. University of Dhaka -->
+              <div class="client-logo-item item-du" title="University of Dhaka - Premier Public Research University">
+                <img src="assets/clients/dhaka_university.svg" alt="University of Dhaka" loading="lazy">
+              </div>
+
+              <!-- 11. Dhaka Tribune -->
+              <div class="client-logo-item item-tribune" title="Dhaka Tribune - Premier National English Daily">
+                <img src="assets/clients/dhaka_tribune.svg" alt="Dhaka Tribune" loading="lazy">
+              </div>
+
+              <!-- 12. Walton Group -->
+              <div class="client-logo-item item-walton" title="Walton Group - Electronics & Tech Giant">
+                <img src="assets/clients/walton.png" alt="Walton Group" loading="lazy">
+              </div>
+
+              <!-- 13. PRAN-RFL Group -->
+              <div class="client-logo-item item-pran" title="PRAN-RFL Group - Global Food & Consumer Conglomerate">
+                <img src="assets/clients/pran.png" alt="PRAN-RFL Group" loading="lazy">
+              </div>
+
+              <!-- Seamless Infinite Loop Duplicate Set -->
+              <!-- 14. bdnews24.com -->
+              <div class="client-logo-item item-bdnews24" title="bdnews24.com - Bangladesh's First 24/7 Internet Newspaper">
+                <img src="assets/clients/bdnews24.svg" alt="bdnews24.com" loading="lazy">
+              </div>
+
+              <!-- 15. Channel 24 -->
+              <div class="client-logo-item item-channel24" title="Channel 24 - Leading 24/7 News & Infotainment Network">
+                <img src="assets/clients/channel24_hd.png" alt="Channel 24" loading="lazy">
+              </div>
+
+              <!-- 16. Daily Janakantha -->
+              <div class="client-logo-item item-janakantha" title="Daily Janakantha - National Bengali Daily">
+                <img src="assets/clients/janakantha_web.jpg" alt="Daily Janakantha" loading="lazy">
+              </div>
+
+              <!-- 17. Step Footwear -->
+              <div class="client-logo-item item-step" title="Step Footwear - Pioneer Footwear Brand">
+                <img src="assets/clients/step_steptm.jpg" alt="Step Footwear" loading="lazy">
+              </div>
+
+              <!-- 18. Farming Future Bangladesh -->
+              <div class="client-logo-item item-farming" title="Farming Future Bangladesh - Agro Biotechnology Initiative">
+                <img src="assets/clients/farming_future_alt.png" alt="Farming Future Bangladesh" loading="lazy">
+              </div>
+
+              <!-- 19. Diamond World -->
+              <div class="client-logo-item item-diamond" title="Diamond World - The Art of Beauty">
+                <img src="assets/clients/diamond_world.jpg" alt="Diamond World" loading="lazy">
+              </div>
+
+              <!-- 20. BUET -->
+              <div class="client-logo-item item-buet" title="BUET - Bangladesh University of Engineering and Technology">
+                <img src="assets/clients/buet.svg" alt="BUET" loading="lazy">
+              </div>
+
+              <!-- 21. Ha-Meem Group -->
+              <div class="client-logo-item item-hameem" title="Ha-Meem Group - Global Textile & Garments Conglomerate">
+                <img src="assets/clients/ha_meem.jpg" alt="Ha-Meem Group" loading="lazy">
+              </div>
+
+              <!-- 22. City Group -->
+              <div class="client-logo-item item-citygroup" title="City Group - Premier Food & Consumer Goods Conglomerate">
+                <img src="assets/clients/city_group.jpg" alt="City Group" loading="lazy">
+              </div>
+
+              <!-- 23. University of Dhaka -->
+              <div class="client-logo-item item-du" title="University of Dhaka - Premier Public Research University">
+                <img src="assets/clients/dhaka_university.svg" alt="University of Dhaka" loading="lazy">
+              </div>
+
+              <!-- 24. Dhaka Tribune -->
+              <div class="client-logo-item item-tribune" title="Dhaka Tribune - Premier National English Daily">
+                <img src="assets/clients/dhaka_tribune.svg" alt="Dhaka Tribune" loading="lazy">
+              </div>
+
+              <!-- 25. Walton Group -->
+              <div class="client-logo-item item-walton" title="Walton Group - Electronics & Tech Giant">
+                <img src="assets/clients/walton.png" alt="Walton Group" loading="lazy">
+              </div>
+
+              <!-- 26. PRAN-RFL Group -->
+              <div class="client-logo-item item-pran" title="PRAN-RFL Group - Global Food & Consumer Conglomerate">
+                <img src="assets/clients/pran.png" alt="PRAN-RFL Group" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ==========================================================================
      STATS METRICS STRIP
@@ -3310,23 +4453,7 @@
       </div>
 
       <div class="stack-grid">
-        <!-- Col 1: CMS & E-Commerce -->
-        <div class="stack-col">
-          <div class="stack-col-head">
-            <h3>E-Commerce &amp; CMS</h3>
-            <span>ENGINE</span>
-          </div>
-          <div class="tech-items">
-            <div class="tech-item"><span>Custom Newsroom Engine</span><span class="desc">High Concurrency</span></div>
-            <div class="tech-item"><span>Shopify Plus &amp; Storefront API</span><span class="desc">Headless</span>
-            </div>
-            <div class="tech-item"><span>MedusaJS</span><span class="desc">Open Commerce</span></div>
-            <div class="tech-item"><span>Strapi &amp; Payload CMS</span><span class="desc">Headless CMS</span></div>
-            <div class="tech-item"><span>Laravel Commerce</span><span class="desc">Custom ERP</span></div>
-          </div>
-        </div>
-
-        <!-- Col 2: Frontend & Mobile -->
+        <!-- Col 1: Frontend & Mobile -->
         <div class="stack-col">
           <div class="stack-col-head">
             <h3>Frontend &amp; Mobile</h3>
@@ -3367,7 +4494,7 @@
             <div class="tech-item"><span>Docker &amp; Kubernetes</span><span class="desc">Containers</span></div>
             <div class="tech-item"><span>Cloudflare Enterprise</span><span class="desc">Edge Caching</span></div>
             <div class="tech-item"><span>Terraform</span><span class="desc">IaC Automation</span></div>
-            <div class="tech-item"><span>CI/CD Automation</span><span class="desc">Zero Downtime</span></div>
+            <div class="tech-item"><span>CI/CD Pipelines</span><span class="desc">Automated Delivery</span></div>
           </div>
         </div>
       </div>
@@ -3411,7 +4538,7 @@
         </div>
         <div class="process-step">
           <span class="step-num">05</span>
-          <h4>Zero-Downtime Launch</h4>
+          <h4>Production Launch</h4>
           <p>Automated blue/green deployment with DNS traffic balancing and instant rollback capabilities.</p>
         </div>
         <div class="process-step">
@@ -3477,6 +4604,158 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     ABOUT US SECTION (Company Philosophy, Work Environment, Leadership & Team)
+     ========================================================================== -->
+  <section class="section-pad about-section" id="about" aria-label="About eMMSOFT Engineering Studio">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-head reveal">
+        <div>
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            Who We Are · Engineering Studio
+          </div>
+          <h2>Senior craftsmanship with a focus on <span class="highlight">uncompromising reliability</span>.</h2>
+        </div>
+        <p>
+          Founded on the principle that digital platforms should be durable, fault-tolerant, and exceptionally fast. We partner with tier-1 media organizations, enterprise retailers, and technology startups worldwide.
+        </p>
+      </div>
+
+      <!-- Part 1: Company Story & Culture / Work Environment Showcase -->
+      <div class="about-story-grid reveal" id="about-environment">
+        <!-- Story Card -->
+        <div class="about-story-card">
+          <div class="badge-tag" style="margin-bottom:12px;">Studio Philosophy</div>
+          <h3>Built by Engineers, Designed for Mission-Critical Production</h3>
+          <p>
+            At eMMSOFT, we deliberately maintain a high ratio of senior engineers to juniors. We eschew bloated frameworks in favor of clean architecture, deterministic caching layers, and battle-tested distributed databases.
+          </p>
+          <p>
+            Our workstations, continuous integration pipelines, and culture are built around deep focus, rapid prototyping, and automated verification so our clients can sleep soundly during peak election nights or flash sales.
+          </p>
+
+          <div class="about-values-list">
+            <div class="about-value-pill">
+              <strong>99.99% Availability Mindset</strong>
+              <span>Every architectural layer has automated fallbacks and multi-region redundancy.</span>
+            </div>
+            <div class="about-value-pill">
+              <strong>Sub-50ms TTFB Standard</strong>
+              <span>Engineered caching, edge execution, and optimized database queries.</span>
+            </div>
+            <div class="about-value-pill">
+              <strong>Transparent Collaboration</strong>
+              <span>Direct communication with the actual systems engineers building your platform.</span>
+            </div>
+            <div class="about-value-pill">
+              <strong>Long-term Stewardship</strong>
+              <span>We build software assets that continue running reliably 5+ years into the future.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Environment Visual Card -->
+        <div class="culture-preview-frame">
+          <img src="assets/work_culture.jpg" alt="eMMSOFT Software Engineering Studio Work Environment" loading="lazy">
+          <div class="culture-frame-overlay">
+            <span class="mega-feature-badge" style="width:fit-content; margin-bottom:8px;">Dhaka Studio HQ &amp; Global Remote</span>
+            <h4>Our Collaborative Engineering Environment</h4>
+            <p>
+              Ergonomic multi-monitor setups, pair programming spaces, dedicated high-throughput test benches, and a culture of continuous learning.
+            </p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a href="#contact" class="btn btn-primary btn-sm">Join Our Team or Partner</a>
+              <button type="button" class="btn btn-secondary btn-sm open-ceo-modal" style="background:rgba(255,255,255,0.9); border:none;">Read CEO Letter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2: Meet Our Team Section -->
+      <div id="about-team" style="scroll-margin-top: 100px;">
+        <div class="section-head center reveal" style="margin-bottom: 24px;">
+          <div>
+            <div class="badge-tag">The Core Studio Team</div>
+            <h2>The Minds Behind the <span class="highlight">Architectures</span></h2>
+          </div>
+          <p>
+            A dedicated collective of senior backend architects, UI/UX craftsmen, distributed systems veterans, and product strategists.
+          </p>
+        </div>
+
+        <div class="team-grid reveal">
+          <!-- Member 1: CEO & Founder -->
+          <div class="team-card">
+            <div class="team-card-avatar-wrap">
+              <img src="assets/ceo_portrait.jpg" alt="Tareq Rahman" class="team-card-avatar" loading="lazy">
+            </div>
+            <span class="team-card-role-badge">Chief Executive Officer</span>
+            <div class="team-card-name">Tareq Rahman</div>
+            <div class="team-card-bio">
+              14+ years scaling large-scale software ventures, media operations, and enterprise software partnerships across South Asia &amp; North America.
+            </div>
+            <button type="button" class="team-msg-btn open-ceo-modal" aria-label="Read Tareq Rahman's CEO Message">
+              <span>Read Message</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Member 2: CTO & Systems Architect -->
+          <div class="team-card">
+            <div class="team-card-avatar-wrap">
+              <img src="assets/cto_portrait.jpg" alt="Shahed Hossain" class="team-card-avatar" loading="lazy">
+            </div>
+            <span class="team-card-role-badge">Chief Technology Officer</span>
+            <div class="team-card-name">Shahed Hossain</div>
+            <div class="team-card-bio">
+              Distributed systems specialist with expertise in multi-tenant headless CMS, Kubernetes clustering, and high-volume real-time commerce feeds.
+            </div>
+            <button type="button" class="team-msg-btn open-cto-modal" aria-label="Read Shahed Hossain's CTO Message">
+              <span>Read Message</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Member 3: VP of Engineering -->
+          <div class="team-card">
+            <div class="team-card-avatar-wrap">
+              <img src="assets/vp_eng_portrait.jpg" alt="Elena Rostova" class="team-card-avatar" loading="lazy">
+            </div>
+            <span class="team-card-role-badge">VP of Engineering</span>
+            <div class="team-card-name">Elena Rostova</div>
+            <div class="team-card-bio">
+              Oversees sprint delivery, microservices stability, and enterprise SLAs. Pioneer in automated CI/CD testing and seamless blue/green rollouts.
+            </div>
+            <a href="#contact" class="team-msg-btn">
+              <span>Connect</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <!-- Member 4: Head of Product & UX -->
+          <div class="team-card">
+            <div class="team-card-avatar-wrap">
+              <img src="assets/head_product_portrait.jpg" alt="Priya Sharma" class="team-card-avatar" loading="lazy">
+            </div>
+            <span class="team-card-role-badge">Head of Product Design</span>
+            <div class="team-card-name">Priya Sharma</div>
+            <div class="team-card-bio">
+              Design system advocate crafting conversion-focused e-commerce storefronts and clutter-free, rapid-publishing editorial newsroom cockpits.
+            </div>
+            <a href="#contact" class="team-msg-btn">
+              <span>Connect</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -3650,12 +4929,14 @@
         </div>
 
         <div class="footer-col">
-          <h4>Company &amp; Contact</h4>
+          <h4>Company &amp; Studio</h4>
           <ul>
+            <li><a href="#about">About eMMSOFT</a></li>
+            <li><a href="#about-team">Leadership &amp; Team</a></li>
+            <li><a href="#about-environment">Our Work Environment</a></li>
             <li><a href="#projects">Selected Production Work</a></li>
             <li><a href="#process">Our 6-Stage Process</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="tel:+8801700000000">+880 17 0000 0000</a></li>
             <li><a href="#contact">Start a Project →</a></li>
           </ul>
         </div>
@@ -3673,6 +4954,85 @@
   </footer>
 
   <!-- ==========================================================================
+     EXECUTIVE LEADERSHIP MESSAGE MODALS (CEO & CTO)
+     ========================================================================== -->
+  <!-- 1. CEO Message Modal -->
+  <div class="exec-modal-backdrop" id="ceoModal" role="dialog" aria-modal="true" aria-labelledby="ceoModalTitle">
+    <div class="exec-modal-dialog">
+      <div class="exec-modal-header">
+        <div class="exec-modal-profile">
+          <img src="assets/ceo_portrait.jpg" alt="Tareq Rahman" class="exec-modal-avatar">
+          <div class="exec-modal-title">
+            <h3 id="ceoModalTitle">Tareq Rahman</h3>
+            <span>Chief Executive Officer &amp; Founder</span>
+          </div>
+        </div>
+        <button type="button" class="exec-modal-close close-exec-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="exec-modal-body">
+        <blockquote>
+          "Software architecture isn't just about writing code; it is about guaranteeing certainty for businesses whose livelihoods depend on continuous availability."
+        </blockquote>
+        <p>
+          Welcome to <strong>eMMSOFT</strong>. When we founded this studio, our mandate was clear: bridge the gap between high-velocity modern engineering and mission-critical production stability.
+        </p>
+        <p>
+          Too many technology consultancies prioritize flash over substance, delivering architectures that degrade the moment traffic surges. We engineered eMMSOFT from day one as a specialized engineering studio. Whether we are powering the news engine for national dailies serving millions of concurrent readers on breaking news days, or handling complex multi-warehouse inventory systems for retailers, our engineering standard is uncompromising.
+        </p>
+        <p>
+          We take immense pride in our long-term client relationships. We view ourselves not as an outsourced agency, but as your core engineering partner invested in your scalability, security, and digital sovereignity.
+        </p>
+        <p style="margin-top:20px; font-weight:600; color:var(--ink-primary);">
+          — Tareq Rahman<br>
+          <span style="font-size:0.85rem; font-weight:normal; color:var(--ink-muted);">CEO &amp; Founder, eMMSOFT</span>
+        </p>
+      </div>
+      <div class="exec-modal-footer">
+        <a href="#contact" class="btn btn-primary btn-sm close-exec-modal">Discuss an Enterprise Project</a>
+        <button type="button" class="btn btn-secondary btn-sm close-exec-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CTO Message Modal -->
+  <div class="exec-modal-backdrop" id="ctoModal" role="dialog" aria-modal="true" aria-labelledby="ctoModalTitle">
+    <div class="exec-modal-dialog">
+      <div class="exec-modal-header">
+        <div class="exec-modal-profile">
+          <img src="assets/cto_portrait.jpg" alt="Shahed Hossain" class="exec-modal-avatar">
+          <div class="exec-modal-title">
+            <h3 id="ctoModalTitle">Shahed Hossain</h3>
+            <span>Chief Technology Officer &amp; Lead Systems Architect</span>
+          </div>
+        </div>
+        <button type="button" class="exec-modal-close close-exec-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="exec-modal-body">
+        <blockquote>
+          "True engineering beauty lies in low latency, self-healing topologies, deterministic deployments, and systems that scale gracefully without human panic."
+        </blockquote>
+        <p>
+          At eMMSOFT, our architectural philosophy is rooted in pragmatism and mechanical sympathy. We design software architectures that respect hardware constraints, optimize network hops, and eliminate single points of failure.
+        </p>
+        <p>
+          Our technical stack is deliberately curated: high-throughput Node.js and Go microservices, ACID-compliant PostgreSQL schemas, in-memory Redis caching clusters, containerized Kubernetes orchestration, and Cloudflare Enterprise edge workers. For our Newsroom CMS systems, our average TTFB remains strictly under 50 milliseconds even under sustained DDOS or sudden nationwide breaking news floods.
+        </p>
+        <p>
+          When you partner with our studio, your code is reviewed by senior practitioners, automated with comprehensive end-to-end regression suites, and deployed with enterprise precision. That is our engineering promise.
+        </p>
+        <p style="margin-top:20px; font-weight:600; color:var(--ink-primary);">
+          — Shahed Hossain<br>
+          <span style="font-size:0.85rem; font-weight:normal; color:var(--ink-muted);">CTO &amp; Systems Architect, eMMSOFT</span>
+        </p>
+      </div>
+      <div class="exec-modal-footer">
+        <a href="#solutions" class="btn btn-primary btn-sm close-exec-modal">Explore Our Technical Stack</a>
+        <button type="button" class="btn btn-secondary btn-sm close-exec-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
      INTERACTIVE JAVASCRIPT LOGIC
      ========================================================================== -->
   <script>
@@ -3684,9 +5044,20 @@
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    // 2. Mobile Menu Toggle
+    // 2. Mobile Menu Toggle & Accordion
     const burgerBtn = document.getElementById('burgerBtn');
     const mobilePanel = document.getElementById('mobilePanel');
+    const mobileAboutToggle = document.getElementById('mobileAboutToggle');
+    const mobileAboutSub = document.getElementById('mobileAboutSub');
+    const mobileAboutArrow = document.getElementById('mobileAboutArrow');
+
+    if (mobileAboutToggle && mobileAboutSub) {
+      mobileAboutToggle.addEventListener('click', () => {
+        const isOpen = mobileAboutSub.classList.toggle('is-open');
+        if (mobileAboutArrow) mobileAboutArrow.textContent = isOpen ? '↑' : '↓';
+      });
+    }
+
     burgerBtn.addEventListener('click', () => {
       const isOpen = mobilePanel.classList.toggle('is-open');
       burgerBtn.classList.toggle('is-open', isOpen);
@@ -3700,6 +5071,71 @@
         burgerBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
+    });
+
+    // 2b. Executive Modals Logic (CEO & CTO Letters)
+    const ceoModal = document.getElementById('ceoModal');
+    const ctoModal = document.getElementById('ctoModal');
+
+    const openModal = (modal) => {
+      if (!modal) return;
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = (modal) => {
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.open-ceo-modal').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // If mobile panel is open, close it
+        if (mobilePanel && mobilePanel.classList.contains('is-open')) {
+          mobilePanel.classList.remove('is-open');
+          burgerBtn.classList.remove('is-open');
+        }
+        openModal(ceoModal);
+      });
+    });
+
+    document.querySelectorAll('.open-cto-modal').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // If mobile panel is open, close it
+        if (mobilePanel && mobilePanel.classList.contains('is-open')) {
+          mobilePanel.classList.remove('is-open');
+          burgerBtn.classList.remove('is-open');
+        }
+        openModal(ctoModal);
+      });
+    });
+
+    document.querySelectorAll('.close-exec-modal').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeModal(ceoModal);
+        closeModal(ctoModal);
+      });
+    });
+
+    // Close on backdrop click
+    [ceoModal, ctoModal].forEach(modal => {
+      if (!modal) return;
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal(modal);
+        }
+      });
+    });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal(ceoModal);
+        closeModal(ctoModal);
+      }
     });
 
     // 3. Interactive Solutions Tabs
@@ -3834,7 +5270,87 @@
     }
 
     // 8. Dynamic Copyright Year
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const currentYearEl = document.getElementById('currentYear');
+    if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+
+    // 9. Continuous Auto Infinity Scroll Carousel (Silky Smooth Motion & Seamless Wrap)
+    (function initClientsCarousel() {
+      const viewport = document.getElementById('clientsTrackViewport');
+      const track = document.getElementById('clientsTrack');
+      const wrapper = document.querySelector('.clients-carousel-wrapper');
+
+      if (!viewport || !track) return;
+
+      let isHovered = false;
+      let isDragging = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let autoSpeed = 0.85; // Silky sub-pixel constant speed
+
+      // Half width calculation for seamless loop (track contains 2 identical sets of 13 logos)
+      function getHalfWidth() {
+        return track.scrollWidth / 2;
+      }
+
+      // Continuous Auto-Glide loop via requestAnimationFrame
+      function step() {
+        const halfWidth = getHalfWidth();
+
+        if (!isHovered && !isDragging && halfWidth > 0) {
+          viewport.scrollLeft += autoSpeed;
+
+          // Seamless infinity wrap-around
+          if (viewport.scrollLeft >= halfWidth) {
+            viewport.scrollLeft -= halfWidth;
+          } else if (viewport.scrollLeft <= 0) {
+            viewport.scrollLeft += halfWidth;
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      // Pause on mouse hover or touch interaction
+      if (wrapper) {
+        wrapper.addEventListener('mouseenter', () => { isHovered = true; });
+        wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+        wrapper.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
+        wrapper.addEventListener('touchend', () => {
+          setTimeout(() => { isHovered = false; }, 800);
+        }, { passive: true });
+      }
+
+      // Drag to scroll for mouse & touch gesture
+      viewport.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        viewport.style.cursor = 'grabbing';
+        startX = e.pageX - viewport.offsetLeft;
+        startScrollLeft = viewport.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        viewport.style.cursor = 'grab';
+      });
+
+      viewport.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.35;
+        let newPos = startScrollLeft - walk;
+        const halfWidth = getHalfWidth();
+        if (halfWidth > 0) {
+          if (newPos >= halfWidth) newPos -= halfWidth;
+          if (newPos < 0) newPos += halfWidth;
+        }
+        viewport.scrollLeft = newPos;
+      });
+
+      // Kick off continuous auto-infinity loop
+      requestAnimationFrame(step);
+    })();
   </script>
 
 </body>
