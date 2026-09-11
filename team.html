@@ -1542,9 +1542,8 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-
     /* ==========================================================================
-       FOOTER (Synchronized with index.html)
+       FOOTER (Synchronized with team.html)
        ========================================================================== */
     .site-footer {
       background: var(--bg-surface);
@@ -1571,11 +1570,30 @@
       }
     }
 
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-brand .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-brand .nav-logo {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
     .footer-brand p {
       font-size: 0.92rem;
       color: var(--ink-muted);
       line-height: 1.6;
-      margin: 16px 0 20px;
+      margin: 0;
       max-width: 320px;
     }
 
@@ -1593,11 +1611,15 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .footer-col a {
       font-size: 0.92rem;
       color: var(--ink-muted);
+      text-decoration: none;
       transition: color 0.2s ease;
     }
 
@@ -1623,11 +1645,16 @@
       gap: 20px;
     }
 
+    .footer-legal a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-
-    /* Modal dialog */
+/* Modal dialog */
     .member-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -2567,7 +2594,7 @@
   <!-- ==========================================================================
      FOOTER
      ========================================================================== -->
-  <footer class="site-footer">
+    <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -2583,7 +2610,7 @@
           </div>
         </div>
 
-                <div class="footer-col">
+        <div class="footer-col">
           <h4>Core Solutions</h4>
           <ul>
             <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
@@ -2598,12 +2625,12 @@
         <div class="footer-col">
           <h4>Leadership &amp; Studio</h4>
           <ul>
+            <li><a href="about.html">About eMMSOFT</a></li>
             <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
             <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
-            <li><a href="team.html" style="color:var(--brand-emerald-dark); font-weight:700;">Our Team &amp; Roster (Current)</a></li>
+            <li><a href="team.html" style="color:var(--brand-emerald-dark); font-weight:700;">Our Team &amp; Roster</a></li>
             <li><a href="work.html">Selected Projects</a></li>
-            <li><a href="index.html#process">6-Stage Process</a></li>
-            <li><a href="index.html#contact">Get Consultation</a></li>
+            <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
           </ul>
         </div>
 
@@ -2612,7 +2639,7 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="index.html#contact" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
           </ul>
         </div>
       </div>

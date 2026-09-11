@@ -1234,61 +1234,88 @@
       background: radial-gradient(circle, rgba(4, 148, 73, 0.25) 0%, transparent 70%);
       pointer-events: none;
     }
-
     /* ==========================================================================
-       FOOTER
+       FOOTER (Synchronized with team.html)
        ========================================================================== */
-    footer {
+    .site-footer {
       background: var(--bg-surface);
       border-top: 1px solid var(--border-light);
-      padding: 64px 0 32px;
-      font-size: 0.92rem;
+      padding: 72px 0 36px;
     }
 
-    .footer-top {
+    .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: clamp(24px, 4vw, 48px);
-      margin-bottom: 48px;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 960px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-brand .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-brand .nav-logo {
+      height: 38px;
+      width: auto;
+      display: block;
     }
 
     .footer-brand p {
-      color: var(--ink-secondary);
-      font-size: 0.90rem;
+      font-size: 0.92rem;
+      color: var(--ink-muted);
       line-height: 1.6;
-      margin-top: 14px;
+      margin: 0;
       max-width: 320px;
     }
 
-    .footer-logo {
-      height: 24px;
-      width: auto;
-      object-fit: contain;
-    }
-
     .footer-col h4 {
-      font-family: var(--font-heading);
-      font-size: 0.92rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: var(--ink-primary);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      font-family: var(--font-mono);
     }
 
     .footer-col ul {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .footer-col ul li a {
+    .footer-col a {
+      font-size: 0.92rem;
       color: var(--ink-muted);
-      transition: color 0.18s ease;
-      font-size: 0.88rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
-    .footer-col ul li a:hover {
+    .footer-col a:hover {
       color: var(--brand-emerald-dark);
     }
 
@@ -1296,28 +1323,30 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-top: 28px;
       border-top: 1px solid var(--border-light);
-      padding-top: 24px;
+      font-size: 0.85rem;
       color: var(--ink-muted);
-      font-size: 0.82rem;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
     }
 
     .footer-legal {
       display: flex;
-      gap: 16px;
+      align-items: center;
+      gap: 20px;
     }
 
     .footer-legal a {
       color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-legal a:hover {
       color: var(--brand-emerald-dark);
     }
-
-    /* Responsive */
+/* Responsive */
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -2155,16 +2184,20 @@
   <!-- ==========================================================================
        FOOTER
        ========================================================================== -->
-  <footer>
+    <footer class="site-footer">
     <div class="container">
-      <div class="footer-top">
+      <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo-wrap">
-            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
-          </div>
+          <a href="index.html#home" class="brand-link">
+            <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+          </a>
           <p>
-            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
+          <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
+            <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
+            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+          </div>
         </div>
 
         <div class="footer-col">
@@ -2175,20 +2208,19 @@
             <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
             <li><a href="solution-enterprise-cms.html">Enterprise Headless CMS</a></li>
             <li><a href="solution-web-applications.html">Web Applications &amp; SaaS</a></li>
-            <li><a href="solution-mobile-apps.html" style="color:var(--brand-emerald-accent); font-weight:700;">Mobile Apps (iOS &amp; Android)</a></li>
+            <li><a href="solution-mobile-apps.html" style="color:var(--brand-emerald-dark); font-weight:700;">Mobile Apps (iOS &amp; Android)</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Leadership &amp; Studio</h4>
           <ul>
-            <li><a href="about.html">About eMMSOFT (Overview)</a></li>
+            <li><a href="about.html">About eMMSOFT</a></li>
             <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
             <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
             <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="work.html">Selected Projects</a></li>
             <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
-            <li><a href="work.html">Work &amp; Case Studies</a></li>
-            <li><a href="contact.html">Start a Project / Contact</a></li>
           </ul>
         </div>
 

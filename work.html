@@ -1162,26 +1162,30 @@
       color: #ffffff;
       text-align: center;
     }
-
     /* ==========================================================================
-       FOOTER
+       FOOTER (Synchronized with team.html)
        ========================================================================== */
-    footer {
-      background: var(--dark-950);
-      color: #94a3b8;
-      padding-top: clamp(64px, 8vw, 96px);
-      border-top: 1px solid var(--dark-800);
+    .site-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      padding: 72px 0 36px;
     }
 
-    .footer-top {
+    .footer-grid {
       display: grid;
-      grid-template-columns: minmax(0, 360px) repeat(3, minmax(0, 1fr));
-      gap: clamp(32px, 4vw, 56px);
-      padding-bottom: 56px;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 56px;
     }
 
-    @media (max-width: 900px) {
-      .footer-top {
+    @media (max-width: 960px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .footer-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -1192,76 +1196,85 @@
       gap: 16px;
     }
 
-    .footer-logo-wrap {
+    .footer-brand .brand-link {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #ffffff;
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      width: fit-content;
+      text-decoration: none;
     }
 
-    .footer-logo {
-      height: 32px;
+    .footer-brand .nav-logo {
+      height: 38px;
       width: auto;
+      display: block;
     }
 
     .footer-brand p {
-      color: #94a3b8;
-      font-size: 0.94rem;
-      line-height: 1.65;
-      max-width: 320px;
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
       margin: 0;
+      max-width: 320px;
     }
 
     .footer-col h4 {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #f1f5f9;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
       margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-family: var(--font-mono);
     }
 
     .footer-col ul {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .footer-col a {
-      color: #94a3b8;
       font-size: 0.92rem;
-      transition: color 0.18s ease;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-col a:hover {
-      color: var(--brand-emerald-accent);
+      color: var(--brand-emerald-dark);
     }
 
     .footer-bottom {
-      border-top: 1px solid var(--dark-800);
-      padding: 24px 0 32px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
       flex-wrap: wrap;
       gap: 16px;
-      font-size: 0.86rem;
     }
 
     .footer-legal {
       display: flex;
-      gap: 24px;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-legal a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-legal a:hover {
-      color: #ffffff;
+      color: var(--brand-emerald-dark);
     }
-  
-  </style>
+</style>
 </head>
 
 <body>
@@ -2239,19 +2252,23 @@
   <!-- ==========================================================================
      FOOTER
      ========================================================================== -->
-  <footer>
+    <footer class="site-footer">
     <div class="container">
-      <div class="footer-top">
+      <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo-wrap">
-            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
-          </div>
+          <a href="index.html#home" class="brand-link">
+            <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+          </a>
           <p>
-            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
+          <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
+            <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
+            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+          </div>
         </div>
 
-                <div class="footer-col">
+        <div class="footer-col">
           <h4>Core Solutions</h4>
           <ul>
             <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
@@ -2266,13 +2283,12 @@
         <div class="footer-col">
           <h4>Leadership &amp; Studio</h4>
           <ul>
-            <li><a href="about.html">About eMMSOFT (Overview)</a></li>
+            <li><a href="about.html">About eMMSOFT</a></li>
             <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
             <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
             <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="work.html" style="color:var(--brand-emerald-dark); font-weight:700;">Selected Projects</a></li>
             <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
-            <li><a href="work.html" style="color:var(--brand-emerald-accent); font-weight:700;">Our Work &amp; Products</a></li>
-            <li><a href="contact.html">Start a Project / Contact</a></li>
           </ul>
         </div>
 

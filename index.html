@@ -2298,22 +2298,32 @@
         grid-template-columns: 1fr;
       }
     }
-
     /* ==========================================================================
-     FOOTER
-     ========================================================================== */
-    footer {
-      background: var(--dark-950);
-      color: #94a3b8;
-      padding-top: clamp(64px, 8vw, 96px);
-      border-top: 1px solid var(--dark-800);
+       FOOTER (Synchronized with team.html)
+       ========================================================================== */
+    .site-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      padding: 72px 0 36px;
     }
 
-    .footer-top {
+    .footer-grid {
       display: grid;
-      grid-template-columns: minmax(0, 360px) repeat(3, minmax(0, 1fr));
-      gap: clamp(32px, 4vw, 56px);
-      padding-bottom: 56px;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 960px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .footer-brand {
@@ -2322,96 +2332,85 @@
       gap: 16px;
     }
 
-    .footer-logo-wrap {
+    .footer-brand .brand-link {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #ffffff;
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      width: fit-content;
+      text-decoration: none;
     }
 
-    .footer-logo {
-      height: 32px;
+    .footer-brand .nav-logo {
+      height: 38px;
       width: auto;
+      display: block;
     }
 
     .footer-brand p {
-      color: #94a3b8;
-      font-size: 0.94rem;
-      line-height: 1.65;
-      max-width: 320px;
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
       margin: 0;
+      max-width: 320px;
     }
 
     .footer-col h4 {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #f1f5f9;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
       margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-family: var(--font-mono);
     }
 
     .footer-col ul {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .footer-col a {
-      color: #94a3b8;
       font-size: 0.92rem;
-      transition: color 0.18s ease;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-col a:hover {
-      color: var(--brand-emerald-accent);
+      color: var(--brand-emerald-dark);
     }
 
     .footer-bottom {
-      border-top: 1px solid var(--dark-800);
-      padding: 24px 0 32px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
       flex-wrap: wrap;
       gap: 16px;
-      font-size: 0.86rem;
     }
 
     .footer-legal {
       display: flex;
-      gap: 24px;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-legal a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .footer-legal a:hover {
-      color: #ffffff;
+      color: var(--brand-emerald-dark);
     }
-
-    @media (max-width: 900px) {
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .footer-brand {
-        grid-column: span 2;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-brand {
-        grid-column: span 1;
-      }
-    }
-
-    /* Reveal Utility */
+/* Reveal Utility */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -4678,28 +4677,23 @@
   <!-- ==========================================================================
      FOOTER (With logo.png and full categorical navigation)
      ========================================================================== -->
-  <footer>
+    <footer class="site-footer">
     <div class="container">
-      <div class="footer-top">
+      <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#home" class="footer-logo-wrap" aria-label="eMMSOFT Homepage">
-            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
+          <a href="index.html#home" class="brand-link">
+            <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
-            eMMSOFT is a specialized software engineering studio building resilient E-Commerce platforms, high-velocity
-            Newsroom CMS, Cloud solutions, and native Web &amp; Mobile applications.
+            eMMSOFT is a high-performance software engineering studio specializing in Newsroom CMS, E-Commerce Platforms, Cloud Infrastructure, and Enterprise Applications.
           </p>
-          <div style="display:flex; gap:12px; margin-top:8px;">
-            <span
-              style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); background:rgba(16,185,129,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(16,185,129,0.2);">ISO
-              27001 ALIGNED</span>
-            <span
-              style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); background:rgba(16,185,129,0.12); padding:3px 8px; border-radius:4px; border:1px solid rgba(16,185,129,0.2);">99.99%
-              CLOUD SLA</span>
+          <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
+            <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
+            <strong>Phone:</strong> <a href="tel:+8801714001209" style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
           </div>
         </div>
 
-                <div class="footer-col">
+        <div class="footer-col">
           <h4>Core Solutions</h4>
           <ul>
             <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
@@ -4712,37 +4706,33 @@
         </div>
 
         <div class="footer-col">
-          <h4>Technology</h4>
+          <h4>Leadership &amp; Studio</h4>
           <ul>
-            <li><a href="#tech-stack">Flutter &amp; Dart</a></li>
-            <li><a href="#tech-stack">Next.js &amp; React</a></li>
-            <li><a href="#tech-stack">Laravel Core &amp; PHP 8.3</a></li>
-            <li><a href="#tech-stack">AWS &amp; Kubernetes (K8s)</a></li>
-            <li><a href="#tech-stack">Redis In-Memory Caching</a></li>
-            <li><a href="#tech-stack">Cloudflare Edge Architecture</a></li>
+            <li><a href="about.html">About eMMSOFT</a></li>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="work.html">Selected Projects</a></li>
+            <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Leadership &amp; Studio</h4>
+          <h4>Get In Touch</h4>
           <ul>
-            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
-            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
-            <li><a href="team.html">Our Studio Team (12+ Members)</a></li>
-            <li><a href="#about-environment">Our Work Environment</a></li>
-            <li><a href="work.html">Selected Production Work</a></li>
-            <li><a href="#process">Our 6-Stage Process</a></li>
-            <li><a href="#contact">Start a Project →</a></li>
+            <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT. All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
-          <a href="#">Security &amp; SLA Commitment</a>
+          <a href="#">SLA &amp; Uptime Guarantee</a>
         </div>
       </div>
     </div>
