@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Your Project & Contact — eMMSOFT Software Engineering Studio</title>
+  <meta name="description"
+    content="Initiate a new software project or proposal with eMMSOFT. Select your solution focus, define requirements, and get a technical architectural roadmap from our senior engineering team within 4 business hours.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS (Synchronized with eMMSOFT Design System)
+       ========================================================================== */
+    :root {
+      --brand-emerald: #049449;
+      --brand-emerald-dark: #037339;
+      --brand-emerald-light: #05a852;
+      --brand-emerald-accent: #10b981;
+      --brand-emerald-tint: #ecf8f1;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.08);
+      --brand-emerald-glow: rgba(4, 148, 73, 0.22);
+      --brand-emerald-border: rgba(4, 148, 73, 0.25);
+
+      --brand-slate: #374049;
+      --dark-950: #0b0f15;
+      --dark-900: #101620;
+      --dark-850: #151d2a;
+      --dark-800: #1d2737;
+      --dark-700: #2d3b4f;
+      --dark-600: #425268;
+
+      --bg-main: #fbfcfb;
+      --bg-surface: #ffffff;
+      --bg-alt: #f3f6f4;
+      --bg-subtle: #edf2ee;
+
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
+
+      --border-light: #e3e8e5;
+      --border-focus: #049449;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container: 1220px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 12px 30px rgba(16, 24, 40, 0.1);
+      --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    input, textarea, select {
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--ink-primary);
+      line-height: 1.25;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: clamp(60px, 8vw, 100px) 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-emerald);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+      border-color: var(--ink-faint);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+    }
+
+    /* ==========================================================================
+       NAVBAR (Synchronized System)
+       ========================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(251, 252, 251, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom-color: rgba(227, 232, 229, 0.8);
+      box-shadow: 0 4px 20px -2px rgba(18, 25, 34, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: clamp(14px, 2.2vw, 32px);
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.8vw, 28px);
+      flex-wrap: nowrap;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: color 0.18s ease;
+      padding: 6px 0;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--brand-emerald-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Dropdown & Mega Menu System */
+    .nav-item-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 76px;
+    }
+
+    .nav-item-dropdown .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown-chevron {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+    }
+
+    .nav-item-dropdown:hover .dropdown-chevron,
+    .nav-item-dropdown:focus-within .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--brand-emerald);
+    }
+
+    .mega-menu-bridge {
+      position: absolute;
+      top: 100%;
+      left: -150px;
+      right: -150px;
+      height: 18px;
+      content: "";
+      display: block;
+      pointer-events: auto;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-40%) translateY(12px);
+      width: 760px;
+      max-width: 92vw;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(227, 232, 229, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 56px -12px rgba(18, 25, 34, 0.16), 0 4px 16px rgba(4, 148, 73, 0.06);
+      padding: 22px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.25s;
+      z-index: 300;
+    }
+
+    .mega-menu.mega-menu-left {
+      left: 0;
+      transform: translateY(12px);
+    }
+
+    .nav-item-dropdown:hover .mega-menu,
+    .nav-item-dropdown:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-40%) translateY(0);
+    }
+
+    .nav-item-dropdown:hover .mega-menu.mega-menu-left,
+    .nav-item-dropdown:focus-within .mega-menu.mega-menu-left {
+      transform: translateY(0);
+    }
+
+    .pill-hot {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: #ef4444;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .mega-menu-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mega-menu-label {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .mega-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mega-link-card:hover {
+      background: var(--brand-emerald-tint);
+      border-color: var(--brand-emerald-border);
+      transform: translateX(4px);
+    }
+
+    .mega-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-emerald);
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.2);
+    }
+
+    .mega-link-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-link-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    .mega-link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mega-link-card-body .mega-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-link-card:hover .mega-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-link-card-body .mega-desc {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      line-height: 1.35;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-arrow {
+      font-size: 0.85rem;
+      color: var(--brand-emerald);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .mega-feature-card {
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-alt) 100%);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .mega-feature-card:hover {
+      border-color: var(--brand-emerald);
+      box-shadow: 0 12px 30px rgba(4, 148, 73, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .mega-feature-thumb {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+    }
+
+    .mega-feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .mega-feature-card:hover .mega-feature-thumb img {
+      transform: scale(1.05);
+    }
+
+    .mega-feature-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(11, 15, 21, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      z-index: 2;
+    }
+
+    .mega-feature-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .mega-feature-title {
+      font-family: var(--font-heading);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mega-feature-desc {
+      font-size: 0.82rem;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .mega-feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    /* Mobile Drawer */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav-burger span {
+      width: 100%;
+      height: 2px;
+      background: var(--ink-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-surface);
+      z-index: 190;
+      padding: 24px;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .mobile-panel.is-open {
+      display: flex;
+    }
+
+    @media (max-width: 900px) {
+      .nav-menu { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ==========================================================================
+       CONTACT & PROPOSAL PAGE SPECIFIC STYLES
+       ========================================================================== */
+    .contact-hero {
+      background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                  var(--bg-main);
+      padding: clamp(48px, 6vw, 80px) 0 clamp(36px, 4vw, 56px);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .contact-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(32px, 4vw, 60px);
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .contact-hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .contact-hero h1 .text-emerald {
+      color: var(--brand-emerald);
+      background: linear-gradient(135deg, #049449 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-hero p {
+      font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    /* Quick SLA Highlights Strip */
+    .sla-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .sla-highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sla-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .sla-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sla-info h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .sla-info p {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    /* Contact & Form Grid */
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr);
+      gap: clamp(36px, 5vw, 64px);
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .contact-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-step-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .interest-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .chip-btn {
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-light);
+      background: var(--bg-alt);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-btn:hover {
+      border-color: var(--brand-emerald);
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+    }
+
+    .chip-btn.is-selected {
+      background: var(--brand-emerald);
+      border-color: var(--brand-emerald-dark);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(4, 148, 73, 0.28);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+
+    .field-group input,
+    .field-group textarea,
+    .field-group select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      color: var(--ink-primary);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus,
+    .field-group select:focus {
+      border-color: var(--brand-emerald);
+      box-shadow: 0 0 0 3px var(--brand-emerald-soft);
+      outline: none;
+    }
+
+    .form-success-banner {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      border-radius: var(--radius-md);
+      color: var(--brand-emerald-dark);
+      font-size: 0.96rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .form-success-banner.is-visible {
+      display: block;
+    }
+
+    /* Sidebar info cards */
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text .title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-item-text .value {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .contact-item-text a.value:hover {
+      color: var(--brand-emerald);
+    }
+
+    .tech-lead-badge {
+      background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-850) 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--dark-700);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-lead-badge::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(4, 148, 73, 0.25);
+      filter: blur(20px);
+    }
+
+    .tech-lead-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-emerald);
+      margin-bottom: 12px;
+    }
+
+    /* FAQ Accordions */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 800px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 22px;
+    }
+
+    .faq-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+
+    .faq-card p {
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-950);
+      color: #94a3b8;
+      padding-top: clamp(64px, 8vw, 96px);
+      border-top: 1px solid var(--dark-800);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: minmax(0, 360px) repeat(3, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 56px);
+      padding-bottom: 56px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+    }
+
+    .footer-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      transition: color 0.18s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--brand-emerald-accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--dark-800);
+      padding: 24px 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.86rem;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+     HEADER / NAVIGATION (Synchronized eMMSOFT Navbar)
+     ========================================================================== -->
+  <nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-link" aria-label="eMMSOFT Home">
+        <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+      </a>
+
+      <div class="nav-menu">
+        <!-- Solutions Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu mega-menu-left" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col-left">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  Flagship Engineering Solutions
+                </div>
+                <div class="mega-links-list">
+                  <a href="index.html#specializations" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-concurrency headless publishing &amp; edge caching</p>
+                    </div>
+                  </a>
+                  <a href="index.html#ecommerce" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Multi-vendor architectures &amp; flash sale sync</p>
+                    </div>
+                  </a>
+                  <a href="index.html#cloud-apps" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud &amp; Apps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Distributed microservices &amp; mobile apps</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="mega-menu-col-right">
+                <a href="index.html#solutions" class="mega-feature-card">
+                  <div class="mega-feature-thumb" style="height:116px; background:linear-gradient(135deg, #0b0f15 0%, #151d2a 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                    <div style="position:absolute; inset:0; background:radial-gradient(circle at 75% 30%, rgba(4,148,73,0.35) 0%, transparent 65%);"></div>
+                    <span class="mega-feature-badge">6 Pillars</span>
+                    <div style="text-align:center; position:relative; z-index:1; padding:10px;">
+                      <div style="color:var(--brand-emerald-accent); font-family:var(--font-mono); font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">Interactive Demo</div>
+                      <div style="color:#ffffff; font-family:var(--font-heading); font-weight:700; font-size:1.05rem; margin-top:3px;">Solutions Suite</div>
+                    </div>
+                  </div>
+                  <div class="mega-feature-body">
+                    <div class="mega-feature-title">
+                      <span>Explore All Solutions</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                    <p class="mega-feature-desc">Interactive tabs for Newsroom, E-Commerce, Cloud &amp; Mobile.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Us Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#about" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col-left">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Leadership &amp; Studio Team
+                </div>
+                <div class="mega-links-list">
+                  <a href="ceo-message.html" class="mega-link-card">
+                    <img src="assets/team/member_1.jpg" alt="Md. Zikrul Ahsan (Shawon), CEO" class="mega-avatar">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CEO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Md. Zikrul Ahsan (Shawon) — Vision &amp; ethos</p>
+                    </div>
+                  </a>
+                  <a href="cto-message.html" class="mega-link-card">
+                    <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash, CTO" class="mega-avatar">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CTO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Nurul Afsar Polash — Architecture &amp; low-latency stack</p>
+                    </div>
+                  </a>
+                  <a href="team.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Meet Our Full Team</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Explore our 12+ engineers &amp; architects</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="mega-menu-col-right">
+                <a href="team.html#studio-culture" class="mega-feature-card">
+                  <div class="mega-feature-thumb">
+                    <img src="assets/work_culture.jpg" alt="eMMSOFT Studio Workspace" loading="lazy">
+                    <span class="mega-feature-badge">Inside eMMSOFT</span>
+                  </div>
+                  <div class="mega-feature-body">
+                    <div class="mega-feature-title">
+                      <span>Work Environment</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                    <p class="mega-feature-desc">See how we collaborate and engineer mission-critical systems.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="index.html#projects" class="nav-link">Work</a>
+        <a href="contact.html" class="nav-link is-active">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">Start a Project</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="index.html">Home <span>→</span></a>
+      <a href="team.html">Team <span>→</span></a>
+      <a href="ceo-message.html">CEO Message <span>→</span></a>
+      <a href="cto-message.html">CTO Message <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+     HERO BANNER: CONTACT & PROJECT PROPOSAL
+     ========================================================================== -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero-grid">
+        <div>
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            Engineering Proposals & Consultation
+          </div>
+          <h1>Let's build your <span class="text-emerald">next architectural breakthrough</span>.</h1>
+          <p>
+            Whether you are launching a high-concurrency Newsroom CMS, building a multi-vendor E-Commerce portal, or migrating microservices to the cloud, our senior engineering team is ready to collaborate.
+          </p>
+
+          <!-- SLA Strip -->
+          <div class="sla-highlights">
+            <div class="sla-card">
+              <div class="sla-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="sla-info">
+                <h4>4-Hour SLA</h4>
+                <p>Initial technical roadmap &amp; response</p>
+              </div>
+            </div>
+            <div class="sla-card">
+              <div class="sla-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="sla-info">
+                <h4>NDA Guaranteed</h4>
+                <p>Full IP protection &amp; confidential inquiry</p>
+              </div>
+            </div>
+            <div class="sla-card">
+              <div class="sla-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+              </div>
+              <div class="sla-info">
+                <h4>Direct Tech Leads</h4>
+                <p>Discuss with architects, not salespeople</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Lead Contact Feature -->
+        <div>
+          <div class="tech-lead-badge">
+            <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash - CTO" class="tech-lead-avatar">
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--brand-emerald-accent); text-transform:uppercase; letter-spacing:0.06em; font-weight:700;">Direct Technical Review</div>
+            <h3 style="color:#ffffff; font-size:1.15rem; margin:4px 0 8px 0;">Nurul Afsar Polash</h3>
+            <p style="font-size:0.88rem; color:#94a3b8; margin:0 0 16px 0; line-height:1.45;">
+              "Every project proposal submitted here goes directly to our architecture team for technical feasibility review, stack evaluation, and high-concurrency analysis."
+            </p>
+            <div style="display:flex; gap:12px; align-items:center; font-size:0.82rem; color:#cbd5e1; font-family:var(--font-mono);">
+              <span style="display:inline-flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.59L8.41 12 9.83 10.58 13 13.75l5.17-5.17L19.59 10z"/></svg> Senior Lead Review</span>
+              <span>•</span>
+              <span>Dhaka Studio HQ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     MAIN SECTION: INTERACTIVE PROJECT PROPOSAL & INQUIRY FORM
+     ========================================================================== -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="contact-main-grid">
+
+        <!-- Form Column -->
+        <div>
+          <div class="contact-form-card">
+            <form id="projectProposalForm" novalidate>
+              <!-- Step 1: Solution Selection -->
+              <div class="form-step-title">
+                <span class="form-step-num">1</span> Select Project Focus / Solutions (Click to select multiple)
+              </div>
+              <div class="interest-chips" id="interestChips">
+                <button type="button" class="chip-btn" data-interest="Newsroom CMS">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/></svg>
+                  Newsroom CMS (Headless)
+                </button>
+                <button type="button" class="chip-btn" data-interest="E-Commerce Platform">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  E-Commerce &amp; Flash Sales
+                </button>
+                <button type="button" class="chip-btn" data-interest="Cloud & DevOps">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  Cloud Architecture &amp; DevOps
+                </button>
+                <button type="button" class="chip-btn" data-interest="Enterprise CMS">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  Enterprise Portal
+                </button>
+                <button type="button" class="chip-btn" data-interest="Mobile App">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                  Native Mobile Apps (iOS/Android)
+                </button>
+                <button type="button" class="chip-btn" data-interest="Custom Microservices">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  Custom Software / API Audit
+                </button>
+              </div>
+              <input type="hidden" name="selectedSolutions" id="selectedSolutions" value="">
+
+              <!-- Step 2: Contact Info -->
+              <div class="form-step-title">
+                <span class="form-step-num">2</span> Your Contact Information
+              </div>
+              <div class="form-grid-2">
+                <div class="field-group">
+                  <label for="p-name">Full Name *</label>
+                  <input type="text" id="p-name" name="name" required placeholder="e.g. Tanvir Ahmed" autocomplete="name">
+                </div>
+                <div class="field-group">
+                  <label for="p-email">Work Email *</label>
+                  <input type="email" id="p-email" name="email" required placeholder="tanvir@company.com" autocomplete="email">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="field-group">
+                  <label for="p-phone">Phone / WhatsApp</label>
+                  <input type="tel" id="p-phone" name="phone" placeholder="+880 1700 000000" autocomplete="tel">
+                </div>
+                <div class="field-group">
+                  <label for="p-company">Company / Organization</label>
+                  <input type="text" id="p-company" name="company" placeholder="e.g. Prime Media / Retail Ltd">
+                </div>
+              </div>
+
+              <!-- Step 3: Project Requirements -->
+              <div class="form-step-title">
+                <span class="form-step-num">3</span> Project Requirements &amp; Goals
+              </div>
+              <div class="form-grid-2">
+                <div class="field-group">
+                  <label for="p-timeline">Expected Target Launch</label>
+                  <select id="p-timeline" name="timeline">
+                    <option value="Immediate (< 1 month)">Immediate (Urgent build / migration)</option>
+                    <option value="1 to 3 months" selected>1 to 3 months (Standard timeline)</option>
+                    <option value="3 to 6 months">3 to 6 months (Enterprise platform)</option>
+                    <option value="Exploratory Architecture">Exploratory Architecture / RFP</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="p-budget">Target Scope / Investment Bracket</label>
+                  <select id="p-budget" name="budget">
+                    <option value="Standard Solution ($5k - $15k)">Standard Solution / Turnkey ($5k - $15k)</option>
+                    <option value="Enterprise Platform ($15k - $40k)">Enterprise Platform ($15k - $40k)</option>
+                    <option value="Mission-Critical Scale ($40k+)" selected>Mission-Critical / High Concurrency ($40k+)</option>
+                    <option value="Retainer / Ongoing Support">Retainer / Dedicated Architecture Team</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="p-details">Project Summary &amp; Technical Scope *</label>
+                <textarea id="p-details" name="details" rows="5" required
+                  placeholder="Describe your current platform, traffic expectations, user volume, legacy pain points, or specific technical requirements..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" style="padding:16px; font-size:1.05rem;">
+                Submit Project Proposal &amp; Request Call →
+              </button>
+
+              <div class="form-success-banner" id="formSuccessMessage">
+                ✓ Proposal Submitted Successfully! Our senior systems lead will analyze your project requirements and email you an architectural overview within 4 business hours.
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="contact-sidebar">
+
+          <!-- Studio Location & Office Card -->
+          <div class="sidebar-card">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Engineering Studio HQ
+            </h3>
+            
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </div>
+              <div class="contact-item-text">
+                <div class="title">Studio Address</div>
+                <div class="value">Level 4, Software Innovation Center<br>Gulshan Avenue, Dhaka, Bangladesh</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="contact-item-text">
+                <div class="title">Official Email</div>
+                <a href="mailto:info@emythmakers.com" class="value">info@emythmakers.com</a><br>
+                <a href="mailto:contact@emmsoft.com" class="value" style="font-size:0.9rem; color:var(--ink-muted);">contact@emmsoft.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="contact-item-text">
+                <div class="title">Phone &amp; WhatsApp</div>
+                <a href="tel:+8801700000000" class="value">+880 1700-000000</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Studio Guarantee Card -->
+          <div class="sidebar-card" style="background:var(--brand-emerald-tint); border-color:var(--brand-emerald-border);">
+            <h3 style="color:var(--brand-emerald-dark);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              eMMSOFT Production SLA
+            </h3>
+            <ul style="font-size:0.88rem; color:var(--ink-secondary); display:flex; flex-direction:column; gap:10px; padding-left:18px; list-style-type:disc;">
+              <li><strong>Sub-50ms TTFB Guarantee:</strong> Optimized database indexing, Redis cluster caching, and Cloudflare Workers edge rules.</li>
+              <li><strong>Zero Downtime Deployments:</strong> Blue/Green automated CI/CD pipelines with health check rollbacks.</li>
+              <li><strong>Dedicated Engineering Squad:</strong> Direct Slack / Teams communication channel with named systems leads.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FAQ SECTION: COMMON PROPOSAL & COLLABORATION QUESTIONS
+     ========================================================================== -->
+  <section class="section-pad" style="background:var(--bg-alt); border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 40px auto;">
+        <div class="badge-tag">Proposal FAQ</div>
+        <h2>Frequently Asked <span style="color:var(--brand-emerald);">Questions</span></h2>
+        <p style="color:var(--ink-secondary);">Common inquiries regarding project onboarding, timeline estimation, and team allocation.</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h4>How quickly can eMMSOFT kick off a project?</h4>
+          <p>Upon reviewing your inquiry and conducting an initial architecture discovery call (typically within 24–48 hours), we can assign a dedicated engineering squad within 3 business days.</p>
+        </div>
+        <div class="faq-card">
+          <h4>Do you sign NDAs before initial discussions?</h4>
+          <p>Yes. We treat all business models, technical assets, and client data with extreme confidentiality. We routinely sign non-disclosure agreements prior to reviewing project codebases or wireframes.</p>
+        </div>
+        <div class="faq-card">
+          <h4>Can you modernize or rescue an existing codebase?</h4>
+          <p>Absolutely. We specialize in high-concurrency re-architecting, migrating legacy monoliths to headless microservices, and optimizing slow database queries without disrupting live production traffic.</p>
+        </div>
+        <div class="faq-card">
+          <h4>What support model do you provide post-launch?</h4>
+          <p>We provide comprehensive 24/7 SLA monitoring, automated security patch updates, performance auditing, and ongoing feature enhancement retainers tailored to your platform's operational scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FOOTER (Synchronized System)
+     ========================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
+          </div>
+          <p>
+            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="index.html#specializations">Newsroom CMS (Headless)</a></li>
+            <li><a href="index.html#ecommerce">E-Commerce Platforms</a></li>
+            <li><a href="index.html#cloud-apps">Cloud Architecture &amp; Apps</a></li>
+            <li><a href="index.html#solutions">Full 6-Pillar Solutions Suite</a></li>
+            <li><a href="index.html#enterprise">Enterprise CMS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Leadership &amp; Studio</h4>
+          <ul>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="index.html#projects">Selected Projects</a></li>
+            <li><a href="contact.html" style="color:var(--brand-emerald-accent); font-weight:700;">Start a Project / Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">SLA &amp; Uptime Guarantee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     INTERACTIVE JAVASCRIPT
+     ========================================================================== -->
+  <script>
+    // 1. Dynamic Copyright Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 2. Sticky Nav scroll effect
+    const siteNav = document.getElementById('siteNav');
+    const handleScroll = () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // 3. Mobile Navigation Drawer
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // 4. Interactive Interest Chips Selection & Form Handling
+    const chipButtons = document.querySelectorAll('.chip-btn');
+    const hiddenSolutionsInput = document.getElementById('selectedSolutions');
+    const selectedInterests = new Set();
+
+    chipButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-interest');
+        if (selectedInterests.has(val)) {
+          selectedInterests.delete(val);
+          btn.classList.remove('is-selected');
+        } else {
+          selectedInterests.add(val);
+          btn.classList.add('is-selected');
+        }
+        hiddenSolutionsInput.value = Array.from(selectedInterests).join(', ');
+      });
+    });
+
+    const proposalForm = document.getElementById('projectProposalForm');
+    const successBanner = document.getElementById('formSuccessMessage');
+
+    proposalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!proposalForm.checkValidity()) {
+        proposalForm.reportValidity();
+        return;
+      }
+      successBanner.classList.add('is-visible');
+      proposalForm.reset();
+      chipButtons.forEach(c => c.classList.remove('is-selected'));
+      selectedInterests.clear();
+      hiddenSolutionsInput.value = '';
+    });
+  </script>
+
+</body>
+
+</html>
