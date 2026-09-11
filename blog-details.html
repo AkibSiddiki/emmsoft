@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">How eMythMakers Powers 120M+ Digital Readers with Zero Crashes — eMMSOFT Insights</title>
+  <meta name="description" id="pageDesc"
+    content="An architectural deep dive into multi-tier Varnish caching, Redis session clustering, and MySQL concurrency modeling powering South Asia's largest newsrooms.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 40 C8 20, 24 8, 48 8 C56 8, 56 16, 48 24 C36 36, 20 44, 8 40 Z' fill='%23049449'/%3E%3Cpath d='M8 40 C8 56, 28 56, 44 48 C32 46, 20 42, 14 36 C10 32, 8 36, 8 40 Z' fill='%2305a852'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS (Synchronized with eMMSOFT Design System)
+       ========================================================================== */
+    :root {
+      --brand-emerald: #049449;
+      --brand-emerald-dark: #037339;
+      --brand-emerald-light: #05a852;
+      --brand-emerald-accent: #10b981;
+      --brand-emerald-tint: #ecf8f1;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.08);
+      --brand-emerald-glow: rgba(4, 148, 73, 0.22);
+      --brand-emerald-border: rgba(4, 148, 73, 0.25);
+
+      --brand-slate: #374049;
+      --dark-950: #0b0f15;
+      --dark-900: #101620;
+      --dark-850: #151d2a;
+      --dark-800: #1d2737;
+      --dark-700: #2d3b4f;
+      --dark-600: #425268;
+
+      --bg-main: #fbfcfb;
+      --bg-surface: #ffffff;
+      --bg-alt: #f3f6f4;
+      --bg-subtle: #edf2ee;
+
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
+
+      --border-light: #e3e8e5;
+      --border-focus: #049449;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container: 1220px;
+      --container-article: 840px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 12px 30px rgba(16, 24, 40, 0.1);
+      --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--ink-primary);
+      line-height: 1.25;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container-article {
+      width: 100%;
+      max-width: var(--container-article);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: clamp(60px, 7vw, 96px) 0;
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand-emerald), var(--brand-emerald-accent));
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      border: 1px solid var(--brand-emerald-dark);
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-emerald);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+      border-color: var(--border-focus);
+      color: var(--brand-emerald-dark);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 14px;
+    }
+
+    /* ==========================================================================
+       HEADER / NAVIGATION
+       ========================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(251, 252, 251, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+
+    .nav.is-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo {
+      height: 38px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--brand-emerald-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Dropdowns */
+    .nav-item-dropdown {
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      height: 76px;
+    }
+
+    .nav-item-dropdown .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown-chevron {
+      transition: transform 0.2s ease;
+      stroke-width: 2.5;
+    }
+
+    .nav-item-dropdown:hover .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--brand-emerald);
+    }
+
+    .mega-menu-bridge {
+      display: none;
+      position: absolute;
+      top: 76px;
+      left: 0;
+      right: 0;
+      height: 12px;
+      z-index: 1001;
+    }
+
+    .nav-item-dropdown:hover .mega-menu-bridge {
+      display: block;
+    }
+
+    .mega-menu {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      position: absolute;
+      top: 88px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      max-width: var(--container);
+      width: calc(100% - 48px);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 40px -10px rgba(16, 24, 40, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+      padding: 24px;
+      z-index: 1002;
+    }
+
+    .nav-item-dropdown:hover .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 24px;
+    }
+
+    .mega-menu-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mega-menu-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mega-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mega-link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      transition: background 0.18s ease, transform 0.18s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mega-link-card:hover {
+      background: var(--bg-alt);
+      transform: translateX(4px);
+    }
+
+    .mega-link-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-link-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    .mega-link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mega-link-card-body .mega-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-heading);
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-link-card:hover .mega-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-link-card-body .mega-desc {
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      line-height: 1.3;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-arrow {
+      font-size: 0.85rem;
+      color: var(--brand-emerald);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .nav-burger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 0;
+      transition: var(--transition);
+    }
+
+    .nav-burger span {
+      width: 20px;
+      height: 2px;
+      background: var(--ink-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .nav-burger.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-burger.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-burger.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 16px 24px 24px;
+      box-shadow: var(--shadow-lg);
+      flex-direction: column;
+      gap: 10px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .mobile-panel.is-open {
+      display: flex;
+    }
+
+    .mobile-panel a {
+      font-family: var(--font-heading);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+      .nav-burger {
+        display: flex;
+      }
+    }
+
+    /* ==========================================================================
+       ARTICLE HEADER & BREADCRUMBS
+       ========================================================================== */
+    .article-header-section {
+      background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.08) 0%, transparent 50%),
+                  var(--bg-main);
+      padding: clamp(48px, 6vw, 72px) 0 clamp(36px, 4vw, 48px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .breadcrumb-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb-row a {
+      color: var(--ink-secondary);
+      font-weight: 600;
+      transition: color 0.18s ease;
+    }
+
+    .breadcrumb-row a:hover {
+      color: var(--brand-emerald-dark);
+    }
+
+    .article-headline {
+      font-size: clamp(2rem, 4.2vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      letter-spacing: -0.025em;
+    }
+
+    .article-author-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .author-profile-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .author-avatar-lg {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-emerald);
+      box-shadow: 0 4px 12px rgba(4, 148, 73, 0.18);
+    }
+
+    .author-details h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .author-details p {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      margin: 0;
+    }
+
+    .share-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .share-btn:hover {
+      border-color: var(--brand-emerald-border);
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+    }
+
+    /* ==========================================================================
+       ARTICLE CONTENT BODY
+       ========================================================================== */
+    .article-body-section {
+      padding: clamp(48px, 6vw, 80px) 0;
+    }
+
+    .lead-summary-card {
+      background: var(--bg-surface);
+      border-left: 4px solid var(--brand-emerald);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-sm);
+      border-top: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .lead-summary-card p {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--ink-primary);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .article-content-flow h2 {
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      margin: 48px 0 18px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .article-content-flow h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 32px 0 14px 0;
+    }
+
+    .article-content-flow p {
+      font-size: 1.05rem;
+      color: var(--ink-secondary);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .article-content-flow ul,
+    .article-content-flow ol {
+      margin: 0 0 28px 0;
+      padding-left: 24px;
+    }
+
+    .article-content-flow ul {
+      list-style: disc;
+    }
+
+    .article-content-flow ol {
+      list-style: decimal;
+    }
+
+    .article-content-flow li {
+      font-size: 1.02rem;
+      color: var(--ink-secondary);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    /* Architecture Diagram Frame */
+    .arch-diagram-box {
+      background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%);
+      border: 1px solid var(--dark-700);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      color: #cbd5e1;
+      margin: 36px 0;
+      overflow-x: auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    .arch-diagram-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #34d399;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .diagram-ascii {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #94a3b8;
+      white-space: pre;
+    }
+
+    .diagram-ascii .node-active {
+      color: #34d399;
+      font-weight: bold;
+    }
+
+    .diagram-ascii .arrow {
+      color: #38bdf8;
+    }
+
+    /* Code Snippet Box with Copy Button */
+    .code-block-container {
+      background: #0d131a;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin: 32px 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .code-header {
+      background: #131b26;
+      border-bottom: 1px solid #1e293b;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .copy-code-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .copy-code-btn:hover {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      border-color: var(--brand-emerald);
+    }
+
+    .code-body {
+      padding: 20px;
+      overflow-x: auto;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    .code-body .c-keyword { color: #f43f5e; font-weight: 600; }
+    .code-body .c-func { color: #38bdf8; }
+    .code-body .c-string { color: #a3e635; }
+    .code-body .c-comment { color: #64748b; font-style: italic; }
+    .code-body .c-var { color: #fbbf24; }
+
+    /* Benchmark Table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 36px 0;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+      background: var(--bg-surface);
+    }
+
+    .benchmark-table th {
+      background: var(--bg-alt);
+      padding: 14px 18px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--ink-primary);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .benchmark-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--ink-secondary);
+    }
+
+    .benchmark-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .metric-badge-good {
+      color: #049449;
+      font-weight: 700;
+      background: #ecf8f1;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .metric-badge-poor {
+      color: #dc2626;
+      font-weight: 600;
+      background: #fef2f2;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    /* Author Bio Box */
+    .author-bio-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      margin: 64px 0 40px 0;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 680px) {
+      .author-bio-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .bio-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 3px solid var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    .bio-content h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .bio-role {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .bio-content p {
+      font-size: 0.90rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Related Articles */
+    .related-section {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border-light);
+      padding: clamp(48px, 6vw, 80px) 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .related-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .related-card:hover {
+      border-color: var(--brand-emerald-border);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .related-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      margin-bottom: 8px;
+    }
+
+    .related-card h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      color: var(--ink-primary);
+    }
+
+    .related-card p {
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0 0 16px 0;
+    }
+
+    .related-card span {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      margin-top: auto;
+    }
+
+    /* Floating Toast */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--dark-950);
+      color: #34d399;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--dark-700);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    .toast-msg.is-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-950);
+      color: #94a3b8;
+      padding-top: clamp(64px, 8vw, 96px);
+      border-top: 1px solid var(--dark-800);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: minmax(0, 360px) repeat(3, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 56px);
+      padding-bottom: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      width: fit-content;
+    }
+
+    .footer-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      transition: color 0.18s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--brand-emerald-accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--dark-800);
+      padding: 24px 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.86rem;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="progressBar"></div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">Link copied to clipboard!</div>
+
+  <!-- ==========================================================================
+     HEADER / NAVIGATION (Synchronized eMMSOFT Navbar)
+     ========================================================================== -->
+  <nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="eMMSOFT Home">
+        <img src="logo.png" alt="eMMSOFT" class="nav-logo">
+      </a>
+
+      <div class="nav-links">
+        <!-- Solutions Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                  Engineering Flagships
+                </div>
+                <div class="mega-links-list">
+                  <a href="solution-newsroom-cms.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Newsroom CMS</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Ultra-high concurrency bilingual newsrooms</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-ecommerce.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce Platforms</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Atomic inventory queues &amp; flash sales</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-cloud-devops.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud &amp; DevOps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Kubernetes, CI/CD &amp; 99.99% uptime SRE</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                  Custom Enterprise
+                </div>
+                <div class="mega-links-list">
+                  <a href="solution-enterprise-cms.html" class="mega-link-card">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Enterprise Headless CMS</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Decoupled GraphQL / REST APIs</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-web-applications.html" class="mega-link-card">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Web Applications &amp; SaaS</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-load operational platforms</p>
+                    </div>
+                  </a>
+
+                  <a href="solution-mobile-apps.html" class="mega-link-card">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Mobile Applications</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Sub-second API-driven iOS/Android</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="work.html" class="nav-link">Work</a>
+
+        <!-- About Us Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Leadership &amp; Studio Team
+                </div>
+                <div class="mega-links-list">
+                  <a href="about.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>About eMMSOFT</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Founding story, values &amp; 15-year history</p>
+                    </div>
+                  </a>
+
+                  <a href="ceo-message.html" class="mega-link-card">
+                    <img src="assets/team/member_1.jpg" alt="CEO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CEO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Md. Zikrul Ahsan (Shawon) — Vision &amp; ethos</p>
+                    </div>
+                  </a>
+
+                  <a href="cto-message.html" class="mega-link-card">
+                    <img src="assets/team/member_2.jpg" alt="CTO" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>CTO's Message</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Nurul Afsar Polash — Architecture &amp; low-latency stack</p>
+                    </div>
+                  </a>
+
+                  <a href="team.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Meet Our Full Team</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Explore our 12+ engineers &amp; architects</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="mega-menu-col">
+                <a href="about.html#studio-culture" class="mega-link-card" style="padding:14px; background:var(--bg-alt); border-radius:var(--radius-md); border:1px solid var(--border-light); flex-direction:column; align-items:flex-start;">
+                  <div style="font-family:var(--font-heading); font-size:0.92rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">
+                    Dhaka Studio HQ &amp; Culture
+                  </div>
+                  <p style="font-size:0.80rem; color:var(--ink-muted); margin:0; line-height:1.4;">
+                    Learn how our senior squad eliminates meetings in favor of deterministic production deploys.
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="blog.html" class="nav-link is-active">Blog</a>
+
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">Start a Project →</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="index.html">Home <span>→</span></a>
+      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">Flagship Solutions</div>
+      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot" style="font-size:0.65rem;">HOT</span> <span>→</span></a>
+      <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
+      <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
+      <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
+      <a href="solution-web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS <span>→</span></a>
+      <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
+      <div style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">Company &amp; Insights</div>
+      <a href="about.html">About Us <span>→</span></a>
+      <a href="team.html">Team <span>→</span></a>
+      <a href="work.html">Work / Portfolio <span>→</span></a>
+      <a href="blog.html" style="color:var(--brand-emerald-dark); font-weight:700;">Blog / Engineering Insights <span>→</span></a>
+      <a href="ceo-message.html">CEO Message <span>→</span></a>
+      <a href="cto-message.html">CTO Message <span>→</span></a>
+      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact <span>→</span></a>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+     ARTICLE HEADER SECTION
+     ========================================================================== -->
+  <header class="article-header-section">
+    <div class="container-article">
+      <div class="breadcrumb-row">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="blog.html">Engineering Blog</a>
+        <span>/</span>
+        <span id="breadcrumbCategory" style="color:var(--brand-emerald-dark); font-weight:600;">Newsroom Architecture</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span class="badge-tag" id="articleCategoryTag" style="margin-bottom:0;">Newsroom Architecture</span>
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);" id="articleReadTime">8 min read</span>
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);">·</span>
+        <span style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);" id="articleDate">September 4, 2026</span>
+      </div>
+
+      <h1 class="article-headline" id="articleHeadline">
+        How eMythMakers Powers 120M+ Digital Readers with Zero Crashes: Multi-Tier Reverse Proxy &amp; Concurrency Architecture
+      </h1>
+
+      <div class="article-author-bar">
+        <div class="author-profile-group">
+          <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash" class="author-avatar-lg" id="authorAvatar">
+          <div class="author-details">
+            <h4 id="authorName">Nurul Afsar Polash</h4>
+            <p id="authorRole">Chief Technology Officer &amp; Systems Architect</p>
+          </div>
+        </div>
+
+        <div class="share-group">
+          <button class="share-btn" onclick="copyArticleLink()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Share</span>
+          </button>
+          <a href="#" target="_blank" class="share-btn" id="shareLinkedIn" aria-label="Share on LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+     ARTICLE BODY SECTION
+     ========================================================================== -->
+  <main class="article-body-section">
+    <div class="container-article">
+
+      <!-- Lead Summary -->
+      <div class="lead-summary-card">
+        <p id="articleLead">
+          When national elections or catastrophic breaking news occurs in South Asia, digital media traffic does not ramp up smoothly—it hits like a tsunami. Standard monolithic setups crash when simultaneous requests spike from 2,000 to 60,000 in under 90 seconds. Here is the unvarnished engineering blueprint of how eMythMakers keeps Bangladesh's largest media portals responsive with sub-50ms TTFB.
+        </p>
+      </div>
+
+      <!-- Article Dynamic Flow Content -->
+      <div class="article-content-flow" id="articleBody">
+
+        <h2>1. The Problem: The Anatomy of a Breaking News Collapse</h2>
+        <p>
+          Most publishing platforms fail not because the server CPU lacks raw power, but because of database connection pool exhaustion. In traditional architectures (WordPress, standard monolithic PHP/Node apps), every visitor request triggers database queries: session validation, taxonomy checks, related article queries, and user cookie evaluation.
+        </p>
+        <p>
+          Under normal traffic of 1,500 readers, MySQL handles 300 queries per second effortlessly. But when breaking news alerts blast out to millions on social media:
+        </p>
+        <ul>
+          <li>Connection pools fill within 3 seconds, reaching the max connection ceiling (e.g. 500 max connections).</li>
+          <li>Subsequent PHP-FPM worker threads queue up waiting for an open database slot.</li>
+          <li>Worker threads consume server RAM while idle, triggering the Linux kernel Out-Of-Memory (OOM) killer.</li>
+          <li>Nginx returns <strong>HTTP 502 Bad Gateway</strong> or <strong>HTTP 504 Gateway Timeout</strong>.</li>
+        </ul>
+
+        <!-- Architecture Flow Box -->
+        <div class="arch-diagram-box">
+          <div class="arch-diagram-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            eMMSOFT Multi-Tier Caching &amp; Edge Pipeline
+          </div>
+          <div class="diagram-ascii">
+[ 100k Concurrent Visitors ]
+             │
+             ▼
+┌──────────────────────────────────────────────┐
+│  Anycast Cloud Edge CDN (DDoS Scrubbing)     │ ──▶ Serves Static CSS/JS/Images
+└──────────────────────────────────────────────┘
+             │ (Cache Miss)
+             ▼
+┌──────────────────────────────────────────────┐
+│  Dedicated Varnish 7 Reverse Proxy In-Memory │ ──▶ Serves 98.4% of Read Requests
+│  - Grace Mode: 6 Hours (Stale-While-Reval)   │     <span class="node-active">[ Response: 18ms TTFB ]</span>
+└──────────────────────────────────────────────┘
+             │ (Cold Cache / Editorial Bypass)
+             ▼
+┌──────────────────────────────────────────────┐
+│  NGINX Reverse Proxy + FastCGI Cache Ring    │
+└──────────────────────────────────────────────┘
+             │
+             ▼
+┌──────────────────────────────────────────────┐
+│  Stateless Application Workers (PHP 8 / Go)  │ ◀── Redis Cluster (Session State)
+└──────────────────────────────────────────────┘
+             │ (Batched Read Queries Only)
+             ▼
+┌──────────────────────────────────────────────┐
+│  MySQL / MariaDB Galera (1 Master + 3 Read)  │
+└──────────────────────────────────────────────┘
+          </div>
+        </div>
+
+        <h2>2. Varnish 7 VCL: Serving 98.4% of Traffic Directly from RAM</h2>
+        <p>
+          Our first line of defense is a custom-compiled Varnish 7 reverse-proxy caching layer deployed on dual dedicated bare-metal nodes. By configuring granular cache key hashing, we strip non-essential analytical cookies (e.g. Google Analytics, Facebook Pixel) at the edge before evaluating the cache hash.
+        </p>
+        <p>
+          Below is a sanitized snippet of our production Varnish VCL configuration implemented across major tier-1 media deployments:
+        </p>
+
+        <!-- Code Snippet -->
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>/etc/varnish/default.vcl — Concurrency Caching Rules</span>
+            <button class="copy-code-btn" onclick="copyCode(this)">Copy Snippet</button>
+          </div>
+          <pre class="code-body"><code><span class="c-keyword">vcl 4.1</span>;
+
+<span class="c-comment"># Define High-Speed Editorial Upstream</span>
+<span class="c-keyword">backend</span> default {
+    .<span class="c-func">host</span> = <span class="c-string">"10.0.1.10"</span>;
+    .<span class="c-func">port</span> = <span class="c-string">"8080"</span>;
+    .<span class="c-func">probe</span> = {
+        .<span class="c-func">url</span> = <span class="c-string">"/healthz"</span>;
+        .<span class="c-func">interval</span> = 3s;
+        .<span class="c-func">timeout</span> = 1s;
+        .<span class="c-func">window</span> = 5;
+        .<span class="c-func">threshold</span> = 3;
+    }
+}
+
+<span class="c-keyword">sub</span> <span class="c-func">vcl_recv</span> {
+    <span class="c-comment"># Bypass caching strictly for authenticated newsroom editors</span>
+    <span class="c-keyword">if</span> (req.http.Cookie ~ <span class="c-string">"emm_editorial_session"</span>) {
+        <span class="c-keyword">return</span> (<span class="c-func">pass</span>);
+    }
+
+    <span class="c-comment"># Strip client tracking cookies to ensure universal cache hit</span>
+    <span class="c-keyword">set</span> req.http.Cookie = regsuball(req.http.Cookie, <span class="c-string">"(^|; ) *__utm[^;]+;? *"</span>, <span class="c-string">""</span>);
+    <span class="c-keyword">set</span> req.http.Cookie = regsuball(req.http.Cookie, <span class="c-string">"(^|; ) *_ga[^;]+;? *"</span>, <span class="c-string">""</span>);
+
+    <span class="c-comment"># Activate 6-hour Grace Mode for stale-while-revalidate safety</span>
+    <span class="c-keyword">set</span> req.grace = 6h;
+    <span class="c-keyword">return</span> (<span class="c-func">hash</span>);
+}
+
+<span class="c-keyword">sub</span> <span class="c-func">vcl_backend_response</span> {
+    <span class="c-comment"># Cache public news articles for 10 minutes with instant purge API</span>
+    <span class="c-keyword">if</span> (beresp.status == 200) {
+        <span class="c-keyword">set</span> beresp.ttl = 10m;
+        <span class="c-keyword">set</span> beresp.grace = 6h;
+    }
+}</code></pre>
+        </div>
+
+        <h2>3. Production Benchmarks: Before vs. After Optimization</h2>
+        <p>
+          We benchmarked these optimizations by simulating 50,000 concurrent virtual users performing randomized article browsing, breaking news reloads, and category navigation over a 15-minute test window using distributed load generators.
+        </p>
+
+        <!-- Benchmark Table -->
+        <div class="table-wrapper">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>System Performance Metric</th>
+                <th>Standard PHP/MySQL Stack</th>
+                <th>eMMSOFT Multi-Tier Caching</th>
+                <th>Improvement Factor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Average Time-to-First-Byte (TTFB)</strong></td>
+                <td><span class="metric-badge-poor">840ms – 2,400ms</span></td>
+                <td><span class="metric-badge-good">18ms – 36ms</span></td>
+                <td><strong>35x Faster Response</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Max Concurrent Readers Before 502</strong></td>
+                <td><span class="metric-badge-poor">3,800 active sessions</span></td>
+                <td><span class="metric-badge-good">100,000+ active sessions</span></td>
+                <td><strong>26x Higher Capacity</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Database CPU Load at Peak</strong></td>
+                <td><span class="metric-badge-poor">98% – 100% (Throttled)</span></td>
+                <td><span class="metric-badge-good">12% – 18% (Stable)</span></td>
+                <td><strong>82% Load Reduction</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Origin Server RAM Consumption</strong></td>
+                <td><span class="metric-badge-poor">62 GB (OOM risk)</span></td>
+                <td><span class="metric-badge-good">8.4 GB (Constant)</span></td>
+                <td><strong>86% Memory Savings</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Failure Rate During Surge</strong></td>
+                <td><span class="metric-badge-poor">14.8% dropped requests</span></td>
+                <td><span class="metric-badge-good">0.00% dropped requests</span></td>
+                <td><strong>Zero Downtime SLA</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>4. Five Non-Negotiable Rules for Concurrency Engineering</h2>
+        <p>
+          Through 15 years of engineering high-traffic media and enterprise platforms in Dhaka, our team has distilled five core rules that every architect should adhere to:
+        </p>
+        <ol>
+          <li><strong>Never let unauthenticated readers touch the database:</strong> If an article is publicly readable, it must be served from memory or edge proxy. Period.</li>
+          <li><strong>Implement Grace Mode on all reverse proxies:</strong> If the database freezes or an upstream worker crashes, Varnish must serve the last known good copy of the page rather than showing an error screen.</li>
+          <li><strong>Decouple session state into Redis clusters:</strong> Application workers must remain entirely stateless so instances can be scaled horizontally without dropping user authentication.</li>
+          <li><strong>Sanitize and normalize tracking cookies at the edge:</strong> Client-side analytics cookies that differ per visitor will destroy cache hit rates if not stripped before cache key hashing.</li>
+          <li><strong>Test under synthetic chaos:</strong> Run load simulations that purposely kill application nodes during peak traffic. If the user notices a single glitch, your failover is incomplete.</li>
+        </ol>
+
+      </div>
+
+      <!-- Author Bio Card -->
+      <div class="author-bio-card">
+        <img src="assets/team/member_2.jpg" alt="Nurul Afsar Polash" class="bio-avatar" id="bioAvatar">
+        <div class="bio-content">
+          <h4 id="bioName">Nurul Afsar Polash</h4>
+          <span class="bio-role" id="bioRole">Chief Technology Officer &amp; Lead Systems Architect</span>
+          <p id="bioText">
+            Nurul Afsar Polash oversees systems architecture, low-latency database design, and cloud infrastructure at eMMSOFT. Over the past 15 years, he has designed and maintained the high-concurrency backbones of South Asia's most prominent newsrooms, including bdnews24.com, Channel 24, and Dhaka Tribune.
+          </p>
+          <div style="margin-top:12px;">
+            <a href="cto-message.html" style="font-family:var(--font-heading); font-size:0.84rem; font-weight:700; color:var(--brand-emerald-dark);">Read CTO's Full Architectural Philosophy →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+     RELATED ARTICLES SECTION
+     ========================================================================== -->
+  <section class="related-section">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <div class="badge-tag">Continue Reading</div>
+          <h3>More Architectural Deep Dives</h3>
+        </div>
+        <a href="blog.html" class="btn btn-secondary btn-sm">All Articles →</a>
+      </div>
+
+      <div class="related-grid" id="relatedGrid">
+        <!-- Related 1 -->
+        <a href="blog-details.html?id=flash-sales-atomic-queuing" class="related-card">
+          <span class="related-tag">E-Commerce Architecture</span>
+          <h4>Preventing Race Conditions in Flash Sales: Atomic Inventory Queues with Redis</h4>
+          <p>How we eliminated double-selling and database lock timeouts during 10,000 orders/min surges.</p>
+          <span>Read Deep Dive →</span>
+        </a>
+
+        <!-- Related 2 -->
+        <a href="blog-details.html?id=sub-50ms-ttfb-edge-varnish" class="related-card">
+          <span class="related-tag">High Concurrency</span>
+          <h4>Sub-50ms TTFB at the Edge: What We Learned Tuning Varnish 7 &amp; Nginx</h4>
+          <p>Cold cache pre-warming and grace-mode stale-while-revalidate for national election night resilience.</p>
+          <span>Read Deep Dive →</span>
+        </a>
+
+        <!-- Related 3 -->
+        <a href="blog-details.html?id=database-indexing-news-archives" class="related-card">
+          <span class="related-tag">Database Internals</span>
+          <h4>Database Indexing Strategies for 500-Million-Row Relational Archives</h4>
+          <p>Partitioning and B-Tree composite indexing that slashed media archive search from 14.2s to 38ms.</p>
+          <span>Read Deep Dive →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CALL TO ACTION
+     ========================================================================== -->
+  <section class="section-pad" style="background:linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%); color:#ffffff; text-align:center;">
+    <div class="container" style="max-width:760px;">
+      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+        Engineering Partnership
+      </div>
+      <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
+        Need systems built with zero-downtime durability?
+      </h2>
+      <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
+        Consult with our senior architects to review your platform architecture, concurrency bottlenecks, and cloud infrastructure requirements.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Schedule Architecture Consultation →</a>
+        <a href="work.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Client Case Studies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
+          </div>
+          <p>
+            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
+            <li><a href="solution-ecommerce.html">E-Commerce Platforms</a></li>
+            <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
+            <li><a href="solution-enterprise-cms.html">Enterprise Headless CMS</a></li>
+            <li><a href="solution-web-applications.html">Web Applications &amp; SaaS</a></li>
+            <li><a href="solution-mobile-apps.html">Mobile Apps (iOS &amp; Android)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Leadership &amp; Studio</h4>
+          <ul>
+            <li><a href="about.html">About eMMSOFT (Overview)</a></li>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="blog.html" style="color:var(--brand-emerald-accent); font-weight:700;">Engineering Blog &amp; Insights</a></li>
+            <li><a href="contact.html">Start a Project / Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">SLA &amp; Uptime Guarantee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     INTERACTIVE JAVASCRIPT & DYNAMIC ARTICLE LOADER
+     ========================================================================== -->
+  <script>
+    // 1. Dynamic Copyright Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 2. Sticky Nav scroll effect
+    const siteNav = document.getElementById('siteNav');
+    const handleScroll = () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+
+      // Reading progress
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // 3. Mobile Navigation Drawer
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // 4. Copy Link with Toast
+    function copyArticleLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = 'Article link copied to clipboard!';
+        toast.classList.add('is-active');
+        setTimeout(() => {
+          toast.classList.remove('is-active');
+        }, 2500);
+      });
+    }
+
+    // 5. Copy Code Snippet
+    function copyCode(btn) {
+      const pre = btn.closest('.code-block-container').querySelector('code');
+      navigator.clipboard.writeText(pre.innerText).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      });
+    }
+
+    // 6. Dynamic Article Database
+    const articlesDB = {
+      "newsroom-concurrency-architecture": {
+        title: "How eMythMakers Powers 120M+ Digital Readers with Zero Crashes: Multi-Tier Reverse Proxy & Concurrency Architecture",
+        category: "Newsroom Architecture",
+        readTime: "8 min read",
+        date: "September 4, 2026",
+        author: "Nurul Afsar Polash",
+        role: "Chief Technology Officer & Systems Architect",
+        avatar: "assets/team/member_2.jpg",
+        lead: "When national elections or catastrophic breaking news occurs in South Asia, digital media traffic does not ramp up smoothly—it hits like a tsunami. Standard monolithic setups crash when simultaneous requests spike from 2,000 to 60,000 in under 90 seconds. Here is the unvarnished engineering blueprint of how eMythMakers keeps Bangladesh's largest media portals responsive with sub-50ms TTFB.",
+        bioText: "Nurul Afsar Polash oversees systems architecture, low-latency database design, and cloud infrastructure at eMMSOFT. Over the past 15 years, he has designed and maintained the high-concurrency backbones of South Asia's most prominent newsrooms, including bdnews24.com, Channel 24, and Dhaka Tribune."
+      },
+      "flash-sales-atomic-queuing": {
+        title: "Preventing Race Conditions in Flash Sales: Atomic Inventory Queues with Redis & MySQL Row Locking",
+        category: "E-Commerce Systems",
+        readTime: "6 min read",
+        date: "August 28, 2026",
+        author: "Md. Zikrul Ahsan (Shawon)",
+        role: "Chief Executive Officer & Systems Lead",
+        avatar: "assets/team/member_1.jpg",
+        lead: "In massive retail flash sales, 500 customers can click 'Place Order' for the last 5 pairs of shoes in the exact same millisecond. Traditional relational updates suffer from deadlocks and overselling. Here is how eMMSOFT engineered atomic Redis queue reservation pipelines that guarantee inventory integrity at 10,000 orders per minute.",
+        bioText: "Md. Zikrul Ahsan (Shawon) is the Founder & CEO of eMythMakers (eMMSOFT). He has led high-throughput e-commerce platform engineering for major multinational retailers including Walton Hi-Tech, PRAN-RFL, and Step Footwear."
+      },
+      "sub-50ms-ttfb-edge-varnish": {
+        title: "Sub-50ms TTFB at the Edge: What We Learned Tuning Varnish 7 & Nginx for National Elections",
+        category: "High Concurrency",
+        readTime: "7 min read",
+        date: "August 15, 2026",
+        author: "Nurul Afsar Polash",
+        role: "Chief Technology Officer & Systems Architect",
+        avatar: "assets/team/member_2.jpg",
+        lead: "Latency kills readership during high-intensity news events. Every 100ms of lag drives user bounce rates up by 15%. This technical dossier examines synthetic cache pre-warming, grace-mode stale-while-revalidate, and kernel-level TCP socket buffer tuning that pushed our edge TTFB below 30ms.",
+        bioText: "Nurul Afsar Polash specializes in kernel-level socket tuning, reverse proxy caching topologies, and real-time newsroom distribution at eMMSOFT."
+      },
+      "headless-cms-media-architecture": {
+        title: "Headless CMS vs. Monoliths in Tier-1 Media: When to Decouple and When Not To",
+        category: "Newsroom CMS",
+        readTime: "9 min read",
+        date: "July 30, 2026",
+        author: "Ariful Hoque",
+        role: "Lead Solutions Architect",
+        avatar: "assets/team/ariful_hoque.jpg",
+        lead: "The software industry often promotes headless CMS architectures as a universal panacea. But in fast-breaking newsrooms, premature decoupling can introduce API latency, cache invalidation hell, and editorial preview headaches. Here is our objective architectural evaluation framework.",
+        bioText: "Ariful Hoque is Lead Solutions Architect at eMMSOFT, specializing in decoupled APIs, GraphQL micro-services, and multi-tenant newsroom editorial workflows."
+      },
+      "zero-downtime-kubernetes-deployments": {
+        title: "Zero-Downtime Blue/Green Rollouts on Kubernetes for High-Traffic Broadcast Portals",
+        category: "Cloud & DevOps",
+        readTime: "5 min read",
+        date: "July 12, 2026",
+        author: "Al Amin",
+        role: "DevOps & SRE Specialist",
+        avatar: "assets/team/al_amin.jpg",
+        lead: "Deploying updates to a news portal during prime-time live streaming cannot afford a single dropped websocket connection or broken database migration. We break down our Kubernetes pod termination lifecycle, ingress connection draining, and automated rollback triggers.",
+        bioText: "Al Amin leads cloud infrastructure, Kubernetes orchestration, and automated CI/CD canary deployments across eMMSOFT's managed cloud environments."
+      },
+      "database-indexing-news-archives": {
+        title: "Database Indexing Strategies for 500-Million-Row Relational Archives in News Media",
+        category: "Database Internals",
+        readTime: "10 min read",
+        date: "June 22, 2026",
+        author: "Mahedi Hasan",
+        role: "Senior Backend & Database Architect",
+        avatar: "assets/team/mahedi_hasan.jpg",
+        lead: "When a news archive grows past 15 years of continuous publishing, single tables contain hundreds of millions of rows. Standard full-text search indexes cause disk I/O thrashing. Here is how we implemented date-range partition pruning and composite B-trees to keep queries under 40ms.",
+        bioText: "Mahedi Hasan is Senior Database Architect at eMMSOFT, focusing on relational data modeling, query execution plan optimization, and replication topologies."
+      }
+    };
+
+    // Load Article based on URL Parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+
+    if (articleId && articlesDB[articleId]) {
+      const art = articlesDB[articleId];
+      document.getElementById('pageTitle').textContent = `${art.title} — eMMSOFT Insights`;
+      document.getElementById('pageDesc').setAttribute('content', art.lead);
+      document.getElementById('breadcrumbCategory').textContent = art.category;
+      document.getElementById('articleCategoryTag').textContent = art.category;
+      document.getElementById('articleReadTime').textContent = art.readTime;
+      document.getElementById('articleDate').textContent = art.date;
+      document.getElementById('articleHeadline').textContent = art.title;
+      document.getElementById('authorAvatar').src = art.avatar;
+      document.getElementById('authorAvatar').alt = art.author;
+      document.getElementById('authorName').textContent = art.author;
+      document.getElementById('authorRole').textContent = art.role;
+      document.getElementById('articleLead').textContent = art.lead;
+      document.getElementById('bioAvatar').src = art.avatar;
+      document.getElementById('bioAvatar').alt = art.author;
+      document.getElementById('bioName').textContent = art.author;
+      document.getElementById('bioRole').textContent = art.role;
+      document.getElementById('bioText').textContent = art.bioText;
+    }
+  </script>
+
+</body>
+</html>
