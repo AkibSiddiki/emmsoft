@@ -2335,8 +2335,76 @@
       line-height: 1.45;
     }
 
-    .response-sla-badge p strong {
+    .contact-branding-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-top: 24px;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-branding-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-branding-preview {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      background: #f8fafc;
+    }
+
+    .contact-branding-preview img {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .contact-branding-card:hover .contact-branding-preview img {
+      transform: scale(1.02);
+    }
+
+    .contact-branding-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding: 0 4px;
+      text-align: left;
+    }
+
+    .contact-branding-meta .tagline {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .contact-branding-meta .sub {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    .contact-branding-meta .badge-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
       color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
     }
 
     @media (max-width: 900px) {
@@ -4730,7 +4798,7 @@
 
         <!-- Row 1, Col 2: Image Card 1 (branding_3.png) -->
         <div class="work-cap-image-card">
-          <img src="assets/images/branding_3.png" alt="eMMSOFT engineer at workstation with laptop and headset"
+          <img src="assets/images/branding_y.png" alt="eMMSOFT engineer at workstation with laptop and headset"
             loading="lazy">
         </div>
 
@@ -5057,6 +5125,25 @@
               <strong>4-Hour Response Guarantee:</strong> Direct technical assessment from a senior architect — not a
               sales rep.
             </p>
+          </div>
+
+          <!-- Studio Branding Feature -->
+          <div class="contact-branding-card">
+            <div class="contact-branding-preview">
+              <img src="assets/images/branding_4.png" alt="eMMSOFT Studio Branding & Diary" loading="lazy">
+            </div>
+            <div class="contact-branding-meta">
+              <div>
+                <div class="tagline">eMMSOFT Studio</div>
+                <div class="sub">Better Software Bright Future</div>
+              </div>
+              <span class="badge-verified">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.59L8.41 12 9.83 10.58 13 13.75l5.17-5.17L19.59 10z"/>
+                </svg>
+                Verified HQ
+              </span>
+            </div>
           </div>
         </div>
       </div>
