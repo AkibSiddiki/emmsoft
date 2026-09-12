@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2849,14 +2849,153 @@
       color: var(--ink-primary);
     }
 
-    .exec-modal-footer {
-      padding: 18px 32px;
-      border-top: 1px solid var(--border-light);
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
+    /* ==========================================================================
+       WORK ENVIRONMENT & CAPABILITIES SHOWCASE (Checkerboard Grid)
+       ========================================================================== */
+    .work-capabilities-section {
       background: var(--bg-surface);
-      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      padding: clamp(64px, 8vw, 108px) 0;
+      border-top: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .work-cap-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: clamp(36px, 5vw, 56px);
+      flex-wrap: wrap;
+    }
+
+    .work-cap-title-wrap {
+      max-width: 680px;
+    }
+
+    .work-cap-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.1rem, 3.8vw, 2.85rem);
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+
+    .work-cap-explore-link {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease, color 0.2s ease;
+      padding-bottom: 6px;
+    }
+
+    .work-cap-explore-link:hover {
+      color: var(--brand-emerald);
+      gap: 10px;
+    }
+
+    .work-cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(24px, 3.2vw, 40px);
+      align-items: center;
+    }
+
+    .work-cap-text-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px 6px;
+    }
+
+    .work-cap-icon {
+      width: 46px;
+      height: 46px;
+      color: var(--brand-emerald);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .work-cap-icon svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .work-cap-text-card h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 2.2vw, 1.75rem);
+      font-weight: 800;
+      color: var(--ink-primary);
+      margin-bottom: 12px;
+      line-height: 1.22;
+      letter-spacing: -0.015em;
+    }
+
+    .work-cap-text-card p {
+      font-size: 1rem;
+      line-height: 1.68;
+      color: var(--ink-secondary);
+      margin: 0;
+    }
+
+    .work-cap-image-card {
+      width: 100%;
+      height: 250px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      position: relative;
+      background: var(--dark-900);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+
+    .work-cap-image-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(4, 148, 73, 0.16);
+    }
+
+    .work-cap-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-cap-image-card:hover img {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 980px) {
+      .work-cap-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .work-cap-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .work-cap-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .work-cap-image-card {
+        height: 220px;
+      }
     }
   </style>
 </head>
@@ -3235,6 +3374,7 @@
       <div
         style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
         Company</div>
+      <a href="index.html#capabilities">Core Capabilities &amp; Environment <span>→</span></a>
       <a href="pages/about.html">About Us <span>→</span></a>
       <a href="pages/team.html">Team <span>→</span></a>
       <a href="pages/blog.html">Blog / Engineering Insights <span>→</span></a>
@@ -4548,6 +4688,97 @@
             <span style="font-size:0.84rem; color:var(--ink-muted);">Co-Founder &amp; CTO, FleetFlow Global</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CORE CAPABILITIES & WORK ENVIRONMENT SHOWCASE
+     ========================================================================== -->
+  <section class="work-capabilities-section" id="capabilities" aria-label="Our Core Capabilities and Work Environment">
+    <div class="container">
+
+      <!-- Section Header -->
+      <div class="work-cap-header reveal">
+        <div class="work-cap-title-wrap">
+          <h2 class="work-cap-title">Drive Growth with Our<br>Core Capabilities</h2>
+        </div>
+        <a href="pages/about.html#studio-culture" class="work-cap-explore-link">
+          Explore All Services →
+        </a>
+      </div>
+
+      <!-- 3x2 Checkerboard Grid -->
+      <div class="work-cap-grid reveal">
+
+        <!-- Row 1, Col 1: Text Card 1 -->
+        <div class="work-cap-text-card">
+          <div class="work-cap-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              <path
+                d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.18 0l1.9 1.4" />
+            </svg>
+          </div>
+          <h3>Staff Augmentation</h3>
+          <p>
+            Instantly scale your team with vetted AI/cloud experts. Pay only for the talent you need, when you need it.
+          </p>
+        </div>
+
+        <!-- Row 1, Col 2: Image Card 1 (branding_3.png) -->
+        <div class="work-cap-image-card">
+          <img src="assets/images/branding_3.png" alt="eMMSOFT engineer at workstation with laptop and headset"
+            loading="lazy">
+        </div>
+
+        <!-- Row 1, Col 3: Text Card 2 -->
+        <div class="work-cap-text-card">
+          <div class="work-cap-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Managed Services</h3>
+          <p>
+            End-to-end support for your applications, infrastructure, and digital platforms—so you can shift focus from
+            maintenance to innovation.
+          </p>
+        </div>
+
+        <!-- Row 2, Col 1: Image Card 2 (branding_5.png) -->
+        <div class="work-cap-image-card">
+          <img src="assets/images/branding_5.png" alt="Collaborative eMMSOFT team members in discussion" loading="lazy">
+        </div>
+
+        <!-- Row 2, Col 2: Text Card 3 -->
+        <div class="work-cap-text-card">
+          <div class="work-cap-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="18" rx="3" ry="3"></rect>
+              <line x1="2" y1="8" x2="22" y2="8"></line>
+              <polyline points="9 13 7 15 9 17"></polyline>
+              <polyline points="15 13 17 15 15 17"></polyline>
+            </svg>
+          </div>
+          <h3>MVP Development</h3>
+          <p>
+            Launch market-ready MVPs in 8-12 weeks. AI-accelerated builds with 40% faster iteration cycles.
+          </p>
+        </div>
+
+        <!-- Row 2, Col 3: Image Card 3 (branding_6.png) -->
+        <div class="work-cap-image-card">
+          <img src="assets/images/branding_x.png" alt="eMMSOFT engineer at multi-screen workstation" loading="lazy">
+        </div>
+
       </div>
     </div>
   </section>

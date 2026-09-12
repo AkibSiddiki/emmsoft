@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — eMMSOFT Software Engineering Studio</title>
+  <meta name="description"
+    content="A visual gallery of eMMSOFT's studio, team, branding, and client assets.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="../favicon/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS (Synchronized with eMMSOFT Design System)
+       ========================================================================== */
+    :root {
+      --brand-emerald: #049449;
+      --brand-emerald-dark: #037339;
+      --brand-emerald-light: #05a852;
+      --brand-emerald-accent: #10b981;
+      --brand-emerald-tint: #ecf8f1;
+      --brand-emerald-soft: rgba(4, 148, 73, 0.08);
+      --brand-emerald-glow: rgba(4, 148, 73, 0.22);
+      --brand-emerald-border: rgba(4, 148, 73, 0.25);
+
+      --brand-slate: #374049;
+      --dark-950: #0b0f15;
+      --dark-900: #101620;
+      --dark-850: #151d2a;
+      --dark-800: #1d2737;
+      --dark-700: #2d3b4f;
+      --dark-600: #425268;
+
+      --bg-main: #fbfcfb;
+      --bg-surface: #ffffff;
+      --bg-alt: #f3f6f4;
+      --bg-subtle: #edf2ee;
+
+      --ink-primary: #121922;
+      --ink-secondary: #3b4756;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
+
+      --border-light: #e3e8e5;
+      --border-focus: #049449;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container: 1220px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 12px 30px rgba(16, 24, 40, 0.1);
+      --shadow-emerald: 0 10px 25px -4px rgba(4, 148, 73, 0.25);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--ink-primary);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+      color: var(--ink-primary);
+      line-height: 1.25;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-pad {
+      padding: clamp(64px, 8vw, 108px) 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-emerald-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-emerald);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+      border-color: var(--ink-faint);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      animation: pulseAnim 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+    }
+
+    /* ==========================================================================
+       NAVBAR (Synchronized System)
+       ========================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: clamp(14px, 2.2vw, 32px);
+      position: relative;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.8vw, 28px);
+      flex-wrap: nowrap;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: color 0.18s ease;
+      padding: 6px 0;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--brand-emerald-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Dropdown & Mega Menu System */
+    .nav-item-dropdown {
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      height: 76px;
+    }
+
+    .nav-item-dropdown .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown-chevron {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+    }
+
+    .nav-item-dropdown:hover .dropdown-chevron,
+    .nav-item-dropdown:focus-within .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--brand-emerald);
+    }
+
+    .mega-menu-bridge {
+      display: none;
+      position: absolute;
+      top: 56px;
+      left: 0;
+      right: 0;
+      height: 28px;
+      content: "";
+      pointer-events: auto;
+      z-index: 290;
+    }
+
+    .nav-item-dropdown:hover .mega-menu-bridge,
+    .nav-item-dropdown:focus-within .mega-menu-bridge {
+      display: block;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      width: 820px;
+      max-width: 94vw;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(227, 232, 229, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 56px -12px rgba(18, 25, 34, 0.16), 0 4px 16px rgba(4, 148, 73, 0.06);
+      padding: 22px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.25s;
+      z-index: 300;
+    }
+
+    .mega-menu::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: transparent;
+    }
+
+    .nav-item-dropdown:hover .mega-menu,
+    .nav-item-dropdown:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .pill-hot {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: #ef4444;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .mega-menu-col,
+    .mega-menu-col-left,
+    .mega-menu-col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mega-menu-label {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .mega-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mega-link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mega-link-card:hover {
+      background: var(--brand-emerald-tint);
+      border-color: var(--brand-emerald-border);
+      transform: translateX(4px);
+    }
+
+    .mega-link-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-link-icon-wrap {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    .mega-link-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mega-link-card-body .mega-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-heading);
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-link-card:hover .mega-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .mega-link-card-body .mega-desc {
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      line-height: 1.3;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-arrow {
+      font-size: 0.85rem;
+      color: var(--brand-emerald);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .mega-link-card:hover .mega-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .mega-menu-footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .mega-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-muted);
+      font-size: 0.80rem;
+    }
+
+    .mega-footer-link {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .mega-footer-link:hover {
+      color: var(--brand-emerald-light);
+      transform: translateX(2px);
+    }
+
+    .nav-burger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 0;
+      transition: var(--transition);
+    }
+
+    .nav-burger span {
+      width: 20px;
+      height: 2px;
+      background: var(--ink-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .nav-burger.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-burger.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-burger.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 16px 24px 24px;
+      box-shadow: var(--shadow-lg);
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+
+    .mobile-panel.is-open {
+      display: flex;
+    }
+
+    .mobile-panel a {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-panel a:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
+    }
+
+    /* ==========================================================================
+       GALLERY PAGE HERO
+       ========================================================================== */
+    .gallery-hero {
+      background: radial-gradient(circle at 80% 20%, rgba(4, 148, 73, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+        var(--bg-main);
+      padding: clamp(54px, 7vw, 88px) 0 clamp(40px, 5vw, 60px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .gallery-hero-inner {
+      max-width: 780px;
+    }
+
+    .gallery-hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .gallery-hero h1 .text-emerald {
+      color: var(--brand-emerald);
+      background: linear-gradient(135deg, #049449 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gallery-hero-lead {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--ink-secondary);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 600px;
+    }
+
+    /* Stats bar */
+    .gallery-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .gallery-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+
+    .gallery-stat strong {
+      color: var(--brand-emerald-dark);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       FILTER TABS
+       ========================================================================== */
+    .filter-bar {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      position: sticky;
+      top: 76px;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border-light);
+      background: var(--bg-surface);
+      color: var(--ink-secondary);
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--brand-emerald-border);
+      background: var(--brand-emerald-tint);
+      color: var(--brand-emerald-dark);
+    }
+
+    .filter-btn.active {
+      background: var(--brand-emerald);
+      border-color: var(--brand-emerald);
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(4,148,73,0.3);
+    }
+
+    .filter-count {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      background: rgba(0,0,0,0.08);
+      border-radius: var(--radius-full);
+      padding: 1px 7px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .filter-btn.active .filter-count {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ==========================================================================
+       GALLERY GRID
+       ========================================================================== */
+    .gallery-section {
+      padding: clamp(40px, 5vw, 72px) 0;
+    }
+
+    .gallery-category-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .gallery-category-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+    }
+
+    .gallery-category-count {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .gallery-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border-light);
+    }
+
+    /* Masonry-style grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-grid.grid-wide {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .gallery-grid.grid-small {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    /* Gallery card */
+    .gallery-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      background: var(--bg-alt);
+      cursor: pointer;
+      group: true;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gallery-card:hover {
+      border-color: var(--brand-emerald-border);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-card-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-card-img-wrap.ratio-16-9 {
+      aspect-ratio: 16/9;
+    }
+
+    .gallery-card-img-wrap.ratio-4-3 {
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-card-img-wrap.ratio-1-1 {
+      aspect-ratio: 1/1;
+    }
+
+    .gallery-card-img-wrap.ratio-3-4 {
+      aspect-ratio: 3/4;
+    }
+
+    /* Overlay */
+    .gallery-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11,15,21,0.85) 0%, rgba(11,15,21,0.2) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+    }
+
+    .gallery-card:hover .gallery-card-overlay {
+      opacity: 1;
+    }
+
+    .gallery-card-overlay-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .gallery-card-overlay-meta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-zoom-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .gallery-card:hover .gallery-zoom-btn {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .gallery-zoom-btn:hover {
+      background: var(--brand-emerald);
+      color: #ffffff;
+    }
+
+    /* Logo/client card variant — lighter bg */
+    .gallery-card.logo-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+    }
+
+    .gallery-card.logo-card .gallery-card-img-wrap {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-card.logo-card img {
+      object-fit: contain;
+      height: 60px;
+      width: auto;
+      max-width: 100%;
+    }
+
+    /* Section separator */
+    .gallery-category-block {
+      margin-bottom: 64px;
+    }
+
+    .gallery-category-block:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       LIGHTBOX
+       ========================================================================== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(11, 15, 21, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s;
+      padding: 24px;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 1100px;
+      max-height: 90vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lightbox-img-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      max-height: 78vh;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-img-wrap img {
+      max-width: 100%;
+      max-height: 78vh;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .lightbox-caption h3 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .lightbox-caption p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-nav-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10000;
+    }
+
+    .lightbox-nav-btn:hover {
+      background: var(--brand-emerald);
+      border-color: var(--brand-emerald);
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    .lightbox-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    /* ==========================================================================
+       FOOTER (Synchronized System)
+       ========================================================================== */
+    .site-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      padding: 72px 0 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 960px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-brand .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-brand .nav-logo {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-family: var(--font-mono);
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col a {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col .btn {
+      font-size: 0.92rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--brand-emerald-dark);
+    }
+
+    .footer-col .btn:hover {
+      color: #fefefe;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-legal a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-legal a:hover {
+      color: var(--brand-emerald-dark);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+      }
+
+      .gallery-grid.grid-small {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+      }
+
+      .gallery-stats {
+        gap: 18px;
+      }
+
+      .lightbox-nav-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+    }
+
+    /* ==========================================================================
+       ANIMATION & UTILITIES
+       ========================================================================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery-card {
+      animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .gallery-card:nth-child(1)  { animation-delay: 0.02s; }
+    .gallery-card:nth-child(2)  { animation-delay: 0.06s; }
+    .gallery-card:nth-child(3)  { animation-delay: 0.10s; }
+    .gallery-card:nth-child(4)  { animation-delay: 0.14s; }
+    .gallery-card:nth-child(5)  { animation-delay: 0.18s; }
+    .gallery-card:nth-child(6)  { animation-delay: 0.22s; }
+    .gallery-card:nth-child(7)  { animation-delay: 0.26s; }
+    .gallery-card:nth-child(8)  { animation-delay: 0.30s; }
+    .gallery-card:nth-child(9)  { animation-delay: 0.34s; }
+    .gallery-card:nth-child(10) { animation-delay: 0.38s; }
+
+    /* Hidden category for filter */
+    .gallery-category-block[data-category] {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-category-block.hidden-category {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+     HEADER / NAVIGATION (Synchronized eMMSOFT Navbar)
+     ========================================================================== -->
+  <nav class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-brand" aria-label="eMMSOFT Home">
+        <img src="../assets/images/logo.png" alt="eMMSOFT" class="nav-logo">
+      </a>
+
+      <div class="nav-links">
+        <!-- Solutions Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="../index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Solutions
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="Solutions Navigation">
+            <div class="mega-menu-grid">
+              <!-- Column 1: Services -->
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                  </svg>
+                  Engineering Services
+                </div>
+                <div class="mega-links-list">
+                  <a href="solutions/cloud-devops.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Cloud Solutions &amp; DevOps</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">AWS / GCP migration, Kubernetes &amp; CI/CD</p>
+                    </div>
+                  </a>
+                  <a href="solutions/web-applications.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>API &amp; Microservices</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">High-throughput REST, GraphQL &amp; caching</p>
+                    </div>
+                  </a>
+                  <a href="solutions/web-applications.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Custom Software Engineering</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Bespoke platforms &amp; legacy system modernization</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <!-- Column 2: Flagship Solutions -->
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                  Flagship Solutions
+                </div>
+                <div class="mega-links-list">
+                  <a href="solutions/newsroom-cms.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Headless publishing, 28M+ readers, Anycast edge</p>
+                    </div>
+                  </a>
+                  <a href="solutions/ecommerce.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>E-Commerce Platforms</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">Flash-sale resilience &amp; global retail stores</p>
+                    </div>
+                  </a>
+                  <a href="solutions/mobile-apps.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title">
+                        <span>Mobile Applications</span>
+                        <span class="mega-arrow">→</span>
+                      </div>
+                      <p class="mega-desc">iOS &amp; Android Flutter apps with offline-first sync</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="mega-menu-footer">
+              <div class="mega-footer-left">
+                <span class="pulse-dot"></span>
+                <span>Powering 50M+ monthly transactions &amp; readers across Bangladesh &amp; global</span>
+              </div>
+              <a href="work.html" class="mega-footer-link">View All Case Studies <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <a href="work.html" class="nav-link">Work</a>
+
+        <!-- About Us Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            About Us
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="mega-menu-bridge"></div>
+          <div class="mega-menu" role="region" aria-label="About Us Navigation">
+            <div class="mega-menu-grid">
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
+                  Studio &amp; Leadership
+                </div>
+                <div class="mega-links-list">
+                  <a href="about.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title"><span>About eMMSOFT</span><span class="mega-arrow">→</span></div>
+                      <p class="mega-desc">15+ years of mission-critical engineering</p>
+                    </div>
+                  </a>
+                  <a href="team.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title"><span>Team &amp; Roster</span><span class="mega-arrow">→</span></div>
+                      <p class="mega-desc">Meet our senior architects &amp; engineers</p>
+                    </div>
+                  </a>
+                  <a href="ceo-message.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title"><span>CEO's Message</span><span class="mega-arrow">→</span></div>
+                      <p class="mega-desc">Vision from our founder &amp; CEO, Shawon</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="mega-menu-col">
+                <div class="mega-menu-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  Resources
+                </div>
+                <div class="mega-links-list">
+                  <a href="blog.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title"><span>Engineering Blog</span><span class="mega-arrow">→</span></div>
+                      <p class="mega-desc">System design insights &amp; case studies</p>
+                    </div>
+                  </a>
+                  <a href="contact.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </div>
+                    <div class="mega-link-card-body">
+                      <div class="mega-title"><span>Contact &amp; Engage</span><span class="mega-arrow">→</span></div>
+                      <p class="mega-desc">Start a project or schedule a consultation</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="mega-menu-footer">
+              <div class="mega-footer-left">
+                <span class="pulse-dot"></span>
+                <span>Dhaka Studio HQ — Available for global enterprise partnerships</span>
+              </div>
+              <a href="contact.html" class="mega-footer-link">Get a Free Consultation <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">Start a Project →</a>
+        <button class="nav-burger" id="burgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Panel -->
+      <div class="mobile-panel" id="mobilePanel">
+        <a href="../index.html">Home</a>
+        <a href="solutions/newsroom-cms.html">Newsroom CMS</a>
+        <a href="solutions/ecommerce.html">E-Commerce</a>
+        <a href="solutions/cloud-devops.html">Cloud &amp; DevOps</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Team</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:4px; justify-content:center;">Start a Project →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+     GALLERY HERO
+     ========================================================================== -->
+  <section class="gallery-hero">
+    <div class="container">
+      <div class="gallery-hero-inner">
+        <div class="badge-tag">
+          <span class="pulse-dot"></span>
+          Visual Archive
+        </div>
+        <h1>eMMSOFT <span class="text-emerald">Image Gallery</span></h1>
+        <p class="gallery-hero-lead">
+          A curated visual archive of our studio, team, branding assets, and partner logos — the faces, spaces, and
+          brands behind 15+ years of mission-critical engineering.
+        </p>
+        <div class="gallery-stats">
+          <span class="gallery-stat"><strong>6</strong> Branding Assets</span>
+          <span class="gallery-stat"><strong>20</strong> Team Portraits</span>
+          <span class="gallery-stat"><strong>4</strong> Studio &amp; Leadership</span>
+          <span class="gallery-stat"><strong>25</strong> Client Logos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FILTER BAR
+     ========================================================================== -->
+  <div class="filter-bar" id="filterBar">
+    <div class="container">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all" id="filter-all">
+          All Assets
+          <span class="filter-count">55</span>
+        </button>
+        <button class="filter-btn" data-filter="branding">
+          Branding
+          <span class="filter-count">6</span>
+        </button>
+        <button class="filter-btn" data-filter="studio">
+          Studio &amp; Leadership
+          <span class="filter-count">4</span>
+        </button>
+        <button class="filter-btn" data-filter="team">
+          Team Portraits
+          <span class="filter-count">20</span>
+        </button>
+        <button class="filter-btn" data-filter="clients">
+          Client Logos
+          <span class="filter-count">25</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+     GALLERY CONTENT
+     ========================================================================== -->
+  <section class="gallery-section">
+    <div class="container">
+
+      <!-- ── BRANDING ── -->
+      <div class="gallery-category-block" data-category="branding">
+        <div class="gallery-category-header">
+          <h2 class="gallery-category-title">Branding Assets</h2>
+          <span class="gallery-category-count">6 images</span>
+          <div class="gallery-divider"></div>
+        </div>
+        <div class="gallery-grid grid-wide" id="grid-branding">
+
+          <div class="gallery-card" data-src="../assets/images/branding_1.png" data-title="Branding Asset 1" data-meta="Brand · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/branding_1.png" alt="eMMSOFT Branding Asset 1" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Branding Asset 1</div>
+                <div class="gallery-card-overlay-meta">Brand Identity</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/branding_2.png" data-title="Branding Asset 2" data-meta="Brand · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/branding_2.png" alt="eMMSOFT Branding Asset 2" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Branding Asset 2</div>
+                <div class="gallery-card-overlay-meta">Brand Identity</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/branding_3.png" data-title="Branding Asset 3" data-meta="Brand · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/branding_3.png" alt="eMMSOFT Branding Asset 3" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Branding Asset 3</div>
+                <div class="gallery-card-overlay-meta">Brand Identity</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/branding_4.png" data-title="Branding Asset 4" data-meta="Brand · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/branding_4.png" alt="eMMSOFT Branding Asset 4" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Branding Asset 4</div>
+                <div class="gallery-card-overlay-meta">Brand Identity</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/branding_5.png" data-title="Branding Asset 5" data-meta="Brand · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/branding_5.png" alt="eMMSOFT Branding Asset 5" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Branding Asset 5</div>
+                <div class="gallery-card-overlay-meta">Brand Identity</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/branding_6.png" data-title="Branding Asset 6" data-meta="Brand · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/branding_6.png" alt="eMMSOFT Branding Asset 6" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Branding Asset 6</div>
+                <div class="gallery-card-overlay-meta">Brand Identity</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── STUDIO & LEADERSHIP ── -->
+      <div class="gallery-category-block" data-category="studio">
+        <div class="gallery-category-header">
+          <h2 class="gallery-category-title">Studio &amp; Leadership</h2>
+          <span class="gallery-category-count">4 images</span>
+          <div class="gallery-divider"></div>
+        </div>
+        <div class="gallery-grid" id="grid-studio">
+
+          <div class="gallery-card" data-src="../assets/images/office.png" data-title="eMMSOFT Studio HQ" data-meta="Studio · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/office.png" alt="eMMSOFT Office" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Studio Headquarters</div>
+                <div class="gallery-card-overlay-meta">Dhaka, Bangladesh</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/work_culture.jpg" data-title="Work Culture" data-meta="Studio · JPG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/images/work_culture.jpg" alt="eMMSOFT Work Culture" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Work Culture</div>
+                <div class="gallery-card-overlay-meta">Engineering Culture</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/ceo_portrait.jpg" data-title="CEO Portrait — Shawon" data-meta="Leadership · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/images/ceo_portrait.jpg" alt="CEO Portrait" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">CEO Portrait</div>
+                <div class="gallery-card-overlay-meta">Founder &amp; Chief Executive</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/cto_portrait.jpg" data-title="CTO Portrait — Polash" data-meta="Leadership · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/images/cto_portrait.jpg" alt="CTO Portrait" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">CTO Portrait</div>
+                <div class="gallery-card-overlay-meta">Chief Technology Officer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── TEAM PORTRAITS ── -->
+      <div class="gallery-category-block" data-category="team">
+        <div class="gallery-category-header">
+          <h2 class="gallery-category-title">Team Portraits</h2>
+          <span class="gallery-category-count">20 images</span>
+          <div class="gallery-divider"></div>
+        </div>
+        <div class="gallery-grid" id="grid-team">
+
+          <div class="gallery-card" data-src="../assets/team/group.png" data-title="Team Group Photo" data-meta="Team · PNG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/team/group.png" alt="Team Group" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Full Team Group</div>
+                <div class="gallery-card-overlay-meta">eMMSOFT Engineering Squad</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/team_group.jpg" data-title="Team Group Photo 2" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-16-9">
+              <img src="../assets/team/team_group.jpg" alt="Team Group 2" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Group Photo</div>
+                <div class="gallery-card-overlay-meta">Engineering Roster</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/al_amin.jpg" data-title="Al Amin" data-meta="Team Member · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/al_amin.jpg" alt="Al Amin" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Al Amin</div>
+                <div class="gallery-card-overlay-meta">Team Member</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/ariful_hoque.jpg" data-title="Ariful Hoque" data-meta="Team Member · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/ariful_hoque.jpg" alt="Ariful Hoque" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Ariful Hoque</div>
+                <div class="gallery-card-overlay-meta">Team Member</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/effat_ara.jpg" data-title="Effat Ara" data-meta="Team Member · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/effat_ara.jpg" alt="Effat Ara" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Effat Ara</div>
+                <div class="gallery-card-overlay-meta">Team Member</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/mahedi_hasan.jpg" data-title="Mahedi Hasan" data-meta="Team Member · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/mahedi_hasan.jpg" alt="Mahedi Hasan" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Mahedi Hasan</div>
+                <div class="gallery-card-overlay-meta">Team Member</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/saiful_islam.jpg" data-title="Saiful Islam" data-meta="Team Member · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/saiful_islam.jpg" alt="Saiful Islam" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Saiful Islam</div>
+                <div class="gallery-card-overlay-meta">Team Member</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/team/ziaul_hasan.jpg" data-title="Ziaul Hasan" data-meta="Team Member · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/ziaul_hasan.jpg" alt="Ziaul Hasan" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Ziaul Hasan</div>
+                <div class="gallery-card-overlay-meta">Team Member</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/head_product_portrait.jpg" data-title="Head of Product" data-meta="Leadership · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/images/head_product_portrait.jpg" alt="Head of Product" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Head of Product</div>
+                <div class="gallery-card-overlay-meta">Product Leadership</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-src="../assets/images/vp_eng_portrait.jpg" data-title="VP Engineering" data-meta="Leadership · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/images/vp_eng_portrait.jpg" alt="VP Engineering" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">VP of Engineering</div>
+                <div class="gallery-card-overlay-meta">Engineering Leadership</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Members 1-12 -->
+          <div class="gallery-card" data-src="../assets/team/member_1.jpg" data-title="Team Member 1" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_1.jpg" alt="Team Member 1" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_2.jpg" data-title="Team Member 2" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_2.jpg" alt="Team Member 2" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_3.jpg" data-title="Team Member 3" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_3.jpg" alt="Team Member 3" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_4.jpg" data-title="Team Member 4" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_4.jpg" alt="Team Member 4" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_5.jpg" data-title="Team Member 5" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_5.jpg" alt="Team Member 5" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_6.jpg" data-title="Team Member 6" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_6.jpg" alt="Team Member 6" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_7.jpg" data-title="Team Member 7" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_7.jpg" alt="Team Member 7" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_8.jpg" data-title="Team Member 8" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_8.jpg" alt="Team Member 8" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_9.jpg" data-title="Team Member 9" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_9.jpg" alt="Team Member 9" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_10.jpg" data-title="Team Member 10" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_10.jpg" alt="Team Member 10" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_11.jpg" data-title="Team Member 11" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_11.jpg" alt="Team Member 11" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="gallery-card" data-src="../assets/team/member_12.jpg" data-title="Team Member 12" data-meta="Team · JPG">
+            <div class="gallery-card-img-wrap ratio-3-4">
+              <img src="../assets/team/member_12.jpg" alt="Team Member 12" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Team Member</div>
+                <div class="gallery-card-overlay-meta">Engineer</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── CLIENT LOGOS ── -->
+      <div class="gallery-category-block" data-category="clients">
+        <div class="gallery-category-header">
+          <h2 class="gallery-category-title">Client &amp; Partner Logos</h2>
+          <span class="gallery-category-count">25 images</span>
+          <div class="gallery-divider"></div>
+        </div>
+        <div class="gallery-grid grid-small" id="grid-clients">
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/bdnews24.png" data-title="BD News 24" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/bdnews24.png" alt="BD News 24" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">BD News 24</div>
+                <div class="gallery-card-overlay-meta">News Media</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/buet.png" data-title="BUET" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/buet.png" alt="BUET" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">ITN-BUET</div>
+                <div class="gallery-card-overlay-meta">Academic Institution</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/channel24_hd.png" data-title="Channel 24" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/channel24_hd.png" alt="Channel 24" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Channel 24</div>
+                <div class="gallery-card-overlay-meta">TV News</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/pran.png" data-title="PRAN" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/pran.png" alt="PRAN" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">PRAN</div>
+                <div class="gallery-card-overlay-meta">Food &amp; Beverage</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/walton.png" data-title="Walton" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/walton.png" alt="Walton" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Walton</div>
+                <div class="gallery-card-overlay-meta">Electronics &amp; Appliances</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/step_footwear.png" data-title="Step Footwear" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/step_footwear.png" alt="Step Footwear" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Step Footwear</div>
+                <div class="gallery-card-overlay-meta">Retail &amp; E-Commerce</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/farming_future_alt.png" data-title="Farming Future" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/farming_future_alt.png" alt="Farming Future" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Farming Future</div>
+                <div class="gallery-card-overlay-meta">AgriTech</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/afs.jpg" data-title="AFS" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/afs.jpg" alt="AFS" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">AFS</div>
+                <div class="gallery-card-overlay-meta">Partner</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/city_group.jpg" data-title="City Group" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/city_group.jpg" alt="City Group" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">City Group</div>
+                <div class="gallery-card-overlay-meta">Conglomerate</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/dhaka_tribune.jpg" data-title="Dhaka Tribune" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/dhaka_tribune.jpg" alt="Dhaka Tribune" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Dhaka Tribune</div>
+                <div class="gallery-card-overlay-meta">News Media</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/dhaka_university.jpg" data-title="University of Dhaka" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/dhaka_university.jpg" alt="University of Dhaka" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">University of Dhaka</div>
+                <div class="gallery-card-overlay-meta">Academic Institution</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/diamond_world.jpg" data-title="Diamond World" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/diamond_world.jpg" alt="Diamond World" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Diamond World</div>
+                <div class="gallery-card-overlay-meta">Luxury Retail</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/ha_meem.jpg" data-title="Ha-Meem Group" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/ha_meem.jpg" alt="Ha-Meem Group" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Ha-Meem Group</div>
+                <div class="gallery-card-overlay-meta">Industrial Group</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/janakantha.jpg" data-title="Janakantha" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/janakantha.jpg" alt="Janakantha" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Janakantha</div>
+                <div class="gallery-card-overlay-meta">News Media</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/janakantha_web.jpg" data-title="Janakantha Web" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/janakantha_web.jpg" alt="Janakantha Web" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Janakantha Web</div>
+                <div class="gallery-card-overlay-meta">Digital News</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/step_common_logo.jpg" data-title="Step (Logo)" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/step_common_logo.jpg" alt="Step Common Logo" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Step (Common)</div>
+                <div class="gallery-card-overlay-meta">Brand Logo</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/step_steptm.jpg" data-title="Step TM" data-meta="Client · JPG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/step_steptm.jpg" alt="Step TM" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Step™</div>
+                <div class="gallery-card-overlay-meta">Brand Mark</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/step_icon.png" data-title="Step Icon" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/step_icon.png" alt="Step Icon" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Step Icon</div>
+                <div class="gallery-card-overlay-meta">App Icon</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/farming_future.png" data-title="Farming Future Alt" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/farming_future.png" alt="Farming Future Alt" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Farming Future (Alt)</div>
+                <div class="gallery-card-overlay-meta">AgriTech</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/channel24.png" data-title="Channel 24 (Alt)" data-meta="Client · PNG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/channel24.png" alt="Channel 24 Alt" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Channel 24 (Alt)</div>
+                <div class="gallery-card-overlay-meta">TV News</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/buet.svg" data-title="BUET SVG" data-meta="Client · SVG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/buet.svg" alt="BUET SVG" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">ITN-BUET (Vector)</div>
+                <div class="gallery-card-overlay-meta">Academic Institution</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/dhaka_university.svg" data-title="University of Dhaka SVG" data-meta="Client · SVG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/dhaka_university.svg" alt="University of Dhaka SVG" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">University of Dhaka (Vector)</div>
+                <div class="gallery-card-overlay-meta">Academic Institution</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/dhaka_tribune.svg" data-title="Dhaka Tribune SVG" data-meta="Client · SVG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/dhaka_tribune.svg" alt="Dhaka Tribune SVG" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Dhaka Tribune (Vector)</div>
+                <div class="gallery-card-overlay-meta">News Media</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/bdnews24.svg" data-title="BD News 24 SVG" data-meta="Client · SVG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/bdnews24.svg" alt="BD News 24 SVG" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">BD News 24 (Vector)</div>
+                <div class="gallery-card-overlay-meta">News Media</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-card logo-card" data-src="../assets/clients/channel24_svg.svg" data-title="Channel 24 SVG" data-meta="Client · SVG">
+            <div class="gallery-card-img-wrap ratio-4-3">
+              <img src="../assets/clients/channel24_svg.svg" alt="Channel 24 SVG" loading="lazy">
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-overlay-title">Channel 24 (Vector)</div>
+                <div class="gallery-card-overlay-meta">TV News</div>
+              </div>
+              <button class="gallery-zoom-btn" aria-label="View full size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     LIGHTBOX MODAL
+     ========================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="lightbox-inner">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+      <div class="lightbox-caption">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxMeta"></p>
+      </div>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <!-- ==========================================================================
+     FOOTER (Synchronized System)
+     ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-link">
+            <img src="../assets/images/logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+          </a>
+          <p>
+            High-performance software engineering studio — Newsroom CMS, E-Commerce, Cloud Infrastructure, and
+            Enterprise Applications.
+          </p>
+          <div style="font-size:0.86rem; color:var(--ink-muted); line-height:1.6;">
+            <strong>Office:</strong> 24 North Kafrul, 3rd Floor, Dhaka-1206, Bangladesh.<br>
+            <strong>Phone:</strong> <a href="tel:+8801714001209"
+              style="color:var(--brand-emerald-dark); font-weight:600;">+880 1714-001209</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul>
+            <li><a href="solutions/newsroom-cms.html">Newsroom CMS (Headless)</a></li>
+            <li><a href="solutions/ecommerce.html">E-Commerce Platforms</a></li>
+            <li><a href="solutions/cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
+            <li><a href="solutions/enterprise-cms.html">Enterprise Headless CMS</a></li>
+            <li><a href="solutions/web-applications.html">Web Applications &amp; SaaS</a></li>
+            <li><a href="solutions/mobile-apps.html">Mobile Apps (iOS &amp; Android)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Leadership &amp; Studio</h4>
+          <ul>
+            <li><a href="about.html">About eMMSOFT</a></li>
+            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="team.html">Our Team &amp; Roster</a></li>
+            <li><a href="work.html">Selected Projects</a></li>
+            <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
+            <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">SLA &amp; Uptime Guarantee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     JAVASCRIPT
+     ========================================================================== -->
+  <script>
+    // 1. Dynamic Copyright Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 2. Sticky Nav scroll effect
+    const siteNav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => {
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // 3. Mobile Navigation Drawer
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+    });
+
+    // 4. Collect all gallery cards into a flat array for lightbox navigation
+    const allCards = Array.from(document.querySelectorAll('.gallery-card'));
+    let currentIndex = 0;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxMeta = document.getElementById('lightboxMeta');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    function openLightbox(index) {
+      const visibleCards = getVisibleCards();
+      if (!visibleCards.length) return;
+      currentIndex = index;
+      const card = visibleCards[currentIndex];
+      lightboxImg.src = card.dataset.src;
+      lightboxImg.alt = card.dataset.title || '';
+      lightboxTitle.textContent = card.dataset.title || '';
+      lightboxMeta.textContent = card.dataset.meta || '';
+      lightboxCounter.textContent = `${currentIndex + 1} / ${visibleCards.length}`;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      lightboxImg.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function getVisibleCards() {
+      return allCards.filter(c => {
+        const block = c.closest('.gallery-category-block');
+        return !block || !block.classList.contains('hidden-category');
+      });
+    }
+
+    function navigateLightbox(direction) {
+      const visibleCards = getVisibleCards();
+      currentIndex = (currentIndex + direction + visibleCards.length) % visibleCards.length;
+      const card = visibleCards[currentIndex];
+      // Smooth transition
+      lightboxImg.style.opacity = '0';
+      setTimeout(() => {
+        lightboxImg.src = card.dataset.src;
+        lightboxImg.alt = card.dataset.title || '';
+        lightboxTitle.textContent = card.dataset.title || '';
+        lightboxMeta.textContent = card.dataset.meta || '';
+        lightboxCounter.textContent = `${currentIndex + 1} / ${visibleCards.length}`;
+        lightboxImg.style.opacity = '1';
+      }, 150);
+    }
+
+    // Smooth img opacity transition
+    lightboxImg.style.transition = 'opacity 0.15s ease';
+
+    // Attach click to all gallery cards
+    allCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const visibleCards = getVisibleCards();
+        const idx = visibleCards.indexOf(card);
+        if (idx !== -1) openLightbox(idx);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+    lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+    // Close on backdrop click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    // 5. Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const categoryBlocks = document.querySelectorAll('.gallery-category-block[data-category]');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Show/hide categories
+        categoryBlocks.forEach(block => {
+          if (filter === 'all' || block.dataset.category === filter) {
+            block.classList.remove('hidden-category');
+          } else {
+            block.classList.add('hidden-category');
+          }
+        });
+
+        // Scroll to gallery section
+        document.querySelector('.gallery-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
