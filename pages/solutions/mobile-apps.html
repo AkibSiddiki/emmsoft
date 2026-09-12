@@ -1,19 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Applications &amp; SaaS — eMMSOFT Software Engineering Studio | Mission-Critical Platforms</title>
+  <title>Mobile App Development — eMMSOFT Software Engineering Studio | Cross-Platform Flutter &amp; Native</title>
   <meta name="description"
-    content="Custom web applications, responsive enterprise portals, and multi-tenant SaaS architectures engineered with real-time WebSockets, robust RBAC, and low-latency database backends.">
+    content="High-performance iOS and Android mobile applications built on Flutter and React Native with offline-first SQLite synchronization, biometric security, and 60 FPS fluid interactions.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="../../favicon/icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -702,7 +702,7 @@
     }
 
     /* Interactive Telemetry Card */
-    .interactive-webapp-card {
+    .interactive-mobile-card {
       background: var(--dark-950);
       border: 1px solid var(--dark-700);
       border-radius: var(--radius-lg);
@@ -713,7 +713,7 @@
       overflow: hidden;
     }
 
-    .interactive-webapp-card::before {
+    .interactive-mobile-card::before {
       content: '';
       position: absolute;
       top: -40px;
@@ -724,7 +724,7 @@
       pointer-events: none;
     }
 
-    .webapp-header {
+    .mobile-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -733,7 +733,7 @@
       border-bottom: 1px solid var(--dark-800);
     }
 
-    .webapp-title {
+    .mobile-title {
       font-family: var(--font-mono);
       font-size: 0.85rem;
       font-weight: 700;
@@ -743,7 +743,7 @@
       gap: 8px;
     }
 
-    .webapp-badge {
+    .mobile-badge {
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 700;
@@ -786,7 +786,7 @@
       font-family: var(--font-heading);
     }
 
-    .webapp-stream {
+    .mobile-stream {
       background: var(--dark-900);
       border: 1px solid var(--dark-800);
       border-radius: var(--radius-sm);
@@ -811,7 +811,7 @@
       font-weight: 600;
     }
 
-    .webapp-footer-status {
+    .mobile-footer-status {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -821,7 +821,7 @@
       border-top: 1px solid var(--dark-800);
     }
 
-    .webapp-footer-status .status-ok {
+    .mobile-footer-status .status-ok {
       color: var(--brand-emerald-accent);
       font-weight: 600;
       display: flex;
@@ -1431,14 +1431,14 @@
        ========================================================================== -->
   <nav class="nav" id="siteNav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-brand" aria-label="eMMSOFT Home">
-        <img src="logo.png" alt="eMMSOFT" class="nav-logo">
+      <a href="../../index.html" class="nav-brand" aria-label="eMMSOFT Home">
+        <img src="../../assets/images/logo.png" alt="eMMSOFT" class="nav-logo">
       </a>
 
       <div class="nav-links">
         <!-- Solutions Dropdown -->
         <div class="nav-item-dropdown">
-          <a href="index.html#solutions" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
+          <a href="../../index.html#solutions" class="nav-link is-active" aria-haspopup="true" aria-expanded="false">
             Solutions
             <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5">
@@ -1457,7 +1457,7 @@
                   Engineering Services
                 </div>
                 <div class="mega-links-list">
-                  <a href="solution-cloud-devops.html" class="mega-link-card">
+                  <a href="cloud-devops.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1473,7 +1473,7 @@
                     </div>
                   </a>
 
-                  <a href="solution-web-applications.html#microservices" class="mega-link-card">
+                  <a href="web-applications.html#microservices" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1490,7 +1490,7 @@
                     </div>
                   </a>
 
-                  <a href="solution-cloud-devops.html#audits" class="mega-link-card">
+                  <a href="cloud-devops.html#audits" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1506,9 +1506,8 @@
                     </div>
                   </a>
 
-                  <a href="solution-web-applications.html" class="mega-link-card"
-                    style="background:var(--brand-emerald-tint);">
-                    <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
+                  <a href="web-applications.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -1518,14 +1517,14 @@
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="color:var(--brand-emerald-dark);">Custom Software Engineering</span>
-                        <span class="mega-arrow" style="opacity:1; transform:translateX(0);">→</span>
+                        <span>Custom Software Engineering</span>
+                        <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Bespoke platforms &amp; legacy system modernization</p>
                     </div>
                   </a>
 
-                  <a href="contact.html?service=sla" class="mega-link-card">
+                  <a href="../contact.html?service=sla" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1554,7 +1553,7 @@
                   Flagship Solutions
                 </div>
                 <div class="mega-links-list">
-                  <a href="solution-newsroom-cms.html" class="mega-link-card">
+                  <a href="newsroom-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1572,7 +1571,7 @@
                     </div>
                   </a>
 
-                  <a href="solution-ecommerce.html" class="mega-link-card">
+                  <a href="ecommerce.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1590,7 +1589,7 @@
                     </div>
                   </a>
 
-                  <a href="solution-enterprise-cms.html" class="mega-link-card">
+                  <a href="enterprise-cms.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1607,9 +1606,8 @@
                     </div>
                   </a>
 
-                  <a href="solution-web-applications.html" class="mega-link-card"
-                    style="background:var(--brand-emerald-tint);">
-                    <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
+                  <a href="web-applications.html" class="mega-link-card">
+                    <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
                         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -1619,15 +1617,16 @@
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="color:var(--brand-emerald-dark);">Web Applications &amp; SaaS</span>
-                        <span class="mega-arrow" style="opacity:1; transform:translateX(0);">→</span>
+                        <span>Web Applications &amp; SaaS</span>
+                        <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">Reactive web portals, dashboards &amp; tools</p>
                     </div>
                   </a>
 
-                  <a href="solution-mobile-apps.html" class="mega-link-card">
-                    <div class="mega-link-icon-wrap">
+                  <a href="mobile-apps.html" class="mega-link-card"
+                    style="background:var(--brand-emerald-tint);">
+                    <div class="mega-link-icon-wrap" style="background:var(--brand-emerald); color:#ffffff;">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
                         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
@@ -1636,8 +1635,8 @@
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span>Mobile Applications</span>
-                        <span class="mega-arrow">→</span>
+                        <span style="color:var(--brand-emerald-dark);">Mobile Applications</span>
+                        <span class="mega-arrow" style="opacity:1; transform:translateX(0);">→</span>
                       </div>
                       <p class="mega-desc">iOS &amp; Android Flutter apps with offline-first sync</p>
                     </div>
@@ -1652,18 +1651,18 @@
                 <span class="pulse-dot"></span>
                 <span>Powering 50M+ monthly transactions &amp; readers across Bangladesh &amp; global</span>
               </div>
-              <a href="work.html" class="mega-footer-link">
+              <a href="../work.html" class="mega-footer-link">
                 View All Case Studies <span>→</span>
               </a>
             </div>
           </div>
         </div>
 
-        <a href="work.html" class="nav-link">Work</a>
+        <a href="../work.html" class="nav-link">Work</a>
 
         <!-- About Us Dropdown -->
         <div class="nav-item-dropdown">
-          <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          <a href="../about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
             <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5">
@@ -1682,7 +1681,7 @@
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
-                  <a href="about.html" class="mega-link-card">
+                  <a href="../about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1700,8 +1699,8 @@
                     </div>
                   </a>
 
-                  <a href="ceo-message.html" class="mega-link-card">
-                    <img src="assets/team/member_1.jpg" alt="CEO"
+                  <a href="../ceo-message.html" class="mega-link-card">
+                    <img src="../../assets/team/member_1.jpg" alt="CEO"
                       style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1712,8 +1711,8 @@
                     </div>
                   </a>
 
-                  <a href="cto-message.html" class="mega-link-card">
-                    <img src="assets/team/member_2.jpg" alt="CTO"
+                  <a href="../cto-message.html" class="mega-link-card">
+                    <img src="../../assets/team/member_2.jpg" alt="CTO"
                       style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1724,7 +1723,7 @@
                     </div>
                   </a>
 
-                  <a href="team.html" class="mega-link-card">
+                  <a href="../team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
                       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
@@ -1745,9 +1744,9 @@
 
               <!-- Column 2: Studio Culture -->
               <div class="mega-menu-col">
-                <a href="about.html#studio-culture" class="mega-feature-card">
+                <a href="../about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture"
+                    <img src="../../assets/images/work_culture.jpg" alt="Studio Culture"
                       style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
@@ -1765,12 +1764,12 @@
           </div>
         </div>
 
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="../blog.html" class="nav-link">Blog</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
       </div>
 
       <div class="nav-actions">
-        <a href="contact.html?solution=Web+Applications" class="btn btn-primary btn-sm">Request Tech Proposal →</a>
+        <a href="../contact.html?solution=Mobile+App" class="btn btn-primary btn-sm">Request Tech Proposal →</a>
         <button class="nav-burger" id="burgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
           aria-controls="mobilePanel">
           <span></span><span></span><span></span>
@@ -1780,29 +1779,30 @@
 
     <!-- Mobile Drawer -->
     <div class="mobile-panel" id="mobilePanel">
-      <a href="index.html">Home <span>→</span></a>
+      <a href="../../index.html">Home <span>→</span></a>
       <div
         style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--brand-emerald-dark); text-transform: uppercase; letter-spacing: 0.08em;">
         Flagship Solutions</div>
-      <a href="solution-newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
+      <a href="newsroom-cms.html" style="padding-left: 28px;">Newsroom CMS <span class="pill-hot"
           style="font-size:0.65rem;">HOT</span> <span>→</span></a>
-      <a href="solution-ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
-      <a href="solution-cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
-      <a href="solution-enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
-      <a href="solution-web-applications.html"
-        style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Web
-        Applications &amp; SaaS <span>→</span></a>
-      <a href="solution-mobile-apps.html" style="padding-left: 28px;">Mobile Applications <span>→</span></a>
+      <a href="ecommerce.html" style="padding-left: 28px;">E-Commerce Platforms <span>→</span></a>
+      <a href="cloud-devops.html" style="padding-left: 28px;">Cloud Solutions &amp; DevOps <span>→</span></a>
+      <a href="enterprise-cms.html" style="padding-left: 28px;">Enterprise Headless CMS <span>→</span></a>
+      <a href="web-applications.html" style="padding-left: 28px;">Web Applications &amp; SaaS
+        <span>→</span></a>
+      <a href="mobile-apps.html"
+        style="padding-left: 28px; background:var(--brand-emerald-tint); color:var(--brand-emerald-dark);">Mobile
+        Applications <span>→</span></a>
       <div
         style="padding: 10px 18px 4px; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em;">
         Company</div>
-      <a href="about.html">About Us <span>→</span></a>
-      <a href="team.html">Team <span>→</span></a>
-      <a href="blog.html">Blog / Engineering Insights <span>→</span></a>
-      <a href="work.html">Work / Portfolio <span>→</span></a>
-      <a href="ceo-message.html">CEO Message <span>→</span></a>
-      <a href="cto-message.html">CTO Message <span>→</span></a>
-      <a href="contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
+      <a href="../about.html">About Us <span>→</span></a>
+      <a href="../team.html">Team <span>→</span></a>
+      <a href="../blog.html">Blog / Engineering Insights <span>→</span></a>
+      <a href="../work.html">Work / Portfolio <span>→</span></a>
+      <a href="../ceo-message.html">CEO Message <span>→</span></a>
+      <a href="../cto-message.html">CTO Message <span>→</span></a>
+      <a href="../contact.html" style="color:var(--brand-emerald-dark); font-weight:700;">Start a Project / Contact
         <span>→</span></a>
     </div>
   </nav>
@@ -1813,102 +1813,100 @@
   <section class="solution-hero">
     <div class="container">
       <div class="breadcrumbs">
-        <a href="index.html">Home</a>
+        <a href="../../index.html">Home</a>
         <span class="sep">/</span>
-        <a href="index.html#solutions">Solutions</a>
+        <a href="../../index.html#solutions">Solutions</a>
         <span class="sep">/</span>
-        <span class="current">Web Applications &amp; SaaS</span>
+        <span class="current">Mobile Applications</span>
       </div>
 
       <div class="hero-grid">
         <div class="hero-content">
           <div class="badge-tag">
             <span class="pulse-dot"></span>
-            Web Applications &amp; SaaS · Mission-Critical Systems
+            Cross-Platform Mobile · Native Performance
           </div>
-          <h1>Custom <span class="text-emerald">Web Applications, Portals</span> &amp; Multi-Tenant SaaS.</h1>
+          <h1>Native-Performance <span class="text-emerald">Mobile Applications</span> for iOS &amp; Android.</h1>
           <p class="hero-lead">
-            Transforming intricate business logic and massive corporate datasets into reactive, lightning-fast web
-            applications. We design secure, role-driven platforms with real-time WebSocket sync, multi-tenant schema
-            isolation, automated financial ledgers, and deterministic speed.
+            High-performance mobile applications powered by modern Flutter and React Native architectures. Built for
+            real-world reliability with deterministic offline-first SQLite synchronization, biometric FaceID
+            authentication, low-latency push notifications, and fluid 60 FPS interfaces.
           </p>
           <div class="hero-actions">
-            <a href="contact.html?solution=Web+Applications" class="btn btn-primary">Request Architecture Consultation
-              →</a>
+            <a href="../contact.html?solution=Mobile+App" class="btn btn-primary">Request Architecture Consultation →</a>
             <a href="#case-studies" class="btn btn-secondary">Explore Client Case Studies</a>
           </div>
 
           <div class="metrics-strip">
             <div class="metric-item">
-              <div class="metric-val">2.5M+</div>
-              <div class="metric-lbl">Daily Transactions Processed</div>
+              <div class="metric-val">5M+</div>
+              <div class="metric-lbl">Total Consumer Installs</div>
             </div>
             <div class="metric-item">
-              <div class="metric-val">&lt;100ms</div>
-              <div class="metric-lbl">Median Database Query SLA</div>
+              <div class="metric-val">4.8★</div>
+              <div class="metric-lbl">Average App Store Rating</div>
             </div>
             <div class="metric-item">
               <div class="metric-val">100%</div>
-              <div class="metric-lbl">Multi-Tenant Schema Isolation</div>
+              <div class="metric-lbl">Offline-First Data Continuity</div>
             </div>
             <div class="metric-item">
-              <div class="metric-val">SOC2</div>
-              <div class="metric-lbl">Security Compliant Architecture</div>
+              <div class="metric-val">60 FPS</div>
+              <div class="metric-lbl">Fluid Native Animation</div>
             </div>
           </div>
         </div>
 
         <!-- Interactive Telemetry Simulation -->
-        <div class="interactive-webapp-card">
-          <div class="webapp-header">
-            <div class="webapp-title">
+        <div class="interactive-mobile-card">
+          <div class="mobile-header">
+            <div class="mobile-title">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
               </svg>
-              SaaS Telemetry &amp; Event Bus
+              Mobile Runtime &amp; Sync Telemetry
             </div>
-            <span class="webapp-badge">REAL-TIME</span>
+            <span class="mobile-badge">ONLINE SYNC</span>
           </div>
 
           <div class="telemetry-grid">
             <div class="telemetry-box">
-              <div class="lbl">Active Users</div>
-              <div class="val" style="color:var(--brand-emerald-accent);">6,840 Live</div>
+              <div class="lbl">Active On App</div>
+              <div class="val" style="color:var(--brand-emerald-accent);">18,450 Live</div>
             </div>
             <div class="telemetry-box">
-              <div class="lbl">WebSocket Bus</div>
-              <div class="val">&lt;12ms Roundtrip</div>
+              <div class="lbl">UI Render Frame</div>
+              <div class="val">60 FPS Smooth</div>
             </div>
             <div class="telemetry-box">
-              <div class="lbl">Job Queue Rate</div>
-              <div class="val">1,820 jobs/sec</div>
+              <div class="lbl">Local Storage</div>
+              <div class="val">SQLite Encrypted</div>
             </div>
             <div class="telemetry-box">
-              <div class="lbl">Ledger Status</div>
-              <div class="val" style="color:var(--brand-emerald-accent);">100% Balanced</div>
+              <div class="lbl">Push Latency</div>
+              <div class="val" style="color:var(--brand-emerald-accent);">&lt;350ms FCM</div>
             </div>
           </div>
 
-          <div class="webapp-stream">
+          <div class="mobile-stream">
             <div class="stream-row">
-              <span>[WEBSOCKET] Real-time maritime cargo telemetry</span>
-              <span class="stream-tag">Synced</span>
+              <span>[OFFLINE SYNC] 48 drafted cart items synched</span>
+              <span class="stream-tag">Reconnection OK</span>
             </div>
             <div class="stream-row">
-              <span>[ASYNC QUEUE] 1,200 PDF invoices generated &amp; dispatched</span>
-              <span class="stream-tag">1.2s Duration</span>
+              <span>[BIOMETRICS] FaceID / TouchID auth handshake</span>
+              <span class="stream-tag">Secure Enclave</span>
             </div>
             <div class="stream-row">
-              <span>[TENANT ISOLATION] Cross-tenant perimeter audit verified</span>
-              <span class="stream-tag">Zero Leaks</span>
+              <span>[PUSH DISPATCH] Breaking broadcast alert sent</span>
+              <span class="stream-tag">140k Dispatched</span>
             </div>
           </div>
 
-          <div class="webapp-footer-status">
-            <span>Platform Concurrency:</span>
-            <span class="status-ok">99.98% Healthy Under Full Load</span>
+          <div class="mobile-footer-status">
+            <span>App Crash-Free Rate:</span>
+            <span class="status-ok">99.96% Crash-Free Users (Crashlytics)</span>
           </div>
         </div>
       </div>
@@ -1921,57 +1919,56 @@
   <section class="section-pad arch-section">
     <div class="container">
       <div class="section-head">
-        <div class="badge-tag">SaaS Architecture</div>
-        <h2>Engineered for real-time collaboration and strict tenant security.</h2>
+        <div class="badge-tag">Mobile Engineering Architecture</div>
+        <h2>Offline-first synchronization with native compiled speed.</h2>
         <p>
-          We construct reactive single-page frontends backed by event-driven microservices, WebSocket communication
-          channels, and segregated database schemas to guarantee isolation and speed.
+          We construct cross-platform Flutter applications that compile directly to native ARM machine code on iOS and
+          Android, paired with an embedded SQLite engine that guarantees zero data loss in poor connectivity.
         </p>
       </div>
 
       <div class="arch-flow-grid">
         <div class="arch-step-card">
           <span class="arch-step-num">Step 01</span>
-          <h3>Reactive Frontend</h3>
-          <p>Next.js &amp; React client-side dashboards with TanStack Query caching, optimistic UI updates, and zero
-            screen flickering.</p>
+          <h3>Flutter Native Core</h3>
+          <p>Compiles directly to machine code using Skia / Impeller graphics engines for silky 60/120 FPS transitions
+            and gestures.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 02</span>
-          <h3>API Gateway &amp; Auth</h3>
-          <p>JWT authentication with cryptographic rotating refresh tokens, rate limiters, and granular RBAC role
-            verification.</p>
+          <h3>Embedded SQLite Cache</h3>
+          <p>Local SQLite database stores catalogs, article archives, and user drafts with deterministic conflict
+            resolution on reconnection.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 03</span>
-          <h3>WebSocket Event Bus</h3>
-          <p>Bidirectional Socket.io &amp; Go WebSocket channels push real-time alerts, collaborative cursor locks, and
-            live status charts.</p>
+          <h3>Hardware &amp; Security Bridge</h3>
+          <p>Direct platform channel access to iOS Secure Enclave / Android KeyStore for biometrics, camera, GPS, and
+            Bluetooth.</p>
         </div>
 
         <div class="arch-step-card">
           <span class="arch-step-num">Step 04</span>
-          <h3>Multi-Tenant Storage</h3>
-          <p>PostgreSQL schema-per-tenant isolation paired with Redis BullMQ asynchronous queues for heavy background
-            tasks.</p>
+          <h3>FCM &amp; APNs Push Gateways</h3>
+          <p>High-throughput push notification infrastructure delivering personalized breaking alerts and order status
+            updates in &lt;500ms.</p>
         </div>
       </div>
 
-      <div class="arch-callout-box" id="microservices">
+      <div class="arch-callout-box">
         <div class="arch-callout-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="16 18 22 12 16 6" />
-            <polyline points="8 6 2 12 8 18" />
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
         </div>
         <div class="arch-callout-body">
-          <h4>API &amp; Microservices Architecture</h4>
+          <h4>Deterministic Offline-First Reliability</h4>
           <p>
-            When applications outgrow monolithic frameworks, eMMSOFT decomposes core business functions into decoupled,
-            self-contained microservices communicating over gRPC and RESTful event contracts with dedicated Redis
-            caching layers.
+            Whether riding the metro or travelling through remote regions with spotty 3G/4G coverage, eMMSOFT mobile
+            applications keep operating seamlessly. Actions are queued locally in SQLite and synchronized automatically
+            once network signals return.
           </p>
         </div>
       </div>
@@ -1985,8 +1982,9 @@
     <div class="container">
       <div class="section-head">
         <div class="badge-tag">Core Features &amp; Modules</div>
-        <h2>Full-spectrum enterprise web application capabilities.</h2>
-        <p>Architected for complex enterprise operations, supply chain logistics, and high-volume digital workflows.</p>
+        <h2>Native mobile performance engineered for enterprise scale.</h2>
+        <p>Everything modern consumer apps require: speed, security, offline tolerance, and seamless push engagement.
+        </p>
       </div>
 
       <div class="cap-grid">
@@ -1994,25 +1992,24 @@
         <div class="cap-card">
           <div class="cap-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="12 2 2 7 12 12 22 7 12 2" />
-              <polyline points="2 17 12 22 22 17" />
-              <polyline points="2 12 12 17 22 12" />
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
             </svg>
           </div>
-          <h3>Multi-Tenant SaaS Architecture</h3>
-          <p>Rigid tenant data segregation using schema-per-tenant or row-level security (RLS) models with automated
-            tenant provisioning.</p>
+          <h3>Single Codebase, Native 60 FPS Speed</h3>
+          <p>Develop once for iOS and Android with Flutter. Achieve pixel-perfect platform UI with zero webview wrappers
+            or sluggish bridges.</p>
           <ul class="cap-bullets">
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Zero cross-tenant data leak risk</li>
+              </svg> 50% lower maintenance costs</li>
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Custom domain &amp; branding support</li>
+              </svg> 120Hz ProMotion screen support</li>
           </ul>
         </div>
 
@@ -2020,24 +2017,25 @@
         <div class="cap-card">
           <div class="cap-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 14 14" />
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
             </svg>
           </div>
-          <h3>Real-Time WebSockets &amp; Telemetry</h3>
-          <p>Bi-directional event streaming delivering instant dashboard metrics, multi-user live cursors,
-            notifications, and status telemetry.</p>
+          <h3>Deterministic Offline-First Sync</h3>
+          <p>Local SQLite caching stores articles, shopping bags, and user records. Automatic background synchronization
+            upon internet reconnect.</p>
           <ul class="cap-bullets">
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Sub-15ms client notification latency</li>
+              </svg> CRDT conflict-free resolution</li>
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Reconnection &amp; message queue fallback</li>
+              </svg> Seamless background job sync</li>
           </ul>
         </div>
 
@@ -2048,20 +2046,20 @@
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
           </div>
-          <h3>Granular RBAC &amp; Permission Matrix</h3>
-          <p>Define dynamic roles with attribute-based access control (ABAC). Restrict access by branch, department,
-            transaction amount, or IP whitelist.</p>
+          <h3>Biometric Authentication &amp; Security</h3>
+          <p>FaceID, TouchID, and Android BiometricPrompt integrations with hardware-backed encryption keys and SSL
+            certificate pinning.</p>
           <ul class="cap-bullets">
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Granular action-level permissions</li>
+              </svg> SSL certificate pinning defense</li>
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Complete immutable audit logs</li>
+              </svg> Zero-knowledge biometric storage</li>
           </ul>
         </div>
 
@@ -2069,25 +2067,24 @@
         <div class="cap-card">
           <div class="cap-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-              <line x1="3" y1="9" x2="21" y2="9" />
-              <line x1="9" y1="21" x2="9" y2="9" />
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
           </div>
-          <h3>High-Performance Analytics &amp; Reports</h3>
-          <p>Aggregate millions of records with sub-second queries. Interactive charts, cohort funnels, and automated
-            scheduled PDF/Excel exports.</p>
+          <h3>Low-Latency Push Notifications</h3>
+          <p>Deep-linked push campaigns with rich images, actions, and custom sound alerts powered by Firebase Cloud
+            Messaging and Apple APNs.</p>
           <ul class="cap-bullets">
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Instant client-side filtering &amp; sorting</li>
+              </svg> Deep link straight to article or SKU</li>
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> ClickHouse columnar analytics acceleration</li>
+              </svg> Segmented geographic targeting</li>
           </ul>
         </div>
 
@@ -2095,27 +2092,24 @@
         <div class="cap-card">
           <div class="cap-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="m4.93 4.93 4.24 4.24" />
-              <path d="m14.83 9.17 4.24-4.24" />
-              <path d="m14.83 14.83 4.24 4.24" />
-              <path d="m9.17 14.83-4.24 4.24" />
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+              <line x1="1" y1="10" x2="23" y2="10" />
             </svg>
           </div>
-          <h3>Asynchronous Worker Queues</h3>
-          <p>Offload heavy computational jobs, email dispatches, and report compilation to Redis BullMQ worker pools
-            without locking user UI interactions.</p>
+          <h3>In-App Payments &amp; bKash Mobile SDK</h3>
+          <p>Direct mobile checkout through native payment SDKs: bKash App-to-App payment, Nagad, Apple Pay, Google Pay,
+            and credit cards.</p>
           <ul class="cap-bullets">
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Automatic retry &amp; dead-letter queues</li>
+              </svg> Sub-5-second mobile checkout</li>
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Progress bars with WebSocket updates</li>
+              </svg> Automated subscription auto-renew</li>
           </ul>
         </div>
 
@@ -2128,20 +2122,20 @@
               <polyline points="2 12 12 17 22 12" />
             </svg>
           </div>
-          <h3>Third-Party Enterprise Integrations</h3>
-          <p>Seamlessly integrate with legacy ERPs, payment gateways, telco SMS gateways, WhatsApp Business APIs, and
-            single sign-on providers.</p>
+          <h3>Automated App Store CI/CD (Fastlane)</h3>
+          <p>Automated building, code signing, screenshot generation, and store deployment to Apple App Store and Google
+            Play Store.</p>
           <ul class="cap-bullets">
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Robust webhook validation &amp; idempotency</li>
+              </svg> 100% store guideline compliance</li>
             <li><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd" />
-              </svg> Certified banking API protocol support</li>
+              </svg> One-click beta TestFlight builds</li>
           </ul>
         </div>
       </div>
@@ -2155,56 +2149,31 @@
     <div class="container">
       <div class="section-head">
         <div class="badge-tag">Battle-Tested Components</div>
-        <h2>Enterprise web application technology stack.</h2>
-        <p>Built with robust reactive frameworks, strongly typed contracts, and enterprise databases.</p>
+        <h2>Enterprise mobile engineering stack.</h2>
+        <p>Built with Google's native Flutter engine, local SQLite persistence, and secure cloud APIs.</p>
       </div>
 
       <div class="stack-matrix-grid">
         <div class="stack-col-card">
           <div class="stack-col-header">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <line x1="8" y1="21" x2="16" y2="21" />
-              <line x1="12" y1="17" x2="12" y2="21" />
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
             </svg>
-            Frontend &amp; UI
+            Mobile Framework
           </div>
           <div class="stack-list">
             <div class="stack-item">
-              <span class="stack-item-name">Next.js / React 18</span>
-              <span class="stack-item-role">Reactive App Shell</span>
+              <span class="stack-item-name">Flutter / Dart</span>
+              <span class="stack-item-role">Cross-Platform Core</span>
             </div>
             <div class="stack-item">
-              <span class="stack-item-name">TypeScript</span>
-              <span class="stack-item-role">Strict Type Contracts</span>
+              <span class="stack-item-name">React Native</span>
+              <span class="stack-item-role">JavaScript Runtime</span>
             </div>
             <div class="stack-item">
-              <span class="stack-item-name">TanStack Query</span>
-              <span class="stack-item-role">Client State &amp; Cache</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="stack-col-card">
-          <div class="stack-col-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-            Backend &amp; Sockets
-          </div>
-          <div class="stack-list">
-            <div class="stack-item">
-              <span class="stack-item-name">Node.js / NestJS</span>
-              <span class="stack-item-role">Microservices Architecture</span>
-            </div>
-            <div class="stack-item">
-              <span class="stack-item-name">Go (Golang)</span>
-              <span class="stack-item-role">High-Concurrency Sockets</span>
-            </div>
-            <div class="stack-item">
-              <span class="stack-item-name">Python FastAPI</span>
-              <span class="stack-item-role">Data Pipelines &amp; AI</span>
+              <span class="stack-item-name">Swift / Kotlin</span>
+              <span class="stack-item-role">Platform Native Bridges</span>
             </div>
           </div>
         </div>
@@ -2216,20 +2185,44 @@
               <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
               <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
             </svg>
-            Data &amp; Queues
+            Offline Persistence
           </div>
           <div class="stack-list">
             <div class="stack-item">
-              <span class="stack-item-name">PostgreSQL Aurora</span>
-              <span class="stack-item-role">ACID Relational Core</span>
+              <span class="stack-item-name">SQLite / Drift</span>
+              <span class="stack-item-role">Embedded Relational DB</span>
             </div>
             <div class="stack-item">
-              <span class="stack-item-name">Redis &amp; BullMQ</span>
-              <span class="stack-item-role">Async Background Workers</span>
+              <span class="stack-item-name">Hive / Isar</span>
+              <span class="stack-item-role">Ultra-Fast Key-Value</span>
             </div>
             <div class="stack-item">
-              <span class="stack-item-name">ClickHouse</span>
-              <span class="stack-item-role">Columnar Analytics Store</span>
+              <span class="stack-item-name">Encrypted KeyStore</span>
+              <span class="stack-item-role">Biometric Credential Vault</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-col-card">
+          <div class="stack-col-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+            State &amp; Network
+          </div>
+          <div class="stack-list">
+            <div class="stack-item">
+              <span class="stack-item-name">Bloc / Riverpod</span>
+              <span class="stack-item-role">Predictable State Machine</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">Dio / GraphQL</span>
+              <span class="stack-item-role">Interceptors &amp; Retries</span>
+            </div>
+            <div class="stack-item">
+              <span class="stack-item-name">WebSockets</span>
+              <span class="stack-item-role">Real-Time Mobile Bus</span>
             </div>
           </div>
         </div>
@@ -2239,20 +2232,20 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
-            Security &amp; Cloud
+            Cloud &amp; CI/CD
           </div>
           <div class="stack-list">
             <div class="stack-item">
-              <span class="stack-item-name">Docker &amp; K8s</span>
-              <span class="stack-item-role">Auto-scaling Pods</span>
+              <span class="stack-item-name">Firebase FCM</span>
+              <span class="stack-item-role">Push Notification Engine</span>
             </div>
             <div class="stack-item">
-              <span class="stack-item-name">OAuth2 &amp; JWT</span>
-              <span class="stack-item-role">Tokenized Session Security</span>
+              <span class="stack-item-name">Fastlane</span>
+              <span class="stack-item-role">Automated Store Releases</span>
             </div>
             <div class="stack-item">
-              <span class="stack-item-name">Cloudflare WAF</span>
-              <span class="stack-item-role">Zero-Trust Network Access</span>
+              <span class="stack-item-name">Crashlytics</span>
+              <span class="stack-item-role">Real-Time Crash Telemetry</span>
             </div>
           </div>
         </div>
@@ -2267,74 +2260,74 @@
     <div class="container">
       <div class="section-head">
         <div class="badge-tag">Case Studies &amp; Evidence</div>
-        <h2>Powering maritime logistics &amp; higher education.</h2>
-        <p>Production enterprise platforms handling thousands of operational workflows daily.</p>
+        <h2>Top-rated applications on Google Play &amp; Apple App Store.</h2>
+        <p>Production evidence of fluid mobile applications deployed across millions of devices.</p>
       </div>
 
       <div class="case-grid">
-        <!-- HRC Shipping -->
+        <!-- Step Footwear Mobile -->
         <div class="case-card">
           <div>
             <div class="case-brand-row">
-              <img src="assets/clients/city_group.jpg" alt="City Group / Shipping" class="case-logo">
-              <span class="case-tag">Maritime Logistics Portal</span>
+              <img src="../../assets/clients/step_steptm.jpg" alt="Step Footwear" class="case-logo">
+              <span class="case-tag">E-Commerce Mobile App</span>
             </div>
-            <h3>HRC Shipping: Real-Time Cargo Manifest &amp; Vessel Tracking Portal</h3>
+            <h3>Step Footwear Mobile: Instant bKash Checkout &amp; Smart Size Recommendations</h3>
             <p>
-              eMMSOFT engineered a mission-critical maritime operations platform for HRC Shipping. Automates ocean
-              container tracking, port berth scheduling, customer bill of lading generation, and customs documentation
-              processing.
+              eMMSOFT engineered the flagship consumer mobile application for Step Footwear on Flutter. Features instant
+              product search, offline shopping bag caching, one-tap biometric checkout, and direct integration with
+              bKash app-to-app payment SDK.
             </p>
           </div>
           <div class="case-stats-row">
             <div class="case-stat-item">
-              <div class="case-stat-val">100%</div>
-              <div class="case-stat-lbl">Digital Manifests</div>
+              <div class="case-stat-val">500k+</div>
+              <div class="case-stat-lbl">Downloads</div>
             </div>
             <div class="case-stat-item">
-              <div class="case-stat-val">&lt;3s</div>
-              <div class="case-stat-lbl">Doc Generation</div>
+              <div class="case-stat-val">4.8★</div>
+              <div class="case-stat-lbl">Play Rating</div>
             </div>
             <div class="case-stat-item">
-              <div class="case-stat-val">24/7</div>
-              <div class="case-stat-lbl">Port Telemetry</div>
+              <div class="case-stat-val">&lt;4s</div>
+              <div class="case-stat-lbl">Checkout Time</div>
             </div>
           </div>
         </div>
 
-        <!-- University of Dhaka -->
+        <!-- Channel 24 Mobile News -->
         <div class="case-card">
           <div>
             <div class="case-brand-row">
-              <img src="assets/clients/dhaka_university.svg" alt="University of Dhaka" class="case-logo">
-              <span class="case-tag">Higher Education</span>
+              <img src="../../assets/clients/channel24_hd.png" alt="Channel 24" class="case-logo">
+              <span class="case-tag">Live News &amp; Broadcast App</span>
             </div>
-            <h3>University of Dhaka: Digital Academic Portal for 40,000+ Students</h3>
+            <h3>Channel 24 Live: 24/7 TV Streaming &amp; Low-Bandwidth News Reader</h3>
             <p>
-              Architected the core digital portal for Bangladesh's premier university. Centralized faculty grade
-              submissions, digital course enrollments, online payment verifications, and digital transcript generation
-              with zero downtime during semester peak rushes.
+              Engineered a high-performance news application combining live HLS broadcast video streaming, breaking news
+              flash push alerts, and an offline news reading mode that enables readers to browse stories even during
+              subway or transit connectivity drops.
             </p>
           </div>
           <div class="case-stats-row">
             <div class="case-stat-item">
-              <div class="case-stat-val">40k+</div>
-              <div class="case-stat-lbl">Active Students</div>
+              <div class="case-stat-val">1M+</div>
+              <div class="case-stat-lbl">Active Installs</div>
+            </div>
+            <div class="case-stat-item">
+              <div class="case-stat-val">&lt;400ms</div>
+              <div class="case-stat-lbl">Push Delivery</div>
             </div>
             <div class="case-stat-item">
               <div class="case-stat-val">99.9%</div>
-              <div class="case-stat-lbl">Peak Uptime</div>
-            </div>
-            <div class="case-stat-item">
-              <div class="case-stat-val">Multi-Dept</div>
-              <div class="case-stat-lbl">Faculty Roles</div>
+              <div class="case-stat-lbl">Crash-Free</div>
             </div>
           </div>
         </div>
       </div>
 
       <div style="text-align:center; margin-top:36px;">
-        <a href="work.html" class="btn btn-secondary">Explore All 16+ Production Case Studies in Portfolio →</a>
+        <a href="../work.html" class="btn btn-secondary">Explore All 16+ Production Case Studies in Portfolio →</a>
       </div>
     </div>
   </section>
@@ -2346,37 +2339,37 @@
     <div class="container">
       <div class="section-head">
         <div class="badge-tag">Execution Methodology</div>
-        <h2>Enterprise web application development lifecycle.</h2>
-        <p>A rigorous 4-step engineering methodology guaranteeing on-time delivery and predictable sprint velocity.</p>
+        <h2>From prototype to App Store release.</h2>
+        <p>A proven 4-stage mobile development lifecycle guaranteeing app store approval on the first submission.</p>
       </div>
 
       <div class="process-timeline">
         <div class="process-node">
           <div class="node-num">1</div>
-          <h4>Domain-Driven Design</h4>
-          <p>We map your enterprise business rules, user personas, transactional entities, and document strict API
-            contracts.</p>
+          <h4>UI/UX &amp; Gesture Prototyping</h4>
+          <p>We create interactive mobile prototypes in Figma, designing ergonomic thumb zones, smooth gestures, and
+            micro-animations.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">2</div>
-          <h4>Bi-Weekly Agile Sprints</h4>
-          <p>Our senior squads build reactive interfaces and microservice endpoints in 2-week iterations with
-            interactive staging demos.</p>
+          <h4>Cross-Platform Flutter Build</h4>
+          <p>We engineer the core client application with Bloc state management, configure local SQLite storage, and
+            connect secure APIs.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">3</div>
-          <h4>Security &amp; Load Testing</h4>
-          <p>Penetration testing, static code analysis, and concurrent WebSocket stress-testing ensure stability before
-            launch.</p>
+          <h4>Device-Lab Stress Testing</h4>
+          <p>We test across 30+ physical iOS and Android device form factors, validating low-battery consumption, memory
+            usage, and edge networks.</p>
         </div>
 
         <div class="process-node">
           <div class="node-num">4</div>
-          <h4>Production Rollout &amp; SLA</h4>
-          <p>Gradual user onboarding, enterprise single sign-on enablement, and ongoing maintenance backed by dedicated
-            support.</p>
+          <h4>Store Publishing &amp; Monitoring</h4>
+          <p>We handle Apple App Store &amp; Google Play Store compliance, automate Fastlane deployments, and monitor
+            real-time Crashlytics.</p>
         </div>
       </div>
     </div>
@@ -2389,19 +2382,19 @@
     <div class="container" style="max-width:760px; position:relative; z-index:1;">
       <div class="badge-tag"
         style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
-        Build High-Performance SaaS
+        Launch on iOS &amp; Android
       </div>
       <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:16px;">
-        Ready to engineer your next mission-critical web platform?
+        Ready to engineer a standout mobile experience?
       </h2>
       <p style="color:#94a3b8; font-size:1.1rem; line-height:1.65; margin-bottom:32px;">
-        Collaborate directly with our Principal Web Architects. Receive a technical architecture proposal, data model
-        review, and sprint timeline within 4 business hours.
+        Consult directly with our Mobile Architecture Team. Receive a cross-platform Flutter technical feasibility
+        review, offline data architecture blueprint, and release roadmap within 4 business hours.
       </p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html?solution=Web+Applications" class="btn btn-primary"
-          style="padding:15px 32px; font-size:1.05rem;">Request Platform Proposal →</a>
-        <a href="work.html" class="btn btn-secondary"
+        <a href="../contact.html?solution=Mobile+App" class="btn btn-primary"
+          style="padding:15px 32px; font-size:1.05rem;">Request Mobile Proposal →</a>
+        <a href="../work.html" class="btn btn-secondary"
           style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">View Live Case
           Studies</a>
       </div>
@@ -2415,8 +2408,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html#home" class="brand-link">
-            <img src="logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+          <a href="../../index.html#home" class="brand-link">
+            <img src="../../assets/images/logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
           </a>
           <p>
             High-performance software engineering studio — Newsroom CMS, E-Commerce, Cloud Infrastructure, and Enterprise Applications.
@@ -2431,25 +2424,25 @@
         <div class="footer-col">
           <h4>Core Solutions</h4>
           <ul>
-            <li><a href="solution-newsroom-cms.html">Newsroom CMS (Headless)</a></li>
-            <li><a href="solution-ecommerce.html">E-Commerce Platforms</a></li>
-            <li><a href="solution-cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
-            <li><a href="solution-enterprise-cms.html">Enterprise Headless CMS</a></li>
-            <li><a href="solution-web-applications.html" style="color:var(--brand-emerald-dark); font-weight:700;">Web
-                Applications &amp; SaaS</a></li>
-            <li><a href="solution-mobile-apps.html">Mobile Apps (iOS &amp; Android)</a></li>
+            <li><a href="newsroom-cms.html">Newsroom CMS (Headless)</a></li>
+            <li><a href="ecommerce.html">E-Commerce Platforms</a></li>
+            <li><a href="cloud-devops.html">Cloud Solutions &amp; DevOps</a></li>
+            <li><a href="enterprise-cms.html">Enterprise Headless CMS</a></li>
+            <li><a href="web-applications.html">Web Applications &amp; SaaS</a></li>
+            <li><a href="mobile-apps.html" style="color:var(--brand-emerald-dark); font-weight:700;">Mobile
+                Apps (iOS &amp; Android)</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Leadership &amp; Studio</h4>
           <ul>
-            <li><a href="about.html">About eMMSOFT</a></li>
-            <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
-            <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
-            <li><a href="team.html">Our Team &amp; Roster</a></li>
-            <li><a href="work.html">Selected Projects</a></li>
-            <li><a href="blog.html">Engineering Blog &amp; Insights</a></li>
+            <li><a href="../about.html">About eMMSOFT</a></li>
+            <li><a href="../ceo-message.html">CEO's Message (Shawon)</a></li>
+            <li><a href="../cto-message.html">CTO's Message (Polash)</a></li>
+            <li><a href="../team.html">Our Team &amp; Roster</a></li>
+            <li><a href="../work.html">Selected Projects</a></li>
+            <li><a href="../blog.html">Engineering Blog &amp; Insights</a></li>
           </ul>
         </div>
 
@@ -2458,7 +2451,7 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+            <li><a href="../contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
                 a Project →</a></li>
           </ul>
         </div>
