@@ -1,9 +1,9 @@
 const fs = require('fs');
 const html = fs.readFileSync('about.html', 'utf8');
 
-const cultureIdx = html.indexOf('work_culture.jpg');
+const cultureIdx = html.indexOf('office.png');
 if (cultureIdx !== -1) {
-  console.log('work_culture.jpg context:');
+  console.log('office.png context:');
   console.log(html.substring(cultureIdx - 200, cultureIdx + 200));
 }
 

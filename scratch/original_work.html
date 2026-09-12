@@ -117,7 +117,12 @@
       background: none;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: var(--font-heading);
       color: var(--ink-primary);
       line-height: 1.25;
@@ -209,9 +214,17 @@
     }
 
     @keyframes pulseAnim {
-      0% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(4, 148, 73, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(4, 148, 73, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(4, 148, 73, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 148, 73, 0);
+      }
     }
 
     /* ==========================================================================
@@ -347,8 +360,8 @@
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.25s;
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.25s;
       z-index: 300;
     }
 
@@ -671,8 +684,13 @@
     }
 
     @media (max-width: 900px) {
-      .nav-menu { display: none; }
-      .nav-burger { display: flex; }
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
     }
 
     /* ==========================================================================
@@ -680,8 +698,8 @@
        ========================================================================== */
     .work-hero {
       background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 45%),
-                  radial-gradient(circle at 10% 75%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
-                  var(--bg-main);
+        radial-gradient(circle at 10% 75%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+        var(--bg-main);
       padding: clamp(56px, 7vw, 92px) 0 clamp(44px, 5vw, 68px);
       border-bottom: 1px solid var(--border-light);
       position: relative;
@@ -771,7 +789,7 @@
       position: sticky;
       top: 76px;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
 
     .filter-bar-inner {
@@ -1229,7 +1247,8 @@
         <div class="nav-item-dropdown">
           <a href="index.html#solutions" class="nav-link" aria-haspopup="true" aria-expanded="false">
             Solutions
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1238,17 +1257,26 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col-left">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
                   Flagship Engineering Solutions
                 </div>
                 <div class="mega-links-list">
                   <a href="index.html#specializations" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                          d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
-                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span class="pill-hot">HOT</span></span>
+                        <span style="display:inline-flex; align-items:center; gap:6px;">Newsroom CMS <span
+                            class="pill-hot">HOT</span></span>
                         <span class="mega-arrow">→</span>
                       </div>
                       <p class="mega-desc">High-concurrency headless publishing &amp; edge caching</p>
@@ -1256,7 +1284,12 @@
                   </a>
                   <a href="index.html#ecommerce" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1268,7 +1301,11 @@
                   </a>
                   <a href="index.html#cloud-apps" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1282,18 +1319,28 @@
               </div>
               <div class="mega-menu-col-right">
                 <a href="index.html#solutions" class="mega-feature-card">
-                  <div class="mega-feature-thumb" style="height:116px; background:linear-gradient(135deg, #0b0f15 0%, #151d2a 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
-                    <div style="position:absolute; inset:0; background:radial-gradient(circle at 75% 30%, rgba(4,148,73,0.35) 0%, transparent 65%);"></div>
+                  <div class="mega-feature-thumb"
+                    style="height:116px; background:linear-gradient(135deg, #0b0f15 0%, #151d2a 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                    <div
+                      style="position:absolute; inset:0; background:radial-gradient(circle at 75% 30%, rgba(4,148,73,0.35) 0%, transparent 65%);">
+                    </div>
                     <span class="mega-feature-badge">6 Pillars</span>
                     <div style="text-align:center; position:relative; z-index:1; padding:10px;">
-                      <div style="color:var(--brand-emerald-accent); font-family:var(--font-mono); font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">Interactive Demo</div>
-                      <div style="color:#ffffff; font-family:var(--font-heading); font-weight:700; font-size:1.05rem; margin-top:3px;">Solutions Suite</div>
+                      <div
+                        style="color:var(--brand-emerald-accent); font-family:var(--font-mono); font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">
+                        Interactive Demo</div>
+                      <div
+                        style="color:#ffffff; font-family:var(--font-heading); font-weight:700; font-size:1.05rem; margin-top:3px;">
+                        Solutions Suite</div>
                     </div>
                   </div>
                   <div class="mega-feature-body">
                     <div class="mega-feature-title">
                       <span>Explore All Solutions</span>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
                     </div>
                     <p class="mega-feature-desc">Interactive tabs for Newsroom, E-Commerce, Cloud &amp; Mobile.</p>
                   </div>
@@ -1307,7 +1354,8 @@
         <div class="nav-item-dropdown">
           <a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
             About Us
-            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
@@ -1316,13 +1364,21 @@
             <div class="mega-menu-grid">
               <div class="mega-menu-col-left">
                 <div class="mega-menu-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
                   Leadership &amp; Studio Team
                 </div>
                 <div class="mega-links-list">
                   <a href="about.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1355,7 +1411,11 @@
                   </a>
                   <a href="team.html" class="mega-link-card">
                     <div class="mega-link-icon-wrap">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                      </svg>
                     </div>
                     <div class="mega-link-card-body">
                       <div class="mega-title">
@@ -1370,13 +1430,16 @@
               <div class="mega-menu-col-right">
                 <a href="team.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb">
-                    <img src="assets/work_culture.jpg" alt="eMMSOFT Studio Workspace" loading="lazy">
+                    <img src="assets/office.png" alt="eMMSOFT Studio Workspace" loading="lazy">
                     <span class="mega-feature-badge">Inside eMMSOFT</span>
                   </div>
                   <div class="mega-feature-body">
                     <div class="mega-feature-title">
                       <span>Work Environment</span>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
                     </div>
                     <p class="mega-feature-desc">See how we collaborate and engineer mission-critical systems.</p>
                   </div>
@@ -1423,7 +1486,9 @@
       </div>
       <h1>Production software engineered for <span class="text-emerald">national scale</span> &amp; resilience.</h1>
       <p>
-        From the most visited 24/7 breaking newsrooms in South Asia to multi-warehouse e-commerce operations, institutional repositories, and global maritime logistics—explore real-world platforms engineered by eMythMakers (eMMSOFT).
+        From the most visited 24/7 breaking newsrooms in South Asia to multi-warehouse e-commerce operations,
+        institutional repositories, and global maritime logistics—explore real-world platforms engineered by eMythMakers
+        (eMMSOFT).
       </p>
 
       <div class="work-stats-bar">
@@ -1461,7 +1526,8 @@
       </div>
 
       <div class="search-box">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.5">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
@@ -1488,10 +1554,14 @@
           <div class="project-body">
             <h3 class="project-title">bdnews24.com</h3>
             <p class="project-desc">
-              Bangladesh's pioneer 24/7 digital news publisher. We architected their custom headless newsroom engine and Anycast edge caching layer capable of sustaining tens of millions of pageviews during national elections and historic breaking news without slowdown.
+              Bangladesh's pioneer 24/7 digital news publisher. We architected their custom headless newsroom engine and
+              Anycast edge caching layer capable of sustaining tens of millions of pageviews during national elections
+              and historic breaking news without slowdown.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
               <span>28M+ Readers · &lt; 40ms TTFB · 100% Uptime</span>
             </div>
             <div class="tech-stack-row">
@@ -1520,10 +1590,14 @@
           <div class="project-body">
             <h3 class="project-title">Channel 24 (channel24bd.tv)</h3>
             <p class="project-desc">
-              Premier national satellite television network. Engineered their high-throughput live broadcasting news portal featuring automated video stream transcoding, live breaking ticker syndication, and multi-desk video publishing.
+              Premier national satellite television network. Engineered their high-throughput live broadcasting news
+              portal featuring automated video stream transcoding, live breaking ticker syndication, and multi-desk
+              video publishing.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
               <span>Live HLS Stream · 15M+ Monthly Views</span>
             </div>
             <div class="tech-stack-row">
@@ -1552,10 +1626,15 @@
           <div class="project-body">
             <h3 class="project-title">Dhaka Tribune</h3>
             <p class="project-desc">
-              Leading English-language national broadsheet newspaper. Engineered a modular headless content management architecture supporting high-volume multimedia reporting, instant mobile edge caching, and automated newsletter distribution.
+              Leading English-language national broadsheet newspaper. Engineered a modular headless content management
+              architecture supporting high-volume multimedia reporting, instant mobile edge caching, and automated
+              newsletter distribution.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
               <span>18M+ Global Readers · Core Web Vitals 99</span>
             </div>
             <div class="tech-stack-row">
@@ -1584,10 +1663,15 @@
           <div class="project-body">
             <h3 class="project-title">Daily Janakantha</h3>
             <p class="project-desc">
-              One of Bangladesh's most historic national Bengali dailies. Transitioned their print legacy archive into a blazing-fast, modern digital edition featuring localized divisional bureaus and multi-decade searchable article archives.
+              One of Bangladesh's most historic national Bengali dailies. Transitioned their print legacy archive into a
+              blazing-fast, modern digital edition featuring localized divisional bureaus and multi-decade searchable
+              article archives.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
               <span>30+ Years News Archive · Sub-50ms TTFB</span>
             </div>
             <div class="tech-stack-row">
@@ -1616,10 +1700,16 @@
           <div class="project-body">
             <h3 class="project-title">Walton Hi-Tech Industries</h3>
             <p class="project-desc">
-              Bangladesh's flagship electronics and appliance manufacturing giant. Architected enterprise digital portals, online product catalogs, and dealer synchronization services supporting thousands of national distributor nodes.
+              Bangladesh's flagship electronics and appliance manufacturing giant. Architected enterprise digital
+              portals, online product catalogs, and dealer synchronization services supporting thousands of national
+              distributor nodes.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
               <span>5,000+ Outlets · High-Load Product Catalog</span>
             </div>
             <div class="tech-stack-row">
@@ -1648,10 +1738,16 @@
           <div class="project-body">
             <h3 class="project-title">Step Footwear E-Commerce</h3>
             <p class="project-desc">
-              National multi-outlet footwear brand. Engineered a high-concurrency transactional storefront capable of surviving intense seasonal flash sale campaigns with real-time inventory locking and automated courier API dispatch.
+              National multi-outlet footwear brand. Engineered a high-concurrency transactional storefront capable of
+              surviving intense seasonal flash sale campaigns with real-time inventory locking and automated courier API
+              dispatch.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
               <span>10,000+ Orders/hr · 0 Checkout Drops</span>
             </div>
             <div class="tech-stack-row">
@@ -1680,10 +1776,16 @@
           <div class="project-body">
             <h3 class="project-title">PRAN-RFL Global Brand Ecosystem</h3>
             <p class="project-desc">
-              Bangladesh's premier food and consumer goods exporter with distribution in over 140 nations. Engineered multi-brand corporate portals, product verification gateways, and supply-chain digital touchpoints.
+              Bangladesh's premier food and consumer goods exporter with distribution in over 140 nations. Engineered
+              multi-brand corporate portals, product verification gateways, and supply-chain digital touchpoints.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                </path>
+              </svg>
               <span>140+ Countries · Global Supply Chain</span>
             </div>
             <div class="tech-stack-row">
@@ -1712,10 +1814,15 @@
           <div class="project-body">
             <h3 class="project-title">ITN-BUET (Sanitation Repository)</h3>
             <p class="project-desc">
-              Developed for the International Training Network at BUET. Architected the national Sanitation Knowledge Repository (sanirepo.com) tracking Citywide Inclusive Sanitation (CWIS) and Faecal Sludge Management (FSM) data across all Bangladesh municipalities.
+              Developed for the International Training Network at BUET. Architected the national Sanitation Knowledge
+              Repository (sanirepo.com) tracking Citywide Inclusive Sanitation (CWIS) and Faecal Sludge Management (FSM)
+              data across all Bangladesh municipalities.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
               <span>National CWIS Hub · 64 Districts GIS</span>
             </div>
             <div class="tech-stack-row">
@@ -1744,10 +1851,14 @@
           <div class="project-body">
             <h3 class="project-title">University of Dhaka (du.ac.bd)</h3>
             <p class="project-desc">
-              Bangladesh's premier national university. Engineered institutional web platforms, departmental portal frameworks, academic research archives, and high-load admission announcement distribution systems.
+              Bangladesh's premier national university. Engineered institutional web platforms, departmental portal
+              frameworks, academic research archives, and high-load admission announcement distribution systems.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
               <span>40,000+ Students · High-Security Architecture</span>
             </div>
             <div class="tech-stack-row">
@@ -1769,8 +1880,10 @@
         <div class="project-card" data-category="corporate">
           <div class="project-header-banner">
             <div class="project-logo-wrap">
-              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.3rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span style="background:var(--brand-emerald); color:#fff; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">H</span>
+              <div
+                style="font-family:var(--font-heading); font-weight:800; font-size:1.3rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span
+                  style="background:var(--brand-emerald); color:#fff; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">H</span>
                 HRC Shipping
               </div>
             </div>
@@ -1779,10 +1892,17 @@
           <div class="project-body">
             <h3 class="project-title">HRC Shipping Maritime Portal</h3>
             <p class="project-desc">
-              Developed for HRC Shipping Ltd, a pioneer in Bangladeshi ocean shipping. Engineered real-time container tracking interfaces, vessel arrival/departure schedules, automated bill of lading retrieval, and port clearance records.
+              Developed for HRC Shipping Ltd, a pioneer in Bangladeshi ocean shipping. Engineered real-time container
+              tracking interfaces, vessel arrival/departure schedules, automated bill of lading retrieval, and port
+              clearance records.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
               <span>Global Container Tracking · Automated B/L</span>
             </div>
             <div class="tech-stack-row">
@@ -1811,10 +1931,16 @@
           <div class="project-body">
             <h3 class="project-title">Diamond World Store</h3>
             <p class="project-desc">
-              Bangladesh's premier certified diamond and luxury jewelry retailer. Engineered a high-security transactional store featuring live gold and bullion rate sync, secure vault reservation, and multi-currency checkout.
+              Bangladesh's premier certified diamond and luxury jewelry retailer. Engineered a high-security
+              transactional store featuring live gold and bullion rate sync, secure vault reservation, and
+              multi-currency checkout.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
               <span>High-Value Transactions · Fraud Defense</span>
             </div>
             <div class="tech-stack-row">
@@ -1843,10 +1969,14 @@
           <div class="project-body">
             <h3 class="project-title">Ha-Meem Group Enterprise Portal</h3>
             <p class="project-desc">
-              One of Bangladesh's largest garment manufacturing conglomerates exporting globally. Engineered their corporate digital identity, buyer compliance transparency portals, and multi-factory industrial showcases.
+              One of Bangladesh's largest garment manufacturing conglomerates exporting globally. Engineered their
+              corporate digital identity, buyer compliance transparency portals, and multi-factory industrial showcases.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
               <span>Global Buyer Hub · Multi-factory Showcase</span>
             </div>
             <div class="tech-stack-row">
@@ -1867,8 +1997,10 @@
         <div class="project-card" data-category="ecommerce">
           <div class="project-header-banner">
             <div class="project-logo-wrap">
-              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span style="background:#e11d48; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
+              <div
+                style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span
+                  style="background:#e11d48; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
                 Roma Tiles
               </div>
             </div>
@@ -1877,10 +2009,16 @@
           <div class="project-body">
             <h3 class="project-title">Roma Tiles Product Showroom</h3>
             <p class="project-desc">
-              Leading ceramic tile manufacturer in Bangladesh. Engineered their digital product showcase, interactive room tile visualizer, dealer locator, and wholesale catalog request portal.
+              Leading ceramic tile manufacturer in Bangladesh. Engineered their digital product showcase, interactive
+              room tile visualizer, dealer locator, and wholesale catalog request portal.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
               <span>Interactive Tile Visualizer · 500+ SKU Catalog</span>
             </div>
             <div class="tech-stack-row">
@@ -1901,8 +2039,10 @@
         <div class="project-card" data-category="newsrooms">
           <div class="project-header-banner">
             <div class="project-logo-wrap">
-              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span style="background:var(--brand-emerald); color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">BV</span>
+              <div
+                style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span
+                  style="background:var(--brand-emerald); color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">BV</span>
                 Banglavision
               </div>
             </div>
@@ -1911,10 +2051,13 @@
           <div class="project-body">
             <h3 class="project-title">Banglavision News Portal</h3>
             <p class="project-desc">
-              Pioneer private satellite TV channel. Engineered a real-time web newsroom integrating live TV streams, daily program schedules, breaking video clips, and accelerated mobile loading for breaking headlines.
+              Pioneer private satellite TV channel. Engineered a real-time web newsroom integrating live TV streams,
+              daily program schedules, breaking video clips, and accelerated mobile loading for breaking headlines.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
               <span>Live Broadcast Stream · Sub-1s Publishing</span>
             </div>
             <div class="tech-stack-row">
@@ -1936,8 +2079,10 @@
         <div class="project-card" data-category="newsrooms">
           <div class="project-header-banner">
             <div class="project-logo-wrap">
-              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span style="background:#0ea5e9; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
+              <div
+                style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span
+                  style="background:#0ea5e9; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
                 RisingBD
               </div>
             </div>
@@ -1946,10 +2091,13 @@
           <div class="project-body">
             <h3 class="project-title">RisingBD Online Portal</h3>
             <p class="project-desc">
-              High-volume national digital news portal. Engineered custom multi-category publishing workflows, live cricket scoreboards, social media auto-syndication, and high-concurrency database connection pooling.
+              High-volume national digital news portal. Engineered custom multi-category publishing workflows, live
+              cricket scoreboards, social media auto-syndication, and high-concurrency database connection pooling.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
               <span>12M+ Monthly Readers · Live Sports API</span>
             </div>
             <div class="tech-stack-row">
@@ -1971,8 +2119,10 @@
         <div class="project-card" data-category="academic">
           <div class="project-header-banner">
             <div class="project-logo-wrap">
-              <div style="font-family:var(--font-heading); font-weight:800; font-size:1.15rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span style="background:#6366f1; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">✦</span>
+              <div
+                style="font-family:var(--font-heading); font-weight:800; font-size:1.15rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
+                <span
+                  style="background:#6366f1; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">✦</span>
                 Astronomy BD
               </div>
             </div>
@@ -1981,10 +2131,14 @@
           <div class="project-body">
             <h3 class="project-title">Bangladesh Astronomical Association</h3>
             <p class="project-desc">
-              Pioneer astronomy institution in Bangladesh. Engineered community portals, eclipse and celestial calendar trackers, telescope observation archives, and scientific magazine publication repositories.
+              Pioneer astronomy institution in Bangladesh. Engineered community portals, eclipse and celestial calendar
+              trackers, telescope observation archives, and scientific magazine publication repositories.
             </p>
             <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 16 12 12 8"></polygon></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
+              </svg>
               <span>Scientific Community Hub · Celestial Calendar</span>
             </div>
             <div class="tech-stack-row">
@@ -2012,15 +2166,20 @@
     <div class="container">
       <div class="spotlight-grid">
         <div class="spotlight-content">
-          <div class="badge-tag" style="background:rgba(4,148,73,0.25); color:var(--brand-emerald-accent); border-color:var(--brand-emerald-border);">
+          <div class="badge-tag"
+            style="background:rgba(4,148,73,0.25); color:var(--brand-emerald-accent); border-color:var(--brand-emerald-border);">
             Flagship Production Architecture
           </div>
           <h2>How eMythMakers Powers 28M+ Readers with Zero Crashes</h2>
           <p>
-            During breaking news events such as national elections or cyclone warnings, news portals typically experience traffic bursts of 500,000+ simultaneous readers. Standard databases lock up under write contention.
+            During breaking news events such as national elections or cyclone warnings, news portals typically
+            experience traffic bursts of 500,000+ simultaneous readers. Standard databases lock up under write
+            contention.
           </p>
           <p>
-            Our architecture solves this through an Anycast edge caching mesh paired with a Redis in-memory query bus and Go microservices. Over 94% of page hits are absorbed at the edge without touching core application servers.
+            Our architecture solves this through an Anycast edge caching mesh paired with a Redis in-memory query bus
+            and Go microservices. Over 94% of page hits are absorbed at the edge without touching core application
+            servers.
           </p>
           <div class="spotlight-stats">
             <div class="spotlight-stat-box">
@@ -2060,18 +2219,23 @@
      ========================================================================== -->
   <section class="section-pad cta-banner">
     <div class="container" style="max-width:780px;">
-      <div class="badge-tag" style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
+      <div class="badge-tag"
+        style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
         Start Your Enterprise Transformation
       </div>
       <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 3rem); margin-bottom:18px;">
         Ready to take your next product to production?
       </h2>
       <p style="color:#94a3b8; font-size:1.1rem; line-height:1.7; margin-bottom:34px;">
-        Partner directly with eMMSOFT's Senior Systems Architects for a comprehensive architectural roadmap, scalability feasibility study, and production proposal within 4 business hours.
+        Partner directly with eMMSOFT's Senior Systems Architects for a comprehensive architectural roadmap, scalability
+        feasibility study, and production proposal within 4 business hours.
       </p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Start a Project Proposal →</a>
-        <a href="about.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">Explore Our Story &amp; Tech</a>
+        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Start a Project
+          Proposal →</a>
+        <a href="about.html" class="btn btn-secondary"
+          style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">Explore Our
+          Story &amp; Tech</a>
       </div>
     </div>
   </section>
@@ -2087,7 +2251,8 @@
             <img src="logo.png" alt="eMMSOFT Logo" class="footer-logo">
           </div>
           <p>
-            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and fault-tolerant cloud solutions for global enterprises.
+            Architecting &amp; delivering high-concurrency Newsroom CMS, multi-vendor E-Commerce platforms, and
+            fault-tolerant cloud solutions for global enterprises.
           </p>
         </div>
 
@@ -2109,7 +2274,8 @@
             <li><a href="ceo-message.html">CEO's Message (Shawon)</a></li>
             <li><a href="cto-message.html">CTO's Message (Polash)</a></li>
             <li><a href="team.html">Our Team &amp; Roster</a></li>
-            <li><a href="work.html" style="color:var(--brand-emerald-accent); font-weight:700;">Our Work &amp; Products</a></li>
+            <li><a href="work.html" style="color:var(--brand-emerald-accent); font-weight:700;">Our Work &amp;
+                Products</a></li>
             <li><a href="contact.html">Start a Project / Contact</a></li>
           </ul>
         </div>
@@ -2119,13 +2285,15 @@
           <ul>
             <li><a href="mailto:info@emythmakers.com">info@emythmakers.com</a></li>
             <li><a href="mailto:contact@emmsoft.com">contact@emmsoft.com</a></li>
-            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start a Project →</a></li>
+            <li><a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px; display:inline-flex;">Start
+                a Project →</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp; Global.</span>
+        <span>© <span id="currentYear"></span> eMMSOFT (eMythMakers). All rights reserved. Dhaka, Bangladesh &amp;
+          Global.</span>
         <div class="footer-legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>

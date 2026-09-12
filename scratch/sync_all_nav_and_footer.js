@@ -259,7 +259,7 @@ function generateNav(activePage = '') {
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="assets/work_culture.jpg" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="assets/office.png" alt="Studio Culture" style="width:100%; height:100%; object-fit:cover;">
                   </div>
                   <div style="padding:14px;">
                     <div style="font-family:var(--font-heading); font-size:0.90rem; font-weight:700; color:var(--ink-primary); margin-bottom:4px;">

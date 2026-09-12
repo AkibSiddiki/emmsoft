@@ -258,7 +258,7 @@ const newNavHtml = `<nav class="nav" id="siteNav">
               <div class="mega-menu-col">
                 <a href="team.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb">
-                    <img src="assets/work_culture.jpg" alt="eMMSOFT Studio Workspace" loading="lazy">
+                    <img src="assets/office.png" alt="eMMSOFT Studio Workspace" loading="lazy">
                     <span class="mega-feature-badge">Inside eMMSOFT</span>
                   </div>
                   <div class="mega-feature-body">
