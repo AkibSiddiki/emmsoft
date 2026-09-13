@@ -741,120 +741,114 @@
     }
 
     /* ==========================================================================
-       WORK HERO SECTION
+       WORK PAGE — MINIMALIST DESIGN SYSTEM
        ========================================================================== */
     .work-hero {
-      background: radial-gradient(circle at 85% 15%, rgba(4, 148, 73, 0.09) 0%, transparent 45%),
-        radial-gradient(circle at 10% 75%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
-        var(--bg-main);
-      padding: clamp(56px, 7vw, 92px) 0 clamp(44px, 5vw, 68px);
+      background: var(--bg-surface);
+      padding: clamp(44px, 5.5vw, 68px) 0 clamp(32px, 4vw, 48px);
       border-bottom: 1px solid var(--border-light);
       position: relative;
     }
 
     .work-hero-inner {
       text-align: center;
-      max-width: 860px;
+      max-width: 720px;
       margin: 0 auto;
     }
 
-    .work-hero h1 {
-      font-size: clamp(2.4rem, 4.8vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.14;
-      margin-bottom: 20px;
-      letter-spacing: -0.03em;
-    }
-
-    .work-hero h1 .text-emerald {
-      color: var(--brand-emerald);
-      background: linear-gradient(135deg, #049449 0%, #10b981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .work-hero p {
-      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-      color: var(--ink-secondary);
-      line-height: 1.7;
-      margin: 0 auto 36px auto;
-      max-width: 760px;
-    }
-
-    .work-stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 40px;
-      text-align: left;
-    }
-
-    @media (max-width: 768px) {
-      .work-stats-bar {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .work-stat-pill {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 18px 20px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .work-stat-pill:hover {
-      border-color: var(--brand-emerald-border);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .work-stat-num {
-      font-family: var(--font-heading);
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: var(--brand-emerald-dark);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-
-    .work-stat-label {
-      font-size: 0.84rem;
-      color: var(--ink-muted);
+    .work-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
       font-weight: 600;
-      line-height: 1.35;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border: 1px solid var(--brand-emerald-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 14px;
+    }
+
+    .work-hero-title {
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+
+    .work-hero-desc {
+      font-size: clamp(0.96rem, 1.2vw, 1.08rem);
+      color: var(--ink-secondary);
+      line-height: 1.55;
+      margin: 0 auto 20px;
+      max-width: 560px;
+      font-weight: 400;
+    }
+
+    /* Minimalist Inline Stat Ribbon */
+    .work-hero-stats {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      padding: 7px 18px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-full);
+      font-size: 0.80rem;
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+
+    .work-hero-stats strong {
+      color: var(--ink-primary);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .work-hero-stats .stat-dot {
+      color: var(--border-medium);
     }
 
     /* ==========================================================================
-       CATEGORY FILTER & SEARCH BAR
+       FILTER BAR & TOOLBAR
        ========================================================================== */
     .filter-bar-section {
-      background: var(--bg-surface);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light);
-      padding: 20px 0;
+      padding: 14px 0;
       position: sticky;
       top: 76px;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      z-index: 90;
+      transition: box-shadow 0.2s ease;
     }
 
     .filter-bar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
     .filter-chips-list {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
-      padding-bottom: 4px;
+      padding: 2px 0;
     }
 
     .filter-chips-list::-webkit-scrollbar {
@@ -863,45 +857,79 @@
 
     .filter-chip {
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--ink-secondary);
-      padding: 8px 18px;
+      padding: 7px 15px;
       border-radius: var(--radius-full);
-      background: var(--bg-alt);
+      background: transparent;
       border: 1px solid transparent;
       cursor: pointer;
       white-space: nowrap;
-      transition: var(--transition);
-      flex-shrink: 0;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-chip .chip-count {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      font-weight: 500;
+      background: var(--bg-alt);
+      padding: 1px 6px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
     }
 
     .filter-chip:hover {
-      background: var(--brand-emerald-tint);
-      color: var(--brand-emerald-dark);
+      background: var(--bg-alt);
+      color: var(--ink-primary);
     }
 
     .filter-chip.is-active {
-      background: var(--brand-emerald);
+      background: var(--ink-primary);
       color: #ffffff;
-      box-shadow: 0 2px 8px rgba(4, 148, 73, 0.3);
+    }
+
+    .filter-chip.is-active .chip-count {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    .filter-controls-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
     .search-box {
       position: relative;
-      min-width: 240px;
+      width: 260px;
+    }
+
+    @media (max-width: 580px) {
+      .search-box {
+        width: 100%;
+      }
+      .filter-controls-right {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
 
     .search-box input {
       width: 100%;
-      padding: 8px 14px 8px 36px;
+      padding: 8px 32px 8px 36px;
       border-radius: var(--radius-full);
       border: 1px solid var(--border-light);
       background: var(--bg-main);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--ink-primary);
       outline: none;
-      transition: var(--transition);
+      transition: all 0.2s ease;
     }
 
     .search-box input:focus {
@@ -919,263 +947,564 @@
       pointer-events: none;
     }
 
+    .search-clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      color: var(--ink-muted);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .search-clear-btn.is-visible {
+      display: inline-flex;
+    }
+
+    /* View Switcher */
+    .view-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 2px;
+    }
+
+    .view-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 30px;
+      border-radius: calc(var(--radius-md) - 2px);
+      color: var(--ink-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .view-btn:hover {
+      color: var(--ink-primary);
+    }
+
+    .view-btn.is-active {
+      background: #ffffff;
+      color: var(--ink-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Meta Bar: results count */
+    .catalog-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .catalog-count-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
     /* ==========================================================================
-       PROJECTS GRID & CARDS
+       PROJECTS GRID & MINIMALIST CARD ARCHITECTURE
        ========================================================================== */
     .projects-section {
       background: var(--bg-main);
+      padding: 40px 0 88px;
     }
 
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
+      transition: all 0.3s ease;
     }
 
-    @media (max-width: 1060px) {
+    @media (max-width: 1080px) {
       .projects-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 680px) {
       .projects-grid {
         grid-template-columns: 1fr;
       }
     }
 
+    /* Single-surface Minimalist Card */
     .project-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-light);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
+      border-radius: 14px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
       position: relative;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .project-card:hover {
-      border-color: var(--brand-emerald-border);
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+      border-color: rgba(4, 148, 73, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -8px rgba(16, 24, 40, 0.06), 0 2px 8px rgba(4, 148, 73, 0.04);
     }
 
-    .project-header-banner {
-      padding: 24px;
-      background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg-subtle) 100%);
-      border-bottom: 1px solid var(--border-light);
+    .project-card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 96px;
-      position: relative;
+      gap: 12px;
+      margin-bottom: 16px;
+      min-height: 48px;
     }
 
-    .project-logo-wrap {
-      max-height: 48px;
-      max-width: 160px;
+    .project-logo-box {
+      height: 46px;
+      max-width: 180px;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
     }
 
-    .project-logo-wrap img {
+    .project-logo-box img {
       max-height: 44px;
       width: auto;
+      max-width: 170px;
       object-fit: contain;
+      filter: contrast(1.02);
+      transition: filter 0.2s ease, transform 0.2s ease;
     }
 
-    .category-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--brand-emerald-dark);
-      background: var(--brand-emerald-tint);
-      border: 1px solid var(--brand-emerald-border);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .project-card:hover .project-logo-box img {
+      filter: none;
+      transform: scale(1.03);
     }
 
-    .project-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      gap: 14px;
-    }
-
-    .project-title {
-      font-size: 1.28rem;
-      font-weight: 800;
-      color: var(--ink-primary);
-      line-height: 1.25;
-      margin: 0;
-    }
-
-    .project-desc {
-      font-size: 0.92rem;
-      color: var(--ink-secondary);
-      line-height: 1.6;
-      margin: 0;
-      flex: 1;
-    }
-
-    .metric-badge {
-      background: var(--bg-alt);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 9px 12px;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--brand-emerald-dark);
-      display: flex;
+    .project-logo-monogram {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.90rem;
+      color: var(--ink-primary);
     }
 
-    .metric-badge svg {
-      color: var(--brand-emerald);
-      flex-shrink: 0;
+    .project-logo-monogram .mono-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
     }
 
-    .tech-stack-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .tech-pill {
+    .category-badge {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--ink-muted);
       background: var(--bg-alt);
+      border: 1px solid var(--border-subtle);
       padding: 3px 8px;
-      border-radius: 4px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: all 0.2s ease;
     }
 
-    .project-card-footer {
-      padding: 16px 24px;
-      background: var(--bg-surface);
-      border-top: 1px solid var(--border-light);
+    .project-card:hover .category-badge {
+      color: var(--brand-emerald-dark);
+      background: var(--brand-emerald-tint);
+      border-color: var(--brand-emerald-border);
+    }
+
+    .project-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 1.10rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      margin: 0;
+      transition: color 0.2s ease;
+    }
+
+    .project-card:hover .project-title {
+      color: var(--brand-emerald-dark);
+    }
+
+    .project-arrow {
+      color: var(--ink-faint);
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .project-card:hover .project-arrow {
+      color: var(--brand-emerald);
+      transform: translate(2px, -2px);
+    }
+
+    /* Minimalist Highlight Metric */
+    .project-impact-line {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-
-    .external-link-btn {
-      font-family: var(--font-heading);
-      font-size: 0.88rem;
-      font-weight: 700;
+      gap: 7px;
+      padding: 6px 10px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
       color: var(--brand-emerald-dark);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: color 0.2s ease, transform 0.2s ease;
+      letter-spacing: -0.01em;
+      transition: background 0.2s ease;
     }
 
-    .external-link-btn:hover {
-      color: var(--brand-emerald);
-      transform: translateX(3px);
+    .project-card:hover .project-impact-line {
+      background: var(--brand-emerald-tint);
+    }
+
+    .impact-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      flex-shrink: 0;
+    }
+
+    /* Quiet Tech Stack Tags */
+    .tech-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      background: transparent;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-light);
+      transition: all 0.2s ease;
+    }
+
+    .project-card:hover .tech-tag {
+      color: var(--ink-secondary);
+      background: var(--bg-alt);
     }
 
     /* ==========================================================================
-       FLAGSHIP CASE STUDY SPOTLIGHT
+       LIST / COMPACT VIEW MODE
+       ========================================================================== */
+    .projects-grid.is-list-view {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .projects-grid.is-list-view .project-card {
+      padding: 16px 22px;
+      border-radius: var(--radius-md);
+      display: grid;
+      grid-template-columns: 190px 1.4fr 1.3fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .projects-grid.is-list-view .project-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    .projects-grid.is-list-view .project-card-header {
+      margin-bottom: 0;
+      min-height: auto;
+    }
+
+    .projects-grid.is-list-view .project-logo-box {
+      height: 40px;
+      max-width: 175px;
+    }
+
+    .projects-grid.is-list-view .project-logo-box img {
+      max-height: 38px;
+      max-width: 165px;
+    }
+
+    .projects-grid.is-list-view .project-title-row {
+      margin-bottom: 0;
+    }
+
+    .projects-grid.is-list-view .project-impact-line {
+      margin-bottom: 0;
+      background: transparent;
+      padding: 0;
+    }
+
+    .projects-grid.is-list-view .tech-tags-row {
+      padding-top: 0;
+      border-top: none;
+      margin-top: 0;
+    }
+
+    /* Empty state */
+    .empty-search-state {
+      display: none;
+      text-align: center;
+      padding: 64px 20px;
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-light);
+      border-radius: var(--radius-xl);
+      margin: 20px 0;
+    }
+
+    .empty-search-state h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+
+    .empty-search-state p {
+      color: var(--ink-muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    /* ==========================================================================
+       FLAGSHIP CASE STUDY SPOTLIGHT: EDITORIAL MINIMALISM
        ========================================================================== */
     .spotlight-section {
       background: var(--dark-950);
       color: #ffffff;
       border-top: 1px solid var(--dark-800);
       border-bottom: 1px solid var(--dark-800);
+      padding: clamp(68px, 8vw, 108px) 0;
     }
 
     .spotlight-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
       align-items: center;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .spotlight-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 40px;
       }
+    }
+
+    .spotlight-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-emerald-accent);
+      background: rgba(4, 148, 73, 0.15);
+      border: 1px solid rgba(4, 148, 73, 0.35);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 20px;
     }
 
     .spotlight-content h2 {
       color: #ffffff;
-      font-size: clamp(2rem, 3.8vw, 2.8rem);
-      margin-bottom: 18px;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
     }
 
     .spotlight-content p {
       color: #94a3b8;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin-bottom: 24px;
+      font-size: 0.96rem;
+      line-height: 1.65;
+      margin-bottom: 0;
     }
 
-    .spotlight-stats {
+    .spotlight-stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin: 28px 0;
+      margin: 26px 0 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--dark-800);
     }
 
-    .spotlight-stat-box {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-
-    .spotlight-stat-box .val {
+    .spotlight-stat-item .val {
       font-family: var(--font-heading);
-      font-size: 1.6rem;
+      font-size: 1.75rem;
       font-weight: 800;
-      color: var(--brand-emerald-accent);
-      line-height: 1;
+      color: #ffffff;
+      line-height: 1.1;
       margin-bottom: 4px;
     }
 
-    .spotlight-stat-box .lbl {
-      font-size: 0.78rem;
+    .spotlight-stat-item .lbl {
+      font-size: 0.76rem;
       color: #94a3b8;
-    }
-
-    .spotlight-media {
-      background: rgba(21, 29, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-xl);
-      padding: 32px;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .code-telemetry-box {
-      background: #0b0f15;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      padding: 20px;
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: #38bdf8;
-      line-height: 1.6;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Modern Architecture Card */
+    .spotlight-architecture-card {
+      background: rgba(16, 22, 32, 0.85);
+      border: 1px solid var(--dark-700);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .arch-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--dark-800);
+    }
+
+    .arch-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #94a3b8;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .live-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+    }
+
+    .arch-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .arch-pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .arch-node {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--dark-800);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .arch-node-name {
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .arch-node-metric {
+      color: var(--brand-emerald-accent);
+      font-weight: 600;
+    }
+
+    .arch-footer-meta {
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--dark-800);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
     }
 
     /* ==========================================================================
-       CALL TO ACTION
+       MINIMALIST CTA BANNER
        ========================================================================== */
     .cta-banner {
-      background: linear-gradient(135deg, var(--dark-950) 0%, var(--dark-900) 100%);
+      background: var(--dark-900);
       color: #ffffff;
       text-align: center;
+      padding: clamp(68px, 8vw, 100px) 0;
+      border-top: 1px solid var(--dark-800);
+    }
+
+    .cta-banner h2 {
+      color: #ffffff;
+      font-size: clamp(2rem, 3.6vw, 2.8rem);
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+
+    .cta-banner p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 0 auto 32px;
+      max-width: 620px;
     }
 
     /* ==========================================================================
@@ -1339,7 +1668,7 @@
   <nav class="nav" id="siteNav">
     <div class="container nav-inner">
       <a href="../index.html" class="nav-brand" aria-label="eMMSOFT Home">
-        <img src="../assets/images/logo.png" alt="eMMSOFT" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="eMMSOFT" class="nav-logo" decoding="async">
       </a>
 
       <div class="nav-links">
@@ -1607,7 +1936,7 @@
 
                   <a href="ceo-message.html" class="mega-link-card">
                     <img src="../assets/team/member_1.jpg" alt="CEO"
-                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;" decoding="async">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CEO's Message</span>
@@ -1619,7 +1948,7 @@
 
                   <a href="cto-message.html" class="mega-link-card">
                     <img src="../assets/team/member_2.jpg" alt="CTO"
-                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                      style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;" decoding="async">
                     <div class="mega-link-card-body">
                       <div class="mega-title">
                         <span>CTO's Message</span>
@@ -1652,8 +1981,8 @@
               <div class="mega-menu-col">
                 <a href="about.html#studio-culture" class="mega-feature-card">
                   <div class="mega-feature-thumb" style="height:120px; overflow:hidden;">
-                    <img src="../assets/images/office.png" alt="Studio Culture"
-                      style="width:100%; height:100%; object-fit:cover;">
+                    <img src="../assets/images/office.webp" alt="Studio Culture"
+                      style="width:100%; height:100%; object-fit:cover;" decoding="async">
                   </div>
                   <div style="padding:14px;">
                     <div
@@ -1712,737 +2041,608 @@
   </nav>
 
   <!-- ==========================================================================
-     HERO: OUR WORK & PORTFOLIO
+     HERO: SELECTED WORK (CLEAN & MINIMAL)
      ========================================================================== -->
   <section class="work-hero">
     <div class="container work-hero-inner">
-      <div class="badge-tag">
-        <span class="pulse-dot"></span>
-        15+ Years · 250+ Portals &amp; Systems Deployed · eMythMakers Engineering
-      </div>
-      <h1>Production software engineered for <span class="text-emerald">national scale</span> &amp; resilience.</h1>
-      <p>
-        From breaking newsrooms to multi-warehouse e-commerce and global logistics — real-world platforms engineered by
-        eMMSOFT.
+      <div class="work-eyebrow">Selected Work</div>
+      <h1 class="work-hero-title">Engineering at Scale</h1>
+      <p class="work-hero-desc">
+        Production platforms engineered for high concurrency, national scale, and resilience.
       </p>
-
-      <div class="work-stats-bar">
-        <div class="work-stat-pill">
-          <div class="work-stat-num">250+</div>
-          <div class="work-stat-label">Production Portals &amp; Systems</div>
-        </div>
-        <div class="work-stat-pill">
-          <div class="work-stat-num">120M+</div>
-          <div class="work-stat-label">Monthly Active Digital Readers</div>
-        </div>
-        <div class="work-stat-pill">
-          <div class="work-stat-num">500k+</div>
-          <div class="work-stat-label">Peak Concurrent Traffic Spike</div>
-        </div>
-        <div class="work-stat-pill">
-          <div class="work-stat-num">99.99%</div>
-          <div class="work-stat-label">Production SLA Availability</div>
-        </div>
+      <div class="work-hero-stats">
+        <span><strong>250+</strong> Deployed</span>
+        <span class="stat-dot">·</span>
+        <span><strong>120M+</strong> Readers</span>
+        <span class="stat-dot">·</span>
+        <span><strong>500k+</strong> Peak CCU</span>
+        <span class="stat-dot">·</span>
+        <span><strong>99.99%</strong> SLA</span>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-     FILTER BAR
+     FILTER BAR & CATALOG TOOLBAR
      ========================================================================== -->
   <div class="filter-bar-section">
     <div class="container filter-bar-inner">
-      <div class="filter-chips-list" id="categoryFilterList">
-        <button class="filter-chip is-active" data-cat="all">All Products (16)</button>
-        <button class="filter-chip" data-cat="newsrooms">Newsrooms &amp; Media</button>
-        <button class="filter-chip" data-cat="ecommerce">Enterprise &amp; Retail</button>
-        <button class="filter-chip" data-cat="academic">Academia &amp; Repositories</button>
-        <button class="filter-chip" data-cat="corporate">Logistics &amp; Corporate</button>
+      <div class="filter-chips-list" id="categoryFilterList" role="tablist">
+        <button class="filter-chip is-active" data-cat="all">All <span class="chip-count">18</span></button>
+        <button class="filter-chip" data-cat="newsrooms">Newsrooms <span class="chip-count">6</span></button>
+        <button class="filter-chip" data-cat="ecommerce">Enterprise <span class="chip-count">5</span></button>
+        <button class="filter-chip" data-cat="academic">Academia <span class="chip-count">4</span></button>
+        <button class="filter-chip" data-cat="corporate">Corporate <span class="chip-count">3</span></button>
       </div>
 
-      <div class="search-box">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2.5">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" id="projectSearchInput" placeholder="Filter by client, tech, or sector...">
+      <div class="filter-controls-right">
+        <div class="search-box">
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="projectSearchInput" placeholder="Filter by client, tech, sector...">
+          <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Clear search">✕</button>
+        </div>
+
+        <div class="view-switcher" role="group" aria-label="View Mode">
+          <button type="button" class="view-btn is-active" id="viewGridBtn" title="Grid View" aria-label="Grid View">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            </svg>
+          </button>
+          <button type="button" class="view-btn" id="viewListBtn" title="List View" aria-label="List View">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-     PROJECTS SHOWCASE GRID
+     PROJECTS SHOWCASE GRID (MINIMALIST CARDS)
      ========================================================================== -->
-  <section class="section-pad projects-section">
+  <section class="projects-section">
     <div class="container">
-      <div class="projects-grid" id="projectsGrid">
+      <div class="catalog-meta-bar">
+        <span class="catalog-count-badge" id="catalogCount">Showing 18 production systems</span>
+        <span style="font-size:0.8rem; color:var(--ink-faint);">Direct production links active</span>
+      </div>
+
+            <div class="projects-grid" id="projectsGrid">
 
         <!-- 1. bdnews24.com -->
-        <div class="project-card" data-category="newsrooms">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/bdnews24.png" alt="bdnews24 Logo" loading="lazy">
+        <a href="https://bangla.bdnews24.com/" target="_blank" rel="noopener" class="project-card" data-category="newsrooms" data-search="bdnews24 newsroom cms edge caching anycast digital news breaking">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/bdnews24.png" alt="bdnews24.com Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">Newsroom CMS</span>
+            <span class="category-badge">Newsroom CMS</span>
           </div>
-          <div class="project-body">
+          <div class="project-title-row">
             <h3 class="project-title">bdnews24.com</h3>
-            <p class="project-desc">
-              Bangladesh's pioneer 24/7 digital news publisher. We architected their custom headless newsroom engine and
-              Anycast edge caching layer capable of sustaining tens of millions of pageviews during national elections
-              and historic breaking news without slowdown.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-              </svg>
-              <span>28M+ Readers · &lt; 40ms TTFB · 100% Uptime</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">PHP 8.3 JIT</span>
-              <span class="tech-pill">Redis 7 Cluster</span>
-              <span class="tech-pill">Next.js SSR</span>
-              <span class="tech-pill">Cloudflare Enterprise</span>
-            </div>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Flagship Media Partner</span>
-            <a href="https://bdnews24.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>28M+ Readers · &lt; 40ms TTFB · 100% SLA</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PHP 8.3 JIT</span>
+            <span class="tech-tag">Redis Cluster</span>
+            <span class="tech-tag">Next.js SSR</span>
+            <span class="tech-tag">Cloudflare</span>
+          </div>
+        </a>
 
         <!-- 2. Channel 24 -->
-        <div class="project-card" data-category="newsrooms">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/channel24.png" alt="Channel 24 Logo" loading="lazy">
+        <a href="https://www.channel24bd.tv/" target="_blank" rel="noopener" class="project-card" data-category="newsrooms" data-search="channel 24 broadcast satellite tv live stream television hls">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/channel24.png" alt="Channel 24 Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">Broadcast News</span>
+            <span class="category-badge">Broadcast News</span>
           </div>
-          <div class="project-body">
+          <div class="project-title-row">
             <h3 class="project-title">Channel 24 (channel24bd.tv)</h3>
-            <p class="project-desc">
-              Premier national satellite television network. Engineered their high-throughput live broadcasting news
-              portal featuring automated video stream transcoding, live breaking ticker syndication, and multi-desk
-              video publishing.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Live HLS Stream · 15M+ Monthly Views</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Go Services</span>
-              <span class="tech-pill">HLS Video CDN</span>
-              <span class="tech-pill">Redis</span>
-              <span class="tech-pill">Kubernetes</span>
-            </div>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Broadcast Media</span>
-            <a href="https://channel24bd.tv" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Live HLS Stream · 15M+ Monthly Views</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Go Services</span>
+            <span class="tech-tag">HLS Video CDN</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Kubernetes</span>
+          </div>
+        </a>
 
-        <!-- 3. Dhaka Tribune -->
-        <div class="project-card" data-category="newsrooms">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/dhaka_tribune.svg" alt="Dhaka Tribune Logo" loading="lazy">
+        <!-- 3. Samakal -->
+        <a href="https://samakal.com" target="_blank" rel="noopener" class="project-card" data-category="newsrooms" data-search="samakal national daily broadsheet bengali news portal newspaper editorial">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/samakal.png" alt="Samakal Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">National English Daily</span>
+            <span class="category-badge">National Daily</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Dhaka Tribune</h3>
-            <p class="project-desc">
-              Leading English-language national broadsheet newspaper. Engineered a modular headless content management
-              architecture supporting high-volume multimedia reporting, instant mobile edge caching, and automated
-              newsletter distribution.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span>18M+ Global Readers · Core Web Vitals 99</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Headless CMS</span>
-              <span class="tech-pill">Next.js Edge</span>
-              <span class="tech-pill">PostgreSQL</span>
-              <span class="tech-pill">Fastly</span>
-            </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Samakal (samakal.com)</h3>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Print &amp; Digital</span>
-            <a href="https://dhakatribune.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Top National Daily · High Concurrency</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PHP 8.3</span>
+            <span class="tech-tag">Percona MySQL</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">NGINX Plus</span>
+          </div>
+        </a>
 
         <!-- 4. Daily Janakantha -->
-        <div class="project-card" data-category="newsrooms">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/janakantha_web.jpg" alt="Daily Janakantha Logo" loading="lazy">
+        <a href="https://www.dailyjanakantha.com/" target="_blank" rel="noopener" class="project-card" data-category="newsrooms" data-search="janakantha daily newspaper print broadsheet archive divisional">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/janakantha.jpg" alt="Daily Janakantha Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">National Bengali Daily</span>
+            <span class="category-badge">National Daily</span>
           </div>
-          <div class="project-body">
+          <div class="project-title-row">
             <h3 class="project-title">Daily Janakantha</h3>
-            <p class="project-desc">
-              One of Bangladesh's most historic national Bengali dailies. Transitioned their print legacy archive into a
-              blazing-fast, modern digital edition featuring localized divisional bureaus and multi-decade searchable
-              article archives.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              <span>30+ Years News Archive · Sub-50ms TTFB</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">PHP 8.2</span>
-              <span class="tech-pill">MySQL Percona</span>
-              <span class="tech-pill">Varnish Cache</span>
-              <span class="tech-pill">NGINX Plus</span>
-            </div>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Bengali Daily</span>
-            <a href="https://dailyjanakantha.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>30+ Years News Archive · Sub-50ms TTFB</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PHP 8.2</span>
+            <span class="tech-tag">Percona MySQL</span>
+            <span class="tech-tag">Varnish Cache</span>
+            <span class="tech-tag">NGINX Plus</span>
+          </div>
+        </a>
 
-        <!-- 5. Walton Hi-Tech Industries -->
-        <div class="project-card" data-category="ecommerce">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/walton.png" alt="Walton Hi-Tech Logo" loading="lazy">
+        <!-- 5. Bangla Vision -->
+        <a href="https://www.bvnews24.com/" target="_blank" rel="noopener" class="project-card" data-category="newsrooms" data-search="bangla vision bvnews24 television satellite live stream breaking news">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/banglavision.jpg" alt="Bangla Vision Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">Industrial Retail</span>
+            <span class="category-badge">Satellite TV</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Walton Hi-Tech Industries</h3>
-            <p class="project-desc">
-              Bangladesh's flagship electronics and appliance manufacturing giant. Architected enterprise digital
-              portals, online product catalogs, and dealer synchronization services supporting thousands of national
-              distributor nodes.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-              <span>5,000+ Outlets · High-Load Product Catalog</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Laravel Enterprise</span>
-              <span class="tech-pill">Vue.js 3</span>
-              <span class="tech-pill">Redis Cluster</span>
-              <span class="tech-pill">AWS EKS</span>
-            </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Bangla Vision (bvnews24.com)</h3>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Consumer Electronics</span>
-            <a href="https://waltonbd.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Live Broadcast Stream · Sub-1s Publishing</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Headless News CMS</span>
+            <span class="tech-tag">Go</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Cloudflare CDN</span>
+          </div>
+        </a>
 
-        <!-- 6. Step Footwear -->
-        <div class="project-card" data-category="ecommerce">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/step_footwear.png" alt="Step Footwear Logo" loading="lazy">
+        <!-- 6. Rising BD -->
+        <a href="https://www.risingbd.com/" target="_blank" rel="noopener" class="project-card" data-category="newsrooms" data-search="risingbd online portal cricket live sports score syndication news">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/risingbd.png" alt="Rising BD Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">E-Commerce Engine</span>
+            <span class="category-badge">24/7 Digital News</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Step Footwear E-Commerce</h3>
-            <p class="project-desc">
-              National multi-outlet footwear brand. Engineered a high-concurrency transactional storefront capable of
-              surviving intense seasonal flash sale campaigns with real-time inventory locking and automated courier API
-              dispatch.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-              <span>10,000+ Orders/hr · 0 Checkout Drops</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Laravel</span>
-              <span class="tech-pill">Vue 3</span>
-              <span class="tech-pill">Redis</span>
-              <span class="tech-pill">bKash/Nagad/SSLCommerz</span>
-            </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Rising BD (risingbd.com)</h3>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Retail Footwear</span>
-            <a href="https://step.com.bd" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>12M+ Monthly Readers · Live Sports API</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PHP 8.2</span>
+            <span class="tech-tag">Varnish Cache</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+        </a>
 
-        <!-- 7. PRAN-RFL Group -->
-        <div class="project-card" data-category="ecommerce">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/pran.png" alt="PRAN-RFL Logo" loading="lazy">
+        <!-- 7. Step Footwear -->
+        <a href="https://stepfootwear.com/" target="_blank" rel="noopener" class="project-card" data-category="ecommerce" data-search="step footwear ecommerce shoes fashion retail flash sales courier">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/step_footwear.jpg" alt="Step Footwear Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">FMCG Conglomerate</span>
+            <span class="category-badge">Footwear Retail</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">PRAN-RFL Global Brand Ecosystem</h3>
-            <p class="project-desc">
-              Bangladesh's premier food and consumer goods exporter with distribution in over 140 nations. Engineered
-              multi-brand corporate portals, product verification gateways, and supply-chain digital touchpoints.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                </path>
-              </svg>
-              <span>140+ Countries · Global Supply Chain</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Enterprise CMS</span>
-              <span class="tech-pill">Cloudflare</span>
-              <span class="tech-pill">PostgreSQL</span>
-              <span class="tech-pill">REST APIs</span>
-            </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Step Footwear Storefront</h3>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">FMCG / Agro</span>
-            <a href="https://pranfoods.net" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>10,000+ Orders/hr · Zero Checkout Drops</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">Vue 3</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">bKash/SSL Gateways</span>
+          </div>
+        </a>
 
-        <!-- 8. ITN-BUET (Sanitation Knowledge Repository) -->
-        <div class="project-card" data-category="academic">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/buet.svg" alt="BUET Logo" loading="lazy">
+        <!-- 8. Roma Tiles -->
+        <a href="https://www.romatiles.com.bd" target="_blank" rel="noopener" class="project-card" data-category="ecommerce" data-search="roma tiles ceramic tile manufacturing showroom visualizer dealer">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/roma_tiles.png" alt="Roma Tiles Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">National Repository</span>
+            <span class="category-badge">Manufacturing</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">ITN-BUET (Sanitation Repository)</h3>
-            <p class="project-desc">
-              Developed for the International Training Network at BUET. Architected the national Sanitation Knowledge
-              Repository (sanirepo.com) tracking Citywide Inclusive Sanitation (CWIS) and Faecal Sludge Management (FSM)
-              data across all Bangladesh municipalities.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>National CWIS Hub · 64 Districts GIS</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">PostgreSQL GIS</span>
-              <span class="tech-pill">PHP 8.2</span>
-              <span class="tech-pill">Vue.js</span>
-              <span class="tech-pill">Data Visualizer</span>
-            </div>
-          </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Research &amp; Gov</span>
-            <a href="https://sanirepo.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- 9. University of Dhaka -->
-        <div class="project-card" data-category="academic">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/dhaka_university.svg" alt="Dhaka University Logo" loading="lazy">
-            </div>
-            <span class="category-tag">Higher Education</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">University of Dhaka (du.ac.bd)</h3>
-            <p class="project-desc">
-              Bangladesh's premier national university. Engineered institutional web platforms, departmental portal
-              frameworks, academic research archives, and high-load admission announcement distribution systems.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-              </svg>
-              <span>40,000+ Students · High-Security Architecture</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">PHP 8</span>
-              <span class="tech-pill">MySQL</span>
-              <span class="tech-pill">NGINX Plus</span>
-              <span class="tech-pill">Cloudflare SSL</span>
-            </div>
-          </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Academic Portal</span>
-            <a href="https://du.ac.bd" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- 10. HRC Shipping -->
-        <div class="project-card" data-category="corporate">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <div
-                style="font-family:var(--font-heading); font-weight:800; font-size:1.3rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span
-                  style="background:var(--brand-emerald); color:#fff; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">H</span>
-                HRC Shipping
-              </div>
-            </div>
-            <span class="category-tag">Maritime Logistics</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">HRC Shipping Maritime Portal</h3>
-            <p class="project-desc">
-              Developed for HRC Shipping Ltd, a pioneer in Bangladeshi ocean shipping. Engineered real-time container
-              tracking interfaces, vessel arrival/departure schedules, automated bill of lading retrieval, and port
-              clearance records.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="1" y="3" width="15" height="13"></rect>
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                <circle cx="18.5" cy="18.5" r="2.5"></circle>
-              </svg>
-              <span>Global Container Tracking · Automated B/L</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Enterprise Portal</span>
-              <span class="tech-pill">REST APIs</span>
-              <span class="tech-pill">PostgreSQL</span>
-              <span class="tech-pill">SSL 256-bit</span>
-            </div>
-          </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Maritime / Logistics</span>
-            <a href="https://hrcbd.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- 11. Diamond World -->
-        <div class="project-card" data-category="ecommerce">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/diamond_world.jpg" alt="Diamond World Logo" loading="lazy">
-            </div>
-            <span class="category-tag">Luxury E-Commerce</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">Diamond World Store</h3>
-            <p class="project-desc">
-              Bangladesh's premier certified diamond and luxury jewelry retailer. Engineered a high-security
-              transactional store featuring live gold and bullion rate sync, secure vault reservation, and
-              multi-currency checkout.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-              </svg>
-              <span>High-Value Transactions · Fraud Defense</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Laravel</span>
-              <span class="tech-pill">Vue.js</span>
-              <span class="tech-pill">PCI-DSS Gateways</span>
-              <span class="tech-pill">Redis</span>
-            </div>
-          </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Luxury Retail</span>
-            <a href="https://diamondworldltd.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- 12. Ha-Meem Group -->
-        <div class="project-card" data-category="corporate">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <img src="../assets/clients/ha_meem.jpg" alt="Ha-Meem Group Logo" loading="lazy">
-            </div>
-            <span class="category-tag">Textile Conglomerate</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">Ha-Meem Group Enterprise Portal</h3>
-            <p class="project-desc">
-              One of Bangladesh's largest garment manufacturing conglomerates exporting globally. Engineered their
-              corporate digital identity, buyer compliance transparency portals, and multi-factory industrial showcases.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
-              <span>Global Buyer Hub · Multi-factory Showcase</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Enterprise CMS</span>
-              <span class="tech-pill">Next.js</span>
-              <span class="tech-pill">Cloudflare CDN</span>
-            </div>
-          </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Textile Export</span>
-            <a href="https://hameemgroup.net" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- 13. Roma Tiles -->
-        <div class="project-card" data-category="ecommerce">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <div
-                style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span
-                  style="background:#e11d48; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
-                Roma Tiles
-              </div>
-            </div>
-            <span class="category-tag">Ceramic Manufacturing</span>
-          </div>
-          <div class="project-body">
+          <div class="project-title-row">
             <h3 class="project-title">Roma Tiles Product Showroom</h3>
-            <p class="project-desc">
-              Leading ceramic tile manufacturer in Bangladesh. Engineered their digital product showcase, interactive
-              room tile visualizer, dealer locator, and wholesale catalog request portal.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
-              <span>Interactive Tile Visualizer · 500+ SKU Catalog</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Custom Web Engine</span>
-              <span class="tech-pill">Vue 3</span>
-              <span class="tech-pill">Image Optimizer</span>
-            </div>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Building Materials</span>
-            <a href="https://romatiles.com.bd" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Interactive Visualizer · 500+ SKU Catalog</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Custom Web Engine</span>
+            <span class="tech-tag">Vue 3</span>
+            <span class="tech-tag">Image Optimizer</span>
+          </div>
+        </a>
 
-        <!-- 14. Banglavision TV -->
-        <div class="project-card" data-category="newsrooms">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <div
-                style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span
-                  style="background:var(--brand-emerald); color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">BV</span>
-                Banglavision
-              </div>
+        <!-- 9. Jatra Bangladesh -->
+        <a href="https://www.jatrabangladesh.com/" target="_blank" rel="noopener" class="project-card" data-category="ecommerce" data-search="jatra bangladesh craft art fashion eco lifestyle indigenous handloom">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/jatra.png" alt="Jatra Bangladesh Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">Satellite TV Portal</span>
+            <span class="category-badge">Artisan E-Commerce</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Banglavision News Portal</h3>
-            <p class="project-desc">
-              Pioneer private satellite TV channel. Engineered a real-time web newsroom integrating live TV streams,
-              daily program schedules, breaking video clips, and accelerated mobile loading for breaking headlines.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Live Broadcast Stream · Sub-1s Publishing</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Headless News CMS</span>
-              <span class="tech-pill">Go</span>
-              <span class="tech-pill">Redis</span>
-              <span class="tech-pill">AWS Video Transcoding</span>
-            </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Jatra Bangladesh</h3>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Television Media</span>
-            <a href="https://banglavision.tv" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Heritage Craft Showcase · Global Shipping</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Custom E-Commerce</span>
+            <span class="tech-tag">Vue 3</span>
+            <span class="tech-tag">Multi-currency</span>
+            <span class="tech-tag">SSL</span>
+          </div>
+        </a>
 
-        <!-- 15. RisingBD -->
-        <div class="project-card" data-category="newsrooms">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <div
-                style="font-family:var(--font-heading); font-weight:800; font-size:1.2rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span
-                  style="background:#0ea5e9; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">R</span>
-                RisingBD
-              </div>
+        <!-- 10. Jatra Biroti -->
+        <a href="https://www.jatrabiroti.com/" target="_blank" rel="noopener" class="project-card" data-category="ecommerce" data-search="jatra biroti eco lounge arts culture music booking store">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/jatra_biroti.jpg" alt="Jatra Biroti Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">24/7 Digital News</span>
+            <span class="category-badge">Art &amp; Eco Store</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">RisingBD Online Portal</h3>
-            <p class="project-desc">
-              High-volume national digital news portal. Engineered custom multi-category publishing workflows, live
-              cricket scoreboards, social media auto-syndication, and high-concurrency database connection pooling.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-              </svg>
-              <span>12M+ Monthly Readers · Live Sports API</span>
-            </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">PHP 8.2</span>
-              <span class="tech-pill">Varnish Cache</span>
-              <span class="tech-pill">Redis</span>
-              <span class="tech-pill">Percona MySQL</span>
-            </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Jatra Biroti Community Store</h3>
+            <span class="project-arrow">↗</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Digital News</span>
-            <a href="https://risingbd.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Cultural Lounge &amp; Store · Online Booking</span>
           </div>
-        </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Web Platform</span>
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">bKash/Stripe</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+        </a>
 
-        <!-- 16. Bangladesh Astronomical Association -->
-        <div class="project-card" data-category="academic">
-          <div class="project-header-banner">
-            <div class="project-logo-wrap">
-              <div
-                style="font-family:var(--font-heading); font-weight:800; font-size:1.15rem; color:var(--ink-primary); display:flex; align-items:center; gap:8px;">
-                <span
-                  style="background:#6366f1; color:#fff; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px;">✦</span>
-                Astronomy BD
-              </div>
+        <!-- 11. Lucky Idea BD -->
+        <a href="https://www.luckyideabd.com/" target="_blank" rel="noopener" class="project-card" data-category="ecommerce" data-search="lucky idea retail lifestyle goods shopping shopping cart">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/lucky_idea.png" alt="Lucky Idea BD Logo" loading="lazy" decoding="async">
             </div>
-            <span class="category-tag">Science &amp; Astronomy</span>
+            <span class="category-badge">Online Retail</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Bangladesh Astronomical Association</h3>
-            <p class="project-desc">
-              Pioneer astronomy institution in Bangladesh. Engineered community portals, eclipse and celestial calendar
-              trackers, telescope observation archives, and scientific magazine publication repositories.
-            </p>
-            <div class="metric-badge">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
-              </svg>
-              <span>Scientific Community Hub · Celestial Calendar</span>
+          <div class="project-title-row">
+            <h3 class="project-title">Lucky Idea BD</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Multi-vendor Catalog · Real-time Orders</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">E-Commerce CMS</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+        </a>
+
+        <!-- 12. ITN-BUET -->
+        <a href="https://itn.buet.ac.bd/web/" target="_blank" rel="noopener" class="project-card" data-category="academic" data-search="itn buet water sanitation capacity wash training publications research">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/itn_buet.png" alt="ITN-BUET Logo" loading="lazy" decoding="async">
             </div>
-            <div class="tech-stack-row">
-              <span class="tech-pill">Custom Web Portal</span>
-              <span class="tech-pill">PostgreSQL</span>
-              <span class="tech-pill">Cloudflare CDN</span>
+            <span class="category-badge">Water &amp; Sanitation</span>
+          </div>
+          <div class="project-title-row">
+            <h3 class="project-title">ITN-BUET Knowledge Portal</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>National WASH Capacity Centre · Publications</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PHP 8.2</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">Cloudflare</span>
+          </div>
+        </a>
+
+        <!-- 13. Sanitation Knowledge Repository -->
+        <a href="https://www.sanirepo.com/" target="_blank" rel="noopener" class="project-card" data-category="academic" data-search="sanirepo sanitation repository cwis fsm gis mapping municipal data">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/sanirepo.png" alt="Sanirepo Logo" loading="lazy" decoding="async">
             </div>
+            <span class="category-badge">National Repository</span>
           </div>
-          <div class="project-card-footer">
-            <span style="font-size:0.82rem; color:var(--ink-muted);">Science / Non-Profit</span>
-            <a href="https://astronomy-bd.com" target="_blank" rel="noopener" class="external-link-btn">
-              Visit Live ↗
-            </a>
+          <div class="project-title-row">
+            <h3 class="project-title">Sanirepo (ITN-BUET)</h3>
+            <span class="project-arrow">↗</span>
           </div>
-        </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>64 Districts GIS Tracking · CWIS Knowledge Hub</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PostgreSQL GIS</span>
+            <span class="tech-tag">PHP 8.2</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">Data Visualizer</span>
+          </div>
+        </a>
+
+        <!-- 14. University of Dhaka (MCA) -->
+        <a href="https://www.mcj.du.ac.bd/" target="_blank" rel="noopener" class="project-card" data-category="academic" data-search="university of dhaka du mcj journalism communication academic portal faculty">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/dhaka_university_mca.png" alt="University of Dhaka MCJ Logo" loading="lazy" decoding="async">
+            </div>
+            <span class="category-badge">Higher Education</span>
+          </div>
+          <div class="project-title-row">
+            <h3 class="project-title">University of Dhaka (MCJ)</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Departmental Portal · Academic Archive</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">PHP 8</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">NGINX Plus</span>
+            <span class="tech-tag">Cloudflare SSL</span>
+          </div>
+        </a>
+
+        <!-- 15. HRC Shipping -->
+        <a href="http://www.hrcbd.com/" target="_blank" rel="noopener" class="project-card" data-category="corporate" data-search="hrc shipping maritime logistics container cargo vessel ocean port clearance">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/hrc_shipping.png" alt="HRC Shipping Logo" loading="lazy" decoding="async">
+            </div>
+            <span class="category-badge">Maritime Logistics</span>
+          </div>
+          <div class="project-title-row">
+            <h3 class="project-title">HRC Shipping (HrcBd.com)</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Global Container Tracking · Automated B/L</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Enterprise Portal</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">SSL 256-bit</span>
+          </div>
+        </a>
+
+        <!-- 16. Angel Group -->
+        <a href="http://angelgroup.com.bd/" target="_blank" rel="noopener" class="project-card" data-category="corporate" data-search="angel group conglomerate corporate enterprise business units industrial">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/angel_group.png" alt="Angel Group Logo" loading="lazy" decoding="async">
+            </div>
+            <span class="category-badge">Enterprise Conglomerate</span>
+          </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Angel Group Enterprise</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Industrial Conglomerate · Multi-subsidiary Hub</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Enterprise CMS</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Cloudflare CDN</span>
+            <span class="tech-tag">REST APIs</span>
+          </div>
+        </a>
+
+        <!-- 17. Alliance For Science -->
+        <a href="https://resourceportal.allianceforscience.org/" target="_blank" rel="noopener" class="project-card" data-category="academic" data-search="alliance for science repository global biotechnology agriculture portal resource">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/alliance_for_science.png" alt="Alliance For Science Logo" loading="lazy" decoding="async">
+            </div>
+            <span class="category-badge">Global Repository</span>
+          </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Alliance For Science Hub</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Global Biotechnology Hub · Resource Portal</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Cloudflare</span>
+          </div>
+        </a>
+
+        <!-- 18. Farming Future Bangladesh -->
+        <a href="https://farmingfuturebd.com/" target="_blank" rel="noopener" class="project-card" data-category="corporate" data-search="farming future bangladesh agriculture policy biotechnology agro research communications">
+          <div class="project-card-header">
+            <div class="project-logo-box">
+              <img src="../assets/clients/farming_future.jpg" alt="Farming Future Bangladesh Logo" loading="lazy" decoding="async">
+            </div>
+            <span class="category-badge">Agri Knowledge Hub</span>
+          </div>
+          <div class="project-title-row">
+            <h3 class="project-title">Farming Future Bangladesh</h3>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-impact-line">
+            <span class="impact-dot"></span>
+            <span>Agricultural Knowledge Hub · Policy Resource</span>
+          </div>
+          <div class="tech-tags-row">
+            <span class="tech-tag">Enterprise CMS</span>
+            <span class="tech-tag">Vue 3</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Cloudflare CDN</span>
+          </div>
+        </a>
 
       </div>
+
+      <!-- Empty state if search finds nothing -->
+      <div class="empty-search-state" id="emptySearchState">
+        <h3>No matching projects found</h3>
+        <p>Try searching for a different keyword, technology (e.g., Redis, Next.js, Go), or clear filters.</p>
+        <button type="button" class="btn btn-secondary btn-sm" id="resetFiltersBtn">Reset Filters</button>
+      </div>
+
     </div>
   </section>
 
   <!-- ==========================================================================
-     FLAGSHIP CASE STUDY SPOTLIGHT: THE BDNEWS24 ARCHITECTURE
+     FLAGSHIP CASE STUDY SPOTLIGHT: EDITORIAL MINIMALISM
      ========================================================================== -->
-  <section class="section-pad spotlight-section">
+  <section class="spotlight-section">
     <div class="container">
       <div class="spotlight-grid">
         <div class="spotlight-content">
-          <div class="badge-tag"
-            style="background:rgba(4,148,73,0.25); color:var(--brand-emerald-accent); border-color:var(--brand-emerald-border);">
-            Flagship Production Architecture
+          <div class="spotlight-eyebrow">
+            Architecture Spotlight
           </div>
-          <h2>How eMythMakers Powers 28M+ Readers with Zero Crashes</h2>
+          <h2>Powering 28M+ Readers with Zero Crashes</h2>
           <p>
-            During breaking news events such as national elections or cyclone warnings, news portals typically
-            experience traffic bursts of 500,000+ simultaneous readers. Standard databases lock up under write
-            contention.
+            Architected a high-concurrency headless newsroom with Anycast edge caching and an in-memory Redis bus — absorbing 94%+ of traffic at the edge with sub-40ms response times during national breaking events.
           </p>
-          <p>
-            Our architecture solves this through an Anycast edge caching mesh paired with a Redis in-memory query bus
-            and Go microservices. Over 94% of page hits are absorbed at the edge without touching core application
-            servers.
-          </p>
-          <div class="spotlight-stats">
-            <div class="spotlight-stat-box">
+          <div class="spotlight-stats-row">
+            <div class="spotlight-stat-item">
               <div class="val">&lt; 40ms</div>
               <div class="lbl">Edge TTFB Response</div>
             </div>
-            <div class="spotlight-stat-box">
+            <div class="spotlight-stat-item">
               <div class="val">94.8%</div>
               <div class="lbl">Edge Cache Hit Ratio</div>
             </div>
-            <div class="spotlight-stat-box">
+            <div class="spotlight-stat-item">
               <div class="val">99.99%</div>
-              <div class="lbl">Guaranteed Uptime</div>
+              <div class="lbl">Guaranteed SLA Uptime</div>
             </div>
           </div>
           <div style="margin-top:20px;">
-            <a href="contact.html" class="btn btn-primary">Engineer Your Platform with Us →</a>
+            <a href="contact.html" class="btn btn-primary">Start a Project With Us →</a>
           </div>
         </div>
 
         <div class="spotlight-media">
-          <div class="code-telemetry-box">
-            <div style="color:#10b981; margin-bottom:8px;">// Production Telemetry Stream · Live Newsroom Mesh</div>
-            <div>[EDGE_INGRESS] HTTP/3 200 OK - 38ms - 524,180 req/min</div>
-            <div style="color:#94a3b8;">[CACHE_HIT] Redis Cluster (Master-Replica) - 1.8ms</div>
-            <div style="color:#94a3b8;">[DB_ENGINE] PostgreSQL Connection Pool: 24/200 active</div>
-            <div style="color:#94a3b8;">[K8S_AUTOSCALE] 18 Pods Healthy (HPA headroom 62%)</div>
-            <div style="color:#f59e0b; margin-top:10px;">[SRE_STATUS] 0 dropped packets · 99.999% SLA active</div>
+          <div class="spotlight-architecture-card">
+            <div class="arch-card-header">
+              <div class="arch-title">
+                <span class="live-indicator"></span>
+                <span>Live Newsroom Architecture Mesh</span>
+              </div>
+              <span style="font-family:var(--font-mono); font-size:0.72rem; color:#10b981;">HTTP/3 ACTIVE</span>
+            </div>
+            <div class="arch-card-body">
+              <div class="arch-pipeline">
+                <div class="arch-node">
+                  <span class="arch-node-name">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                    Edge Ingress &amp; Anycast Caching
+                  </span>
+                  <span class="arch-node-metric">&lt; 38ms TTFB</span>
+                </div>
+                <div class="arch-node">
+                  <span class="arch-node-name">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect></svg>
+                    Redis In-Memory Query Bus
+                  </span>
+                  <span class="arch-node-metric">1.8ms Latency</span>
+                </div>
+                <div class="arch-node">
+                  <span class="arch-node-name">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    Go High-Throughput Services
+                  </span>
+                  <span class="arch-node-metric">520k+ req/min</span>
+                </div>
+                <div class="arch-node">
+                  <span class="arch-node-name">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                    PostgreSQL Connection Pool
+                  </span>
+                  <span class="arch-node-metric">24 / 200 Conns</span>
+                </div>
+              </div>
+            </div>
+            <div class="arch-footer-meta">
+              <span>0 dropped packets</span>
+              <span style="color:#10b981;">99.999% SLA active</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2450,27 +2650,19 @@
   </section>
 
   <!-- ==========================================================================
-     CALL TO ACTION
+     CALL TO ACTION (MINIMALIST)
      ========================================================================== -->
-  <section class="section-pad cta-banner">
-    <div class="container" style="max-width:780px;">
-      <div class="badge-tag"
-        style="background:rgba(4,148,73,0.2); border-color:var(--brand-emerald-border); color:var(--brand-emerald-accent);">
-        Start Your Enterprise Transformation
-      </div>
-      <h2 style="color:#ffffff; font-size:clamp(2rem, 4vw, 3rem); margin-bottom:18px;">
-        Ready to take your next product to production?
+  <section class="cta-banner">
+    <div class="container" style="max-width:640px;">
+      <h2>
+        Ready to build your next platform?
       </h2>
-      <p style="color:#94a3b8; font-size:1.1rem; line-height:1.7; margin-bottom:34px;">
-        Partner directly with eMMSOFT's Senior Systems Architects for a comprehensive architectural roadmap, scalability
-        feasibility study, and production proposal within 4 business hours.
+      <p>
+        Architectural roadmaps, scalability analysis, and production proposals delivered within 4 business hours.
       </p>
-      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary" style="padding:15px 32px; font-size:1.05rem;">Start a Project
-          Proposal →</a>
-        <a href="about.html" class="btn btn-secondary"
-          style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:15px 28px;">Explore Our
-          Story &amp; Tech</a>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary" style="padding:12px 24px;">Start a Project →</a>
+        <a href="about.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:var(--dark-600); padding:12px 22px;">About eMMSOFT</a>
       </div>
     </div>
   </section>
@@ -2483,7 +2675,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="../index.html#home" class="brand-link">
-            <img src="../assets/images/logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo">
+            <img src="../assets/images/logo.png" alt="eMMSOFT Software Engineering Studio Logo" class="nav-logo" decoding="async">
           </a>
           <p>
             High-performance software engineering studio — Newsroom CMS, E-Commerce, Cloud Infrastructure, and
@@ -2573,28 +2765,64 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // 4. Interactive Category Filter & Live Search
+    // 4. Interactive Category Filter, Live Search & View Switcher
     const filterChips = document.querySelectorAll('.filter-chip');
     const projectCards = document.querySelectorAll('.project-card');
     const searchInput = document.getElementById('projectSearchInput');
+    const searchClearBtn = document.getElementById('searchClearBtn');
+    const catalogCount = document.getElementById('catalogCount');
+    const emptySearchState = document.getElementById('emptySearchState');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+    const viewGridBtn = document.getElementById('viewGridBtn');
+    const viewListBtn = document.getElementById('viewListBtn');
+    const projectsGrid = document.getElementById('projectsGrid');
+
     let currentCategory = 'all';
 
     function applyFilterAndSearch() {
       const query = (searchInput.value || '').toLowerCase().trim();
+      let visibleCount = 0;
+
+      // Show/hide clear button
+      if (searchClearBtn) {
+        searchClearBtn.classList.toggle('is-visible', Boolean(query));
+      }
 
       projectCards.forEach(card => {
         const cat = card.getAttribute('data-category');
-        const cardText = card.textContent.toLowerCase();
+        const cardText = (card.textContent + ' ' + (card.getAttribute('data-search') || '')).toLowerCase();
 
         const matchesCat = (currentCategory === 'all' || cat === currentCategory);
         const matchesQuery = (!query || cardText.includes(query));
 
         if (matchesCat && matchesQuery) {
           card.style.display = 'flex';
+          visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+
+      // Update counter
+      if (catalogCount) {
+        let text = `Showing ${visibleCount} production system${visibleCount === 1 ? '' : 's'}`;
+        if (currentCategory !== 'all') {
+          const activeChip = document.querySelector(`.filter-chip[data-cat="${currentCategory}"]`);
+          if (activeChip) {
+            const catName = activeChip.childNodes[0].textContent.trim();
+            text += ` in ${catName}`;
+          }
+        }
+        if (query) {
+          text += ` matching "${query}"`;
+        }
+        catalogCount.textContent = text;
+      }
+
+      // Empty state
+      if (emptySearchState) {
+        emptySearchState.style.display = (visibleCount === 0) ? 'block' : 'none';
+      }
     }
 
     filterChips.forEach(chip => {
@@ -2606,7 +2834,41 @@
       });
     });
 
-    searchInput.addEventListener('input', applyFilterAndSearch);
+    if (searchInput) {
+      searchInput.addEventListener('input', applyFilterAndSearch);
+    }
+
+    if (searchClearBtn) {
+      searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchInput.focus();
+        applyFilterAndSearch();
+      });
+    }
+
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        currentCategory = 'all';
+        filterChips.forEach(c => c.classList.toggle('is-active', c.getAttribute('data-cat') === 'all'));
+        applyFilterAndSearch();
+      });
+    }
+
+    // View Switcher (Grid vs List)
+    if (viewGridBtn && viewListBtn && projectsGrid) {
+      viewGridBtn.addEventListener('click', () => {
+        viewGridBtn.classList.add('is-active');
+        viewListBtn.classList.remove('is-active');
+        projectsGrid.classList.remove('is-list-view');
+      });
+
+      viewListBtn.addEventListener('click', () => {
+        viewListBtn.classList.add('is-active');
+        viewGridBtn.classList.remove('is-active');
+        projectsGrid.classList.add('is-list-view');
+      });
+    }
   </script>
 
 </body>
